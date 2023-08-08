@@ -70,8 +70,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-LemegetonUnityProyect/.vsconfig
-LemegetonUnityProyect/Logs
+Lemegeton_UnityProject/.vsconfig
+Lemegeton_UnityProject/Logs
 *.meta
 *.wlt
-LemegetonUnityProyect/Library
+/Lemegeton_UnityProject/Library
+/Lemegeton_UnityProject/Temp
