@@ -72,7 +72,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Lemegeton_UnityProject/.vsconfig
 Lemegeton_UnityProject/Logs
-*.meta
 *.wlt
 /Lemegeton_UnityProject/Library
 /Lemegeton_UnityProject/Temp
