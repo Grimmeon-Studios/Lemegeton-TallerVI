@@ -7,7 +7,9 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] float _Speed = 3;
     [SerializeField] Camera _Camera;
+    [SerializeField] private PlayerTouchMovement virtualJoystick;
     PlayerInput_map _Input;
+
     Vector2 _Movement;
     Vector2 _DampedSpeed;
 
@@ -44,7 +46,14 @@ public class PlayerManager : MonoBehaviour
     {
         _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
 
-        _Rigidbody.velocity = _DampedSpeed * _Speed;
+
+        if(virtualJoystick.joystickActive ==true)
+        {
+
+
+        }
+        else
+            _Rigidbody.velocity = _DampedSpeed * _Speed;
 
     }
 
