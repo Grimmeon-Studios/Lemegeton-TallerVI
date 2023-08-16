@@ -1,22 +1,22 @@
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerTouchMovement : MonoBehaviour
 {
     public bool joystickActive = false;
-
-
     [SerializeField]
     private Vector2 JoystickSize = new Vector2(300, 300);
     [SerializeField]
     private FloatingJoystick Joystick;
     [SerializeField]
-    //private NavMeshAgent Player;
+    private PlayerManager _PlayerManager;
+
 
     private Finger MovementFinger;
     private Vector2 MovementAmount;
+    PlayerInput_map _Input;
 
     private void OnEnable()
     {
@@ -106,10 +106,19 @@ public class PlayerTouchMovement : MonoBehaviour
         return StartPosition;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        Vector3 scaledMovement = Time.deltaTime * new Vector3(MovementAmount.x, 0, MovementAmount.y);
+        Vector2 scaledMovement = Time.deltaTime * new Vector2(MovementAmount.x, MovementAmount.y);
+        if (joystickActive == true)
+        {
+            _PlayerManager._DampedSpeed = Vector2.SmoothDamp(scaledMovement, _PlayerManager._Movement, ref _PlayerManager._DampedSpeed, 0.05f);
+            _PlayerManager._Rigidbody.velocity = _PlayerManager._DampedSpeed * scaledMovement * 1000;
+        }
+    }
 
+    private void OnMovement(InputAction.CallbackContext context)
+    {
+        _PlayerManager._Movement = context.ReadValue<Vector2>();
     }
 
     private void OnGUI()
@@ -125,7 +134,8 @@ public class PlayerTouchMovement : MonoBehaviour
         if (MovementFinger != null)
         {
             GUI.Label(new Rect(10, 35, 500, 20), $"Finger Start Position: {MovementFinger.currentTouch.startScreenPosition}", labelStyle);
-            GUI.Label(new Rect(10, 65, 500, 20), $"Finger Current Position: {MovementFinger.currentTouch.screenPosition}", labelStyle);
+            GUI.Label(new Rect(10, 65, 500, 20), $"X Axis Movement Amount: {MovementAmount.x}", labelStyle);
+            GUI.Label(new Rect(10, 95, 500, 20), $"Y Axis Movement Amount: {MovementAmount.y}", labelStyle);
         }
         else
         {

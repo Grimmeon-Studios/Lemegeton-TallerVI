@@ -10,10 +10,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerTouchMovement virtualJoystick;
     PlayerInput_map _Input;
 
-    Vector2 _Movement;
-    Vector2 _DampedSpeed;
+    public Vector2 _Movement;
+    public Vector2 _DampedSpeed;
 
-    Rigidbody2D _Rigidbody;
+    public Rigidbody2D _Rigidbody;
 
     private void Awake()
     {
@@ -44,17 +44,11 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
-
-
-        if(virtualJoystick.joystickActive ==true)
+        if(virtualJoystick.joystickActive == false)
         {
-
-
-        }
-        else
+            _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
             _Rigidbody.velocity = _DampedSpeed * _Speed;
-
+        }
     }
 
 }
