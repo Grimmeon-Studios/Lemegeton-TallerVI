@@ -5,7 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float _Speed = 3;
+    //Stats
+    public float _Speed = 3;
+    public float health = 5;
+    public float defense = 2;
+    public float attack = 3;
+    public float critical = 1;
+    
+    //Arrays from pickUps
+    
+    
+    
     [SerializeField] Camera _Camera;
     PlayerInput_map _Input;
     Vector2 _Movement;
@@ -48,4 +58,17 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+    /*public void pickingUp(int pickUps)
+    {
+        switch (pickUps)
+        {
+            case 1:
+                
+                break;
+            
+        }
+        
+    }*/
+
 }
+
