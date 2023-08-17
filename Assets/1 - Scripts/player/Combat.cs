@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    [Header("Melee Atack")]
+    [Header("Melee Attack")]
     [SerializeField] private Transform meleeController;
     [SerializeField] private float meleeRadius;
     [SerializeField] private int meleeDamage;
 
 
-    private void Update()
+    /*private void DoAttack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonSpace("Fire1"))
         {
             Melee();
         }
-    }
-    private void Melee()
+    }*/
+    public void Melee()
     {
         Collider2D[] radius = Physics2D.OverlapCircleAll(meleeController.position, meleeRadius);
 

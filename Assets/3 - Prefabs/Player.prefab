@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 7449070979569320765}
   - component: {fileID: 884008422078159569}
   - component: {fileID: 881836433675676737}
-  - component: {fileID: 4761490109917891168}
+  - component: {fileID: 8170089619733944143}
+  - component: {fileID: 8594437580659781551}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,10 +83,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Speed: 10
   _Camera: {fileID: 0}
-  virtualJoystick: {fileID: 0}
+  virtualJoystick: {fileID: 881836433675676737}
   _Movement: {x: 0, y: 0}
   _DampedSpeed: {x: 0, y: 0}
-  _Rigidbody: {fileID: 0}
+  _Rigidbody: {fileID: 884008422078159569}
 --- !u!50 &884008422078159569
 Rigidbody2D:
   serializedVersion: 4
@@ -129,9 +130,54 @@ MonoBehaviour:
   scaledMovement: {x: 0, y: 0}
   JoystickSize: {x: 300, y: 300}
   Joystick: {fileID: 0}
-  _PlayerManager: {fileID: 0}
-  speedMultiplier: 0
---- !u!114 &4761490109917891168
+  _PlayerManager: {fileID: 7449070979569320765}
+  speedMultiplier: 10
+--- !u!61 &8170089619733944143
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4755022400971267103}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.023940802}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.7565255}
+  m_EdgeRadius: 0
+--- !u!114 &8594437580659781551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeController: {fileID: 6269169086282762344}
-  meleeRadius: 2
+  meleeRadius: 2.5
   meleeDamage: 5
 --- !u!1 &5546098538150104766
 GameObject:
