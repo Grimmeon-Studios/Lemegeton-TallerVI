@@ -519,6 +519,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1088751418 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 884008422078159569, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
+  m_PrefabInstance: {fileID: 3650132458040472257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1141069835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1075,10 @@ PrefabInstance:
       propertyPath: _PlayerManager
       value: 
       objectReference: {fileID: 319316893}
+    - target: {fileID: 881836433675676737, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
+      propertyPath: speedMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4161770580918833032, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1114,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7449070979569320765, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
+      propertyPath: _Rigidbody
+      value: 
+      objectReference: {fileID: 1088751418}
     - target: {fileID: 7449070979569320765, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
       propertyPath: virtualJoystick
       value: 

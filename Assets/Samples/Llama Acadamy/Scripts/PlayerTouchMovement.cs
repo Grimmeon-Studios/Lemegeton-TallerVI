@@ -6,12 +6,16 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 public class PlayerTouchMovement : MonoBehaviour
 {
     public bool joystickActive = false;
+    public Vector2 scaledMovement;
+
     [SerializeField]
     private Vector2 JoystickSize = new Vector2(300, 300);
     [SerializeField]
     private FloatingJoystick Joystick;
     [SerializeField]
     private PlayerManager _PlayerManager;
+    [SerializeField]
+    private float speedMultiplier;
 
 
     private Finger MovementFinger;
@@ -24,7 +28,7 @@ public class PlayerTouchMovement : MonoBehaviour
         ETouch.Touch.onFingerDown += HandleFingerDown;
         ETouch.Touch.onFingerUp += HandleLoseFinger;
         ETouch.Touch.onFingerMove += HandleFingerMove;
-        joystickActive = true;
+        
     }
 
     private void OnDisable()
@@ -33,7 +37,6 @@ public class PlayerTouchMovement : MonoBehaviour
         ETouch.Touch.onFingerUp -= HandleLoseFinger;
         ETouch.Touch.onFingerMove -= HandleFingerMove;
         EnhancedTouchSupport.Disable();
-        joystickActive = false;
     }
 
     private void HandleFingerMove(Finger MovedFinger)
@@ -68,6 +71,7 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         if (LostFinger == MovementFinger)
         {
+            joystickActive = false;
             MovementFinger = null;
             Joystick.Knob.anchoredPosition = Vector2.zero;
             Joystick.gameObject.SetActive(false);
@@ -79,6 +83,7 @@ public class PlayerTouchMovement : MonoBehaviour
     {
         if (MovementFinger == null && TouchedFinger.screenPosition.x <= Screen.width / 2f)
         {
+            joystickActive = true;
             MovementFinger = TouchedFinger;
             MovementAmount = Vector2.zero;
             Joystick.gameObject.SetActive(true);
@@ -108,17 +113,13 @@ public class PlayerTouchMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 scaledMovement = Time.deltaTime * new Vector2(MovementAmount.x, MovementAmount.y);
+        scaledMovement = Time.deltaTime * new Vector2(MovementAmount.x, MovementAmount.y);
         if (joystickActive == true)
         {
-            _PlayerManager._DampedSpeed = Vector2.SmoothDamp(scaledMovement, _PlayerManager._Movement, ref _PlayerManager._DampedSpeed, 0.05f);
-            _PlayerManager._Rigidbody.velocity = _PlayerManager._DampedSpeed * scaledMovement * 1000;
+            //_PlayerManager._DampedSpeed = Vector2.SmoothDamp(MovementAmount, Vector2.zero, ref MovementAmount, 0.05f);
+            //_PlayerManager._Rigidbody.velocity = _PlayerManager._DampedSpeed * scaledMovement * 1000;
+            _PlayerManager._Rigidbody.velocity = MovementAmount * speedMultiplier;
         }
-    }
-
-    private void OnMovement(InputAction.CallbackContext context)
-    {
-        _PlayerManager._Movement = context.ReadValue<Vector2>();
     }
 
     private void OnGUI()
@@ -136,10 +137,13 @@ public class PlayerTouchMovement : MonoBehaviour
             GUI.Label(new Rect(10, 35, 500, 20), $"Finger Start Position: {MovementFinger.currentTouch.startScreenPosition}", labelStyle);
             GUI.Label(new Rect(10, 65, 500, 20), $"X Axis Movement Amount: {MovementAmount.x}", labelStyle);
             GUI.Label(new Rect(10, 95, 500, 20), $"Y Axis Movement Amount: {MovementAmount.y}", labelStyle);
+            GUI.Label(new Rect(10, 125, 500, 20), $"Scaled Movement Amount: {scaledMovement}", labelStyle);
+            GUI.Label(new Rect(10, 155, 500, 20), $"JoystickActive: {joystickActive}", labelStyle);
         }
         else
         {
             GUI.Label(new Rect(10, 35, 500, 20), "No Current Movement Touch", labelStyle);
+            GUI.Label(new Rect(10, 65, 500, 20), $"JoystickActive: {joystickActive}", labelStyle);
         }
 
         GUI.Label(new Rect(10, 10, 500, 20), $"Screen Size ({Screen.width}, {Screen.height})", labelStyle);

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float _Speed = 3;
+    public float _Speed = 3;
     [SerializeField] Camera _Camera;
     [SerializeField] private PlayerTouchMovement virtualJoystick;
     PlayerInput_map _Input;
@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour
         _Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
     }
-
     private void OnEnable()
     {
         _Input.Enable();
