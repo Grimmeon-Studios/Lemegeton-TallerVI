@@ -5,20 +5,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float _Speed = 3;
+    public float _Speed = 3;
     [SerializeField] Camera _Camera;
+    [SerializeField] private PlayerTouchMovement virtualJoystick;
     PlayerInput_map _Input;
-    Vector2 _Movement;
-    Vector2 _DampedSpeed;
 
-    Rigidbody2D _Rigidbody;
+    public Vector2 _Movement;
+    public Vector2 _DampedSpeed;
+
+    public Rigidbody2D _Rigidbody;
 
     private void Awake()
     {
         _Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
     }
-
     private void OnEnable()
     {
         _Input.Enable();
@@ -42,10 +43,11 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
-
-        _Rigidbody.velocity = _DampedSpeed * _Speed;
-
+        if(virtualJoystick.joystickActive == false)
+        {
+            _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
+            _Rigidbody.velocity = _DampedSpeed * _Speed;
+        }
     }
 
 }
