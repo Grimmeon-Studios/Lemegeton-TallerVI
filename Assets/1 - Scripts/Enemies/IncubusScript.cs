@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum hornState
+public enum incubState
 {
     Chasing,
     Dead
@@ -23,7 +23,7 @@ public class IncubusScript : MonoBehaviour
 
     #region AI RELATED
     GameObject player;
-    public hornState currState = hornState.Chasing;
+    public incubState currState = incubState.Chasing;
     #endregion
 
     #region ELSE
@@ -58,10 +58,10 @@ public class IncubusScript : MonoBehaviour
 
         switch (currState)
         {
-            case (hornState.Chasing):
+            case (incubState.Chasing):
                 Chase();
                 break;
-            case (hornState.Dead):
+            case (incubState.Dead):
                 Die();
                 break;
         }
@@ -78,7 +78,7 @@ public class IncubusScript : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            currState = hornState.Dead;
+            currState = incubState.Dead;
         }
     }
 
