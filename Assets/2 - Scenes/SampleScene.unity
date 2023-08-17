@@ -1173,6 +1173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4755022400971267103, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7449070979569320765, guid: cc21950c9dc5f644daf472b50e68e637, type: 3}
       propertyPath: _Rigidbody
       value: 
@@ -1200,6 +1204,10 @@ PrefabInstance:
     - target: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
       propertyPath: m_Name
       value: Incubus
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6774832240837891135, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
       propertyPath: m_LocalPosition.x
