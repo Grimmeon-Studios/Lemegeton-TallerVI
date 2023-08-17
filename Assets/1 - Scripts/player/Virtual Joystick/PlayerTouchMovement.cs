@@ -15,7 +15,7 @@ public class PlayerTouchMovement : MonoBehaviour
     [SerializeField]
     private PlayerManager _PlayerManager;
     [SerializeField]
-    private float speedMultiplier;
+    //private float speedMultiplier;
 
 
     private Finger MovementFinger;
@@ -118,7 +118,7 @@ public class PlayerTouchMovement : MonoBehaviour
         {
             //_PlayerManager._DampedSpeed = Vector2.SmoothDamp(MovementAmount, Vector2.zero, ref MovementAmount, 0.05f);
             //_PlayerManager._Rigidbody.velocity = _PlayerManager._DampedSpeed * scaledMovement * 1000;
-            _PlayerManager._Rigidbody.velocity = MovementAmount * speedMultiplier;
+            _PlayerManager._Rigidbody.velocity = MovementAmount * _PlayerManager.speed;
         }
     }
 
