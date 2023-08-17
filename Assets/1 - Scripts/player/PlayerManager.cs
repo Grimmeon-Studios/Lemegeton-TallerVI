@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,17 +25,28 @@ public class PlayerManager : MonoBehaviour
     {
         _Input.Enable();
 
+        //_Input.Player.Fire Significa atacar pero por bugs del New Input System no puedo cambiarle el nombre
+        //_Input.Player.Fire.performed += PerformAttack();
+
         _Input.Player.Move.performed += OnMovement;
         _Input.Player.Move.canceled += OnMovement;
     }
 
     private void OnDisable()
     {
+        //_Input.Player.Fire.performed -= PerformAttack();
+
+        //_Input.Player.Fire Significa atacar pero por bugs del New Input System no puedo cambiarle el nombre
         _Input.Player.Move.performed -= OnMovement;
         _Input.Player.Move.canceled -= OnMovement;
 
         _Input.Disable();
     }
+
+    //private Action<InputAction.CallbackContext> PerformAttack()
+    //{
+    //    throw new NotImplementedException();
+    //}
 
     private void OnMovement(InputAction.CallbackContext context)
     {
