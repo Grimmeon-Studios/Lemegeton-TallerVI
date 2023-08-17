@@ -1,16 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     //Stats
-    public float _Speed = 3;
-    public float health = 5;
-    public float defense = 2;
+    public float speed = 3;
+    public float maxHealth = 10;
+    public float health;
+    public float maxDefense = 5;
+    public float defense;
     public float attack = 3;
-    public float critical = 1;
+    public float criticalRateUp = 0.6f;
+    public float criticalDamage = 1;
+    public bool isInvincible = false;
+    public float invincibleTimer;
+    public float timeInvincible = 2.0f;
+        
+    private string levelname;
     
     //Arrays from pickUps
     
@@ -22,6 +32,14 @@ public class PlayerManager : MonoBehaviour
     Vector2 _DampedSpeed;
 
     Rigidbody2D _Rigidbody;
+
+    private void Start()
+    {
+        levelname = SceneManager.GetActiveScene().name;
+        health = maxHealth;
+        defense = maxDefense;
+    }
+    
 
     private void Awake()
     {
@@ -50,11 +68,25 @@ public class PlayerManager : MonoBehaviour
         _Movement = context.ReadValue<Vector2>();
     }
 
+    private void Update()
+    {
+        if (isInvincible)
+        {
+            
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0)
+            {
+                isInvincible = false;
+
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
 
-        _Rigidbody.velocity = _DampedSpeed * _Speed;
+        _Rigidbody.velocity = _DampedSpeed * speed;
 
     }
 
@@ -69,6 +101,31 @@ public class PlayerManager : MonoBehaviour
         }
         
     }*/
+    public void TakeDamage(int amount)
+    {
+        if (isInvincible)
+            return;
+
+        isInvincible = true;
+        invincibleTimer = timeInvincible;
+
+        health -= amount;
+        if (health <= 0)
+        {
+            Death();
+        }
+        /*else
+        {
+            clipDamage.Play(); // feedback of the damage
+        }*/
+    }
+    
+    public void Death()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene(levelname);
+    }
+    
 
 }
 

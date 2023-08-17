@@ -21,19 +21,28 @@ public class PickUp : MonoBehaviour
         switch (pickUps)
         {
             case 1://Velocity
-                player._Speed += porcentaje;
+                player.speed += porcentaje;
                 break;
             case 2: //Attack
                 player.attack += porcentaje;
                 break;
-            case 3://Defense
+            case 3://Defense Up
+                player.maxDefense += porcentaje;
+                break;
+            case 4://Defense Heal
                 player.defense += porcentaje;
                 break;
-            case 4://Critical
-                player.critical += porcentaje;
+            case 5://Critical Damage
+                player.criticalDamage += porcentaje;
                 break;
-            case 5://Health
+            case 6://Critical Rate Up
+                player.criticalRateUp += porcentaje;
+                break;
+            case 7://Health
                 player.health += porcentaje;
+                break;
+            case 8://MaxHealth
+                player.maxHealth += porcentaje;
                 break;
             default:
                 Console.WriteLine("PickUp no instanciado");
