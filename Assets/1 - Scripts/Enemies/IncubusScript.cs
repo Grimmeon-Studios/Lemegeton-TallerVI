@@ -73,7 +73,7 @@ public class IncubusScript : MonoBehaviour
                                             moveSpeed * Time.deltaTime));
     }
 
-    void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)
