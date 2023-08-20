@@ -8,8 +8,7 @@ public class TilemapVisualizer : MonoBehaviour
 {
 
     [SerializeField] private Tilemap floorTilemap;
-
-    private TileBase floorTile;
+    [SerializeField] private TileBase floorTile;
 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
@@ -26,6 +25,12 @@ public class TilemapVisualizer : MonoBehaviour
 
     private void PaintSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
     {
-        throw new NotImplementedException();
+        var tilePosition = tilemap.WorldToCell((Vector3Int)position);
+        tilemap.SetTile(tilePosition, tile);
+    }
+
+    public void Clear()
+    {
+        floorTilemap.ClearAllTiles();
     }
 }
