@@ -47,8 +47,8 @@ public class IncubusScript : MonoBehaviour
     void Update()
     {
         position = rb.position;
-
-        Vector2 Look = player.GetComponent<Rigidbody2D>().position - position;
+        Vector2 v2 = new Vector2(player.transform.position.x, player.transform.position.y);
+        Vector2 Look = v2 - position;
         Look.Normalize();
         // Debug.Log($"X: {Look.x} Y: {Look.y}");
     }
@@ -69,8 +69,7 @@ public class IncubusScript : MonoBehaviour
 
     void Chase()
     {
-        rb.MovePosition(Vector2.MoveTowards(rb.position, player.GetComponent<Rigidbody2D>().position,
-                                            moveSpeed * Time.deltaTime));
+        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, moveSpeed * Time.deltaTime));
     }
 
     public void takeDamage(int damage)
