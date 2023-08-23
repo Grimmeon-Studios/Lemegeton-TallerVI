@@ -2639,7 +2639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620198846}
   m_Layer: 0
-  m_Name: ----------Procedural Generation-------------------
+  m_Name: ----------Rooms Checks-------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

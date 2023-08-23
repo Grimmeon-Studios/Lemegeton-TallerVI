@@ -8,7 +8,7 @@ public class Dash : MonoBehaviour
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
-    [SerializeField] private float original_speed;
+    private float original_speed;
 
     PlayerInput_map _Input;
 

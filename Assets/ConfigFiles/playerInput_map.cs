@@ -53,6 +53,15 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special Skill"",
+                    ""type"": ""Button"",
+                    ""id"": ""29bf4cbb-1385-41a0-86c7-8b9a87db20c6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -262,6 +271,17 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8700b208-f217-4d12-b4d4-40390cb00334"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -852,6 +872,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_MeleeAttack = m_Player.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_SpecialSkill = m_Player.FindAction("Special Skill", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -928,6 +949,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_MeleeAttack;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_SpecialSkill;
     public struct PlayerActions
     {
         private @PlayerInput_map m_Wrapper;
@@ -935,6 +957,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @SpecialSkill => m_Wrapper.m_Player_SpecialSkill;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -953,6 +976,9 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @SpecialSkill.started += instance.OnSpecialSkill;
+            @SpecialSkill.performed += instance.OnSpecialSkill;
+            @SpecialSkill.canceled += instance.OnSpecialSkill;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -966,6 +992,9 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @SpecialSkill.started -= instance.OnSpecialSkill;
+            @SpecialSkill.performed -= instance.OnSpecialSkill;
+            @SpecialSkill.canceled -= instance.OnSpecialSkill;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1151,6 +1180,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnSpecialSkill(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
