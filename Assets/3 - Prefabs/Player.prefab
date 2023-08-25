@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 881836433675676737}
   - component: {fileID: 8170089619733944143}
   - component: {fileID: 8594437580659781551}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -81,7 +81,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cb123500e86dd429688d99844773a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Speed: 10
+  speed: 3
+  maxHealth: 10
+  health: 0
+  maxDefense: 5
+  defense: 0
+  attack: 3
+  criticalRateUp: 0.6
+  criticalDamage: 1
+  isInvincible: 0
+  invincibleTimer: 0
+  timeInvincible: 2
   _Camera: {fileID: 0}
   virtualJoystick: {fileID: 881836433675676737}
   _Movement: {x: 0, y: 0}
@@ -131,7 +141,6 @@ MonoBehaviour:
   JoystickSize: {x: 300, y: 300}
   Joystick: {fileID: 0}
   _PlayerManager: {fileID: 7449070979569320765}
-  speedMultiplier: 10
 --- !u!61 &8170089619733944143
 BoxCollider2D:
   m_ObjectHideFlags: 0
