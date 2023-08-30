@@ -7,15 +7,12 @@ public class PlayerTouchMovement : MonoBehaviour
 {
     public bool joystickActive = false;
     public Vector2 scaledMovement;
+    
 
-    [SerializeField]
-    private Vector2 JoystickSize = new Vector2(300, 300);
-    [SerializeField]
-    private FloatingJoystick Joystick;
-    [SerializeField]
-    private PlayerManager _PlayerManager;
-    [SerializeField]
-    //private float speedMultiplier;
+    [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
+    [SerializeField] private FloatingJoystick Joystick;
+    [SerializeField] private PlayerManager _PlayerManager;
+    [SerializeField] private Canvas _Canvas;
 
 
     private Finger MovementFinger;
@@ -47,15 +44,9 @@ public class PlayerTouchMovement : MonoBehaviour
             float maxMovement = JoystickSize.x / 2f;
             ETouch.Touch currentTouch = MovedFinger.currentTouch;
 
-            if (Vector2.Distance(
-                    currentTouch.screenPosition,
-                    Joystick.RectTransform.anchoredPosition
-                ) > maxMovement)
+            if (Vector2.Distance(currentTouch.screenPosition, Joystick.RectTransform.anchoredPosition) > maxMovement)
             {
-                knobPosition = (
-                    currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition
-                    ).normalized
-                    * maxMovement;
+                knobPosition = (currentTouch.screenPosition - Joystick.RectTransform.anchoredPosition).normalized * maxMovement;
             }
             else
             {

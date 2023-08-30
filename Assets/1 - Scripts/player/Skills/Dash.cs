@@ -29,7 +29,7 @@ public class Dash : MonoBehaviour
         _Input.Player.Dash.performed -= OnDash;
     }
 
-    private void Use_Dash()
+    public void Use_Dash()
     {
         playerComponent.transform.parent = null;
 
