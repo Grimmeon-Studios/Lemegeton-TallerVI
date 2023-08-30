@@ -2,19 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
-    [SerializeField]
-    private int minRoomWidth = 4, minRoomHeight = 4;
-    [SerializeField]
-    private int dungeonWidth = 20, dungeonHeight = 20;
-    [SerializeField]
-    [Range(0,10)]
-    private int offset = 1;
-    [SerializeField]
-    private bool randomWalkRooms = false;
+    [SerializeField] private int minRoomWidth = 4, minRoomHeight = 4;
+    [SerializeField] private int dungeonWidth = 20, dungeonHeight = 20;
+    [SerializeField] [Range(0,10)] private int offset = 1;
+    [SerializeField] private bool randomWalkRooms = false;
+    [SerializeField] private GameObject roomCheck;
 
     protected override void RunProceduralGeneration()
     {
@@ -63,10 +61,17 @@ public class RoomFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
                 if(position.x >= (roomBounds.xMin + offset) && position.x <= (roomBounds.xMax - offset) && position.y >= (roomBounds.yMin - offset) && position.y <= (roomBounds.yMax - offset))
                 {
                     floor.Add(position);
+
                 }
             }
         }
         return floor;
+    }
+
+    private void RoomCheckerInstance(GameObject _object, Vector2Int position)
+    {
+        Vector3 worldPosition = (Vector3Int)position;
+        Instantiate(_object, worldPosition, Quaternion.identity);
     }
 
     private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenters)
