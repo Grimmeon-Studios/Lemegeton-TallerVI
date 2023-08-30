@@ -276,17 +276,6 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4ddbaf2c-5921-4046-bf2c-4d0e208d2b78"",
-                    ""path"": ""<Touchscreen>/Press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8700b208-f217-4d12-b4d4-40390cb00334"",
                     ""path"": """",
                     ""interactions"": """",
