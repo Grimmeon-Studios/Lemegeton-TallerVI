@@ -29,7 +29,7 @@ public class Dash : MonoBehaviour
         _Input.Player.Dash.performed -= OnDash;
     }
 
-    public void Use_Dash()
+    private void Use_Dash()
     {
         playerComponent.transform.parent = null;
 
@@ -47,6 +47,11 @@ public class Dash : MonoBehaviour
     private void OnDash(InputAction.CallbackContext context)
     {
         if(context.performed) { StartCoroutine(WaitAndExecute_Dash(dash_durarion)); }
+    }
+
+    public void OnDashMobile()
+    {
+        StartCoroutine(WaitAndExecute_Dash(dash_durarion));
     }
 
     private IEnumerator WaitAndExecute_Dash(float waitTime)
