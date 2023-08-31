@@ -7,17 +7,16 @@ public class Room : MonoBehaviour
     private int enemies;
 
     private EdgeCollider2D edgeCollider;
-    private BoxCollider2D boxCollider;
-    //private SpriteRenderer spriteRenderer;
+
+    // The first Collider is the one who detects the player and trapts it in the Room
+    [SerializeField] private BoxCollider2D mainBoxCollider;
+
 
     void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //spriteRenderer.enabled = false;
+        mainBoxCollider = GetComponent<BoxCollider2D>();
         edgeCollider.enabled = false;
-        Debug.Log(edgeCollider.points.Length);
     }
 
     public void OnTriggerEnter2D(Collider2D @object)
@@ -25,15 +24,12 @@ public class Room : MonoBehaviour
         if (@object.CompareTag("Player"))
         {
             edgeCollider.enabled = true;
-            Vector2 boxSize = boxCollider.size;
             Debug.Log("Player Entered");
-            //spriteRenderer.enabled = true;
         }
         else if(@object.CompareTag("Enemy"))
         {
             enemies = +1;
         }
-
-        boxCollider.enabled = false;
+        mainBoxCollider.enabled = false;
     }
 }
