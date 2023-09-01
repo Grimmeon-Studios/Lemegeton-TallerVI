@@ -18,7 +18,8 @@ public class IncubusScript : MonoBehaviour
     #endregion
 
     #region ATTACK RELATED
-    public float contactDamage = 0.5f;
+    [SerializeField]
+    float contactDamage;
     #endregion
 
     #region AI RELATED
@@ -83,13 +84,14 @@ public class IncubusScript : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D other)
     {
-        //GameObject player = other.gameObject;
-        //PlayerManager playerController = player.GetComponent<Player>();
+        GameObject player = other.gameObject;
 
-        //if (playerController != null)
-        //{
-        //    playerController.changeHealth(-0.5f);
-        //}
+        PlayerManager cosa = player.GetComponent<PlayerManager>();
+
+        if (cosa != null)
+        {
+            cosa.TakeDamage(contactDamage);
+        }
     }
 
     void Die()
