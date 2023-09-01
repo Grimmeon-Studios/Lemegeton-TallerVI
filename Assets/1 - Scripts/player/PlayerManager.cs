@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     private string levelname;
 
     [SerializeField] Camera _Camera;
-    [SerializeField] private PlayerTouchMovement virtualJoystick;
+    [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
     PlayerInput_map _Input;
 
     public Vector2 _Movement;
@@ -96,7 +96,7 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(virtualJoystick.joystickActive == false)
+        if(_playerTouchMovementScript.joystickActive == false)
         {
             _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
             _Rigidbody.velocity = _DampedSpeed * speed;
