@@ -6,6 +6,7 @@ public class Combat : MonoBehaviour
 {
     [Header("Melee Attack")]
     [SerializeField] private Transform meleeController;
+    [SerializeField] private SpriteRenderer meleeSprite;
     [SerializeField] private float meleeRadius;
     [SerializeField] private int meleeDamage;
 
@@ -19,6 +20,9 @@ public class Combat : MonoBehaviour
     }*/
     public void Melee()
     {
+        StartCoroutine(AnimationPlaceholder(0.2f));
+    
+
         Collider2D[] radius = Physics2D.OverlapCircleAll(meleeController.position, meleeRadius);
 
         foreach (Collider2D collision in radius)
@@ -34,5 +38,18 @@ public class Combat : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(meleeController.position, meleeRadius);
+    }
+
+    private IEnumerator AnimationPlaceholder(float waitTime)
+    {
+        Debug.Log("Coroutine started");
+        meleeSprite.enabled = true;
+
+        // Wait for the specified time
+        yield return new WaitForSeconds(waitTime);
+
+
+        Debug.Log("Coroutine ended");
+        meleeSprite.enabled = false;
     }
 }
