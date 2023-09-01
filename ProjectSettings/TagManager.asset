@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Enemy
   - Portal
+  - Room
+  - Dungeon Manager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dungeon Managment
   - Water
   - UI
   - VFX

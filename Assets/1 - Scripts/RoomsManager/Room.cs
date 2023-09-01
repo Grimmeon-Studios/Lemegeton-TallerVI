@@ -1,39 +1,103 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Room : MonoBehaviour
 {
-    private int enemies;
+    public UnityEvent NoRemainingEnemies;
 
     private EdgeCollider2D edgeCollider;
-    private BoxCollider2D boxCollider;
-    //private SpriteRenderer spriteRenderer;
+    private GameObject dungeonManager;
+    private DungeonManager _dungeonManager;
+    private HashSet<GameObject> enemiesHashSet = new HashSet<GameObject>();
+
+    // The first Collider is the one who detects the player and trapts it in the Room
+    [SerializeField] private BoxCollider2D mainBoxCollider;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject combatOverlay;
+
 
     void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
-        //spriteRenderer.enabled = false;
+        mainBoxCollider = GetComponent<BoxCollider2D>();
+        mainBoxCollider.enabled = true;
         edgeCollider.enabled = false;
-        Debug.Log(edgeCollider.points.Length);
     }
 
-    public void OnTriggerEnter2D(Collider2D @object)
+    private void Start()
     {
+        dungeonManager = GameObject.Find("Dungeon Manager");
+        _dungeonManager = dungeonManager.GetComponent<DungeonManager>();
+        combatOverlay.SetActive(false);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        var @object = other.gameObject;
         if (@object.CompareTag("Player"))
         {
             edgeCollider.enabled = true;
-            Vector2 boxSize = boxCollider.size;
             Debug.Log("Player Entered");
-            //spriteRenderer.enabled = true;
+            mainBoxCollider.size = mainBoxCollider.size * 1.3f;
+            SpawnEnemies(_dungeonManager._difficultylvl);
+            combatOverlay.SetActive(true);
         }
         else if(@object.CompareTag("Enemy"))
         {
-            enemies = +1;
+            if (!enemiesHashSet.Contains(@object))
+            {
+                enemiesHashSet.Add(@object);
+            }
+        }
+        else if(!@object.CompareTag("Dungeon Manager"))
+        {
+            Debug.Log("Entity: "+ @object.name + " Not Recognized");
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        
+        var @object = other.gameObject;
+        if (@object.CompareTag("Player"))
+        {
+            Debug.Log("Player Exited the Room");
+        }
+        else if (@object.CompareTag("Enemy"))
+        {
+            if (enemiesHashSet.Contains(@object))
+            {
+                enemiesHashSet.Remove(@object);
+                Destroy(@object);
+                if(enemiesHashSet.Count == 0)
+                {
+                    NoRemainingEnemies.Invoke();
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("Entity: " + @object.name + " Not Recognized");
         }
 
-        boxCollider.enabled = false;
     }
+
+    private void RandomEnemySpawnPos()
+    {
+        //To Be implemented
+    }
+
+    private void SpawnEnemies(int dificulty)
+    {
+        int i;
+        for (i = 0; i < dificulty; i++)
+        {
+            Instantiate(enemyPrefab, mainBoxCollider.bounds.center, Quaternion.identity);
+        }
+    }
+
+
 }
