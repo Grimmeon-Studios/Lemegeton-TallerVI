@@ -13,13 +13,17 @@ public class IncubusScript : MonoBehaviour
     Rigidbody2D rb;
 
     #region MOVE RELATED
-    public float moveSpeed = 2.5f;
+    [SerializeField]
+    float moveSpeed;
     Vector2 position;
     #endregion
 
     #region ATTACK RELATED
     [SerializeField]
     float contactDamage;
+
+    [SerializeField]
+    int pushForce;
     #endregion
 
     #region AI RELATED
@@ -28,7 +32,8 @@ public class IncubusScript : MonoBehaviour
     #endregion
 
     #region ELSE
-    public int health = 18;
+    [SerializeField]
+    int health = 18;
     // GameObject door;
     #endregion
 
@@ -86,11 +91,12 @@ public class IncubusScript : MonoBehaviour
     {
         GameObject player = other.gameObject;
 
-        PlayerManager cosa = player.GetComponent<PlayerManager>();
+        PlayerManager playerManager = player.GetComponent<PlayerManager>();
 
-        if (cosa != null)
+        if (playerManager != null)
         {
-            cosa.TakeDamage(contactDamage);
+            playerManager.TakeDamage(contactDamage);
+            playerManager._Rigidbody.AddForce((playerManager.transform.position - this.transform.position) * pushForce);
         }
     }
 
