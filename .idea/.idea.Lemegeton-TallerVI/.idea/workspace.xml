@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/PickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +75,7 @@
       <workItem from="1692923032683" duration="4890000" />
       <workItem from="1692977159528" duration="1582000" />
       <workItem from="1692978868175" duration="1735000" />
+      <workItem from="1693540486298" duration="1189000" />
     </task>
     <servers />
   </component>
