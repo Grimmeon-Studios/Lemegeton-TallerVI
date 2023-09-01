@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhantomMove : MonoBehaviour
+public class PhantomMoveUseless : MonoBehaviour
 {
     public Transform initialPosition;
     public Transform finalPosition;
+    public Transform ESTOYLOCOA;
 
     private Transform currentTarget;
     public float speed = 3.0f;
@@ -21,7 +22,7 @@ public class PhantomMove : MonoBehaviour
     {
         // Calculate the distance between itself and the target
         float distance = Vector2.Distance(transform.position, currentTarget.position);
-        
+
         if (distance < 0.1f)
         {
             if (currentTarget == finalPosition)
@@ -32,10 +33,15 @@ public class PhantomMove : MonoBehaviour
             {
                 currentTarget = finalPosition;
             }
-                
+
         }
 
         // Moving the phantom to the portal
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+
+        if (transform.position == finalPosition.position)
+        {
+            Debug.Log("kelokemanin");
+        }
     }
 }

@@ -102,7 +102,7 @@ public class PlayerManager : MonoBehaviour
             _Rigidbody.velocity = _DampedSpeed * speed;
         }
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
         if (isInvincible)
             return;
@@ -111,6 +111,7 @@ public class PlayerManager : MonoBehaviour
         invincibleTimer = timeInvincible;
 
         health -= amount;
+        Debug.Log("Health" + health);
         if (health <= 0)
         {
             Death();
@@ -123,8 +124,35 @@ public class PlayerManager : MonoBehaviour
     
     public void Death()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
         SceneManager.LoadScene(levelname);
     }
-    
+
+    private void OnGUI()
+    {
+        GUIStyle labelStyle = new GUIStyle()
+        {
+            fontSize = 60,
+            normal = new GUIStyleState()
+            {
+                textColor = Color.green
+            }
+        };
+
+        GUIStyle invincibleLabel = new GUIStyle()
+        {
+            fontSize = 60,
+            normal = new GUIStyleState()
+            {
+                textColor = Color.yellow
+            }
+        };
+
+        GUI.Label(new Rect(10, 350, 500, 20), $"Health: ({health})", labelStyle);
+
+        if (isInvincible)
+        {
+            GUI.Label(new Rect(10, 280, 500, 20), $"Invincible: ({invincibleTimer})", invincibleLabel);
+        }
+    }
 }
