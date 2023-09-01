@@ -16,6 +16,7 @@ public class Room : MonoBehaviour
     // The first Collider is the one who detects the player and trapts it in the Room
     [SerializeField] private BoxCollider2D mainBoxCollider;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject combatOverlay;
 
 
     void Awake()
@@ -30,6 +31,7 @@ public class Room : MonoBehaviour
     {
         dungeonManager = GameObject.Find("Dungeon Manager");
         _dungeonManager = dungeonManager.GetComponent<DungeonManager>();
+        combatOverlay.SetActive(false);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -41,6 +43,7 @@ public class Room : MonoBehaviour
             Debug.Log("Player Entered");
             mainBoxCollider.size = mainBoxCollider.size * 1.3f;
             SpawnEnemies(_dungeonManager._difficultylvl);
+            combatOverlay.SetActive(true);
         }
         else if(@object.CompareTag("Enemy"))
         {
