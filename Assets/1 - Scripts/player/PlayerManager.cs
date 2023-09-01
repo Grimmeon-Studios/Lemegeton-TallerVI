@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public float invincibleTimer;
     public float timeInvincible = 2.0f;
     
-    private string levelname;
+    //private string levelname;
 
     [SerializeField] Camera _Camera;
     [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
     {
         _Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
-        levelname = SceneManager.GetActiveScene().name;
+        //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
         defense = maxDefense;
     }
@@ -125,7 +125,7 @@ public class PlayerManager : MonoBehaviour
     public void Death()
     {
         //Destroy(gameObject);
-        SceneManager.LoadScene(levelname);
+        SceneManager.LoadScene(0);
     }
 
     private void OnGUI()

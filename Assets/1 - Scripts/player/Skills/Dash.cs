@@ -9,6 +9,10 @@ public class Dash : MonoBehaviour
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
     private float original_speed;
+    [SerializeField] private float dash_Speed;
+    [SerializeField] private float dash_CD;
+
+    bool isOnCd = false;
 
     PlayerInput_map _Input;
 
@@ -31,10 +35,21 @@ public class Dash : MonoBehaviour
 
     private void Use_Dash()
     {
+        if (isOnCd == true)
+            return;
+
         playerComponent.transform.parent = null;
 
         original_speed = realPlayer.speed;
-        realPlayer.speed = original_speed * 1.3f;
+
+        if(realPlayer.speed < original_speed * dash_Speed)
+        {
+            realPlayer.speed = original_speed * dash_Speed;
+        }
+
+        isOnCd = true;
+
+        StartCoroutine(DashCD(dash_CD));
     }
 
     private void RestoreParent()
@@ -65,5 +80,14 @@ public class Dash : MonoBehaviour
         RestoreParent();
 
         Debug.Log("Coroutine ended");
+    }
+
+    private IEnumerator DashCD(float waitTime)
+    {       
+        // Wait for the specified time
+        yield return new WaitForSeconds(waitTime);
+
+        // After waiting, execute the method
+        isOnCd = false;
     }
 }
