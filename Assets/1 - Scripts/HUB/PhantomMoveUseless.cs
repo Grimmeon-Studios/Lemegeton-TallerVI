@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhantomMove : MonoBehaviour
+public class PhantomMoveUseless : MonoBehaviour
 {
     public Transform initialPosition;
     public Transform finalPosition;
