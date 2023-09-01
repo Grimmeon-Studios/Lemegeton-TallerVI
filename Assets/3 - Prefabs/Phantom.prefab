@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3402383533509551858}
   - component: {fileID: 1783137588790906130}
   - component: {fileID: 1705797456714747790}
-  - component: {fileID: 5951496611104466221}
+  - component: {fileID: 5594564652216336322}
   m_Layer: 0
   m_Name: Phantom
   m_TagString: Untagged
@@ -93,7 +93,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2541562207697975333}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &5951496611104466221
+--- !u!114 &5594564652216336322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45fadf8776c13e4287419fa7c025dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  middlePoint: {fileID: 0}
-  endPoint: {fileID: 0}
-  movementSpeed: 2
-  delayAtEnd: 1
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moveSpeed: 6

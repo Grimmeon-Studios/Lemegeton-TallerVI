@@ -1,48 +1,31 @@
-using System.Collections;
 using UnityEngine;
 
 public class PhantomManager : MonoBehaviour
 {
-    public Transform startPoint;
-    public Transform middlePoint;
-    public Transform endPoint;
+    public Transform[] waypoints;
+    public float moveSpeed = 5.0f;
 
-    public float movementSpeed = 2.0f;
-    public float delayAtEnd = 1.0f;
-
-    private Vector3 targetPosition;
-    private bool movingToEnd = false;
-
-    private void Start()
-    {
-        targetPosition = middlePoint.position;
-    }
+    private int currentWaypointIndex = 0;
 
     private void Update()
     {
-        if (movingToEnd)
-        {
-            targetPosition = endPoint.position;
+        // Calculating the direction towards the current waypoint
+        Vector3 targetDirection = waypoints[currentWaypointIndex].position - transform.position;
 
-            transform.position = Vector2.MoveTowards(transform.position, endPoint.position, movementSpeed * Time.deltaTime);
-        }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, middlePoint.position, movementSpeed * Time.deltaTime);
-        }
+        // Moving the object towards the current waypoint
+        transform.Translate(targetDirection.normalized * moveSpeed * Time.deltaTime);
 
-        if(transform.position == middlePoint.position)
+        // Check if the object has reached the current waypoint
+        if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
         {
-            movingToEnd = true;
-        }
+            // Move to the next waypoint
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
 
-        if (transform.position == endPoint.position)
-        {
-            transform.position = startPoint.position;
-            targetPosition = middlePoint.position;
-            movingToEnd = false;
+            // If we reached the end, teleport to the first waypoint
+            if (currentWaypointIndex == 0)
+            {
+                transform.position = waypoints[0].position;
+            }
         }
     }
-
-        
 }

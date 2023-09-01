@@ -7,6 +7,7 @@ public class PhantomMoveUseless : MonoBehaviour
 {
     public Transform initialPosition;
     public Transform finalPosition;
+    public Transform ESTOYLOCOA;
 
     private Transform currentTarget;
     public float speed = 3.0f;
@@ -21,7 +22,7 @@ public class PhantomMoveUseless : MonoBehaviour
     {
         // Calculate the distance between itself and the target
         float distance = Vector2.Distance(transform.position, currentTarget.position);
-        
+
         if (distance < 0.1f)
         {
             if (currentTarget == finalPosition)
@@ -32,10 +33,15 @@ public class PhantomMoveUseless : MonoBehaviour
             {
                 currentTarget = finalPosition;
             }
-                
+
         }
 
         // Moving the phantom to the portal
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+
+        if (transform.position == finalPosition.position)
+        {
+            Debug.Log("kelokemanin");
+        }
     }
 }
