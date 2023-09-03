@@ -21,7 +21,7 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 7) // Layer Player num 7
+        if (other.gameObject.layer == 7 && Input.GetKeyDown(KeyCode.E)) // Layer Player num 7
         {
             PickingUp();
         }
