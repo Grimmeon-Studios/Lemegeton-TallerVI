@@ -9,7 +9,7 @@ public class ProjectileTouchMovement : MonoBehaviour
     public Vector2 scaledMovement;
     
 
-    [SerializeField] private Vector2 JoystickSize = new Vector2(100, 100);
+    [SerializeField] private Vector2 JoystickSize = new Vector2(250, 250);
     [SerializeField] private FloatingJoystick Joystick;
     [SerializeField] private PlayerManager _PlayerManager;
     [SerializeField] private Canvas _Canvas;
@@ -58,11 +58,12 @@ public class ProjectileTouchMovement : MonoBehaviour
         }
     }
 
+
     private void HandleLoseFinger(Finger LostFinger)
     {
         if (LostFinger == MovementFinger)
         {
-            joystickActive = false;
+            Debug.Log("Finger Lost");
             MovementFinger = null;
             Joystick.Knob.anchoredPosition = Vector2.zero;
             MovementAmount = Vector2.zero;
@@ -71,34 +72,21 @@ public class ProjectileTouchMovement : MonoBehaviour
 
     private void HandleFingerDown(Finger TouchedFinger)
     {
-        if (MovementFinger == null && TouchedFinger.screenPosition.x <= Joystick.gameObject.transform.localPosition.x)
+        if (MovementFinger == null)
         {
-            joystickActive = true;
-            MovementFinger = TouchedFinger;
-            MovementAmount = Vector2.zero;
-            Joystick.gameObject.SetActive(true);
-            Joystick.RectTransform.sizeDelta = JoystickSize;
+            // Check if the touch position is within the Joystick's RectTransform's boundaries
+            RectTransform joystickRectTransform = Joystick.RectTransform;
+            Vector2 touchPosition = TouchedFinger.screenPosition;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(joystickRectTransform, touchPosition, null))
+            {
+                Debug.Log("Finger is touching the screen");
+                MovementFinger = TouchedFinger;
+                MovementAmount = Vector2.zero;
+                Joystick.RectTransform.sizeDelta = JoystickSize;
+            }
         }
     }
-
-    //private Vector2 ClampStartPosition(Vector2 StartPosition)
-    //{
-    //    if (StartPosition.x < JoystickSize.x / 2)
-    //    {
-    //        StartPosition.x = JoystickSize.x / 2;
-    //    }
-
-    //    if (StartPosition.y < JoystickSize.y / 2)
-    //    {
-    //        StartPosition.y = JoystickSize.y / 2;
-    //    }
-    //    else if (StartPosition.y > Screen.height - JoystickSize.y / 2)
-    //    {
-    //        StartPosition.y = Screen.height - JoystickSize.y / 2;
-    //    }
-
-    //    return StartPosition;
-    //}
 
     private void FixedUpdate()
     {
@@ -108,4 +96,30 @@ public class ProjectileTouchMovement : MonoBehaviour
         }
     }
 
+    private void OnGUI()
+    {
+        GUIStyle labelStyle = new GUIStyle()
+        {
+            fontSize = 24,
+            normal = new GUIStyleState()
+            {
+                textColor = Color.yellow
+            }
+        };
+        if (MovementFinger != null)
+        {
+            GUI.Label(new Rect(1200, 35, 500, 20), $"Finger Start Position: {MovementFinger.currentTouch.startScreenPosition}", labelStyle);
+            GUI.Label(new Rect(1200, 65, 500, 20), $"X Axis Movement Amount: {MovementAmount.x}", labelStyle);
+            GUI.Label(new Rect(1200, 95, 500, 20), $"Y Axis Movement Amount: {MovementAmount.y}", labelStyle);
+            GUI.Label(new Rect(1200, 125, 500, 20), $"Scaled Movement Amount: {scaledMovement}", labelStyle);
+            GUI.Label(new Rect(1200, 155, 500, 20), $"JoystickActive: {joystickActive}", labelStyle);
+        }
+        else
+        {
+            GUI.Label(new Rect(1200, 35, 500, 20), "No Current Movement Touch", labelStyle);
+            GUI.Label(new Rect(1200, 65, 500, 20), $"JoystickActive: {joystickActive}", labelStyle);
+        }
+
+        GUI.Label(new Rect(1200, 10, 500, 20), $"Screen Size ({Screen.width}, {Screen.height})", labelStyle);
+    }
 }

@@ -368,7 +368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 508423411454411344, guid: 7b070273e50055f469b294666501c160, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 603.8368
+      value: 812.07
       objectReference: {fileID: 0}
     - target: {fileID: 508423411454411344, guid: 7b070273e50055f469b294666501c160, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -376,7 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 508423411454411344, guid: 7b070273e50055f469b294666501c160, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 301.9184
+      value: 406.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445508561974467143, guid: 7b070273e50055f469b294666501c160, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
       propertyPath: m_AnchorMax.x
@@ -600,7 +604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.000153, y: 272.99994}
+  m_AnchoredPosition: {x: -13.000122, y: 272.9999}
   m_SizeDelta: {x: 190, y: 190}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &577305194
@@ -1677,10 +1681,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystickActive: 0
   scaledMovement: {x: 0, y: 0}
-  JoystickSize: {x: 100, y: 100}
+  JoystickSize: {x: 250, y: 250}
   Joystick: {fileID: 8525616750464054319}
   _PlayerManager: {fileID: 1986797683}
-  _Canvas: {fileID: 4447460351077733386}
+  _Canvas: {fileID: 0}
 --- !u!1 &2106140007
 GameObject:
   m_ObjectHideFlags: 0
@@ -9980,17 +9984,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4945162734997040544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.224}
-  m_LocalScale: {x: 2.2411551, y: 2.2411551, z: 2.2411551}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 4.911}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4411963673356999851}
   m_Father: {fileID: 506784773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -420, y: 390}
-  m_SizeDelta: {x: 280, y: 280}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: -22}
+  m_SizeDelta: {x: 261.20898, y: 263.20898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1990349299386061974
 CanvasRenderer:
@@ -10280,8 +10284,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000047684, y: 0.000000011176}
-  m_SizeDelta: {x: 110.888306, y: 110.888306}
+  m_AnchoredPosition: {x: 0.5, y: -0.5}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4447460351077733386
 Canvas:
@@ -10304,7 +10308,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &4945162734997040544
 GameObject:
