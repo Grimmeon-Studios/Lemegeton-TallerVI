@@ -65,12 +65,12 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ProjectileAttack"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""73b9fd10-fa3c-4e57-9693-0383ee28ff8e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
