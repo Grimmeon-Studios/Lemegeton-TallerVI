@@ -6,13 +6,23 @@ using UnityEngine.InputSystem;
 public class ProjectileAttack : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject targetObj;
+    [SerializeField] private FixedJoystick fixedJoystick;
     [SerializeField] public float radio = 5.0f;
 
     PlayerInput_map _Input;
+    Vector2 _Position;
 
     private void Awake()
     {
         _Input = new PlayerInput_map();
+    }
+
+    private void Update()
+    {
+        _Position = fixedJoystick.Direction;
+        ChangeTargetPos(targetObj);
+        //Debug.Log("Input Value " +  _Position);
     }
 
     public Vector2 PositionInCircle(float angleInDegrees)
@@ -38,5 +48,13 @@ public class ProjectileAttack : MonoBehaviour
     private void OnProjectileAttack(InputAction.CallbackContext obj)
     {
 
+    }
+
+    private void ChangeTargetPos(GameObject target)
+    {
+        Vector2 newPosInCircle = PositionInCircle(Mathf.Atan2(_Position.y, _Position.x));
+        Debug.Log("New Position: " + newPosInCircle);
+        Vector3 newPos = new Vector3(newPosInCircle.x, newPosInCircle.y);
+        target.transform.position = newPos;
     }
 }
