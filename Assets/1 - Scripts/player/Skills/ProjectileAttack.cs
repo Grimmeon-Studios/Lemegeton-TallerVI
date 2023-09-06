@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class ProjectileAttack : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject targetObj;
-    [SerializeField] private FixedJoystick fixedJoystick;
+    [SerializeField] private ProjectileJoystick projectileJoysick;
     [SerializeField] public float radio = 5.0f;
 
     PlayerInput_map _Input;
@@ -20,17 +21,21 @@ public class ProjectileAttack : MonoBehaviour
 
     private void Update()
     {
-        _Position = fixedJoystick.Direction;
+        _Position = projectileJoysick.JoystickInput;
         ChangeTargetPos(targetObj);
-        //Debug.Log("Input Value " +  _Position);
+
+        if(projectileJoysick._isDragging == true)
+        {
+
+        }
     }
 
-    public Vector2 PositionInCircle(float angleInDegrees)
+    public Vector2 PositionInCircle(Vector2 direction)
     {
-        float angleinRads = angleInDegrees * Mathf.Deg2Rad; // Convertir a radianes
-        float x = player.transform.position.x + radio * Mathf.Cos(angleinRads);
-        float y = player.transform.position.y + radio * Mathf.Sin(angleinRads);
+        float x = player.transform.position.x + radio * direction.x;
+        float y = player.transform.position.y + radio * direction.y;
         return new Vector2(x, y);
+
     }
 
     private void OnEnable()
@@ -52,7 +57,7 @@ public class ProjectileAttack : MonoBehaviour
 
     private void ChangeTargetPos(GameObject target)
     {
-        Vector2 newPosInCircle = PositionInCircle(Mathf.Atan2(_Position.y, _Position.x));
+        Vector2 newPosInCircle = PositionInCircle(projectileJoysick.JoystickInput);
         Debug.Log("New Position: " + newPosInCircle);
         Vector3 newPos = new Vector3(newPosInCircle.x, newPosInCircle.y);
         target.transform.position = newPos;
