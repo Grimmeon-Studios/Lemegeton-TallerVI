@@ -62,6 +62,15 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ProjectileAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""73b9fd10-fa3c-4e57-9693-0383ee28ff8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -873,6 +882,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         m_Player_MeleeAttack = m_Player.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_SpecialSkill = m_Player.FindAction("Special Skill", throwIfNotFound: true);
+        m_Player_ProjectileAttack = m_Player.FindAction("ProjectileAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -950,6 +960,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MeleeAttack;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_SpecialSkill;
+    private readonly InputAction m_Player_ProjectileAttack;
     public struct PlayerActions
     {
         private @PlayerInput_map m_Wrapper;
@@ -958,6 +969,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @SpecialSkill => m_Wrapper.m_Player_SpecialSkill;
+        public InputAction @ProjectileAttack => m_Wrapper.m_Player_ProjectileAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -979,6 +991,9 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
             @SpecialSkill.started += instance.OnSpecialSkill;
             @SpecialSkill.performed += instance.OnSpecialSkill;
             @SpecialSkill.canceled += instance.OnSpecialSkill;
+            @ProjectileAttack.started += instance.OnProjectileAttack;
+            @ProjectileAttack.performed += instance.OnProjectileAttack;
+            @ProjectileAttack.canceled += instance.OnProjectileAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -995,6 +1010,9 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
             @SpecialSkill.started -= instance.OnSpecialSkill;
             @SpecialSkill.performed -= instance.OnSpecialSkill;
             @SpecialSkill.canceled -= instance.OnSpecialSkill;
+            @ProjectileAttack.started -= instance.OnProjectileAttack;
+            @ProjectileAttack.performed -= instance.OnProjectileAttack;
+            @ProjectileAttack.canceled -= instance.OnProjectileAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1181,6 +1199,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         void OnMeleeAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnSpecialSkill(InputAction.CallbackContext context);
+        void OnProjectileAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
