@@ -18,7 +18,6 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject combatOverlay;
 
-
     void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
@@ -39,11 +38,8 @@ public class Room : MonoBehaviour
         var @object = other.gameObject;
         if (@object.CompareTag("Player"))
         {
-            edgeCollider.enabled = true;
             Debug.Log("Player Entered");
-            mainBoxCollider.size = mainBoxCollider.size * 1.3f;
-            SpawnEnemies(_dungeonManager._difficultylvl);
-            combatOverlay.SetActive(true);
+            StartCoroutine(WaitAndTrapPlayer(2));            
         }
         else if(@object.CompareTag("Enemy"))
         {
@@ -85,9 +81,14 @@ public class Room : MonoBehaviour
 
     }
 
-    private void RandomEnemySpawnPos()
+    private Vector2 RandomEnemySpawnPos()
     {
-        //To Be implemented
+
+        float newBoundary_x = UnityEngine.Random.Range(mainBoxCollider.bounds.min.x, mainBoxCollider.bounds.max.x);
+        float newBoundary_y = UnityEngine.Random.Range(mainBoxCollider.bounds.min.y, mainBoxCollider.bounds.max.y);
+
+        Vector2 enemyPos = new Vector2(newBoundary_x, newBoundary_y);
+        return enemyPos;
     }
 
     private void SpawnEnemies(int dificulty)
@@ -95,9 +96,17 @@ public class Room : MonoBehaviour
         int i;
         for (i = 0; i < dificulty; i++)
         {
-            Instantiate(enemyPrefab, mainBoxCollider.bounds.center, Quaternion.identity);
+            Instantiate(enemyPrefab, RandomEnemySpawnPos(), Quaternion.identity);
         }
     }
 
+    IEnumerator WaitAndTrapPlayer(float waitTime)
+    {
+        combatOverlay.SetActive(true);
 
+        yield return new WaitForSeconds(waitTime);
+
+        edgeCollider.enabled = true;
+        SpawnEnemies(_dungeonManager._difficultylvl);
+    }
 }
