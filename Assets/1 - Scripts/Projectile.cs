@@ -39,4 +39,17 @@ public class Projectile : MonoBehaviour
             Debug.Log("Proyectile Out of Reach, therefore Desrtoyed");
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") || other.CompareTag("Wall"))
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                other.gameObject.GetComponent<IncubusScript>().takeDamage(player.shotDamage);
+            }
+
+            Destroy(gameObject);
+        }
+    }
 }
