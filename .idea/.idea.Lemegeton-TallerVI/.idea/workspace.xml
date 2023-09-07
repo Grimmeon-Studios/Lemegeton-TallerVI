@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/DungeonManager/DungeonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/DungeonManager/DungeonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsStatueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsStatueManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/PickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/TestingHub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/TestingHub.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/AttackPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/AttackPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +14,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Defense Heal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Defense Up.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Health.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsStatueManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -84,9 +76,6 @@
       <workItem from="1692977159528" duration="1582000" />
       <workItem from="1692978868175" duration="1735000" />
       <workItem from="1693540486298" duration="1189000" />
-      <workItem from="1693720980880" duration="8433000" />
-      <workItem from="1694021783618" duration="4139000" />
-      <workItem from="1694120967893" duration="5609000" />
     </task>
     <servers />
   </component>

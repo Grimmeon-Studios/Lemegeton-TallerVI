@@ -26459,7 +26459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
       propertyPath: moveSpeed
-      value: 0.02
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
       propertyPath: waypoints.Array.data[0]

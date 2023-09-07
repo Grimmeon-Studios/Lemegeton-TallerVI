@@ -8,7 +8,6 @@ public class PhantomMoveUseless : MonoBehaviour
     public Transform initialPosition;
     public Transform finalPosition;
     public Transform ESTOYLOCOA;
-    //Vector3 targetPos;
 
     private Transform currentTarget;
     public float speed = 3.0f;
@@ -22,7 +21,6 @@ public class PhantomMoveUseless : MonoBehaviour
     private void Update()
     {
         // Calculate the distance between itself and the target
-        //transform.position = Mathf.Lerp(transform.position, targetPos, speed);
         float distance = Vector2.Distance(transform.position, currentTarget.position);
 
         if (distance < 0.1f)

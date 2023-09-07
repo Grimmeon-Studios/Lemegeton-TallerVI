@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PickUp : MonoBehaviour
 {
@@ -20,70 +19,16 @@ public class PickUp : MonoBehaviour
     public Health health;
     public MaxHealth maxHealth;
 
-    private bool colision = false;
-    PlayerInput_map _Input;
-
-    private bool pressingE = false;
-    private void Start()
-    {
-        _Input = new PlayerInput_map();
-        player = FindObjectOfType<PlayerManager>();
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("collide enter");
-        if (other.gameObject.CompareTag("Player")) // Layer Player num 8
+        if (other.gameObject.layer == 7) // Layer Player num 7
         {
-            Debug.Log("picking and making bool true");
-            colision = true;
             PickingUp();
         }
     }
 
-    /*private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("collide exit");
-        if (other.gameObject.CompareTag("Player")) // Layer Player num 8
-        {
-            Debug.Log("picking and making bool false");
-            colision = false;
-        }
-    }
-
-    public void OnPickingUp (InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("LA E");
-            PickingUp();
-        }
-    }
-    public void OnPickingUpVirtual()
-    {
-        Debug.Log("se presiono");
-        if (colision == true)
-        {
-            Debug.Log("el bool esta bueno");
-            PickingUp();
-        }
-
-    }
-    public void OnEnable()
-    {
-        _Input.Enable();
-        _Input.Player.Interaction.performed += OnPickingUp;
-    }
-
-    private void OnDisable()
-    {
-        _Input.Disable();
-        _Input.Player.Interaction.performed -= OnPickingUp;
-    }*/
-    
     void PickingUp()
     {
-        Debug.Log("si dio");
         switch (pickUp)
         {
             case 1://Velocity
