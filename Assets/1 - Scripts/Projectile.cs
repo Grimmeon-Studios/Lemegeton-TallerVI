@@ -31,8 +31,8 @@ public class Projectile : MonoBehaviour
     private void Update()   
     {
         distance = Vector2.Distance(startPos, gameObject.transform.position);
-        Debug.Log("Distance: "+distance);
-        Debug.Log("Range: "+range);
+        //Debug.Log("Distance: "+distance);
+        //Debug.Log("Range: "+range);
         if (distance > range)
         {
             Destroy(gameObject);
