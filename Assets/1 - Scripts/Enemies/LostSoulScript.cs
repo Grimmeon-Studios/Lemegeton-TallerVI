@@ -53,7 +53,7 @@ public class LostSoulScript : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Robin");
+        player = GameObject.Find("_Player");
         //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         timer = firerate;
