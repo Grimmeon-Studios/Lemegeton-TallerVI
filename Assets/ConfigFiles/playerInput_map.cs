@@ -71,6 +71,15 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ba65f4b-e0e5-4bb9-9861-aa0d499f1916"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -291,6 +300,17 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Special Skill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60401cf4-0510-415a-bc54-82ee12408678"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -883,6 +903,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_SpecialSkill = m_Player.FindAction("Special Skill", throwIfNotFound: true);
         m_Player_ProjectileAttack = m_Player.FindAction("ProjectileAttack", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -961,6 +982,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_SpecialSkill;
     private readonly InputAction m_Player_ProjectileAttack;
+    private readonly InputAction m_Player_Interaction;
     public struct PlayerActions
     {
         private @PlayerInput_map m_Wrapper;
@@ -970,6 +992,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @SpecialSkill => m_Wrapper.m_Player_SpecialSkill;
         public InputAction @ProjectileAttack => m_Wrapper.m_Player_ProjectileAttack;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -994,6 +1017,9 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
             @ProjectileAttack.started += instance.OnProjectileAttack;
             @ProjectileAttack.performed += instance.OnProjectileAttack;
             @ProjectileAttack.canceled += instance.OnProjectileAttack;
+            @Interaction.started += instance.OnInteraction;
+            @Interaction.performed += instance.OnInteraction;
+            @Interaction.canceled += instance.OnInteraction;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1013,6 +1039,9 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
             @ProjectileAttack.started -= instance.OnProjectileAttack;
             @ProjectileAttack.performed -= instance.OnProjectileAttack;
             @ProjectileAttack.canceled -= instance.OnProjectileAttack;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1200,6 +1229,7 @@ public partial class @PlayerInput_map: IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnSpecialSkill(InputAction.CallbackContext context);
         void OnProjectileAttack(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

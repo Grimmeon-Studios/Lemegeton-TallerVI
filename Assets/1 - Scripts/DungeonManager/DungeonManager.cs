@@ -44,10 +44,13 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
+
+    }
+
+    /*public void PPPPPP()
+    {
         //statue and its three objects
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("pipip");
+        Debug.Log("pipip");
             foreach (GameObject pickup in statueController.GetSpawnedPickups())
             {
                 Debug.Log("pop");
@@ -57,8 +60,8 @@ public class DungeonManager : MonoBehaviour
                     statueController.PickupSelected(pickup);
                 }
             }
-        }
-    }
+        
+    }*/
     private bool IsPlayerNearPickup(GameObject pickup)
     {
         //statue and its three objects

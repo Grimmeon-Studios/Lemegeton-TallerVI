@@ -36,7 +36,7 @@ public class ItemsStatueManager : MonoBehaviour
         {
             if (pickup != selectedPickup)
             {
-                pickup.SetActive(false);
+                //pickup.SetActive(false);
                 Destroy(pickup);
             }
         }

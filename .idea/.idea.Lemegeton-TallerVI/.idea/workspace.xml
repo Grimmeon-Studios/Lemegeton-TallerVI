@@ -4,21 +4,12 @@
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/DungeonManager/DungeonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/DungeonManager/DungeonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/HUB/PhantomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/HUB/PhantomManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/HUB/PhantomMoveUseless.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/HUB/PhantomMoveUseless.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsStatueManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsStatueManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/PickUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/PickUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/HUB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/HUB.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/TestingHub.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/TestingHub.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/AttackPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/AttackPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/CriticalDamagePickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/CriticalDamagePickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/CriticalRateUpPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/CriticalRateUpPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/DefenseHealPickUp (1).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/DefenseHealPickUp (1).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/DefenseUpPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/DefenseUpPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/HealthPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/HealthPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/MaxHealthPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/MaxHealthPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Phantom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Phantom.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/VelocityPickUp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/VelocityPickUp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ConfigFiles/playerInput_map.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +85,8 @@
       <workItem from="1692978868175" duration="1735000" />
       <workItem from="1693540486298" duration="1189000" />
       <workItem from="1693720980880" duration="8433000" />
+      <workItem from="1694021783618" duration="4139000" />
+      <workItem from="1694120967893" duration="5609000" />
     </task>
     <servers />
   </component>
