@@ -26486,10 +26486,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 184418545623952135, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
-      propertyPath: acidPrefab
-      value: 
-      objectReference: {fileID: 8402521562688868224, guid: cc8468a315aae294cb2c67ac40dff212, type: 3}
     - target: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
       propertyPath: m_Name
       value: LostSoul

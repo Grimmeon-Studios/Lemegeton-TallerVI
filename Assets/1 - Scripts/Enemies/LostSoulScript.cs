@@ -12,7 +12,7 @@ public enum lizardState
 public class LostSoulScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    Animator animator;
+    //Animator animator;
     //AudioSource audioSource;
 
     #region MOVE RELATED
@@ -38,7 +38,7 @@ public class LostSoulScript : MonoBehaviour
 
     #region idk RELATED
     public int health = 10;
-    GameObject door;
+    //GameObject door;
     //LevelManagement LM;
     #endregion
 
@@ -48,17 +48,17 @@ public class LostSoulScript : MonoBehaviour
     #endregion
 
     #region  AUDIO
-    public AudioClip acidClip;
+    //public AudioClip acidClip;
     #endregion
 
     void Start()
     {
         player = GameObject.Find("Robin");
-        door = GameObject.Find("Door");
+        //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         timer = firerate;
         //LM = door.GetComponent<LevelManagement>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         //audioSource = GetComponent<AudioSource>();
     }
 
@@ -74,8 +74,8 @@ public class LostSoulScript : MonoBehaviour
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
 
-        animator.SetFloat("Look X", Look.x);
-        animator.SetFloat("Look Y", Look.y);
+        //animator.SetFloat("Look X", Look.x);
+        //animator.SetFloat("Look Y", Look.y);
 
     }
 
@@ -111,7 +111,7 @@ public class LostSoulScript : MonoBehaviour
         if (!firstMove)
         {
             yield return new WaitForSeconds(0.1f);
-            animator.SetBool("Moving", true);
+            //animator.SetBool("Moving", true);
             firstMove = true;
         }
         else
@@ -158,8 +158,9 @@ public class LostSoulScript : MonoBehaviour
 
         aimDirection.Normalize();
 
-        GameObject acidObject = Instantiate(acidPrefab, firePoint.position,
-                                              Quaternion.identity);
+        GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
+        SoulBullet sBullet = acidObject.GetComponent<SoulBullet>();
+        sBullet.shoot(aimDirection, 10);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
         //audioSource.PlayOneShot(acidClip);
@@ -182,26 +183,26 @@ public class LostSoulScript : MonoBehaviour
 
     void Die()
     {
-        int opcDrop;
-        for (int i = 1; i <= Random.Range(1, 3); i++)
-        {
-            opcDrop = Random.Range(1, 3);
+        //int opcDrop;
+        //for (int i = 1; i <= Random.Range(1, 3); i++)
+        //{
+        //    opcDrop = Random.Range(1, 3);
 
-            if (opcDrop == 1)
-            {
-                Vector2 objectPos = transform.position;
-                objectPos.x += Random.Range(-1f, 1f);
-                objectPos.y += Random.Range(-1f, 1f);
-                //GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
-            }
-            else if (opcDrop == 2)
-            {
-                Vector2 objectPos = transform.position;
-                objectPos.x += Random.Range(-1f, 1f);
-                objectPos.y += Random.Range(-1f, 1f);
-                //GameObject dropObject = Instantiate(drop2Prefab, objectPos, Quaternion.identity);
-            }
-        }
+        //    if (opcDrop == 1)
+        //    {
+        //        Vector2 objectPos = transform.position;
+        //        objectPos.x += Random.Range(-1f, 1f);
+        //        objectPos.y += Random.Range(-1f, 1f);
+        //        //GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
+        //    }
+        //    else if (opcDrop == 2)
+        //    {
+        //        Vector2 objectPos = transform.position;
+        //        objectPos.x += Random.Range(-1f, 1f);
+        //        objectPos.y += Random.Range(-1f, 1f);
+        //        //GameObject dropObject = Instantiate(drop2Prefab, objectPos, Quaternion.identity);
+        //    }
+        //}
         //LM.enemyCount -= 1;
         Destroy(gameObject);
     }
