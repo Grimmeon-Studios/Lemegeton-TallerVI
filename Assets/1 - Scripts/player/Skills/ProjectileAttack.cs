@@ -74,7 +74,7 @@ public class ProjectileAttack : MonoBehaviour
     private void ChangeTargetPos(GameObject target)
     {
         Vector2 newPosInCircle = PositionInCircle(projectileJoysick.JoystickInput);
-        Debug.Log("New Position: " + newPosInCircle);
+        //Debug.Log("New Position: " + newPosInCircle);
         Vector3 newPos = new Vector3(newPosInCircle.x, newPosInCircle.y);
         target.transform.position = newPos;
     }

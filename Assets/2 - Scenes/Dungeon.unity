@@ -1237,6 +1237,7 @@ MonoBehaviour:
   playerProjectileMethod: {fileID: 222299091578452008}
   background: {fileID: 2929252285042162966}
   knob: {fileID: 2929252283109654252}
+  shot_cooldown: 10
 --- !u!114 &1986797672 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8480319302363760648, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
@@ -1405,6 +1406,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &2110487000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5444505319197870306, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+  m_PrefabInstance: {fileID: 222299091578452007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2120976805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1416,26 +1422,26 @@ PrefabInstance:
     - target: {fileID: 1591076988704606486, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1986797677}
+      objectReference: {fileID: 2110487000}
     - target: {fileID: 1591076988704606486, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Lens.OrthographicSize
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8278412
+      value: -4.4025526
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7837932
+      value: -3.6486714
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8278412
+      value: -4.4025526
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7837932
+      value: -3.6486714
       objectReference: {fileID: 0}
     - target: {fileID: 5930273655092048097, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: orthographic size
@@ -1452,6 +1458,10 @@ PrefabInstance:
     - target: {fileID: 5930273655092048097, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.14509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930273655092048097, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6087678909894391764, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1494,6 +1504,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_ScreenX
+      value: 0.5489939
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_ScreenY
+      value: 0.5084451
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_XDamping
       value: 3
       objectReference: {fileID: 0}
@@ -1504,6 +1522,30 @@ PrefabInstance:
     - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_ZDamping
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_DeadZoneWidth
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_LookaheadTime
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_SoftZoneWidth
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_DeadZoneHeight
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_SoftZoneHeight
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405099873254608106, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: m_LookaheadSmoothing
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 8078128508487355681, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Name
@@ -1813,6 +1855,10 @@ PrefabInstance:
     - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: shotRange
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: shotSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5444505319197870306, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: m_LocalScale.x

@@ -18,21 +18,25 @@ public class Projectile : MonoBehaviour
     {
         this.speed = speed;
         this.size = size;
-        this.range = player.shotRange;
+        this.range = range;
     }
 
     private void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
         startPos = gameObject.transform.position;
+        range = player.shotRange;
     }
 
     private void Update()   
     {
         distance = Vector2.Distance(startPos, gameObject.transform.position);
-        //Debug.Log("Distance: "+distance);
-        //Debug.Log("Distance: "+range);
-        //if (distance > range)
-        //    Destroy(gameObject);
+        Debug.Log("Distance: "+distance);
+        Debug.Log("Range: "+range);
+        if (distance > range)
+        {
+            Destroy(gameObject);
+            Debug.Log("Proyectile Out of Reach, therefore Desrtoyed");
+        }
     }
 }
