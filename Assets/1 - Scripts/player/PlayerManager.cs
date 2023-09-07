@@ -7,13 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    //Stats
+    [Header("Player Stats")]
     public float speed = 3;
     public float maxHealth = 10;
     public float health;
     public float maxDefense = 5;
     public float defense;
     public float attack = 3;
+    public float shotSpeed = 1;
+    public float shotRange = 10;
     public float criticalRateUp = 0.6f;
     public float criticalDamage = 1;
     public bool isInvincible = false;

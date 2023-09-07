@@ -1,32 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public class ProjectileAttack : MonoBehaviour
 {
+
+    [Header("Radial Function Parameters")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject targetObj;
     [SerializeField] private ProjectileJoystick projectileJoysick;
     [SerializeField] public float radio = 5.0f;
 
+    [Header("Projectile Atributes")]
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject projectilePrefab;
+
+    public UnityEvent ShootOnRelease;
+
     PlayerInput_map _Input;
+    SpriteRenderer _crossHair;
     Vector2 _Position;
 
     private void Awake()
     {
         _Input = new PlayerInput_map();
+        _crossHair = targetObj.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
         _Position = projectileJoysick.JoystickInput;
         ChangeTargetPos(targetObj);
+        Vector2 targetPositionAim = targetObj.transform.position;
 
         if(projectileJoysick._isDragging == true)
         {
-
+            _crossHair.gameObject.SetActive(true);
+        }
+        else
+        {
+            _crossHair.gameObject.SetActive(false);
         }
     }
 
@@ -61,5 +77,32 @@ public class ProjectileAttack : MonoBehaviour
         Debug.Log("New Position: " + newPosInCircle);
         Vector3 newPos = new Vector3(newPosInCircle.x, newPosInCircle.y);
         target.transform.position = newPos;
+    }
+
+    public void LaunchProjectile()
+    {
+        Vector2 targetPosition = targetObj.transform.position;
+        // Calculate the direction from the fire point to the target
+        Vector3 direction = new Vector3(targetPosition.x, targetPosition.y, 0) - firePoint.position;
+
+        // Calculate the rotation needed for the projectile to look at the target
+        Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
+
+        // Instantiate the projectile with the calculated rotation
+        GameObject newProjectile = Instantiate(projectilePrefab, firePoint.position, rotation);
+
+        // Optionally, you can add force or other behaviors to the projectile here
+        Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            // Apply a force to propel the projectile in the direction it is facing
+            rb.AddForce(newProjectile.transform.up * player.GetComponent<PlayerManager>().shotSpeed, ForceMode2D.Impulse);
+        }
+        else
+        {
+            Debug.LogError("The projectile prefab must have a Rigidbody2D component.");
+        }
+
     }
 }

@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
+
+    [SerializeField] private ProjectileAttack playerProjectileMethod;
     public GameObject background; // Reference to the background GameObject
     public GameObject knob; // Reference to the knob GameObject
     public Vector2 JoystickInput { get; private set; } // The Vector2 representing the knob's position
@@ -20,6 +23,7 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
         knobStartPosition = knobRect.anchoredPosition;
     }
 
+
     public void OnPointerDown(PointerEventData eventData)
     {
         isDragging = true;
@@ -29,10 +33,13 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDragging = false;
+        isDragging = true;
         knobRect.anchoredPosition = knobStartPosition;
+        Aguapanela();
         JoystickInput = Vector2.zero;
     }
+
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -49,5 +56,10 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
             // Clamp the input within a range of -1 to 1
             JoystickInput = Vector2.ClampMagnitude(JoystickInput, 1f);
         }
+    }
+
+    public void Aguapanela()
+    {
+        playerProjectileMethod.LaunchProjectile();
     }
 }
