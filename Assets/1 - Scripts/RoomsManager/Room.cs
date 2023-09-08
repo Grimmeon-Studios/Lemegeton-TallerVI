@@ -39,6 +39,7 @@ public class Room : MonoBehaviour
         if (@object.CompareTag("Player"))
         {
             Debug.Log("Player Entered");
+            edgeCollider.enabled = true;
             StartCoroutine(WaitAndTrapPlayer(2));            
         }
         else if(@object.CompareTag("Enemy"))
@@ -106,7 +107,6 @@ public class Room : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        edgeCollider.enabled = true;
         SpawnEnemies(_dungeonManager._difficultylvl);
     }
 }
