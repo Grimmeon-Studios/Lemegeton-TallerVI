@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour
 {
-    private float currentTime;
-    private int difficultylvl = 5;
+    [SerializeField] private ChronometerManager chronometer;
+
+    private int difficultylvl;
     private bool circleCleared;
     private bool PlayerAlive;
     
     private BoxCollider2D gameAreaCollider;
 
-    public int roomsNumber;
-    public int remainingRooms;
+    private int roomsNumber;
+    private int remainingRooms;
 
     // Rooms Verification HashSet
     private HashSet<GameObject> roomsInsideCollider = new HashSet<GameObject>();
 
     // Private Members Encapsulation
-    public float _currentTime { get => currentTime; set => currentTime = value; }
     public int _difficultylvl { get => difficultylvl; set => difficultylvl = value; }
     public bool _circleCleared { get => circleCleared; set => circleCleared = value; }
 
@@ -30,7 +31,7 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
-        
+        difficultylvl = chronometer.difficultyLvl + 1;
     }
 
 
@@ -75,6 +76,5 @@ public class DungeonManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        
     }
 }
