@@ -31,6 +31,11 @@ public class Combat : MonoBehaviour
             {
                 collision.transform.GetComponent<IncubusScript>().takeDamage(meleeDamage);
             }
+
+            if (collision.CompareTag("EnemySoul"))
+            {
+                //collision.gameObject.GetComponent<LostSoulScript>().takeDamage(player.shotDamage);
+            }
         }
     }
 

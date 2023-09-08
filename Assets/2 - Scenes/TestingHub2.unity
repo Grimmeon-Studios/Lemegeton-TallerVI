@@ -26103,6 +26103,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: LostSoul
       objectReference: {fileID: 0}
+    - target: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830077471240048218, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3830077471240048218, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 6619106484525322813, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.5193
@@ -26142,6 +26154,10 @@ PrefabInstance:
     - target: {fileID: 6619106484525322813, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825358388682977264, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

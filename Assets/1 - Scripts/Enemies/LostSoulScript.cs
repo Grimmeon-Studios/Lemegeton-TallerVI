@@ -172,7 +172,7 @@ public class LostSoulScript : MonoBehaviour
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
-    void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         health -= damage;
         if (health <= 0)

@@ -6,8 +6,7 @@ using UnityEngine;
 public class SoulBullet : MonoBehaviour
 {
     Rigidbody2D rb;
-    [SerializeField]
-    float damage;
+    float damage = 1f;
 
     void Awake()
     {
@@ -30,6 +29,7 @@ public class SoulBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        
         GameObject player = other.gameObject;
         PlayerManager pm = player.GetComponent<PlayerManager>();
         //Robin playerController = player.GetComponent<Robin>();
