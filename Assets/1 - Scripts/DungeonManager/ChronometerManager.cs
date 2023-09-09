@@ -16,12 +16,13 @@ public class ChronometerManager : MonoBehaviour
     private int minutes;
     private int seconds;
 
-    [HideInInspector] public int difficultyLvl; 
+    [HideInInspector] public int difficultyLvl;
 
     void Start()
     {
         StartChronometer();
         difficultyColor_Transform = difficultyColor.GetComponent<RectTransform>();
+        difficultyLvl = 1;
     }
 
     void Update()
@@ -47,12 +48,13 @@ public class ChronometerManager : MonoBehaviour
     {
         minutes = Mathf.FloorToInt(timePassed / 60);
         seconds = Mathf.FloorToInt(timePassed % 60);
-
+        difficultyLvl = difficultyLvl + minutes;
         // Format the time as "00:00"
         string timeText = minutes.ToString("00") + ":" + seconds.ToString("00");
-        difficultyLvl = minutes;
         // Update the TextMeshProUGUI component
         timerText.text = timeText;
+        Debug.Log(difficultyLvl);
+        difficultyLvl_Txt.text =  difficultyLvl.ToString();
     }
 
 

@@ -34,7 +34,6 @@ public class DungeonManager : MonoBehaviour
         difficultylvl = chronometer.difficultyLvl + 1;
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
 
