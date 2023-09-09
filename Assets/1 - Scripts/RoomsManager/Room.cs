@@ -15,9 +15,13 @@ public class Room : MonoBehaviour
 
     // The first Collider is the one who detects the player and trapts it in the Room
     [SerializeField] private BoxCollider2D mainBoxCollider;
-    [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject combatOverlay;
 
+    [Header("Enemies Config")]
+    // pls especify how many enemies prefabs there are
+    [SerializeField] private int numberOfEnemiesPrefabs;
+    [SerializeField] private GameObject enemyPrefab1;
+    [SerializeField] private GameObject enemyPrefab2;
     void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
@@ -39,6 +43,7 @@ public class Room : MonoBehaviour
         if (@object.CompareTag("Player"))
         {
             Debug.Log("Player Entered");
+            edgeCollider.enabled = true;
             StartCoroutine(WaitAndTrapPlayer(2));            
         }
         else if(@object.CompareTag("Enemy"))
@@ -91,12 +96,12 @@ public class Room : MonoBehaviour
         return enemyPos;
     }
 
-    private void SpawnEnemies(int dificulty)
+    private void SpawnEnemies(int dificulty, GameObject prefab)
     {
         int i;
         for (i = 0; i < dificulty; i++)
         {
-            Instantiate(enemyPrefab, RandomEnemySpawnPos(), Quaternion.identity);
+            Instantiate(prefab, RandomEnemySpawnPos(), Quaternion.identity);
         }
     }
 
@@ -106,7 +111,22 @@ public class Room : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        edgeCollider.enabled = true;
-        SpawnEnemies(_dungeonManager._difficultylvl);
+        for(int i = 0; i < _dungeonManager._difficultylvl; i++)
+        {
+            int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs-1));
+
+            switch (enemyToSpawn)
+            {
+                case 0:
+                    SpawnEnemies(_dungeonManager._difficultylvl, enemyPrefab1);
+                    break;
+
+                case 1:
+                    SpawnEnemies(_dungeonManager._difficultylvl, enemyPrefab2);
+                    break;
+
+                //Type More cases if there are more enemies added
+            }
+        }
     }
 }
