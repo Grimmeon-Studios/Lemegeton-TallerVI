@@ -9,6 +9,7 @@ TagManager:
   - Room
   - Dungeon Manager
   - Wall
+  - EnemySoul
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,7 @@ public class Combat : MonoBehaviour
 
             if (collision.CompareTag("EnemySoul"))
             {
-                //collision.gameObject.GetComponent<LostSoulScript>().takeDamage(player.shotDamage);
+                collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
             }
         }
     }
@@ -47,14 +47,11 @@ public class Combat : MonoBehaviour
 
     private IEnumerator AnimationPlaceholder(float waitTime)
     {
-        Debug.Log("Coroutine started");
         meleeSprite.enabled = true;
 
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
 
-
-        Debug.Log("Coroutine ended");
         meleeSprite.enabled = false;
     }
 }
