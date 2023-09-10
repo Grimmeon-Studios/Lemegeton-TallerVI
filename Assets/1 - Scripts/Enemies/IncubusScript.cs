@@ -33,7 +33,7 @@ public class IncubusScript : MonoBehaviour
 
     #region ELSE
     [SerializeField]
-    int health = 18;
+    float health = 18f;
     // GameObject door;
     #endregion
 
@@ -78,7 +78,7 @@ public class IncubusScript : MonoBehaviour
         rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, moveSpeed * Time.deltaTime));
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)

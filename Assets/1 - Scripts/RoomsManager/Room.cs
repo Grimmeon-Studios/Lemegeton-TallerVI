@@ -46,7 +46,7 @@ public class Room : MonoBehaviour
             edgeCollider.enabled = true;
             StartCoroutine(WaitAndTrapPlayer(2));            
         }
-        else if(@object.CompareTag("Enemy"))
+        else if(@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul"))
         {
             if (!enemiesHashSet.Contains(@object))
             {
@@ -67,7 +67,7 @@ public class Room : MonoBehaviour
         {
             Debug.Log("Player Exited the Room");
         }
-        else if (@object.CompareTag("Enemy"))
+        else if (@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul"))
         {
             if (enemiesHashSet.Contains(@object))
             {

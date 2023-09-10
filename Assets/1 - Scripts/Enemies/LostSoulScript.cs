@@ -31,13 +31,13 @@ public class LostSoulScript : MonoBehaviour
     #region AI RELATED
     GameObject player;
     public lizardState currState = lizardState.Wander;
-    public float range = 5;
+    public float range = 20;
     bool chooseDir = false;
     Vector3 randomDir;
     #endregion
 
     #region idk RELATED
-    public int health = 10;
+    public float health = 10;
     //GameObject door;
     //LevelManagement LM;
     #endregion
@@ -65,7 +65,7 @@ public class LostSoulScript : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0)
+        if (timer < 0 && isPlayerInRange(range) == true)
         {
             shoot();
             timer = firerate;
@@ -172,7 +172,7 @@ public class LostSoulScript : MonoBehaviour
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
