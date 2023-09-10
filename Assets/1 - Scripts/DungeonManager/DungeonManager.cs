@@ -20,9 +20,19 @@ public class DungeonManager : MonoBehaviour
     // Rooms Verification HashSet
     private HashSet<GameObject> roomsInsideCollider = new HashSet<GameObject>();
 
+    private bool isDivisibleFor3;
+
+    private int additionalEnemyCount = 0;
+    private Vector3 enemyStatsMultiplier = new Vector3(1, 1, 1); // hp, attack, speed
+
+
+
     // Private Members Encapsulation
     public int _difficultylvl { get => difficultylvl; set => difficultylvl = value; }
     public bool _circleCleared { get => circleCleared; set => circleCleared = value; }
+    public bool IsDivisibleFor3 { get => isDivisibleFor3; set => isDivisibleFor3 = value; }
+    public int AdditionalEnemyCount { get => additionalEnemyCount; set => additionalEnemyCount = value; }
+    public Vector3 EnemyStatsMultiplier { get => enemyStatsMultiplier; set => enemyStatsMultiplier = value; }
 
     private void Awake()
     {
@@ -31,7 +41,7 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
-        difficultylvl = chronometer.difficultyLvl + 1;
+        difficultylvl = chronometer.difficultyLvl;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -61,7 +71,7 @@ public class DungeonManager : MonoBehaviour
                 {
                     Debug.Log("DungeonCleared");
                     circleCleared = true;
-                    OnCicleCleared();
+                    OnCircleCleared();
                 }
 
                 Destroy(currentRoom);
@@ -69,11 +79,27 @@ public class DungeonManager : MonoBehaviour
         }
     }
 
-    public void OnCicleCleared()
+    public void OnCircleCleared()
     {
         if (circleCleared)
         {
             SceneManager.LoadScene(0);
         }
     }
+
+    public void EnemyManagement()
+    {
+        if (difficultylvl % 3 == 0)
+        {
+            AdditionalEnemyCount++;
+
+        }
+        else
+        {
+            EnemyStatsMultiplier += new Vector3(6f, 1f, 0.2f); 
+
+        }
+            
+    }
+
 }

@@ -22,7 +22,8 @@ public class ChronometerManager : MonoBehaviour
     {
         StartChronometer();
         difficultyColor_Transform = difficultyColor.GetComponent<RectTransform>();
-        difficultyLvl = 1;
+        difficultyLvl = 0;
+        InvokeRepeating("AumentarContador", 0f, 45f);
     }
 
     void Update()
@@ -41,6 +42,9 @@ public class ChronometerManager : MonoBehaviour
                 DisplayTime(currentTime);
                 difficultyColor_Transform.position = new Vector2((currentTime * -1), 0);
             }
+
+
+        
         }
     }
 
@@ -48,7 +52,7 @@ public class ChronometerManager : MonoBehaviour
     {
         minutes = Mathf.FloorToInt(timePassed / 60);
         seconds = Mathf.FloorToInt(timePassed % 60);
-        difficultyLvl = difficultyLvl + minutes;
+        //difficultyLvl = difficultyLvl + minutes;
         // Format the time as "00:00"
         string timeText = minutes.ToString("00") + ":" + seconds.ToString("00");
         // Update the TextMeshProUGUI component
@@ -88,5 +92,11 @@ public class ChronometerManager : MonoBehaviour
         pausedTime = 0f;
         isPaused = false;
         DisplayTime(0);
+    }
+
+    void AumentarContador()
+    {
+        difficultyLvl++;
+        Debug.Log("gei");
     }
 }

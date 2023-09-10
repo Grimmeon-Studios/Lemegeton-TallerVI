@@ -97,10 +97,20 @@ public class Room : MonoBehaviour
         return enemyPos;
     }
 
-    private void SpawnEnemies(GameObject prefab)
+    private void SpawnEnemies(int addEnemyCount, Vector3 enemyStatsMult)
     {
 
-        Instantiate(prefab, RandomEnemySpawnPos(), Quaternion.identity);
+        for (int i = 0; i < 4 + addEnemyCount; i++)
+        {
+            int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs));
+            if(enemyToSpawn == 0)
+            {
+                Instantiate(enemyPrefab1, RandomEnemySpawnPos(), Quaternion.identity);
+            }
+            else if(enemyToSpawn == 1){
+                Instantiate(enemyPrefab2, RandomEnemySpawnPos(), Quaternion.identity);
+            }
+        }
 
     }
 
@@ -118,23 +128,30 @@ public class Room : MonoBehaviour
         //{
         //    // aumenta las estadísticas de los enemigos spawneados
         //}
-            for (int i = 0; i < _dungeonManager._difficultylvl; i++)
-        {
-            int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs));
-            Debug.Log("Rand int: " + enemyToSpawn);
 
-            switch (enemyToSpawn)
-            {
-                case 0:
-                    SpawnEnemies(enemyPrefab1);
-                    break;
+        _dungeonManager.EnemyManagement();
 
-                case 1:
-                    SpawnEnemies(enemyPrefab2);
-                    break;
+        SpawnEnemies(_dungeonManager.AdditionalEnemyCount, _dungeonManager.EnemyStatsMultiplier);
 
-                //Type More cases if there are more enemies added
-            }
-        }
+
+
+        //for (int i = 0; i < _dungeonManager._difficultylvl; i++)
+        //{
+        //    int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs));
+        //    Debug.Log("Rand int: " + enemyToSpawn);
+
+        //    switch (enemyToSpawn)
+        //    {
+        //        case 0:
+        //            SpawnEnemies(enemyPrefab1); 
+        //            break;
+
+        //        case 1:
+        //            SpawnEnemies(enemyPrefab2);
+        //            break;
+
+        //        //Type More cases if there are more enemies added
+        //    }
+        //}
     }
 }
