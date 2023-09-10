@@ -33,7 +33,12 @@ public class IncubusScript : MonoBehaviour
 
     #region ELSE
     [SerializeField]
-    float health = 18f;
+    private float health = 18f;
+
+    public float Health { get => health; set => health = value; }
+    public float ContactDamage { get => contactDamage; set => contactDamage = value; }
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+
     // GameObject door;
     #endregion
 
@@ -75,13 +80,13 @@ public class IncubusScript : MonoBehaviour
 
     void Chase()
     {
-        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, moveSpeed * Time.deltaTime));
+        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, MoveSpeed * Time.deltaTime));
     }
 
     public void takeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        Health -= damage;
+        if (Health <= 0)
         {
             currState = incubState.Dead;
         }
@@ -95,7 +100,7 @@ public class IncubusScript : MonoBehaviour
 
         if (playerManager != null)
         {
-            playerManager.TakeDamage(contactDamage);
+            playerManager.TakeDamage(ContactDamage);
             playerManager._Rigidbody.AddForce((playerManager.transform.position - this.transform.position) * pushForce);
         }
     }

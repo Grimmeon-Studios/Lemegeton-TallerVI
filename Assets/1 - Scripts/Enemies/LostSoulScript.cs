@@ -26,6 +26,7 @@ public class LostSoulScript : MonoBehaviour
     float timer;
     public GameObject acidPrefab;
     public Transform firePoint;
+    public float shotDamage;
     #endregion
 
     #region AI RELATED
@@ -160,7 +161,7 @@ public class LostSoulScript : MonoBehaviour
 
         GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
         SoulBullet sBullet = acidObject.GetComponent<SoulBullet>();
-        sBullet.shoot(aimDirection, 10);
+        sBullet.shoot(aimDirection, 10, shotDamage);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
         //audioSource.PlayOneShot(acidClip);

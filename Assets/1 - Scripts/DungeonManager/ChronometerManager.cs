@@ -16,6 +16,8 @@ public class ChronometerManager : MonoBehaviour
     private int minutes;
     private int seconds;
 
+    [SerializeField] private float timeStepsForLevel;
+
     [HideInInspector] public int difficultyLvl;
 
     void Start()
@@ -23,7 +25,7 @@ public class ChronometerManager : MonoBehaviour
         StartChronometer();
         difficultyColor_Transform = difficultyColor.GetComponent<RectTransform>();
         difficultyLvl = 0;
-        InvokeRepeating("AumentarContador", 0f, 45f);
+        InvokeRepeating("AumentarContador", 0f, timeStepsForLevel);
     }
 
     void Update()
@@ -97,6 +99,6 @@ public class ChronometerManager : MonoBehaviour
     void AumentarContador()
     {
         difficultyLvl++;
-        Debug.Log("gei");
+        //Debug.Log("gei");
     }
 }

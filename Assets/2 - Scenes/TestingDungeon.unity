@@ -8700,6 +8700,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: enemyPrefab1
+      value: 
+      objectReference: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: enemyPrefab2
+      value: 
+      objectReference: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: NoRemainingEnemies.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1578553538}
@@ -58095,6 +58103,10 @@ PrefabInstance:
       propertyPath: difficultyLvl_Txt
       value: 
       objectReference: {fileID: 1858981628}
+    - target: {fileID: 6582987315559995505, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: timeStepsForLevel
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

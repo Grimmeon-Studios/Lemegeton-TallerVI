@@ -131,6 +131,17 @@ public class Room : MonoBehaviour
 
         _dungeonManager.EnemyManagement();
 
+        IncubusScript incubusScript = enemyPrefab1.GetComponent<IncubusScript>();
+        LostSoulScript lostSoulScript = enemyPrefab2.GetComponent<LostSoulScript>();
+
+        incubusScript.Health = incubusScript.Health + _dungeonManager.EnemyStatsMultiplier.x;
+        incubusScript.ContactDamage = incubusScript.ContactDamage + _dungeonManager.EnemyStatsMultiplier.y;
+        incubusScript.MoveSpeed = incubusScript.MoveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
+
+        lostSoulScript.health = lostSoulScript.health + _dungeonManager.EnemyStatsMultiplier.x;
+        lostSoulScript.shotDamage = lostSoulScript.shotDamage + _dungeonManager.EnemyStatsMultiplier.y;
+        lostSoulScript.moveSpeed = lostSoulScript.moveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
+
         SpawnEnemies(_dungeonManager.AdditionalEnemyCount, _dungeonManager.EnemyStatsMultiplier);
 
 

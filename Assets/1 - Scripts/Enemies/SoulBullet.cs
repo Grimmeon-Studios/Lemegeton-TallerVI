@@ -6,11 +6,14 @@ using UnityEngine;
 public class SoulBullet : MonoBehaviour
 {
     Rigidbody2D rb;
-    float damage = 1f;
+    float damage;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        //LostSoulScript lsScript = this.GetComponentInParent<LostSoulScript>();
+        //damage = lsScript.shotDamage;
     }
 
     void Update()
@@ -21,9 +24,9 @@ public class SoulBullet : MonoBehaviour
         }
     }
 
-    public void shoot(Vector2 direction, float force)
+    public void shoot(Vector2 direction, float force, float shotDamage)
     {
-
+        damage = shotDamage;
         rb.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
