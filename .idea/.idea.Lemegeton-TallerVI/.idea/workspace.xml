@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Minimap/FollowPlayerMm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Minimap/FollowPlayerMm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Dungeon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Dungeon.unity" afterDir="false" />
-    </list>
+    <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Critical Damage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Defense Heal.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Defense Up.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/Items/Health.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
