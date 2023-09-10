@@ -39,6 +39,7 @@ public class SoulBullet : MonoBehaviour
             //pm.changeHealth(-0.5f);
             pm.TakeDamage(damage);
         }
+
         Destroy(gameObject);
     }
 }

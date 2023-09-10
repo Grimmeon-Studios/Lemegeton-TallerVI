@@ -198,8 +198,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mainBoxCollider: {fileID: 150853265}
-  enemyPrefab: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
   combatOverlay: {fileID: 663504867}
+  numberOfEnemiesPrefabs: 2
+  enemyPrefab1: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+  enemyPrefab2: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
 --- !u!68 &150853264
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1295,7 +1297,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721125163}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1721125166
 Camera:
   m_ObjectHideFlags: 0
@@ -1437,8 +1439,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mainBoxCollider: {fileID: 1746392770}
-  enemyPrefab: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
   combatOverlay: {fileID: 1022362854}
+  numberOfEnemiesPrefabs: 2
+  enemyPrefab1: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
+  enemyPrefab2: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
 --- !u!68 &1746392769
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1619,8 +1623,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mainBoxCollider: {fileID: 1757933674}
-  enemyPrefab: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
   combatOverlay: {fileID: 746612168}
+  numberOfEnemiesPrefabs: 2
+  enemyPrefab1: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+  enemyPrefab2: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
 --- !u!68 &1757933673
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -2027,7 +2033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.865336
+      value: -3.5958295
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2035,7 +2041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.865336
+      value: -3.5958295
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59750,8 +59756,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mainBoxCollider: {fileID: 3557823532801925922}
-  enemyPrefab: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
   combatOverlay: {fileID: 2106140007}
+  numberOfEnemiesPrefabs: 2
+  enemyPrefab1: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+  enemyPrefab2: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
 --- !u!50 &7794239572896970497
 Rigidbody2D:
   serializedVersion: 4

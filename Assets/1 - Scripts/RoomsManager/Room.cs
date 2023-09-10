@@ -22,6 +22,7 @@ public class Room : MonoBehaviour
     [SerializeField] private int numberOfEnemiesPrefabs;
     [SerializeField] private GameObject enemyPrefab1;
     [SerializeField] private GameObject enemyPrefab2;
+
     void Awake()
     {
         edgeCollider = GetComponent<EdgeCollider2D>();
@@ -96,13 +97,11 @@ public class Room : MonoBehaviour
         return enemyPos;
     }
 
-    private void SpawnEnemies(int dificulty, GameObject prefab)
+    private void SpawnEnemies(GameObject prefab)
     {
-        int i;
-        for (i = 0; i < dificulty; i++)
-        {
-            Instantiate(prefab, RandomEnemySpawnPos(), Quaternion.identity);
-        }
+
+        Instantiate(prefab, RandomEnemySpawnPos(), Quaternion.identity);
+
     }
 
     IEnumerator WaitAndTrapPlayer(float waitTime)
@@ -111,18 +110,27 @@ public class Room : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        for(int i = 0; i < _dungeonManager._difficultylvl; i++)
+        //if (_dungeonManager._difficultylvl % 3 == 0)
+        //{
+        //    // aumenta número de spawneo
+        //}
+        //else
+        //{
+        //    // aumenta las estadísticas de los enemigos spawneados
+        //}
+            for (int i = 0; i < _dungeonManager._difficultylvl; i++)
         {
-            int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs-1));
+            int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs));
+            Debug.Log("Rand int: " + enemyToSpawn);
 
             switch (enemyToSpawn)
             {
                 case 0:
-                    SpawnEnemies(_dungeonManager._difficultylvl, enemyPrefab1);
+                    SpawnEnemies(enemyPrefab1);
                     break;
 
                 case 1:
-                    SpawnEnemies(_dungeonManager._difficultylvl, enemyPrefab2);
+                    SpawnEnemies(enemyPrefab2);
                     break;
 
                 //Type More cases if there are more enemies added

@@ -183,6 +183,7 @@ public class LostSoulScript : MonoBehaviour
 
     void Die()
     {
+        Debug.Log("Se murio definitivamente");
         //int opcDrop;
         //for (int i = 1; i <= Random.Range(1, 3); i++)
         //{
