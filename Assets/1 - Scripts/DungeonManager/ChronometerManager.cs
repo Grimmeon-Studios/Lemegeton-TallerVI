@@ -53,7 +53,7 @@ public class ChronometerManager : MonoBehaviour
         string timeText = minutes.ToString("00") + ":" + seconds.ToString("00");
         // Update the TextMeshProUGUI component
         timerText.text = timeText;
-        Debug.Log(difficultyLvl);
+        //Debug.Log(difficultyLvl);
         difficultyLvl_Txt.text =  difficultyLvl.ToString();
     }
 
