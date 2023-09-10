@@ -9,6 +9,7 @@ TagManager:
   - Room
   - Dungeon Manager
   - Wall
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Enemies
   - Player
   - Floor
-  - 
+  - Items
   - 
   - 
   - 
