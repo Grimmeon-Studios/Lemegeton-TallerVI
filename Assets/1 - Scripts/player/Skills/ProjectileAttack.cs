@@ -36,11 +36,13 @@ public class ProjectileAttack : MonoBehaviour
     private void Update()
     {
         if (isOnCd == true)
+        {
+            targetObj.transform.position = player.transform.position;
             return;
+        }
 
         _Position = projectileJoysick.JoystickInput;
         ChangeTargetPos(targetObj);
-        Vector2 targetPositionAim = targetObj.transform.position;
 
         if(projectileJoysick._isDragging == true)
         {
@@ -57,7 +59,6 @@ public class ProjectileAttack : MonoBehaviour
         float x = player.transform.position.x + radio * direction.x;
         float y = player.transform.position.y + radio * direction.y;
         return new Vector2(x, y);
-
     }
 
     private void OnEnable()

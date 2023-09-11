@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e394d3f33f42c084cb43ae9084fff3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStats: {x: 0, y: 0, z: 0}
   moveSpeed: 0.7
   firerate: 3
   acidPrefab: {fileID: 8402521562688868224, guid: d40225fe5c7724a4baa48d9a7daf79d3, type: 3}

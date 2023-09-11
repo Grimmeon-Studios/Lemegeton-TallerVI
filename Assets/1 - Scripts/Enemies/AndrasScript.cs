@@ -157,7 +157,7 @@ public class AndrasScript : MonoBehaviour
 
         GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
         AndrasBullet aBullet = acidObject.GetComponent<AndrasBullet>();
-        aBullet.shoot(aimDirection, shootingForce+1, shotDamage);
+        aBullet.shoot(aimDirection, shootingForce, shotDamage);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
         //audioSource.PlayOneShot(acidClip);
