@@ -241,8 +241,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.754717, g: 0.6870808, b: 0.1381274, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ac60896241604274da2cdbe864010912, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxHealth: 10
+  maxHealth: 100
   health: 0
   maxDefense: 5
   defense: 0
@@ -436,7 +436,7 @@ MonoBehaviour:
   criticalDamage: 1
   isInvincible: 0
   invincibleTimer: 0
-  timeInvincible: 2
+  timeInvincible: 3
   _Camera: {fileID: 0}
   _playerTouchMovementScript: {fileID: 1179116119827195433}
   _Movement: {x: 0, y: 0}
@@ -478,6 +478,7 @@ MonoBehaviour:
   meleeSprite: {fileID: 912563228577905733}
   meleeRadius: 2.5
   meleeDamage: 5
+  combat_CD: 0.6
 --- !u!114 &8480319302363760648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +514,7 @@ MonoBehaviour:
   radio: 5
   firePoint: {fileID: 963507890576927281}
   projectilePrefab: {fileID: 9168687032117776216, guid: ef077621e2b4fba43b5aaceef30fa7b3, type: 3}
+  proyectile_CD: 5
   ShootOnRelease:
     m_PersistentCalls:
       m_Calls: []
@@ -575,9 +577,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.12}
+  m_Offset: {x: -0.07681203, y: -0.83410764}
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 1.011127
 --- !u!70 &4718085743747031156
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -610,8 +612,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.26}
-  m_Size: {x: 1.12, y: 1.72}
+  m_Offset: {x: -0.10515642, y: -0.6255436}
+  m_Size: {x: 1.1500444, y: 2.451087}
   m_Direction: 0
 --- !u!212 &5678348016226415015
 SpriteRenderer:
@@ -654,8 +656,8 @@ SpriteRenderer:
   m_SortingLayerID: -315021059
   m_SortingLayer: 1
   m_SortingOrder: 3
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.7490196, g: 0.68235296, b: 0.13333334, a: 0.38431373}
+  m_Sprite: {fileID: 21300000, guid: ac60896241604274da2cdbe864010912, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.30588236}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

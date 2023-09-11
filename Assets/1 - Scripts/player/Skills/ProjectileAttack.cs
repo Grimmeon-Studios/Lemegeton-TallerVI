@@ -17,6 +17,9 @@ public class ProjectileAttack : MonoBehaviour
     [Header("Projectile Atributes")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float proyectile_CD;
+
+    bool isOnCd = false;
 
     public UnityEvent ShootOnRelease;
 
@@ -32,6 +35,9 @@ public class ProjectileAttack : MonoBehaviour
 
     private void Update()
     {
+        if (isOnCd == true)
+            return;
+
         _Position = projectileJoysick.JoystickInput;
         ChangeTargetPos(targetObj);
         Vector2 targetPositionAim = targetObj.transform.position;
@@ -81,6 +87,9 @@ public class ProjectileAttack : MonoBehaviour
 
     public void LaunchProjectile()
     {
+        if (isOnCd == true)
+            return;
+
         Vector2 targetPosition = targetObj.transform.position;
         // Calculate the direction from the fire point to the target
         Vector3 direction = new Vector3(targetPosition.x, targetPosition.y, 0) - firePoint.position;
@@ -98,11 +107,24 @@ public class ProjectileAttack : MonoBehaviour
         {
             // Apply a force to propel the projectile in the direction it is facing
             rb.AddForce(newProjectile.transform.up * player.GetComponent<PlayerManager>().shotSpeed, ForceMode2D.Impulse);
+
+            isOnCd = true;
+
+            StartCoroutine(proyectileCD(proyectile_CD));
         }
         else
         {
             Debug.LogError("The projectile prefab must have a Rigidbody2D component.");
         }
 
+    }
+
+    private IEnumerator proyectileCD(float waitTime)
+    {
+        // Wait for the specified time
+        yield return new WaitForSeconds(waitTime);
+
+        // After waiting, execute the method
+        isOnCd = false;
     }
 }

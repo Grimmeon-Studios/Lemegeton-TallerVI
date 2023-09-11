@@ -61,6 +61,8 @@ public class DungeonManager : MonoBehaviour
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
+        additionalEnemyCount = 0;
+        enemyStatsMultiplier = new Vector3(1, 1, 1);
     }
 
     private void Update()
