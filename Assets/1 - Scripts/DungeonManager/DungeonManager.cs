@@ -6,24 +6,46 @@ using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour
 {
-    [SerializeField] private ChronometerManager chronometer;
+
+    private ChronometerManager chronometer;
+    private BoxCollider2D gameAreaCollider;
 
     private int difficultylvl;
     private bool circleCleared;
     private bool PlayerAlive;
+    private bool DungeonGenerated;
     
-    private BoxCollider2D gameAreaCollider;
-
-    private int roomsNumber;
-    private int remainingRooms;
 
     // Rooms Verification HashSet
     private HashSet<GameObject> roomsInsideCollider = new HashSet<GameObject>();
 
-    private bool isDivisibleFor3;
 
+    private bool isDivisibleFor3;
     private int additionalEnemyCount = 0;
     private Vector3 enemyStatsMultiplier = new Vector3(1, 1, 1); // hp, attack, speed
+
+
+    [Header("Prefabs for dungeons")]
+
+    [Header("First Circle")]
+    [SerializeField] private GameObject Circle1_Variant1; 
+    [SerializeField] private GameObject Circle1_Variant2; 
+    [SerializeField] private GameObject Circle1_Variant3; 
+    [SerializeField] private GameObject Circle1_Variant4; 
+
+    [Header("Second Circle")]
+    [SerializeField] private GameObject Circle2_Variant1; 
+    [SerializeField] private GameObject Circle2_Variant2; 
+    [SerializeField] private GameObject Circle2_Variant3; 
+    [SerializeField] private GameObject Circle2_Variant4; 
+
+    [Header("Third Circle")]
+    [SerializeField] private GameObject Circle3_Variant1; 
+    [SerializeField] private GameObject Circle3_Variant2; 
+    [SerializeField] private GameObject Circle3_Variant3; 
+    [SerializeField] private GameObject Circle3_Variant4;
+
+    private List<GameObject> circlesToInstantiate = new List<GameObject>();
 
 
 
@@ -36,6 +58,8 @@ public class DungeonManager : MonoBehaviour
 
     private void Awake()
     {
+        chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
+
         gameAreaCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -98,6 +122,70 @@ public class DungeonManager : MonoBehaviour
             EnemyStatsMultiplier += new Vector3(5f, 1f, 0.2f); 
         }
             
+    }
+
+    private void GenerateDungeon()
+    {
+        int ranCircle1 = UnityEngine.Random.Range(0, 4);
+        int ranCircle2 = UnityEngine.Random.Range(0, 4);
+        int ranCircle3 = UnityEngine.Random.Range(0, 4);
+
+        switch(ranCircle1)
+        {
+            case 0:
+                circlesToInstantiate.Add(Circle1_Variant1);
+                break;
+
+            case 1:
+                circlesToInstantiate.Add(Circle1_Variant2);
+                break;
+
+            case 2:
+                circlesToInstantiate.Add(Circle1_Variant3);
+                break;
+
+            case 3:
+                circlesToInstantiate.Add(Circle1_Variant4);
+                break;
+        }
+
+        switch(ranCircle2)
+        {
+            case 0:
+                circlesToInstantiate.Add(Circle2_Variant1);
+                break;
+
+            case 1:
+                circlesToInstantiate.Add(Circle2_Variant2);
+                break;
+
+            case 2:
+                circlesToInstantiate.Add(Circle2_Variant3);
+                break;
+
+            case 3:
+                circlesToInstantiate.Add(Circle2_Variant4);
+                break;
+        }
+
+        switch (ranCircle3)
+        {
+            case 0:
+                circlesToInstantiate.Add(Circle3_Variant1);
+                break;
+
+            case 1:
+                circlesToInstantiate.Add(Circle3_Variant2);
+                break;
+
+            case 2:
+                circlesToInstantiate.Add(Circle3_Variant3);
+                break;
+
+            case 3:
+                circlesToInstantiate.Add(Circle3_Variant4);
+                break;
+        }
     }
 
 }
