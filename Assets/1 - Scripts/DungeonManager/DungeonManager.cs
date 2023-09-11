@@ -13,8 +13,7 @@ public class DungeonManager : MonoBehaviour
     private int difficultylvl;
     private bool circleCleared;
     private bool PlayerAlive;
-    private bool DungeonGenerated;
-    
+    private bool DungeonGenerated;    
 
     // Rooms Verification HashSet
     private HashSet<GameObject> roomsInsideCollider = new HashSet<GameObject>();
@@ -22,11 +21,14 @@ public class DungeonManager : MonoBehaviour
 
     private bool isDivisibleFor3;
     private int additionalEnemyCount = 0;
-    private Vector3 enemyStatsMultiplier = new Vector3(1, 1, 1); // hp, attack, speed
+    [Header("Enemy Stats Scale")]
+    [Header("X = Health | Y = Attack | Z = Speed")]
+    public Vector3 incubus_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
+    public Vector3 LostSoul_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
+    public Vector3 andras_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
 
 
     [Header("Prefabs for dungeons")]
-
     [Header("First Circle")]
     [SerializeField] private GameObject Circle1_Variant1; 
     [SerializeField] private GameObject Circle1_Variant2; 
@@ -54,7 +56,6 @@ public class DungeonManager : MonoBehaviour
     public bool _circleCleared { get => circleCleared; set => circleCleared = value; }
     public bool IsDivisibleFor3 { get => isDivisibleFor3; set => isDivisibleFor3 = value; }
     public int AdditionalEnemyCount { get => additionalEnemyCount; set => additionalEnemyCount = value; }
-    public Vector3 EnemyStatsMultiplier { get => enemyStatsMultiplier; set => enemyStatsMultiplier = value; }
 
     private void Awake()
     {
@@ -62,7 +63,6 @@ public class DungeonManager : MonoBehaviour
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
         additionalEnemyCount = 0;
-        enemyStatsMultiplier = new Vector3(1, 1, 1);
     }
 
     private void Update()
@@ -87,6 +87,8 @@ public class DungeonManager : MonoBehaviour
 
     public void OnRoomCleared(GameObject currentRoom)
     {
+        EnemyManagement();
+
         if(currentRoom.GetComponent<Room>() != null)
         {
             if (currentRoom.CompareTag("Room") && roomsInsideCollider.Contains(currentRoom))
@@ -121,7 +123,9 @@ public class DungeonManager : MonoBehaviour
         }
         else
         {
-            EnemyStatsMultiplier += new Vector3(5f, 1f, 0.2f); 
+            incubus_StatsMultiplier += incubus_StatsMultiplier;
+            LostSoul_StatsMultiplier += LostSoul_StatsMultiplier;
+            andras_StatsMultiplier += andras_StatsMultiplier;
         }
             
     }

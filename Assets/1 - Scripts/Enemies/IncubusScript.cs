@@ -12,15 +12,15 @@ public class IncubusScript : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    public Vector3 defaultStats; // hp, attack, speed
+
     #region MOVE RELATED
-    [SerializeField]
-    float moveSpeed;
+    [SerializeField] float moveSpeed;
     Vector2 position;
     #endregion
 
     #region ATTACK RELATED
-    [SerializeField]
-    float contactDamage;
+    [SerializeField] float contactDamage;
 
     [SerializeField]
     int pushForce;
@@ -32,9 +32,7 @@ public class IncubusScript : MonoBehaviour
     #endregion
 
     #region ELSE
-    [SerializeField]
-    private float health = 18f;
-
+    [SerializeField] private float health;
     public float Health { get => health; set => health = value; }
     public float ContactDamage { get => contactDamage; set => contactDamage = value; }
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
@@ -46,6 +44,7 @@ public class IncubusScript : MonoBehaviour
     //public GameObject drop1Prefab;
     //public GameObject drop2Prefab;
     //#endregion
+
 
     void Start()
     {
@@ -80,7 +79,7 @@ public class IncubusScript : MonoBehaviour
 
     void Chase()
     {
-        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, MoveSpeed * Time.deltaTime));
+        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, MoveSpeed));
     }
 
     public void takeDamage(float damage)

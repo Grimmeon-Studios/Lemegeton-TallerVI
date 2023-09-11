@@ -482,9 +482,29 @@ PrefabInstance:
       propertyPath: Joystick
       value: 
       objectReference: {fileID: 6910461929647328980}
+    - target: {fileID: 2102433667661616385, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: m_Name
       value: _Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768906541645525458, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509531225125231239, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_Radius
+      value: 1.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509531225125231239, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: maxHealth
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8835,6 +8855,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2371490687087937753, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371490687087937753, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: enemyPrefab1
       value: 
@@ -58266,7 +58294,15 @@ PrefabInstance:
       objectReference: {fileID: 1858981628}
     - target: {fileID: 6582987315559995505, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: timeStepsForLevel
-      value: 30
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: incubus_StatsMultiplier.z
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: LostSoul_StatsMultiplier.z
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

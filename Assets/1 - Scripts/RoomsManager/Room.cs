@@ -21,6 +21,8 @@ public class Room : MonoBehaviour
     // pls especify how many enemies prefabs there are
     [SerializeField] private int numberOfEnemiesPrefabs;
     [SerializeField] private GameObject enemyPrefab1, enemyPrefab2, enemyPrefab3;
+    private bool inCombat = false;
+    private bool enemiesBuffed = false;
 
     void Awake()
     {
@@ -61,7 +63,6 @@ public class Room : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        
         var @object = other.gameObject;
         if (@object.CompareTag("Player"))
         {
@@ -76,6 +77,8 @@ public class Room : MonoBehaviour
                 if(enemiesHashSet.Count == 0)
                 {
                     NoRemainingEnemies.Invoke();
+                    inCombat = false;
+                    enemiesBuffed = false;
                 }
             }
         }
@@ -96,22 +99,32 @@ public class Room : MonoBehaviour
         return enemyPos;
     }
 
-    private void SpawnEnemies(int addEnemyCount, Vector3 enemyStatsMult)
+    private void SpawnEnemies(int addEnemyCount)
     {
 
-        for (int i = 0; i < 4 + addEnemyCount; i++)
+        for (int i = 0; i < addEnemyCount; i++)
         {
             int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs));
             if(enemyToSpawn == 0)
             {
-                Instantiate(enemyPrefab1, RandomEnemySpawnPos(), Quaternion.identity);
+                GameObject incubusOb = Instantiate(enemyPrefab1, RandomEnemySpawnPos(), Quaternion.identity);
+                incubusOb.GetComponent<IncubusScript>().Health = _dungeonManager.incubus_StatsMultiplier.x;
+                incubusOb.GetComponent<IncubusScript>().ContactDamage = _dungeonManager.incubus_StatsMultiplier.y;
+                incubusOb.GetComponent<IncubusScript>().MoveSpeed = _dungeonManager.incubus_StatsMultiplier.z;
             }
-            else if(enemyToSpawn == 1){
-                Instantiate(enemyPrefab2, RandomEnemySpawnPos(), Quaternion.identity);
+            else if(enemyToSpawn == 1)
+            {
+                GameObject lostSoul = Instantiate(enemyPrefab2, RandomEnemySpawnPos(), Quaternion.identity);
+                lostSoul.GetComponent<LostSoulScript>().health = _dungeonManager.LostSoul_StatsMultiplier.x;
+                lostSoul.GetComponent<LostSoulScript>().shotDamage = _dungeonManager.LostSoul_StatsMultiplier.y;
+                lostSoul.GetComponent<LostSoulScript>().moveSpeed = _dungeonManager.LostSoul_StatsMultiplier.z;
             }
             else if(enemyToSpawn == 2)
             {
-                Instantiate(enemyPrefab3, RandomEnemySpawnPos(), Quaternion.identity);
+                GameObject andras = Instantiate(enemyPrefab3, RandomEnemySpawnPos(), Quaternion.identity);
+                andras.GetComponent<AndrasScript>().health = _dungeonManager.andras_StatsMultiplier.x;
+                andras.GetComponent<AndrasScript>().shotDamage = _dungeonManager.andras_StatsMultiplier.y;
+                andras.GetComponent<AndrasScript>().firerate = _dungeonManager.andras_StatsMultiplier.z;
             }
         }
 
@@ -123,61 +136,17 @@ public class Room : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        //if (_dungeonManager._difficultylvl % 3 == 0)
-        //{
-        //    // aumenta número de spawneo
-        //}
-        //else
-        //{
-        //    // aumenta las estadísticas de los enemigos spawneados
-        //}
+        //_dungeonManager.EnemyManagement();
+        if(enemiesBuffed == false)
+        {
+            enemiesBuffed = true;
+            SpawnEnemies(4 + _dungeonManager.AdditionalEnemyCount);
+        }
 
-        _dungeonManager.EnemyManagement();
-
-        prefab1.GetComponent<IncubusScript>().Health += _dungeonManager.EnemyStatsMultiplier.x;
-        prefab1.GetComponent<IncubusScript>().ContactDamage += _dungeonManager.EnemyStatsMultiplier.y;
-        prefab1.GetComponent<IncubusScript>().MoveSpeed += _dungeonManager.EnemyStatsMultiplier.z;
-
-        prefab2.GetComponent<LostSoulScript>().health += _dungeonManager.EnemyStatsMultiplier.x;
-        prefab2.GetComponent<LostSoulScript>().shotDamage += _dungeonManager.EnemyStatsMultiplier.y;
-        prefab2.GetComponent<LostSoulScript>().moveSpeed += _dungeonManager.EnemyStatsMultiplier.z;
-
-        prefab3.GetComponent<AndrasScript>().health += _dungeonManager.EnemyStatsMultiplier.x;
-        prefab3.GetComponent<AndrasScript>().shotDamage += _dungeonManager.EnemyStatsMultiplier.y;
-        prefab3.GetComponent<AndrasScript>().moveSpeed += _dungeonManager.EnemyStatsMultiplier.z;
-
-        //IncubusScript incubusScript = enemyPrefab1.GetComponent<IncubusScript>();
-        //LostSoulScript lostSoulScript = enemyPrefab2.GetComponent<LostSoulScript>();
-
-        //incubusScript.Health = incubusScript.Health + _dungeonManager.EnemyStatsMultiplier.x;
-        //incubusScript.ContactDamage = incubusScript.ContactDamage + _dungeonManager.EnemyStatsMultiplier.y;
-        //incubusScript.MoveSpeed = incubusScript.MoveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
-
-        //lostSoulScript.health = lostSoulScript.health + _dungeonManager.EnemyStatsMultiplier.x;
-        //lostSoulScript.shotDamage = lostSoulScript.shotDamage + _dungeonManager.EnemyStatsMultiplier.y;
-        //lostSoulScript.moveSpeed = lostSoulScript.moveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
-
-        SpawnEnemies(_dungeonManager.AdditionalEnemyCount, _dungeonManager.EnemyStatsMultiplier);
-
-
-
-        //for (int i = 0; i < _dungeonManager._difficultylvl; i++)
-        //{
-        //    int enemyToSpawn = UnityEngine.Random.Range(0, (numberOfEnemiesPrefabs));
-        //    Debug.Log("Rand int: " + enemyToSpawn);
-
-        //    switch (enemyToSpawn)
-        //    {
-        //        case 0:
-        //            SpawnEnemies(enemyPrefab1); 
-        //            break;
-
-        //        case 1:
-        //            SpawnEnemies(enemyPrefab2);
-        //            break;
-
-        //        //Type More cases if there are more enemies added
-        //    }
-        //}
+        if(inCombat == false)
+        {
+            //SpawnEnemies(_dungeonManager.AdditionalEnemyCount, _dungeonManager.EnemyStatsMultiplier);
+            inCombat = true;
+        }
     }
 }

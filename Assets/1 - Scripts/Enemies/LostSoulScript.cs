@@ -15,14 +15,16 @@ public class LostSoulScript : MonoBehaviour
     //Animator animator;
     //AudioSource audioSource;
 
+    public Vector3 defaultStats; // hp, attack, speed
+
     #region MOVE RELATED
-    public float moveSpeed = 2.5f;
+    public float moveSpeed;
     Vector2 position;
     bool firstMove = false;
     #endregion
 
     #region ATTACK RELATED
-    public float firerate = 2.5f;
+    public float firerate;
     float timer;
     public GameObject acidPrefab;
     public Transform firePoint;
@@ -38,7 +40,7 @@ public class LostSoulScript : MonoBehaviour
     #endregion
 
     #region idk RELATED
-    public float health = 10;
+    public float health;
     //GameObject door;
     //LevelManagement LM;
     #endregion

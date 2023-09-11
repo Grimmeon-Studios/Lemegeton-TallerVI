@@ -15,6 +15,8 @@ public class AndrasScript : MonoBehaviour
     //Animator animator;
     //AudioSource audioSource;
 
+    public Vector3 defaultStats; // hp, attack, speed
+
     #region MOVE RELATED
     public float moveSpeed = 0.5f;
     Vector2 position;
@@ -22,7 +24,7 @@ public class AndrasScript : MonoBehaviour
     #endregion
 
     #region ATTACK RELATED
-    public float firerate = 4f;
+    public float firerate;
     float timer;
     public GameObject acidPrefab;
     public Transform firePoint;
@@ -39,7 +41,7 @@ public class AndrasScript : MonoBehaviour
     #endregion
 
     #region idk RELATED
-    public float health = 30;
+    public float health;
     //GameObject door;
     //LevelManagement LM;
     #endregion
@@ -55,6 +57,7 @@ public class AndrasScript : MonoBehaviour
 
     void Start()
     {
+
         player = GameObject.Find("_Player");
         //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
@@ -154,7 +157,7 @@ public class AndrasScript : MonoBehaviour
 
         GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
         AndrasBullet aBullet = acidObject.GetComponent<AndrasBullet>();
-        aBullet.shoot(aimDirection, shootingForce, shotDamage);
+        aBullet.shoot(aimDirection, shootingForce+1, shotDamage);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
         //audioSource.PlayOneShot(acidClip);
