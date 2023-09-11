@@ -50,12 +50,12 @@ public class DungeonManager : MonoBehaviour
         if (other.gameObject.CompareTag("Room") && !roomsInsideCollider.Contains(other.gameObject))
         {
             roomsInsideCollider.Add(other.gameObject);
-            Debug.Log("Added " + other.gameObject + " to the list.");
+            //Debug.Log("Added " + other.gameObject + " to the list.");
         }
         else if (other.gameObject.CompareTag("Player"))
         {
             PlayerAlive = true;
-            Debug.Log("Player has been detected");
+            //Debug.Log("Player has been detected");
         }
     }
 
@@ -92,12 +92,10 @@ public class DungeonManager : MonoBehaviour
         if (difficultylvl % 3 == 0)
         {
             AdditionalEnemyCount++;
-
         }
         else
         {
-            EnemyStatsMultiplier += new Vector3(6f, 1f, 0.2f); 
-
+            EnemyStatsMultiplier += new Vector3(5f, 1f, 0.2f); 
         }
             
     }

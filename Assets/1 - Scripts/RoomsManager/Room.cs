@@ -56,7 +56,7 @@ public class Room : MonoBehaviour
         }
         else if(!@object.CompareTag("Dungeon Manager"))
         {
-            Debug.Log("Entity: "+ @object.name + " Not Recognized");
+            //Debug.Log("Entity: "+ @object.name + " Not Recognized");
         }
     }
 

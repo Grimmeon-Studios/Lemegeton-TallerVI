@@ -9,28 +9,23 @@ public class Item : MonoBehaviour
     [Header("Player Stats")]
     public int activeItemsNumber;
 
-    private float item_speed;
-    private float item_maxHealth;
-    private float item_health;
-    private float item_maxDefense;
-    private float item_defense;
-    private float item_attack;
-    private float item_shotSpeed;
-    private float item_shotRange;
-    private int item_shotDamage;
-    private float item_criticalRateUp;
-    private float item_criticalDamage;
-    private float item_timeInvincible;
+    public float item_speed;
+    public float item_maxHealth;
+    public float item_health;
+    public float item_maxDefense;
+    public float item_defense;
+    public float item_attack;
+    public float item_shotSpeed;
+    public float item_shotRange;
+    public int item_shotDamage;
+    public float item_criticalRateUp;
+    public float item_criticalDamage;
+    public float item_timeInvincible;
 
-    private bool playerIsNearby = false;
-    private PlayerManager player;
-    private Item thisItem;
-    private HashSet<Item> itemsHash;
 
     void Awake()
     {
         int switchIndex = UnityEngine.Random.Range(0, activeItemsNumber+1);
-        itemsHash = new HashSet<Item>();
 
         switch (switchIndex)
         {
@@ -84,84 +79,26 @@ public class Item : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (playerIsNearby)
-        {
-            
-        }
-    }
 
-    public void PickUpItem()
-    {
-        Debug.Log("Trying to pick Up");
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision != null && collision.gameObject.name == "_Player")
+    //    {
+    //        Debug.Log("GameObject: " + collision.gameObject.name + " Entered");
+    //        playerIsNearby = true;
+    //        player = collision.gameObject.GetComponent<PlayerManager>();
+    //    }
+    //}
 
-        // Check if the player object is not null
-        if (player != null)
-        {
-            player.speed += item_speed;
-            player.maxHealth += item_maxHealth;
-            player.health += item_health;
-            player.maxDefense += item_maxDefense;
-            player.defense += item_defense;
-            player.attack += item_attack;
-            player.shotDamage += item_shotDamage;
-            player.shotSpeed += item_shotSpeed;
-            player.shotRange += item_shotRange;
-            player.criticalRateUp += item_criticalRateUp;
-            player.criticalDamage += item_criticalDamage;
-            player.timeInvincible += item_timeInvincible;
-
-            DestroyAllInHashSet();
-        }
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision != null && collision.CompareTag("Player"))
+    //    {
+    //        Debug.Log("GameObject: " + collision.gameObject.name + " Exited");
+    //        playerIsNearby = false;
+    //        player = null;
+    //    }
+    //}
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision != null && collision.CompareTag("Player"))
-        {
-            Debug.Log("GameObject: " + collision.gameObject.name + " Entered");
-            playerIsNearby = true;
-            player = collision.gameObject.GetComponent<PlayerManager>();
-        }
-        else if (collision != null && collision.CompareTag("Item"))
-        {
-            Debug.Log("GameObject: " + collision.gameObject.name + " Entered");
-            itemsHash.Add(collision.gameObject.GetComponent<Item>());
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision != null && collision.CompareTag("Player"))
-        {
-            Debug.Log("GameObject: " + collision.gameObject.name + " Exited");
-            playerIsNearby = false;
-            player = null;
-        }
-        else if (collision != null && collision.CompareTag("Item"))
-        {
-            Debug.Log("GameObject: " + collision.gameObject.name + " Exited");
-            itemsHash.Remove(collision.gameObject.GetComponent<Item>());
-        }
-    }
-
-    public void DestroyAllInHashSet()
-    {
-        Debug.Log("Trying to destroy nearby items");
-        if (itemsHash.Count > 0)
-        {
-            foreach (Item itm in itemsHash)
-            {
-                Debug.Log("Entered Foreach");
-
-                GameObject obj = itm.gameObject;
-                Debug.Log("Item: " + obj.name + " Will be Destroyed");
-                Destroy(obj);
-            }
-        }
-        else
-            Debug.Log("No items in HashSet");
-    }
 }

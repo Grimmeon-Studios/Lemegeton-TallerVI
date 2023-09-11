@@ -10,6 +10,8 @@ TagManager:
   - Dungeon Manager
   - Wall
   - EnemySoul
+  - Item
+  - Statue
   layers:
   - Default
   - TransparentFX
