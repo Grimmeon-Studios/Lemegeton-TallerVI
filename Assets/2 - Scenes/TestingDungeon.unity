@@ -273,6 +273,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Andras
       objectReference: {fileID: 0}
+    - target: {fileID: 1286114563493521549, guid: a9ebf6505719c1c4ab0f9c35851e5569, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6619106484525322813, guid: a9ebf6505719c1c4ab0f9c35851e5569, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.87
@@ -664,10 +668,6 @@ PrefabInstance:
     - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: m_Name
       value: _Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
-      propertyPath: maxHealth
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

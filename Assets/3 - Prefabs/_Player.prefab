@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxHealth: 10
+  maxHealth: 100
   health: 0
   maxDefense: 5
   defense: 0
@@ -478,6 +478,7 @@ MonoBehaviour:
   meleeSprite: {fileID: 912563228577905733}
   meleeRadius: 2.5
   meleeDamage: 5
+  combat_CD: 1
 --- !u!114 &8480319302363760648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,6 +514,7 @@ MonoBehaviour:
   radio: 5
   firePoint: {fileID: 963507890576927281}
   projectilePrefab: {fileID: 9168687032117776216, guid: ef077621e2b4fba43b5aaceef30fa7b3, type: 3}
+  proyectile_CD: 5
   ShootOnRelease:
     m_PersistentCalls:
       m_Calls: []
