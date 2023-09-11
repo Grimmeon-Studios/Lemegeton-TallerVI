@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7822652450660225385}
   - component: {fileID: 3458042694992612474}
   - component: {fileID: 7247107804602485124}
-  - component: {fileID: 184418545623952135}
+  - component: {fileID: 4851575713008072962}
   m_Layer: 7
-  m_Name: LostSoul
-  m_TagString: EnemySoul
+  m_Name: Andras
+  m_TagString: EnemyAndras
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 720b59936eebe63408521d13268b7975, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.7588284, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2464c37fe6f05db468fe3cbd25f915b1, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008420944, y: -0.3623767}
+  m_Offset: {x: -0.0008420944, y: -0.3909075}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.0533333, y: 3.6}
+    oldSize: {x: 3.523077, y: 4.1538463}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9256401, y: 2.09122}
+  m_Size: {x: 1.9256401, y: 2.5591254}
   m_EdgeRadius: 0
 --- !u!50 &7247107804602485124
 Rigidbody2D:
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -160,7 +160,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &184418545623952135
+--- !u!114 &4851575713008072962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,17 +169,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1286114563493521549}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3754e6df827ab459170c7b67f4df33, type: 3}
+  m_Script: {fileID: 11500000, guid: e394d3f33f42c084cb43ae9084fff3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.7
-  firerate: 2.5
-  acidPrefab: {fileID: 8402521562688868224, guid: cc8468a315aae294cb2c67ac40dff212, type: 3}
+  moveSpeed: 0.7
+  firerate: 3
+  acidPrefab: {fileID: 8402521562688868224, guid: d40225fe5c7724a4baa48d9a7daf79d3, type: 3}
   firePoint: {fileID: 3830077471240048218}
-  shotDamage: 1
+  shotDamage: 3
+  shootingForce: 3
   currState: 0
-  range: 10
-  health: 17
+  range: 11
+  health: 26
 --- !u!1 &6825358388682977264
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 6825358388682977264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.02, z: 0.86766326}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1.3917496, y: -0.75852394, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -12,6 +12,7 @@ TagManager:
   - EnemySoul
   - Item
   - Statue
+  - EnemyAndras
   layers:
   - Default
   - TransparentFX

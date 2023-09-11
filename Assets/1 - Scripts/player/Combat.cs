@@ -36,6 +36,11 @@ public class Combat : MonoBehaviour
             {
                 collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
             }
+
+            if (collision.CompareTag("EnemyAndras"))
+            {
+                collision.gameObject.GetComponent<AndrasScript>().takeDamage(meleeDamage);
+            }
         }
     }
 

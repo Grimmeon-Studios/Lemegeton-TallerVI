@@ -54,6 +54,11 @@ public class Projectile : MonoBehaviour
                 other.gameObject.GetComponent<LostSoulScript>().takeDamage(player.shotDamage);
             }
 
+            if (other.CompareTag("EnemyAndras"))
+            {
+                other.gameObject.GetComponent<AndrasScript>().takeDamage(player.shotDamage);
+            }
+
             Destroy(gameObject);
         }
     }
