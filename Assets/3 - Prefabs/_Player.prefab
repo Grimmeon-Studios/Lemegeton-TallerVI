@@ -436,7 +436,7 @@ MonoBehaviour:
   criticalDamage: 1
   isInvincible: 0
   invincibleTimer: 0
-  timeInvincible: 2
+  timeInvincible: 3
   _Camera: {fileID: 0}
   _playerTouchMovementScript: {fileID: 1179116119827195433}
   _Movement: {x: 0, y: 0}
@@ -478,7 +478,7 @@ MonoBehaviour:
   meleeSprite: {fileID: 912563228577905733}
   meleeRadius: 2.5
   meleeDamage: 5
-  combat_CD: 1
+  combat_CD: 0.6
 --- !u!114 &8480319302363760648
 MonoBehaviour:
   m_ObjectHideFlags: 0

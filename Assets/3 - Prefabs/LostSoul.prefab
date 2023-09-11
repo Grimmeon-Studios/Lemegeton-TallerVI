@@ -179,7 +179,7 @@ MonoBehaviour:
   shotDamage: 1
   currState: 0
   range: 10
-  health: 17
+  health: 10
 --- !u!1 &6825358388682977264
 GameObject:
   m_ObjectHideFlags: 0

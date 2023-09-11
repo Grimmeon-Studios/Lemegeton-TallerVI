@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
-  contactDamage: 1
+  contactDamage: 1.5
   pushForce: 1700
   currState: 0
-  health: 18
+  health: 17
