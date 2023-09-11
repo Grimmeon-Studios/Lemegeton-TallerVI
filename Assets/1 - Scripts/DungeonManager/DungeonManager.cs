@@ -37,6 +37,8 @@ public class DungeonManager : MonoBehaviour
     private void Awake()
     {
         gameAreaCollider = GetComponent<BoxCollider2D>();
+        additionalEnemyCount = 0;
+        enemyStatsMultiplier = new Vector3(1, 1, 1);
     }
 
     private void Update()

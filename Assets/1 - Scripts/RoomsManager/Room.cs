@@ -20,8 +20,7 @@ public class Room : MonoBehaviour
     [Header("Enemies Config")]
     // pls especify how many enemies prefabs there are
     [SerializeField] private int numberOfEnemiesPrefabs;
-    [SerializeField] private GameObject enemyPrefab1;
-    [SerializeField] private GameObject enemyPrefab2;
+    [SerializeField] private GameObject enemyPrefab1, enemyPrefab2, enemyPrefab3;
 
     void Awake()
     {
@@ -45,9 +44,9 @@ public class Room : MonoBehaviour
         {
             Debug.Log("Player Entered");
             edgeCollider.enabled = true;
-            StartCoroutine(WaitAndTrapPlayer(2));            
+            StartCoroutine(WaitAndTrapPlayer(2, enemyPrefab1, enemyPrefab2, enemyPrefab3));            
         }
-        else if(@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul"))
+        else if(@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul") || @object.CompareTag("EnemyAndras"))
         {
             if (!enemiesHashSet.Contains(@object))
             {
@@ -68,7 +67,7 @@ public class Room : MonoBehaviour
         {
             Debug.Log("Player Exited the Room");
         }
-        else if (@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul"))
+        else if (@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul") || @object.CompareTag("EnemyAndras"))
         {
             if (enemiesHashSet.Contains(@object))
             {
@@ -110,11 +109,15 @@ public class Room : MonoBehaviour
             else if(enemyToSpawn == 1){
                 Instantiate(enemyPrefab2, RandomEnemySpawnPos(), Quaternion.identity);
             }
+            else if(enemyToSpawn == 2)
+            {
+                Instantiate(enemyPrefab3, RandomEnemySpawnPos(), Quaternion.identity);
+            }
         }
 
     }
 
-    IEnumerator WaitAndTrapPlayer(float waitTime)
+    IEnumerator WaitAndTrapPlayer(float waitTime, GameObject prefab1, GameObject prefab2, GameObject prefab3)
     {
         combatOverlay.SetActive(true);
 
@@ -131,16 +134,28 @@ public class Room : MonoBehaviour
 
         _dungeonManager.EnemyManagement();
 
-        IncubusScript incubusScript = enemyPrefab1.GetComponent<IncubusScript>();
-        LostSoulScript lostSoulScript = enemyPrefab2.GetComponent<LostSoulScript>();
+        prefab1.GetComponent<IncubusScript>().Health += _dungeonManager.EnemyStatsMultiplier.x;
+        prefab1.GetComponent<IncubusScript>().ContactDamage += _dungeonManager.EnemyStatsMultiplier.y;
+        prefab1.GetComponent<IncubusScript>().MoveSpeed += _dungeonManager.EnemyStatsMultiplier.z;
 
-        incubusScript.Health = incubusScript.Health + _dungeonManager.EnemyStatsMultiplier.x;
-        incubusScript.ContactDamage = incubusScript.ContactDamage + _dungeonManager.EnemyStatsMultiplier.y;
-        incubusScript.MoveSpeed = incubusScript.MoveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
+        prefab2.GetComponent<LostSoulScript>().health += _dungeonManager.EnemyStatsMultiplier.x;
+        prefab2.GetComponent<LostSoulScript>().shotDamage += _dungeonManager.EnemyStatsMultiplier.y;
+        prefab2.GetComponent<LostSoulScript>().moveSpeed += _dungeonManager.EnemyStatsMultiplier.z;
 
-        lostSoulScript.health = lostSoulScript.health + _dungeonManager.EnemyStatsMultiplier.x;
-        lostSoulScript.shotDamage = lostSoulScript.shotDamage + _dungeonManager.EnemyStatsMultiplier.y;
-        lostSoulScript.moveSpeed = lostSoulScript.moveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
+        prefab3.GetComponent<AndrasScript>().health += _dungeonManager.EnemyStatsMultiplier.x;
+        prefab3.GetComponent<AndrasScript>().shotDamage += _dungeonManager.EnemyStatsMultiplier.y;
+        prefab3.GetComponent<AndrasScript>().moveSpeed += _dungeonManager.EnemyStatsMultiplier.z;
+
+        //IncubusScript incubusScript = enemyPrefab1.GetComponent<IncubusScript>();
+        //LostSoulScript lostSoulScript = enemyPrefab2.GetComponent<LostSoulScript>();
+
+        //incubusScript.Health = incubusScript.Health + _dungeonManager.EnemyStatsMultiplier.x;
+        //incubusScript.ContactDamage = incubusScript.ContactDamage + _dungeonManager.EnemyStatsMultiplier.y;
+        //incubusScript.MoveSpeed = incubusScript.MoveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
+
+        //lostSoulScript.health = lostSoulScript.health + _dungeonManager.EnemyStatsMultiplier.x;
+        //lostSoulScript.shotDamage = lostSoulScript.shotDamage + _dungeonManager.EnemyStatsMultiplier.y;
+        //lostSoulScript.moveSpeed = lostSoulScript.moveSpeed + _dungeonManager.EnemyStatsMultiplier.z;
 
         SpawnEnemies(_dungeonManager.AdditionalEnemyCount, _dungeonManager.EnemyStatsMultiplier);
 

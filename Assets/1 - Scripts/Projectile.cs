@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Wall") || other.CompareTag("EnemySoul"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Wall") || other.CompareTag("EnemySoul") ||other.CompareTag("EnemyAndras"))
         {
             if (other.CompareTag("Enemy"))
             {

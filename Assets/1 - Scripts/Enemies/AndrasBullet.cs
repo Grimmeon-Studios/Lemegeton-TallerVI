@@ -7,10 +7,16 @@ public class AndrasBullet : MonoBehaviour
 {
     Rigidbody2D rb;
     float damage;
+    GameObject player;
+    Vector2 initPos;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        player = GameObject.Find("_Player");
+
+        initPos = this.gameObject.transform.position;
 
         //LostSoulScript lsScript = this.GetComponentInParent<LostSoulScript>();
         //damage = lsScript.shotDamage;
@@ -22,6 +28,12 @@ public class AndrasBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Vector2 aimDirection = player.GetComponent<Rigidbody2D>().position - (Vector2)initPos;
+
+        aimDirection.Normalize();
+
+        rb.AddForce(aimDirection * 40f, ForceMode2D.Force);
     }
 
     public void shoot(Vector2 direction, float force, float shotDamage)
