@@ -9,6 +9,10 @@ TagManager:
   - Room
   - Dungeon Manager
   - Wall
+  - EnemySoul
+  - Item
+  - Statue
+  - EnemyAndras
   layers:
   - Default
   - TransparentFX

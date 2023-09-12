@@ -9,6 +9,9 @@ public class Combat : MonoBehaviour
     [SerializeField] private SpriteRenderer meleeSprite;
     [SerializeField] private float meleeRadius;
     [SerializeField] private int meleeDamage;
+    [SerializeField] private float combat_CD;
+
+    bool isOnCd = false;
 
 
     /*private void DoAttack()
@@ -20,6 +23,9 @@ public class Combat : MonoBehaviour
     }*/
     public void Melee()
     {
+        if (isOnCd == true)
+            return;
+
         StartCoroutine(AnimationPlaceholder(0.2f));
     
 
@@ -31,7 +37,21 @@ public class Combat : MonoBehaviour
             {
                 collision.transform.GetComponent<IncubusScript>().takeDamage(meleeDamage);
             }
+
+            if (collision.CompareTag("EnemySoul"))
+            {
+                collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
+            }
+
+            if (collision.CompareTag("EnemyAndras"))
+            {
+                collision.gameObject.GetComponent<AndrasScript>().takeDamage(meleeDamage);
+            }
         }
+
+        isOnCd = true;
+
+        StartCoroutine(CombatCD(combat_CD));
     }
 
     private void OnDrawGizmos()
@@ -42,14 +62,20 @@ public class Combat : MonoBehaviour
 
     private IEnumerator AnimationPlaceholder(float waitTime)
     {
-        Debug.Log("Coroutine started");
         meleeSprite.enabled = true;
 
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
 
-
-        Debug.Log("Coroutine ended");
         meleeSprite.enabled = false;
+    }
+
+    private IEnumerator CombatCD(float waitTime)
+    {
+        // Wait for the specified time
+        yield return new WaitForSeconds(waitTime);
+
+        // After waiting, execute the method
+        isOnCd = false;
     }
 }

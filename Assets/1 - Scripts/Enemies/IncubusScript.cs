@@ -12,15 +12,15 @@ public class IncubusScript : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    public Vector3 defaultStats; // hp, attack, speed
+
     #region MOVE RELATED
-    [SerializeField]
-    float moveSpeed;
+    [SerializeField] float moveSpeed;
     Vector2 position;
     #endregion
 
     #region ATTACK RELATED
-    [SerializeField]
-    float contactDamage;
+    [SerializeField] float contactDamage;
 
     [SerializeField]
     int pushForce;
@@ -32,8 +32,11 @@ public class IncubusScript : MonoBehaviour
     #endregion
 
     #region ELSE
-    [SerializeField]
-    int health = 18;
+    [SerializeField] private float health;
+    public float Health { get => health; set => health = value; }
+    public float ContactDamage { get => contactDamage; set => contactDamage = value; }
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+
     // GameObject door;
     #endregion
 
@@ -41,6 +44,7 @@ public class IncubusScript : MonoBehaviour
     //public GameObject drop1Prefab;
     //public GameObject drop2Prefab;
     //#endregion
+
 
     void Start()
     {
@@ -75,13 +79,13 @@ public class IncubusScript : MonoBehaviour
 
     void Chase()
     {
-        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, moveSpeed * Time.deltaTime));
+        rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, MoveSpeed));
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        Health -= damage;
+        if (Health <= 0)
         {
             currState = incubState.Dead;
         }
@@ -95,7 +99,7 @@ public class IncubusScript : MonoBehaviour
 
         if (playerManager != null)
         {
-            playerManager.TakeDamage(contactDamage);
+            playerManager.TakeDamage(ContactDamage);
             playerManager._Rigidbody.AddForce((playerManager.transform.position - this.transform.position) * pushForce);
         }
     }

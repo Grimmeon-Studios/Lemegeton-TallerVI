@@ -42,11 +42,21 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("Wall"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Wall") || other.CompareTag("EnemySoul") ||other.CompareTag("EnemyAndras"))
         {
             if (other.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<IncubusScript>().takeDamage(player.shotDamage);
+            }
+
+            if (other.CompareTag("EnemySoul"))
+            {
+                other.gameObject.GetComponent<LostSoulScript>().takeDamage(player.shotDamage);
+            }
+
+            if (other.CompareTag("EnemyAndras"))
+            {
+                other.gameObject.GetComponent<AndrasScript>().takeDamage(player.shotDamage);
             }
 
             Destroy(gameObject);

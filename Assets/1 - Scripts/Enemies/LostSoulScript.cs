@@ -12,33 +12,36 @@ public enum lizardState
 public class LostSoulScript : MonoBehaviour
 {
     Rigidbody2D rb;
-    Animator animator;
+    //Animator animator;
     //AudioSource audioSource;
 
+    public Vector3 defaultStats; // hp, attack, speed
+
     #region MOVE RELATED
-    public float moveSpeed = 2.5f;
+    public float moveSpeed;
     Vector2 position;
     bool firstMove = false;
     #endregion
 
     #region ATTACK RELATED
-    public float firerate = 2.5f;
+    public float firerate;
     float timer;
     public GameObject acidPrefab;
     public Transform firePoint;
+    public float shotDamage;
     #endregion
 
     #region AI RELATED
     GameObject player;
     public lizardState currState = lizardState.Wander;
-    public float range = 5;
+    public float range = 20;
     bool chooseDir = false;
     Vector3 randomDir;
     #endregion
 
     #region idk RELATED
-    public int health = 10;
-    GameObject door;
+    public float health;
+    //GameObject door;
     //LevelManagement LM;
     #endregion
 
@@ -48,24 +51,24 @@ public class LostSoulScript : MonoBehaviour
     #endregion
 
     #region  AUDIO
-    public AudioClip acidClip;
+    //public AudioClip acidClip;
     #endregion
 
     void Start()
     {
-        player = GameObject.Find("Robin");
-        door = GameObject.Find("Door");
+        player = GameObject.Find("_Player");
+        //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         timer = firerate;
         //LM = door.GetComponent<LevelManagement>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         //audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         timer -= Time.deltaTime;
-        if (timer < 0)
+        if (timer < 0 && isPlayerInRange(range) == true)
         {
             shoot();
             timer = firerate;
@@ -74,8 +77,8 @@ public class LostSoulScript : MonoBehaviour
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
 
-        animator.SetFloat("Look X", Look.x);
-        animator.SetFloat("Look Y", Look.y);
+        //animator.SetFloat("Look X", Look.x);
+        //animator.SetFloat("Look Y", Look.y);
 
     }
 
@@ -111,7 +114,7 @@ public class LostSoulScript : MonoBehaviour
         if (!firstMove)
         {
             yield return new WaitForSeconds(0.1f);
-            animator.SetBool("Moving", true);
+            //animator.SetBool("Moving", true);
             firstMove = true;
         }
         else
@@ -158,8 +161,9 @@ public class LostSoulScript : MonoBehaviour
 
         aimDirection.Normalize();
 
-        GameObject acidObject = Instantiate(acidPrefab, firePoint.position,
-                                              Quaternion.identity);
+        GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
+        SoulBullet sBullet = acidObject.GetComponent<SoulBullet>();
+        sBullet.shoot(aimDirection, 10, shotDamage);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
         //audioSource.PlayOneShot(acidClip);
@@ -171,7 +175,7 @@ public class LostSoulScript : MonoBehaviour
         return Vector3.Distance(transform.position, player.transform.position) <= range;
     }
 
-    void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -182,26 +186,27 @@ public class LostSoulScript : MonoBehaviour
 
     void Die()
     {
-        int opcDrop;
-        for (int i = 1; i <= Random.Range(1, 3); i++)
-        {
-            opcDrop = Random.Range(1, 3);
+        Debug.Log("Se murio definitivamente");
+        //int opcDrop;
+        //for (int i = 1; i <= Random.Range(1, 3); i++)
+        //{
+        //    opcDrop = Random.Range(1, 3);
 
-            if (opcDrop == 1)
-            {
-                Vector2 objectPos = transform.position;
-                objectPos.x += Random.Range(-1f, 1f);
-                objectPos.y += Random.Range(-1f, 1f);
-                //GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
-            }
-            else if (opcDrop == 2)
-            {
-                Vector2 objectPos = transform.position;
-                objectPos.x += Random.Range(-1f, 1f);
-                objectPos.y += Random.Range(-1f, 1f);
-                //GameObject dropObject = Instantiate(drop2Prefab, objectPos, Quaternion.identity);
-            }
-        }
+        //    if (opcDrop == 1)
+        //    {
+        //        Vector2 objectPos = transform.position;
+        //        objectPos.x += Random.Range(-1f, 1f);
+        //        objectPos.y += Random.Range(-1f, 1f);
+        //        //GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
+        //    }
+        //    else if (opcDrop == 2)
+        //    {
+        //        Vector2 objectPos = transform.position;
+        //        objectPos.x += Random.Range(-1f, 1f);
+        //        objectPos.y += Random.Range(-1f, 1f);
+        //        //GameObject dropObject = Instantiate(drop2Prefab, objectPos, Quaternion.identity);
+        //    }
+        //}
         //LM.enemyCount -= 1;
         Destroy(gameObject);
     }
