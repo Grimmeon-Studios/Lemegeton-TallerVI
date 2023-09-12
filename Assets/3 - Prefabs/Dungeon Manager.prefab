@@ -47,7 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d71542ecb4aaf42a2095d2e6287d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chronometer: {fileID: 6582987315559995505}
+  incubus_StatsMultiplier: {x: 3, y: 2, z: 0.05}
+  LostSoul_StatsMultiplier: {x: 2, y: 3, z: 0.2}
+  andras_StatsMultiplier: {x: 4, y: 3, z: 0}
+  Circle1_Variant1: {fileID: 0}
+  Circle1_Variant2: {fileID: 0}
+  Circle1_Variant3: {fileID: 0}
+  Circle1_Variant4: {fileID: 0}
+  Circle2_Variant1: {fileID: 0}
+  Circle2_Variant2: {fileID: 0}
+  Circle2_Variant3: {fileID: 0}
+  Circle2_Variant4: {fileID: 0}
+  Circle3_Variant1: {fileID: 0}
+  Circle3_Variant2: {fileID: 0}
+  Circle3_Variant3: {fileID: 0}
+  Circle3_Variant4: {fileID: 0}
 --- !u!61 &2426550591269680225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,4 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
   difficultyLvl_Txt: {fileID: 0}
+  difficultyColor: {fileID: 0}
+  timeScale: 0
+  timeStepsForLevel: 45
   difficultyLvl: 0
