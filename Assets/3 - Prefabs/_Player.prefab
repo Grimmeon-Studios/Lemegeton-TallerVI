@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 51b8c8fb36e6b08459f3e55f2a63e8cb, type: 3}
   m_Color: {r: 0.234148, g: 0, b: 0.25490198, a: 0.5019608}
   m_FlipX: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   crosshairDistance: 2
   meleeSprite: {fileID: 912563228577905733}
   meleeRadius: 1.5
-  combat_CD: 0
+  combat_CD: 0.8
   _playerManager: {fileID: 4784871271395500878}
   radio: 3
 --- !u!1 &585336813210003392
@@ -445,12 +445,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxHealth: 10
+  maxHealth: 20
   health: 0
   maxDefense: 5
   defense: 0
   attack: 3
-  shotSpeed: 2
+  shotSpeed: 4
   shotRange: 10
   shotDamage: 5
   criticalRateUp: 0.6

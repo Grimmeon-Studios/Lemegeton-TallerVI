@@ -13,12 +13,14 @@ public class Dash : MonoBehaviour
     [SerializeField] private float dash_CD;
 
     bool isOnCd = false;
+    private CapsuleCollider2D capsuleCollider;
 
     PlayerInput_map _Input;
 
     public void Awake()
     {
         _Input = new PlayerInput_map();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     public void OnEnable()
@@ -73,12 +75,13 @@ public class Dash : MonoBehaviour
     {
         Debug.Log("Coroutine started");
         Use_Dash();
+        capsuleCollider.enabled = false;
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
 
         // After waiting, execute the method
         RestoreParent();
-
+        capsuleCollider.enabled = true;
         Debug.Log("Coroutine ended");
     }
 

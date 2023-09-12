@@ -178,9 +178,9 @@ MonoBehaviour:
   acidPrefab: {fileID: 8402521562688868224, guid: d40225fe5c7724a4baa48d9a7daf79d3, type: 3}
   firePoint: {fileID: 3830077471240048218}
   shotDamage: 3
-  shootingForce: 1
+  shootingForce: 2
   currState: 0
-  range: 14
+  range: 10
   health: 10
 --- !u!1 &6825358388682977264
 GameObject:
