@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8294111341673601122}
   - component: {fileID: 822324298696151111}
   - component: {fileID: 7393514352850203608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Incubus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3619046, y: 5.142857}
+    oldSize: {x: 4.3619046, y: 5.1458416}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3b0c591f4ee254c9eebf00c95ae726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStats: {x: 0, y: 0, z: 0}
   moveSpeed: 0
   contactDamage: 0
   pushForce: 1700

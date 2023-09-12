@@ -33,7 +33,7 @@ public class AndrasBullet : MonoBehaviour
 
         aimDirection.Normalize();
 
-        rb.AddForce(aimDirection * 40f, ForceMode2D.Force);
+        rb.AddForce(aimDirection * 225f, ForceMode2D.Force);
     }
 
     public void shoot(Vector2 direction, float force, float shotDamage)
