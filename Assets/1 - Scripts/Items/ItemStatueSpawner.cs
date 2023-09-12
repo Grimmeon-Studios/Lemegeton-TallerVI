@@ -22,22 +22,26 @@ public class ItemStatueSpawner : MonoBehaviour
 
     public void DropItems()
     {
-        Debug.Log("Droping Items");
-        for (int i = 0; i < itemsQuantityToSpawn; i++) 
+        if (!isStatueUsed)
         {
-            degrees = degrees + 45;
-            int itemTier = UnityEngine.Random.Range(0, itemList.Count);
-            switch (itemTier)
+            Debug.Log("Droping Items");
+            for (int i = 0; i < itemsQuantityToSpawn; i++)
             {
-                case 0:
-                    InstantiateItems(degrees, itemPrefabTier1);
-                    break;
+                degrees = degrees + 45;
+                int itemTier = UnityEngine.Random.Range(0, itemList.Count);
+                switch (itemTier)
+                {
+                    case 0:
+                        InstantiateItems(degrees, itemPrefabTier1);
+                        break;
 
-                case 1:
-                    //Temporaly assigned Item Prefab Tier1 due to laking of tier 2 items
-                    InstantiateItems(degrees, itemPrefabTier1);
-                    break;
+                    case 1:
+                        //Temporaly assigned Item Prefab Tier1 due to laking of tier 2 items
+                        InstantiateItems(degrees, itemPrefabTier1);
+                        break;
+                }
             }
+            isStatueUsed=true;
         }
     }
 

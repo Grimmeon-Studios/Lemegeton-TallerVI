@@ -232,23 +232,27 @@ public class PlayerManager : MonoBehaviour
 
         }
 
-        Collider2D[] deleteItemsRadius = Physics2D.OverlapCircleAll(gameObject.transform.position, 10);
-        if (deleteItemsRadius != null && deleteItemsRadius.Length > 0)
+        if(itemNearBy == true)
         {
-            foreach (Collider2D collision in deleteItemsRadius)
+            Collider2D[] deleteItemsRadius = Physics2D.OverlapCircleAll(gameObject.transform.position, 10);
+            if (deleteItemsRadius != null && deleteItemsRadius.Length > 0)
             {
-                GameObject @object = collision.gameObject;
-                if (@object.CompareTag("Item"))
+                foreach (Collider2D collision in deleteItemsRadius)
                 {
-                    Debug.Log(@object.name + " has been detected and will be destoyed");
-                    Destroy(@object);
+                    GameObject @object = collision.gameObject;
+                    if (@object.CompareTag("Item"))
+                    {
+                        Debug.Log(@object.name + " has been detected and will be destoyed");
+                        Destroy(@object);
+                    }
                 }
             }
+            else
+            {
+                Debug.Log("No Items to pick Up");
+            }
         }
-        else
-        {
-            Debug.Log("No Items to pick Up");
-        }        
+        
     }
 
     public void ActivateStatue()
