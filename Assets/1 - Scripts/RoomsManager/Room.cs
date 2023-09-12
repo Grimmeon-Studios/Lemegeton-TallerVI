@@ -124,7 +124,7 @@ public class Room : MonoBehaviour
                 GameObject andras = Instantiate(enemyPrefab3, RandomEnemySpawnPos(), Quaternion.identity);
                 andras.GetComponent<AndrasScript>().health = _dungeonManager.andras_StatsMultiplier.x;
                 andras.GetComponent<AndrasScript>().shotDamage = _dungeonManager.andras_StatsMultiplier.y;
-                andras.GetComponent<AndrasScript>().firerate = _dungeonManager.andras_StatsMultiplier.z;
+                andras.GetComponent<AndrasScript>().firerate = 4f;
             }
         }
 

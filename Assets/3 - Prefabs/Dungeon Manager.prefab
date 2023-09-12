@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d71542ecb4aaf42a2095d2e6287d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incubus_StatsMultiplier: {x: 3, y: 2, z: 0.05}
-  LostSoul_StatsMultiplier: {x: 2, y: 3, z: 0.2}
-  andras_StatsMultiplier: {x: 4, y: 3, z: 0}
+  incubus_StatsMultiplier: {x: 6.5, y: 1, z: 0.05}
+  LostSoul_StatsMultiplier: {x: 5, y: 0.5, z: 0.2}
+  andras_StatsMultiplier: {x: 8, y: 1.2, z: 0}
   Circle1_Variant1: {fileID: 0}
   Circle1_Variant2: {fileID: 0}
   Circle1_Variant3: {fileID: 0}
