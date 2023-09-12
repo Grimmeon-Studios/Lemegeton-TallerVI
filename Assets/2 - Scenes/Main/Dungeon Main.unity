@@ -123,6 +123,35 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &57990557 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 140403886400543366, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+  m_PrefabInstance: {fileID: 222299091578452007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &57990559 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 912563228577905733, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+  m_PrefabInstance: {fileID: 222299091578452007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &57990560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57990557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b87c29a86837b4faaa5235499f125e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 222299091578452011}
+  crosshairDistance: 2
+  meleeSprite: {fileID: 57990559}
+  meleeRadius: 1.5
+  combat_CD: 0
+  _playerManager: {fileID: 222299091578452010}
+  radio: 3
 --- !u!1 &296594706 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6300186843769468712, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
@@ -754,17 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11b896a33855ce43a50ddff315ee0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1986797673 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7429590355486175470, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
-  m_PrefabInstance: {fileID: 222299091578452007}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb341e820e738841b12b051ddf18178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2110487000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5444505319197870306, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
@@ -839,6 +857,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 912563228577905733, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_Color.b
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 912563228577905733, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 912563228577905733, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.234148
+      objectReference: {fileID: 0}
+    - target: {fileID: 912563228577905733, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 925445195753944053, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: projectileJoysick
       value: 
@@ -895,10 +929,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: _Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6498581706136511507, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498581706136511507, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498581706136511507, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6498581706136511507, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429590355486175470, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: radio
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429590355486175470, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: meleeRadius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429590355486175470, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: meleeController
+      value: 
+      objectReference: {fileID: 57990557}
+    m_RemovedComponents:
+    - {fileID: 7429590355486175470, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 140403886400543366, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57990560}
   m_SourcePrefab: {fileID: 100100000, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
 --- !u!114 &222299091578452008 stripped
 MonoBehaviour:
@@ -922,6 +988,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cb123500e86dd429688d99844773a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &222299091578452011 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 963507890576927281, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+  m_PrefabInstance: {fileID: 222299091578452007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &334719894401003354
 Tilemap:
   m_ObjectHideFlags: 0
@@ -57899,7 +57970,7 @@ PrefabInstance:
     - target: {fileID: 4321561817950421108, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1986797673}
+      objectReference: {fileID: 57990560}
     - target: {fileID: 4321561817950421108, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -57908,6 +57979,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 222299091578452010}
+    - target: {fileID: 4321561817950421108, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321561817950421108, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Crosshair, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9099622121381112963, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
