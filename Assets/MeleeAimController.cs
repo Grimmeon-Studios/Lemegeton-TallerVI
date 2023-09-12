@@ -1,37 +1,58 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat : MonoBehaviour
+public class Crosshair : MonoBehaviour
 {
-    [Header("Melee Attack")]
-    [SerializeField] private GameObject meleeController;
+    public Transform playerTransform; // Reference to the player's transform
+    public float crosshairDistance = 2.0f; // Distance from the player where the crosshair appears
+    private Rigidbody2D rb;
+
+    private Vector2 lastAimDirection = Vector2.zero;
+
     [SerializeField] private SpriteRenderer meleeSprite;
     [SerializeField] private float meleeRadius;
-    [SerializeField] private int meleeDamage;
     [SerializeField] private float combat_CD;
 
+    [SerializeField] private PlayerManager _playerManager;
+
+    private float meleeDamage;
     bool isOnCd = false;
 
     //[SerializeField] private FloatingJoystick Joystick;
     [SerializeField] public float radio = 3.0f;
 
-    private Transform playerTransform;
-
-    private Rigidbody2D rb;
-
     private void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponentInParent<Rigidbody2D>();
     }
 
-    public void Update()
+    private void Update()
     {
-        //ChangeTargetPos(meleeController);
-        transform.position = playerTransform.position;
+        meleeDamage = _playerManager.attack;
+        // Ensure the playerTransform is set (you can also assign it manually in the Inspector)
+        if (playerTransform == null)
+        {
+            Debug.LogError("Player transform is not set for the Crosshair.");
+            return;
+        }
 
+        // Get the player's current movement direction (from your PlayerManager or Rigidbody)
+        Vector2 currentAimDirection = rb.velocity;
+
+        // Only update the crosshair if the aim direction has changed
+        if (currentAimDirection != lastAimDirection)
+        {
+            lastAimDirection = currentAimDirection;
+
+            // Position the crosshair object based on the player's aim
+            Vector2 playerPosition = playerTransform.position;
+
+            if (currentAimDirection.magnitude > 0.01f)
+            {
+                Vector2 crosshairPosition = playerPosition + currentAimDirection.normalized * crosshairDistance;
+                transform.position = crosshairPosition;
+            }
+        }
     }
 
     public void Melee()
@@ -40,9 +61,9 @@ public class Combat : MonoBehaviour
             return;
 
         StartCoroutine(AnimationPlaceholder(0.2f));
-    
 
-        Collider2D[] radius = Physics2D.OverlapCircleAll(meleeController.transform.position, meleeRadius);
+
+        Collider2D[] radius = Physics2D.OverlapCircleAll(gameObject.transform.position, meleeRadius);
 
         foreach (Collider2D collision in radius)
         {
@@ -70,31 +91,8 @@ public class Combat : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(meleeController.transform.position, meleeRadius);
+        Gizmos.DrawWireSphere(gameObject.transform.position, meleeRadius);
     }
-
-    /*
-    public Vector2 PositionOnCircle(Vector2 direction)
-    {
-        // Calculate a random angle in radians
-        float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
-
-        // Calculate the position on the circle's circumference
-        float x = gameObject.transform.position.x + radio * Mathf.Cos(randomAngle);
-        float y = gameObject.transform.position.y + radio * Mathf.Sin(randomAngle);
-
-        return new Vector2(x, y);
-    }
-
-
-    private void ChangeTargetPos(GameObject target)
-    {
-        Vector2 newPosInCircle = PositionOnCircle(rb.velocity);
-        Vector3 newPos = new Vector3(newPosInCircle.x, newPosInCircle.y);
-        target.transform.position = newPos;
-    }
-
-    */
 
     private IEnumerator AnimationPlaceholder(float waitTime)
     {
