@@ -50,10 +50,10 @@ MonoBehaviour:
   incubus_StatsMultiplier: {x: 6.5, y: 1, z: 0.05}
   LostSoul_StatsMultiplier: {x: 5, y: 0.5, z: 0.2}
   andras_StatsMultiplier: {x: 8, y: 1.2, z: 0}
-  Circle1_Variant1: {fileID: 0}
-  Circle1_Variant2: {fileID: 0}
-  Circle1_Variant3: {fileID: 0}
-  Circle1_Variant4: {fileID: 0}
+  Circle1_Variant1: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  Circle1_Variant2: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  Circle1_Variant3: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  Circle1_Variant4: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
   Circle2_Variant1: {fileID: 0}
   Circle2_Variant2: {fileID: 0}
   Circle2_Variant3: {fileID: 0}
@@ -62,6 +62,30 @@ MonoBehaviour:
   Circle3_Variant2: {fileID: 0}
   Circle3_Variant3: {fileID: 0}
   Circle3_Variant4: {fileID: 0}
+  Circle4_Variant1: {fileID: 0}
+  Circle4_Variant2: {fileID: 0}
+  Circle4_Variant3: {fileID: 0}
+  Circle4_Variant4: {fileID: 0}
+  Circle5_Variant1: {fileID: 0}
+  Circle5_Variant2: {fileID: 0}
+  Circle5_Variant3: {fileID: 0}
+  Circle5_Variant4: {fileID: 0}
+  Circle6_Variant1: {fileID: 0}
+  Circle6_Variant2: {fileID: 0}
+  Circle6_Variant3: {fileID: 0}
+  Circle6_Variant4: {fileID: 0}
+  Circle7_Variant1: {fileID: 0}
+  Circle7_Variant2: {fileID: 0}
+  Circle7_Variant3: {fileID: 0}
+  Circle7_Variant4: {fileID: 0}
+  Circle8_Variant1: {fileID: 0}
+  Circle8_Variant2: {fileID: 0}
+  Circle8_Variant3: {fileID: 0}
+  Circle8_Variant4: {fileID: 0}
+  Circle9_Variant1: {fileID: 0}
+  Circle9_Variant2: {fileID: 0}
+  Circle9_Variant3: {fileID: 0}
+  Circle9_Variant4: {fileID: 0}
 --- !u!61 &2426550591269680225
 BoxCollider2D:
   m_ObjectHideFlags: 0
