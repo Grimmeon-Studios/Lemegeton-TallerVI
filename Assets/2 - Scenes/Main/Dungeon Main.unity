@@ -1156,6 +1156,8 @@ MonoBehaviour:
   item_criticalRateUp: 0
   item_criticalDamage: 0
   item_timeInvincible: 0
+  spriteTexturesList: []
+  sprite: {fileID: 0}
 --- !u!50 &3921047792343936806
 Rigidbody2D:
   serializedVersion: 4
@@ -1526,11 +1528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5864720869624243144, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1183
+      value: -254
       objectReference: {fileID: 0}
     - target: {fileID: 5864720869624243144, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -447
+      value: -254
       objectReference: {fileID: 0}
     - target: {fileID: 6645507725451540641, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_Color.b
