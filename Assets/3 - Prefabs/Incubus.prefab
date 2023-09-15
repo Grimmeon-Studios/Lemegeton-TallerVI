@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3619046, y: 5.1458416}
+    oldSize: {x: 4.3619046, y: 5.142857}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,4 +176,5 @@ MonoBehaviour:
   contactDamage: 0
   pushForce: 1700
   currState: 0
+  sulfurPrefab: {fileID: 7156719531565285854, guid: 57892f646241abd42be439dcdd46264e, type: 3}
   health: 1

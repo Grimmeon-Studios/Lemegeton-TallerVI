@@ -31,6 +31,11 @@ public class IncubusScript : MonoBehaviour
     public incubState currState = incubState.Chasing;
     #endregion
 
+    #region DROPS RELATED
+    public GameObject sulfurPrefab;
+    //public GameObject drop2Prefab;
+    #endregion
+
     #region ELSE
     [SerializeField] private float health;
     public float Health { get => health; set => health = value; }
@@ -40,10 +45,7 @@ public class IncubusScript : MonoBehaviour
     // GameObject door;
     #endregion
 
-    //#region DROPS RELATED
-    //public GameObject drop1Prefab;
-    //public GameObject drop2Prefab;
-    //#endregion
+
 
 
     void Start()
@@ -116,7 +118,7 @@ public class IncubusScript : MonoBehaviour
                 Vector2 objectPos = transform.position;
                 objectPos.x += Random.Range(-1f, 1f);
                 objectPos.y += Random.Range(-1f, 1f);
-                // GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
+                GameObject dropObject = Instantiate(sulfurPrefab, objectPos, Quaternion.identity);
             }
             else if (opcDrop == 2)
             {
