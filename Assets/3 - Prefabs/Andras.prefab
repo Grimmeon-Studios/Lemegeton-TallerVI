@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.523077, y: 4.1538463}
+    oldSize: {x: 3.5230768, y: 4.1562567}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -178,10 +178,10 @@ MonoBehaviour:
   acidPrefab: {fileID: 8402521562688868224, guid: d40225fe5c7724a4baa48d9a7daf79d3, type: 3}
   firePoint: {fileID: 3830077471240048218}
   shotDamage: 3
-  shootingForce: 0.6
+  shootingForce: 4
   currState: 0
-  range: 14
-  health: 26
+  range: 10
+  health: 10
 --- !u!1 &6825358388682977264
 GameObject:
   m_ObjectHideFlags: 0

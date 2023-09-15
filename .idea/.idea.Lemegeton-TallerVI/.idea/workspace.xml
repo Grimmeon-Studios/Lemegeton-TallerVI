@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="" />
+    <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsTextures.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/ItemsTextures.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Items/Item.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Items/Item.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Dungeon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Dungeon.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Items and Statue/Item.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Items and Statue/Item.prefab" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,6 +80,8 @@
       <workItem from="1693540486298" duration="1189000" />
       <workItem from="1694298012673" duration="7264000" />
       <workItem from="1694311181138" duration="595000" />
+      <workItem from="1694489899215" duration="345000" />
+      <workItem from="1694727864714" duration="3268000" />
     </task>
     <servers />
   </component>

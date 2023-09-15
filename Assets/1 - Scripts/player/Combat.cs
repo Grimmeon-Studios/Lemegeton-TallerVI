@@ -5,7 +5,7 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     [Header("Melee Attack")]
-    [SerializeField] private Transform meleeController;
+    [SerializeField] private GameObject meleeController;
     [SerializeField] private SpriteRenderer meleeSprite;
     [SerializeField] private float meleeRadius;
     [SerializeField] private int meleeDamage;
@@ -13,14 +13,27 @@ public class Combat : MonoBehaviour
 
     bool isOnCd = false;
 
+    //[SerializeField] private FloatingJoystick Joystick;
+    [SerializeField] public float radio = 3.0f;
 
-    /*private void DoAttack()
+    private Transform playerTransform;
+
+    private Rigidbody2D rb;
+
+    private void Start()
     {
-        if (Input.GetButtonSpace("Fire1"))
-        {
-            Melee();
-        }
-    }*/
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    public void Update()
+    {
+        //ChangeTargetPos(meleeController);
+        transform.position = playerTransform.position;
+
+    }
+
     public void Melee()
     {
         if (isOnCd == true)
@@ -29,7 +42,7 @@ public class Combat : MonoBehaviour
         StartCoroutine(AnimationPlaceholder(0.2f));
     
 
-        Collider2D[] radius = Physics2D.OverlapCircleAll(meleeController.position, meleeRadius);
+        Collider2D[] radius = Physics2D.OverlapCircleAll(meleeController.transform.position, meleeRadius);
 
         foreach (Collider2D collision in radius)
         {
@@ -57,8 +70,31 @@ public class Combat : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(meleeController.position, meleeRadius);
+        Gizmos.DrawWireSphere(meleeController.transform.position, meleeRadius);
     }
+
+    /*
+    public Vector2 PositionOnCircle(Vector2 direction)
+    {
+        // Calculate a random angle in radians
+        float randomAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+
+        // Calculate the position on the circle's circumference
+        float x = gameObject.transform.position.x + radio * Mathf.Cos(randomAngle);
+        float y = gameObject.transform.position.y + radio * Mathf.Sin(randomAngle);
+
+        return new Vector2(x, y);
+    }
+
+
+    private void ChangeTargetPos(GameObject target)
+    {
+        Vector2 newPosInCircle = PositionOnCircle(rb.velocity);
+        Vector3 newPos = new Vector3(newPosInCircle.x, newPosInCircle.y);
+        target.transform.position = newPos;
+    }
+
+    */
 
     private IEnumerator AnimationPlaceholder(float waitTime)
     {

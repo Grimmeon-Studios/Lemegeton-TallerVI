@@ -69,7 +69,7 @@ public class AndrasScript : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer -= Time.fixedDeltaTime;
         if (timer < 0 && isPlayerInRange(range) == true)
         {
             shoot();
