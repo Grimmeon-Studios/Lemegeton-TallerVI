@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum lizardState
 {
@@ -54,6 +55,7 @@ public class LostSoulScript : MonoBehaviour
     //public AudioClip acidClip;
     #endregion
 
+    public SpriteRenderer lostSoul;
     void Start()
     {
         player = GameObject.Find("_Player");
@@ -178,6 +180,11 @@ public class LostSoulScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
+        lostSoul.DOColor(Color.red, 0.1f).OnComplete(() =>
+        {
+            lostSoul.DOColor(Color.red, 1f).OnComplete(() => { lostSoul.DOColor(Color.green, 0.5f); }); // CAMBIAR CUANDO ESTÉ EL NUEVO SPRITE
+        });
+        DOTween.Kill(transform);
         if (health <= 0)
         {
             currState = lizardState.Dead;

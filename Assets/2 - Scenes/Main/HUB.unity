@@ -5745,6 +5745,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!4 &247458422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3402383533509551858, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
+  m_PrefabInstance: {fileID: 6753374361201982395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &398271202 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 1445508561974467143, guid: 7b070273e50055f469b294666501c160, type: 3}
@@ -25869,7 +25874,7 @@ PrefabInstance:
       objectReference: {fileID: 1986797677}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.7321815
+      value: 6.7321844
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25877,7 +25882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.7321815
+      value: 6.7321844
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26081,17 +26086,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
+      propertyPath: phantom
+      value: 
+      objectReference: {fileID: 247458422}
+    - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
       propertyPath: moveSpeed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
-      propertyPath: waypoints.Array.data[0]
+      propertyPath: waypointInit
       value: 
       objectReference: {fileID: 1933053044}
     - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
-      propertyPath: waypoints.Array.data[1]
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
+      propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 43817600}
+    - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 90620779}
     - target: {fileID: 5594564652216336322, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
       propertyPath: waypoints.Array.data[2]
       value: 

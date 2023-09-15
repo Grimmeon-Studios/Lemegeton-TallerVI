@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public enum andrasState
 {
@@ -55,6 +56,7 @@ public class AndrasScript : MonoBehaviour
     //public AudioClip acidClip;
     #endregion
 
+    public SpriteRenderer andras;
     void Start()
     {
 
@@ -172,6 +174,12 @@ public class AndrasScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
+        andras.DOColor(Color.red, 0.1f).OnComplete(() =>
+        {
+            andras.DOColor(Color.red, 1f).OnComplete(() => { andras.DOColor(Color.white, 0.5f); });
+        });
+        DOTween.Kill(transform);
+        
         if (health <= 0)
         {
             currState = andrasState.Dead;
