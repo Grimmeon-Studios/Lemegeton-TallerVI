@@ -24,7 +24,7 @@ public class AndrasScript : MonoBehaviour
     #endregion
 
     #region ATTACK RELATED
-    public float firerate;
+    public float firerate = 1;
     float timer;
     public GameObject acidPrefab;
     public Transform firePoint;

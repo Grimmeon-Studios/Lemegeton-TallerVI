@@ -266,9 +266,10 @@ MonoBehaviour:
         m_CallState: 2
   mainBoxCollider: {fileID: 5588553496933496645}
   combatOverlay: {fileID: 2805450188229320165}
-  numberOfEnemiesPrefabs: 2
-  enemyPrefab1: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
-  enemyPrefab2: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
+  numberOfEnemiesPrefabs: 3
+  enemyPrefab1: {fileID: 3211133602828869042, guid: b37d40cbd2b77a8458c1a5f56ee3a332, type: 3}
+  enemyPrefab2: {fileID: 1286114563493521549, guid: 1190fd7c3ed54aa44937e0466e7e4360, type: 3}
+  enemyPrefab3: {fileID: 1286114563493521549, guid: a9ebf6505719c1c4ab0f9c35851e5569, type: 3}
 --- !u!114 &6081130925171672396
 MonoBehaviour:
   m_ObjectHideFlags: 0

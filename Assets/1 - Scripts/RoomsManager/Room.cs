@@ -82,7 +82,7 @@ public class Room : MonoBehaviour
                 }
             }
         }
-        else
+        else if (!@object.CompareTag("Room"))
         {
             Debug.Log("Entity: " + @object.name + " Not Recognized");
         }

@@ -13,7 +13,7 @@ public class DungeonManager : MonoBehaviour
     private int difficultylvl;
     private bool circleCleared;
     private bool PlayerAlive;
-    private int currentCircle = 1;    
+    private int currentCircle = 0;    
 
     // Rooms Verification HashSet
     private HashSet<GameObject> roomsInsideCollider = new HashSet<GameObject>();
@@ -101,6 +101,7 @@ public class DungeonManager : MonoBehaviour
         additionalEnemyCount = 0;
 
         GenerateDungeon();
+        circlesToInstantiate[0].gameObject.SetActive(true);
     }
 
     private void Update()
@@ -152,8 +153,12 @@ public class DungeonManager : MonoBehaviour
             currentCircle++;
         }
 
-        circlesToInstantiate[currentCircle-1].gameObject.SetActive(false);
+        if(currentCircle >= 1)
+        {
+            circlesToInstantiate[currentCircle - 1].gameObject.SetActive(false);
+        }
         circlesToInstantiate[currentCircle].gameObject.SetActive(true);
+        
     }
 
     public void EnemyManagement()
