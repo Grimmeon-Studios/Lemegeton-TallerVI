@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
     public bool isInvincible = false;
     public float invincibleTimer;
     public float timeInvincible = 2.0f;
+    public int sulfur;
 
     //private string levelname;
 
@@ -42,6 +43,7 @@ public class PlayerManager : MonoBehaviour
     private GameObject _Statue;
     [SerializeField] private GameObject selecctionMark;
     [SerializeField] private Vector2 selectionOffset;
+    //private SulfurPickup _Sulfur;
 
     private void Awake()
     {
@@ -253,6 +255,23 @@ public class PlayerManager : MonoBehaviour
             }
         }
         
+    }
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision != null && collision.CompareTag("Sulfur"))
+        {
+            PlayerManager player = GetComponent<PlayerManager>();
+            if (player != null)
+            {
+                player.AddSulfur(1);
+                Destroy(collision.gameObject);
+            }
+
+        }
+    }
+    public void AddSulfur(int amount)
+    {
+        sulfur += amount;
     }
 
     public void ActivateStatue()
