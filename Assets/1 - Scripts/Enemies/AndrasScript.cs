@@ -174,16 +174,20 @@ public class AndrasScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
-        andras.DOColor(Color.red, 0.1f).OnComplete(() =>
+        if (health > 0)
         {
-            andras.DOColor(Color.red, 1f).OnComplete(() => { andras.DOColor(Color.white, 0.5f); });
-        });
-        DOTween.Kill(transform);
-        
-        if (health <= 0)
+            andras.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
+            { 
+                andras.DOColor(Color.white, 0.1f);
+            });
+            DOTween.Kill(transform);
+            
+        }
+        else
         {
             currState = andrasState.Dead;
         }
+        
     }
 
     void Die()

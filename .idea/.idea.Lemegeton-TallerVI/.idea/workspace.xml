@@ -6,13 +6,6 @@
       <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/AndrasScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/AndrasScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/IncubusScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/IncubusScript.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/LostSoulScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/LostSoulScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Dungeon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Dungeon.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/HUB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/HUB.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/TestingDungeon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/TestingDungeon.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Andras.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Andras.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/DungeonPool/Circle1_var1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/DungeonPool/Circle1_var1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Incubus.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Incubus.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/LostSoul.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/LostSoul.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +80,7 @@
       <workItem from="1694489899215" duration="345000" />
       <workItem from="1694727864714" duration="3268000" />
       <workItem from="1694808682805" duration="5688000" />
+      <workItem from="1694831500216" duration="2632000" />
     </task>
     <servers />
   </component>

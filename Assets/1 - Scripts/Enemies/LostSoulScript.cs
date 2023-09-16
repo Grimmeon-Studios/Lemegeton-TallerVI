@@ -180,12 +180,17 @@ public class LostSoulScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         health -= damage;
-        lostSoul.DOColor(Color.red, 0.1f).OnComplete(() =>
+       
+        if (health > 0)
         {
-            lostSoul.DOColor(Color.red, 1f).OnComplete(() => { lostSoul.DOColor(Color.green, 0.5f); }); // CAMBIAR CUANDO ESTÉ EL NUEVO SPRITE
-        });
-        DOTween.Kill(transform);
-        if (health <= 0)
+            
+            lostSoul.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
+            {
+                 lostSoul.DOColor(Color.green, 0.1f);  // CAMBIAR CUANDO ESTÉ EL NUEVO SPRITE
+            });
+            DOTween.Kill(transform);
+        }
+        else
         {
             currState = lizardState.Dead;
         }

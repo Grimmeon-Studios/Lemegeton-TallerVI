@@ -45,13 +45,15 @@ public class IncubusScript : MonoBehaviour
     //public GameObject drop2Prefab;
     //#endregion
     public SpriteRenderer incubus;
-
+    
+    
     void Start()
     {
         player = GameObject.Find("Player");
         // door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         // LM = door.GetComponent<LevelManagement>();
+
     }
 
     void Update()
@@ -85,13 +87,16 @@ public class IncubusScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         Health -= damage;
-        incubus.DOColor(Color.red, 0.1f).OnComplete(() =>
+        
+        if (Health > 0)
         {
-            incubus.DOColor(Color.red, 1f).OnComplete(() => { incubus.DOColor(Color.white, 0.5f); });
-        });
-
-        DOTween.Kill(transform);
-        if (Health <= 0)
+            incubus.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
+            {
+               incubus.DOColor(Color.white, 0.1f);
+            });
+            DOTween.Kill(transform);
+        }
+        else
         {
             currState = incubState.Dead;
         }
