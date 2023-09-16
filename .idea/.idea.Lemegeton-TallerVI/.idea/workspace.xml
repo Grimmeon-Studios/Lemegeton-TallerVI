@@ -3,7 +3,84 @@
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/HUB/PhantomManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/HUB/PhantomManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/HUB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/HUB.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Phantom.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Phantom.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/BlazingInfernoTileMap.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/BlazingInfernoTileMap.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_0.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_0.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_10.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_10.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_11.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_11.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_12.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_12.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_13.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_13.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_14.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_14.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_15.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_15.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_16.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_16.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_17.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_17.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_18.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_18.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_19.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_19.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_20.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_20.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_21.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_21.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_22.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_22.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_23.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_23.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_24.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_24.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_25.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_25.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_26.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_26.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_27.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_27.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_28.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_28.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_29.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_29.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_30.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_30.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_31.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_31.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_32.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_32.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_33.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_33.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_34.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_34.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_35.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_35.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_4.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_4.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_6.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_6.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_7.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_7.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_8.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_8.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_9.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/Tilemap_BlazingInferno_9.asset.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +154,8 @@
       <workItem from="1694311181138" duration="595000" />
       <workItem from="1694489899215" duration="345000" />
       <workItem from="1694727864714" duration="3268000" />
-      <workItem from="1694808682805" duration="3043000" />
+      <workItem from="1694808682805" duration="5688000" />
+      <workItem from="1694831500216" duration="3949000" />
     </task>
     <servers />
   </component>
