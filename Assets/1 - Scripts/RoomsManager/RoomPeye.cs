@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Room : MonoBehaviour
+public class RoomPeye : MonoBehaviour
 {
     public UnityEvent NoRemainingEnemies;
 
     private EdgeCollider2D edgeCollider;
     private GameObject dungeonManager;
-    private DungeonManager _dungeonManager;
+    private DungeonManagerPeye _dungeonManager;
     private HashSet<GameObject> enemiesHashSet = new HashSet<GameObject>();
 
     // The first Collider is the one who detects the player and trapts it in the Room
@@ -35,7 +35,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         dungeonManager = GameObject.Find("Dungeon Manager");
-        _dungeonManager = dungeonManager.GetComponent<DungeonManager>();
+        _dungeonManager = dungeonManager.GetComponent<DungeonManagerPeye>();
         combatOverlay.SetActive(false);
     }
 

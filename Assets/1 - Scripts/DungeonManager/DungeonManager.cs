@@ -9,6 +9,7 @@ public class DungeonManager : MonoBehaviour
 
     private ChronometerManager chronometer;
     private BoxCollider2D gameAreaCollider;
+    private GameObject playerObj;
 
     private int difficultylvl;
     private bool circleCleared;
@@ -16,7 +17,7 @@ public class DungeonManager : MonoBehaviour
     private int currentCircle = 0;    
 
     // Rooms Verification HashSet
-    private HashSet<GameObject> roomsInsideCollider = new HashSet<GameObject>();
+    private HashSet<int> roomsInsideCollider = new HashSet<int>();
 
 
     private bool isDivisibleFor3;
@@ -95,6 +96,8 @@ public class DungeonManager : MonoBehaviour
 
     private void Awake()
     {
+        playerObj = FindObjectOfType<PlayerManager>().gameObject;
+
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
@@ -102,20 +105,31 @@ public class DungeonManager : MonoBehaviour
 
         GenerateDungeon();
         circlesToInstantiate[0].gameObject.SetActive(true);
+
+        
     }
 
     private void Update()
     {
         difficultylvl = chronometer.difficultyLvl;
+
+        foreach (int room in roomsInsideCollider)
+        {
+            if (room != null)
+            {
+                Debug.Log(room);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.gameObject.CompareTag("Room") && !roomsInsideCollider.Contains(other.gameObject))
+        if (other.gameObject.CompareTag("Room"))
         {
-            roomsInsideCollider.Add(other.gameObject);
-            //Debug.Log("Added " + other.gameObject + " to the list.");
+            int roomID = other.gameObject.GetInstanceID();
+            roomsInsideCollider.Add(roomID);
+            Debug.Log("Added " + other.gameObject + " ID:" + roomID + " to the list.");
+            roomsInsideCollider.Add(1);
         }
         else if (other.gameObject.CompareTag("Player"))
         {
@@ -126,13 +140,25 @@ public class DungeonManager : MonoBehaviour
 
     public void OnRoomCleared(GameObject currentRoom)
     {
-        EnemyManagement();
 
-        if(currentRoom.GetComponent<Room>() != null)
+        EnemyManagement();
+        Debug.Log("Room with ID: " + currentRoom.GetInstanceID() + " Has Been Cleared");
+
+        if (currentRoom.GetComponent<Room>() != null)
         {
-            if (currentRoom.CompareTag("Room") && roomsInsideCollider.Contains(currentRoom))
+            int roomID = currentRoom.GetInstanceID();
+            Debug.Log(currentRoom.gameObject.name + " Is not Null");
+
+            foreach (int room in roomsInsideCollider)
             {
-                roomsInsideCollider.Remove(currentRoom);
+                Debug.Log("Milonga" + room);
+            }
+            Debug.Log("Debugging #1: " + roomsInsideCollider.Contains(1));
+
+            Debug.Log(currentRoom.tag + ", " + roomsInsideCollider.Contains(roomID));
+            if (currentRoom.CompareTag("Room") && roomsInsideCollider.Contains(roomID))
+            {
+                roomsInsideCollider.Remove(roomID);
 
                 if (roomsInsideCollider.Count == 0)
                 {
@@ -158,7 +184,8 @@ public class DungeonManager : MonoBehaviour
             circlesToInstantiate[currentCircle - 1].gameObject.SetActive(false);
         }
         circlesToInstantiate[currentCircle].gameObject.SetActive(true);
-        
+
+        playerObj.transform.position = Vector3.zero;
     }
 
     public void EnemyManagement()
@@ -364,7 +391,7 @@ public class DungeonManager : MonoBehaviour
             if (circlesToInstantiate[i] != null)
             {
                 Instantiate(circlesToInstantiate[i]);
-                circlesToInstantiate[i].SetActive(false);
+                circlesToInstantiate[i].gameObject.SetActive(false);
             }
             else
             {

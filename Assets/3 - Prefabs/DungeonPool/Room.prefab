@@ -252,7 +252,7 @@ MonoBehaviour:
   NoRemainingEnemies:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
         m_TargetAssemblyTypeName: DungeonManager, Assembly-CSharp
         m_MethodName: OnRoomCleared
         m_Mode: 2
