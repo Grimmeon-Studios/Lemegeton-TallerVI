@@ -1,11 +1,18 @@
+using System;
 using UnityEngine;
+using DG.Tweening;
+using DG;
+using Random = UnityEngine.Random;
 
 public class PhantomManager : MonoBehaviour
 {
     public Transform[] waypoints;
+    public Transform waypointInit;
     public float moveSpeed = 5.0f;
+    public Transform phantom;
 
-    private int currentWaypointIndex = 0;
+    private bool moving = true;
+    /*private int currentWaypointIndex = 0;
 
     private void Update()
     {
@@ -27,5 +34,39 @@ public class PhantomManager : MonoBehaviour
                 transform.position = waypoints[0].position;
             }
         }
+    }*/
+    private void Start()
+    {
+        phantom.position = waypointInit.position;
+       
+        Move();
+    }
+
+    void Move()
+    {
+        moving = false;
+        phantom.DOMove(waypoints[0].position, Random.Range(10f, 12f)).OnComplete(() =>
+        {
+            phantom.DOMove(waypoints[1].position, Random.Range(3f, 5f)).OnComplete(() =>
+            {
+                phantom.position = waypointInit.position;
+                moving = true;
+                DOTween.Kill(transform);
+            });
+        });
+    }
+   private void Update()
+   {
+       if (moving == true)
+       {
+           Move();
+       }
+       /*phantom.DOMove(waypoints[1].position, Random.Range(1f, 2f)).OnComplete(() =>
+       {
+           phantom.DOMove(waypoints[2].position, Random.Range(1f, 2f)).OnComplete(() =>
+           {
+               phantom.position = waypoints[0].position;
+           });
+       });*/
     }
 }

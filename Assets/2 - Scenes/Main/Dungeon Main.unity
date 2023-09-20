@@ -2098,7 +2098,7 @@ PrefabInstance:
       objectReference: {fileID: 2110487000}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721815
+      value: 1.3721844
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2106,7 +2106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721815
+      value: 1.3721844
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2696,22 +2696,6 @@ PrefabInstance:
       propertyPath: difficultyLvl_Txt
       value: 
       objectReference: {fileID: 1858981628}
-    - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: Circle2_Variant1
-      value: 
-      objectReference: {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
-    - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: Circle2_Variant2
-      value: 
-      objectReference: {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
-    - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: Circle2_Variant3
-      value: 
-      objectReference: {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
-    - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: Circle2_Variant4
-      value: 
-      objectReference: {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
     - target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: LostSoul_StatsMultiplier.z
       value: 1

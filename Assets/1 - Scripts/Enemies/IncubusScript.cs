@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public enum incubState
 {
     Chasing,
@@ -44,14 +44,16 @@ public class IncubusScript : MonoBehaviour
     //public GameObject drop1Prefab;
     //public GameObject drop2Prefab;
     //#endregion
-
-
+    public SpriteRenderer incubus;
+    
+    
     void Start()
     {
         player = GameObject.Find("Player");
         // door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         // LM = door.GetComponent<LevelManagement>();
+
     }
 
     void Update()
@@ -85,7 +87,16 @@ public class IncubusScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         Health -= damage;
-        if (Health <= 0)
+        
+        if (Health > 0)
+        {
+            incubus.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
+            {
+               incubus.DOColor(Color.white, 0.1f);
+            });
+            DOTween.Kill(transform);
+        }
+        else
         {
             currState = incubState.Dead;
         }
