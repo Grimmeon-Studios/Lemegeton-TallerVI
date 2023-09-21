@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
 
     private EdgeCollider2D edgeCollider;
     private GameObject dungeonManager;
-    private DungeonManager _dungeonManager;
+    private Dungeon _dungeonManager;
     private HashSet<GameObject> enemiesHashSet = new HashSet<GameObject>();
 
     // The first Collider is the one who detects the player and trapts it in the Room
@@ -35,7 +35,7 @@ public class Room : MonoBehaviour
     private void Start()
     {
         dungeonManager = GameObject.Find("Dungeon Manager");
-        _dungeonManager = dungeonManager.GetComponent<DungeonManager>();
+        _dungeonManager = dungeonManager.GetComponent<Dungeon>();
         combatOverlay.SetActive(false);
     }
 
@@ -79,6 +79,7 @@ public class Room : MonoBehaviour
                     NoRemainingEnemies.Invoke();
                     inCombat = false;
                     enemiesBuffed = false;
+                    Destroy(gameObject);
                 }
             }
         }
@@ -140,7 +141,7 @@ public class Room : MonoBehaviour
         if(enemiesBuffed == false)
         {
             enemiesBuffed = true;
-            SpawnEnemies(4 + _dungeonManager.AdditionalEnemyCount);
+            SpawnEnemies(4 + _dungeonManager.additionalEnemyCount);
         }
 
         //if(inCombat == false)

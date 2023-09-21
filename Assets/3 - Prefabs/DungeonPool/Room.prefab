@@ -205,10 +205,10 @@ EdgeCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -252,13 +252,13 @@ MonoBehaviour:
   NoRemainingEnemies:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-        m_TargetAssemblyTypeName: DungeonManager, Assembly-CSharp
+      - m_Target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+        m_TargetAssemblyTypeName: Dungeon, Assembly-CSharp
         m_MethodName: OnRoomCleared
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5124603856534856066}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 3516395343306891628}
+          m_ObjectArgumentAssemblyTypeName: Room, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
