@@ -21,10 +21,13 @@ public class Dungeon : MonoBehaviour
     public Vector3 LostSoul_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
     public Vector3 andras_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
 
+
+    [Header("Other Config.")]
     public int additionalEnemyCount = 0;
     public int currentCircle;
 
 
+    [Header("Dungeon  Lists")]
     public List<GameObject> circlesToInstantiate = new List<GameObject>();
 
     public List<GameObject> circle1_var = new List<GameObject>();
