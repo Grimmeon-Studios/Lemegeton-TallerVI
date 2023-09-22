@@ -9095,11 +9095,11 @@ GameObject:
   - component: {fileID: 3300779415742273707}
   m_Layer: 0
   m_Name: Circle2_var1
-  m_TagString: Untagged
+  m_TagString: Circle2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8091363115138832256
 Transform:
   m_ObjectHideFlags: 0
