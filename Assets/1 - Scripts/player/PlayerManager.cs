@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -36,12 +37,15 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody2D _Rigidbody;
 
     [Header("Items and Statue attributes")]
+    public Stack<Item> itemsHeld = new Stack<Item>();
     private bool itemNearBy;
     private Item _Item;
     private bool statueNearBy;
     private GameObject _Statue;
     [SerializeField] private GameObject selecctionMark;
     [SerializeField] private Vector2 selectionOffset;
+
+    public UnityEvent onPickUp_Item;
 
     private void Awake()
     {
@@ -202,7 +206,7 @@ public class PlayerManager : MonoBehaviour
         if (collision != null && collision.CompareTag("Item"))
         {
             itemNearBy = false;
-            _Item = null;
+            _Item = collision.GetComponent<Item>();
         }
         else if (collision != null && collision.CompareTag("Statue"))
         {
@@ -210,6 +214,8 @@ public class PlayerManager : MonoBehaviour
             _Statue = null;
             Debug.Log(_Statue + ": Too Far");
         }
+        else if(collision == null)
+            _Item = null;
     }
 
     public void PickUp()
@@ -230,6 +236,8 @@ public class PlayerManager : MonoBehaviour
             criticalDamage += _Item.item_criticalDamage;
             timeInvincible += _Item.item_timeInvincible;
 
+            itemsHeld.Push(_Item);
+            onPickUp_Item.Invoke();
         }
 
         if(itemNearBy == true)
