@@ -10,6 +10,7 @@ public class ItemStatueSpawner : MonoBehaviour
     [SerializeField] private int radius = 2;
     [SerializeField] private int degrees;
     [SerializeField] private int itemsQuantityToSpawn = 3;
+    [SerializeField] private int itemSpacingDistance = 45;
 
     private bool isStatueUsed;
     List<GameObject> itemList = new List<GameObject>();
@@ -27,7 +28,7 @@ public class ItemStatueSpawner : MonoBehaviour
             Debug.Log("Droping Items");
             for (int i = 0; i < itemsQuantityToSpawn; i++)
             {
-                degrees = degrees + 45;
+                degrees = degrees + itemSpacingDistance;
                 int itemTier = UnityEngine.Random.Range(0, itemList.Count);
                 switch (itemTier)
                 {

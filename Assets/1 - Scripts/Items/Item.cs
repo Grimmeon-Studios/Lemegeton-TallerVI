@@ -26,7 +26,7 @@ public class Item : MonoBehaviour
     //public ItemsTextures textures;
     public SpriteRenderer sprite;
 
-    private string descriptionText;
+    public string descriptionText;
 
     private void Start()
     {

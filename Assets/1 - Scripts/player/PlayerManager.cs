@@ -42,15 +42,17 @@ public class PlayerManager : MonoBehaviour
     private Item _Item;
     private bool statueNearBy;
     private GameObject _Statue;
+    private Item lastNearByItem;
     [SerializeField] private GameObject selecctionMark;
     [SerializeField] private Vector2 selectionOffset;
 
-    public UnityEvent onPickUp_Item;
+    private itemsNotification _Notification;
 
     private void Awake()
     {
         _Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
+        _Notification = FindObjectOfType<itemsNotification>();
         //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
         defense = maxDefense;
@@ -94,8 +96,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        
         if(_Item != null)
         {
+            lastNearByItem = _Item;
             selecctionMark.SetActive(true);
             selecctionMark.transform.position = _Item.transform.position + (Vector3)selectionOffset;
         }
@@ -199,6 +203,11 @@ public class PlayerManager : MonoBehaviour
             _Statue = collision.gameObject;
             Debug.Log(_Statue + ": In range");
         }
+        else if (collision == null)
+        {
+            _Item = null;
+            statueNearBy = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -206,7 +215,7 @@ public class PlayerManager : MonoBehaviour
         if (collision != null && collision.CompareTag("Item"))
         {
             itemNearBy = false;
-            _Item = collision.GetComponent<Item>();
+            _Item = null;
         }
         else if (collision != null && collision.CompareTag("Statue"))
         {
@@ -237,7 +246,8 @@ public class PlayerManager : MonoBehaviour
             timeInvincible += _Item.item_timeInvincible;
 
             itemsHeld.Push(_Item);
-            onPickUp_Item.Invoke();
+            _Notification.gameObject.SetActive(true);
+            _Notification.ItemPickedUp();
         }
 
         if(itemNearBy == true)
