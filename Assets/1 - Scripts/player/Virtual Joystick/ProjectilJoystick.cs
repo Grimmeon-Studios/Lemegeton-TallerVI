@@ -1,11 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
 
     [SerializeField] private ProjectileAttack playerProjectileMethod;
+    [SerializeField] private TextMeshProUGUI cd_text;
     public GameObject background; // Reference to the background GameObject
     public GameObject knob; // Reference to the knob GameObject
     public Vector2 JoystickInput { get; private set; } // The Vector2 representing the knob's position
@@ -16,19 +19,35 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
     private Vector2 knobStartPosition;
     private bool isDragging = false;
 
+    public bool onCD;
+    public float timer;
+
     private void Start()
     {
         backgroundRect = background.GetComponent<RectTransform>();
         knobRect = knob.GetComponent<RectTransform>();
         knobStartPosition = knobRect.anchoredPosition;
+        onCD = false;
+        timer = 0;
     }
 
+    private void FixedUpdate()
+    {
+        if(onCD)
+        {
+            timer = timer + Time.fixedDeltaTime;
+            cd_text.text = timer.ToString("F1");
+        }
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        isDragging = true;
-        JoystickInput = eventData.position;
-        OnDrag(eventData);
+        if(onCD==false)
+        {
+            isDragging = true;
+            JoystickInput = eventData.position;
+            OnDrag(eventData);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -61,5 +80,9 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
     public void Aguapanela()
     {
         playerProjectileMethod.LaunchProjectile();
+        onCD = true;
+        //00D6FF
+        //gameObject.GetComponent<Image>().tintColor.a = 0.1f;
+
     }
 }

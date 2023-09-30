@@ -1,5 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Crosshair : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private float meleeRadius;
     [SerializeField] private float targetLockRadius;
     [SerializeField] private float combat_CD;
+    private float combat_CDTimer;
 
     [SerializeField] private PlayerManager _playerManager;
 
@@ -27,6 +30,12 @@ public class Crosshair : MonoBehaviour
     [SerializeField] public float radio = 3.0f;
     [SerializeField] public float transition = 3.0f;
 
+    [Header("Button Config.")]
+    [SerializeField] private Button button;
+    [SerializeField] private TextMeshProUGUI buttonText;
+
+
+
     private void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
@@ -34,6 +43,12 @@ public class Crosshair : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isOnCd == true)
+        {
+            combat_CDTimer = combat_CDTimer + Time.deltaTime;
+            buttonText.text = combat_CDTimer.ToString("F1");
+        }
+
         meleeDamage = _playerManager.attack;
         Vector2 closestEnemyDir = GetDirectionToClosestEnemy();
 
@@ -165,11 +180,16 @@ public class Crosshair : MonoBehaviour
 
     private IEnumerator CombatCD(float waitTime)
     {
+        button.interactable = false;
+
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
 
         // After waiting, execute the method
         isOnCd = false;
+        button.interactable = true;
+        combat_CDTimer = 0;
+        buttonText.text = "Hit!";
     }
 
     public void UpdateLastAimDirection(Vector2 newDirection)
