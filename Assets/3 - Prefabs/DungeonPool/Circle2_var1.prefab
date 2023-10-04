@@ -58079,8 +58079,9 @@ MonoBehaviour:
   itemPrefabTier1: {fileID: 9194860824114186677, guid: 7f4eeb21ea837e446bbe61f804acfe6a, type: 3}
   itemPrefabTier2: {fileID: 0}
   radius: 3
-  degrees: -180
+  degrees: -210
   itemsQuantityToSpawn: 3
+  itemSpacingDistance: 60
 --- !u!1 &2210798117496548365
 GameObject:
   m_ObjectHideFlags: 0
@@ -58301,8 +58302,9 @@ MonoBehaviour:
   itemPrefabTier1: {fileID: 9194860824114186677, guid: 7f4eeb21ea837e446bbe61f804acfe6a, type: 3}
   itemPrefabTier2: {fileID: 0}
   radius: 3
-  degrees: -180
+  degrees: -210
   itemsQuantityToSpawn: 3
+  itemSpacingDistance: 60
 --- !u!1 &3477027326330270262
 GameObject:
   m_ObjectHideFlags: 0
@@ -67360,8 +67362,9 @@ MonoBehaviour:
   itemPrefabTier1: {fileID: 9194860824114186677, guid: 7f4eeb21ea837e446bbe61f804acfe6a, type: 3}
   itemPrefabTier2: {fileID: 0}
   radius: 3
-  degrees: -180
+  degrees: -210
   itemsQuantityToSpawn: 3
+  itemSpacingDistance: 60
 --- !u!1 &4787136990641093989
 GameObject:
   m_ObjectHideFlags: 0
