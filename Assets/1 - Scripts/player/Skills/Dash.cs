@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Dash : MonoBehaviour
 {
+    [SerializeField] private Button dashButton;
+    [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
     private float original_speed;
     [SerializeField] private float dash_Speed;
     [SerializeField] private float dash_CD;
+    private float dash_CDTimer;
+
 
     bool isOnCd = false;
 
@@ -20,6 +26,8 @@ public class Dash : MonoBehaviour
     {
         _Input = new PlayerInput_map();
         capCollider = GetComponent<CapsuleCollider2D>();
+        
+        dash_CDTimer = 0;
     }
 
     public void OnEnable()
@@ -51,6 +59,15 @@ public class Dash : MonoBehaviour
         isOnCd = true;
 
         StartCoroutine(DashCD(dash_CD));
+    }
+
+    private void Update()
+    {
+        if(isOnCd == true)
+        {
+            dash_CDTimer = dash_CDTimer + Time.deltaTime;
+            buttonText.text = dash_CDTimer.ToString("F1");
+        }
     }
 
     private void RestoreParent()
@@ -86,10 +103,14 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashCD(float waitTime)
     {       
+        dashButton.interactable = false;
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
 
         // After waiting, execute the method
         isOnCd = false;
+        dashButton.interactable = true;
+        dash_CDTimer = 0;
+        buttonText.text = "Dash";
     }
 }

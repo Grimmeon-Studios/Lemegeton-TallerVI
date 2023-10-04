@@ -247,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: NoRemainingEnemies.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1578553538}
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room (1)
@@ -364,7 +364,7 @@ PrefabInstance:
     - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: NoRemainingEnemies.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1578553538}
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room (2)
@@ -654,17 +654,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578553538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8280016646763950250, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-  m_PrefabInstance: {fileID: 8760546004893979599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d71542ecb4aaf42a2095d2e6287d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1715460070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,7 +689,7 @@ PrefabInstance:
     - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: NoRemainingEnemies.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1578553538}
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room (3)
@@ -9151,7 +9140,7 @@ PrefabInstance:
     - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: NoRemainingEnemies.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1578553538}
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room

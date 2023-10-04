@@ -13,7 +13,11 @@ TagManager:
   - Item
   - Statue
   - EnemyAndras
-  - Sulfur
+  - Circle1
+  - Circle2
+  - Circle3
+  - Circle4
+  - Circle5
   layers:
   - Default
   - TransparentFX

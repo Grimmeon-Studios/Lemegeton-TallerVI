@@ -178,3 +178,4 @@ MonoBehaviour:
   currState: 0
   sulfurPrefab: {fileID: 7156719531565285854, guid: 57892f646241abd42be439dcdd46264e, type: 3}
   health: 1
+  incubus: {fileID: 7303481817669692880}

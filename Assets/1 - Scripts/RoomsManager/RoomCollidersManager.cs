@@ -6,7 +6,7 @@ public class TransitionEdgeToBox : MonoBehaviour
 {
     public float transitionTime = 2f;
     private float transitionTimer = 0f;
-    private bool isTransitioning = false;
+    private bool isTransitioning;
 
     private BoxCollider2D boxCollider;
     private EdgeCollider2D edgeCollider;
@@ -18,6 +18,8 @@ public class TransitionEdgeToBox : MonoBehaviour
 
     private void Start()
     {
+        isTransitioning = false;
+
         boxCollider = GetComponent<BoxCollider2D>();
         edgeCollider = GetComponent<EdgeCollider2D>();
 

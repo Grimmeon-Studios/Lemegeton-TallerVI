@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -37,18 +38,23 @@ public class PlayerManager : MonoBehaviour
     public Rigidbody2D _Rigidbody;
 
     [Header("Items and Statue attributes")]
+    public Stack<Item> itemsHeld = new Stack<Item>();
     private bool itemNearBy;
     private Item _Item;
     private bool statueNearBy;
     private GameObject _Statue;
+    private Item lastNearByItem;
     [SerializeField] private GameObject selecctionMark;
     [SerializeField] private Vector2 selectionOffset;
     //private SulfurPickup _Sulfur;
+
+    private itemsNotification _Notification;
 
     private void Awake()
     {
         _Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
+        _Notification = FindObjectOfType<itemsNotification>();
         //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
         defense = maxDefense;
@@ -92,8 +98,10 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        
         if(_Item != null)
         {
+            lastNearByItem = _Item;
             selecctionMark.SetActive(true);
             selecctionMark.transform.position = _Item.transform.position + (Vector3)selectionOffset;
         }
@@ -197,6 +205,11 @@ public class PlayerManager : MonoBehaviour
             _Statue = collision.gameObject;
             Debug.Log(_Statue + ": In range");
         }
+        else if (collision == null)
+        {
+            _Item = null;
+            statueNearBy = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -212,6 +225,8 @@ public class PlayerManager : MonoBehaviour
             _Statue = null;
             Debug.Log(_Statue + ": Too Far");
         }
+        else if(collision == null)
+            _Item = null;
     }
 
     public void PickUp()
@@ -232,6 +247,9 @@ public class PlayerManager : MonoBehaviour
             criticalDamage += _Item.item_criticalDamage;
             timeInvincible += _Item.item_timeInvincible;
 
+            itemsHeld.Push(_Item);
+            _Notification.gameObject.SetActive(true);
+            _Notification.ItemPickedUp();
         }
 
         if(itemNearBy == true)

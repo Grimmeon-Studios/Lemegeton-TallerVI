@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5937136624069538277}
-  - component: {fileID: 8280016646763950250}
+  - component: {fileID: 2135838740488322639}
   - component: {fileID: 2426550591269680225}
   - component: {fileID: 3477000256040932621}
   m_Layer: 3
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 7543153469517759755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8280016646763950250
+--- !u!114 &2135838740488322639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,48 +44,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1439107651180042362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d71542ecb4aaf42a2095d2e6287d67, type: 3}
+  m_Script: {fileID: 11500000, guid: 53d73cdebc38c3146a20013ed2664b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incubus_StatsMultiplier: {x: 6.5, y: 1, z: 0.05}
-  LostSoul_StatsMultiplier: {x: 5, y: 0.5, z: 0.2}
-  andras_StatsMultiplier: {x: 8, y: 1.2, z: 0}
-  Circle1_Variant1: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  Circle1_Variant2: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  Circle1_Variant3: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  Circle1_Variant4: {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  Circle2_Variant1: {fileID: 0}
-  Circle2_Variant2: {fileID: 0}
-  Circle2_Variant3: {fileID: 0}
-  Circle2_Variant4: {fileID: 0}
-  Circle3_Variant1: {fileID: 0}
-  Circle3_Variant2: {fileID: 0}
-  Circle3_Variant3: {fileID: 0}
-  Circle3_Variant4: {fileID: 0}
-  Circle4_Variant1: {fileID: 0}
-  Circle4_Variant2: {fileID: 0}
-  Circle4_Variant3: {fileID: 0}
-  Circle4_Variant4: {fileID: 0}
-  Circle5_Variant1: {fileID: 0}
-  Circle5_Variant2: {fileID: 0}
-  Circle5_Variant3: {fileID: 0}
-  Circle5_Variant4: {fileID: 0}
-  Circle6_Variant1: {fileID: 0}
-  Circle6_Variant2: {fileID: 0}
-  Circle6_Variant3: {fileID: 0}
-  Circle6_Variant4: {fileID: 0}
-  Circle7_Variant1: {fileID: 0}
-  Circle7_Variant2: {fileID: 0}
-  Circle7_Variant3: {fileID: 0}
-  Circle7_Variant4: {fileID: 0}
-  Circle8_Variant1: {fileID: 0}
-  Circle8_Variant2: {fileID: 0}
-  Circle8_Variant3: {fileID: 0}
-  Circle8_Variant4: {fileID: 0}
-  Circle9_Variant1: {fileID: 0}
-  Circle9_Variant2: {fileID: 0}
-  Circle9_Variant3: {fileID: 0}
-  Circle9_Variant4: {fileID: 0}
+  incubus_StatsMultiplier: {x: 0, y: 0, z: 0}
+  LostSoul_StatsMultiplier: {x: 0, y: 0, z: 0}
+  andras_StatsMultiplier: {x: 0, y: 0, z: 0}
+  additionalEnemyCount: 0
+  currentCircle: 0
+  circlesToInstantiate: []
+  circle1_var:
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  circle2_var:
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  circle3_var:
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  circle4_var:
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  - {fileID: 2825180927184791462, guid: 947ea1ade26ac7d47b5afb273c7559b9, type: 3}
+  circle5_var:
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
+  - {fileID: 2825180927184791462, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
 --- !u!61 &2426550591269680225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,7 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 0}
   difficultyLvl_Txt: {fileID: 0}
+  currentCircle_Txt: {fileID: 0}
   difficultyColor: {fileID: 0}
   timeScale: 0
   timeStepsForLevel: 45
   difficultyLvl: 0
+  currentCircleLvl: 0

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public enum incubState
 {
     Chasing,
@@ -31,11 +31,6 @@ public class IncubusScript : MonoBehaviour
     public incubState currState = incubState.Chasing;
     #endregion
 
-    #region DROPS RELATED
-    public GameObject sulfurPrefab;
-    //public GameObject drop2Prefab;
-    #endregion
-
     #region ELSE
     [SerializeField] private float health;
     public float Health { get => health; set => health = value; }
@@ -45,15 +40,20 @@ public class IncubusScript : MonoBehaviour
     // GameObject door;
     #endregion
 
-
-
-
+    //#region DROPS RELATED
+    //public GameObject drop1Prefab;
+    //public GameObject drop2Prefab;
+    //#endregion
+    public SpriteRenderer incubus;
+    
+    
     void Start()
     {
         player = GameObject.Find("Player");
         // door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         // LM = door.GetComponent<LevelManagement>();
+
     }
 
     void Update()
@@ -87,7 +87,16 @@ public class IncubusScript : MonoBehaviour
     public void takeDamage(float damage)
     {
         Health -= damage;
-        if (Health <= 0)
+        
+        if (Health > 0)
+        {
+            incubus.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
+            {
+               incubus.DOColor(Color.white, 0.1f);
+            });
+            DOTween.Kill(transform);
+        }
+        else
         {
             currState = incubState.Dead;
         }
@@ -118,7 +127,7 @@ public class IncubusScript : MonoBehaviour
                 Vector2 objectPos = transform.position;
                 objectPos.x += Random.Range(-1f, 1f);
                 objectPos.y += Random.Range(-1f, 1f);
-                GameObject dropObject = Instantiate(sulfurPrefab, objectPos, Quaternion.identity);
+                // GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
             }
             else if (opcDrop == 2)
             {
