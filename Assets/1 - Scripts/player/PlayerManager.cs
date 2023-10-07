@@ -35,7 +35,8 @@ public class PlayerManager : MonoBehaviour
     public Vector2 _Movement;
     public Vector2 _DampedSpeed;
     public Rigidbody2D _Rigidbody;
-
+    public Animator animator;
+    
     [Header("Items and Statue attributes")]
     public Stack<Item> itemsHeld = new Stack<Item>();
     private bool itemNearBy;
@@ -104,7 +105,39 @@ public class PlayerManager : MonoBehaviour
             selecctionMark.SetActive(false);
             selecctionMark.transform.position = gameObject.transform.position;
         }
+        
+        AnimMovement();
+       
     }
+
+    private void AnimMovement()
+    {
+        
+        if (_Rigidbody.velocity.normalized[1] >= 0.2f)
+        {
+            animator.SetFloat("Vertical",1);
+            animator.SetFloat("Horizontal",0);
+        }
+        else if (_Rigidbody.velocity.normalized[1] <= -0.2f)
+        {
+            animator.SetFloat("Vertical",-1);
+            animator.SetFloat("Horizontal",0);
+        }
+        else if (_Rigidbody.velocity.normalized[0] >= 0.2f)
+        {
+            animator.SetFloat("Horizontal",1);
+            animator.SetFloat("Vertical",0);
+        }
+        else if (_Rigidbody.velocity.normalized[0] <= -0.2f)
+        {
+            animator.SetFloat("Horizontal",-1);
+            animator.SetFloat("Vertical",0);
+        }
+        
+        Debug.Log(_Rigidbody.velocity.normalized);
+        animator.SetFloat("Speed",_Rigidbody.velocity.sqrMagnitude);
+    }
+    
     /*public void pickingUp(int pickUps)
    {
        switch (pickUps)
@@ -126,11 +159,14 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if (_playerTouchMovementScript.joystickActive == false)
         {
             _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
             _Rigidbody.velocity = _DampedSpeed * speed;
         }
+
+       
     }
     public void TakeDamage(float amount)
     {

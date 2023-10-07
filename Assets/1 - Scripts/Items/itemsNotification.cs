@@ -17,7 +17,7 @@ public class itemsNotification : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    void ItemPickedUp()
+    public void ItemPickedUp()
     {
         lastPickedItem = playerManager.itemsHeld.Peek();
 
