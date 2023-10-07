@@ -179,9 +179,16 @@ public class PlayerManager : MonoBehaviour
 
         isInvincible = true;
         invincibleTimer = timeInvincible;
-
-        health -= amount;
-        Debug.Log("Health" + health);
+        
+        if (defense > 0)
+        {
+            defense -- ;
+        }
+        else
+        {
+            health -= amount;
+            Debug.Log("Health" + health);
+        }
         if (health <= 0)
         {
             Death();
@@ -269,10 +276,33 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Trying to pick Up");
             speed += _Item.item_speed;
+            if (health < maxHealth)
+            {
+                if ((_Item.item_health + health) <= maxHealth)
+                {
+                    health += _Item.item_health;
+                }
+                else
+                {
+                    health = maxHealth;
+                }
+            }
+           
             maxHealth += _Item.item_maxHealth;
-            health += _Item.item_health;
+
+            if (defense < maxDefense)
+            {
+                if ((_Item.item_defense + defense) <= maxDefense)
+                {
+                    defense += _Item.item_defense;
+                }
+                else
+                {
+                    defense = maxDefense;
+                }
+            }
             maxDefense += _Item.item_maxDefense;
-            defense += _Item.item_defense;
+
             attack += _Item.item_attack;
             shotDamage += _Item.item_shotDamage;
             shotSpeed += _Item.item_shotSpeed;
