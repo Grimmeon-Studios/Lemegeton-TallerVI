@@ -47,8 +47,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject selecctionMark;
     [SerializeField] private Vector2 selectionOffset;
 
+    [Header("UI")]
     private itemsNotification _Notification;
 
+    private HealthBar _healthBar;
     private void Awake()
     {
         _Input = new PlayerInput_map();
@@ -57,6 +59,8 @@ public class PlayerManager : MonoBehaviour
         //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
         defense = maxDefense;
+        _healthBar = FindObjectOfType<HealthBar>();
+        _healthBar.SetMaxHealth(maxHealth);
     }
     private void OnEnable()
     {
@@ -109,7 +113,8 @@ public class PlayerManager : MonoBehaviour
             selecctionMark.SetActive(false);
             selecctionMark.transform.position = gameObject.transform.position;
         }
-        
+
+        _healthBar.SetHealth(health);
         AnimMovement();
        
     }
@@ -289,6 +294,7 @@ public class PlayerManager : MonoBehaviour
             }
            
             maxHealth += _Item.item_maxHealth;
+            _healthBar.SetMaxHealth(maxHealth);
 
             if (defense < maxDefense)
             {
