@@ -19,7 +19,8 @@ public class Crosshair : MonoBehaviour
     private float combat_CDTimer;
 
     [SerializeField] private PlayerManager _playerManager;
-
+    private float meleeCriticalDamage;
+    private float meleeCritialRateUp;
     private float meleeDamage;
     private Vector2 currentAimDirection;
 
@@ -50,6 +51,8 @@ public class Crosshair : MonoBehaviour
         }
 
         meleeDamage = _playerManager.attack;
+        meleeCriticalDamage = _playerManager.criticalDamage;
+        meleeCritialRateUp = _playerManager.criticalRateUp;
         Vector2 closestEnemyDir = GetDirectionToClosestEnemy();
 
         // Ensure the playerTransform is set (you can also assign it manually in the Inspector)
@@ -110,7 +113,21 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(AnimationPlaceholder(0.2f));
 
-
+        
+        
+        float randomValue = Random.Range(0f, 1f);
+    
+        // Comprueba si se produce un ataque crítico.
+        if (randomValue < meleeCritialRateUp)//If critical damage
+        {
+            meleeDamage = CalculateCriticalDamage(_playerManager.attack,_playerManager.criticalDamage);
+            Debug.Log("¡Ataque crítico! Daño total: " + meleeDamage);
+        }
+        else //If there's no critical damage
+        {
+            meleeDamage = _playerManager.attack;
+            Debug.Log("Ataque normal. Daño total: " + meleeDamage);
+        }
         Collider2D[] radius = Physics2D.OverlapCircleAll(gameObject.transform.position, meleeRadius);
 
         foreach (Collider2D collision in radius)
@@ -135,7 +152,11 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(CombatCD(combat_CD));
     }
-
+    private float CalculateCriticalDamage(float baseAttack, float criticalDmg)
+    {
+        float criticalDamage = baseAttack*2 + (baseAttack * criticalDmg);
+        return criticalDamage;
+    }
     public Vector2 GetDirectionToClosestEnemy()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_playerManager.gameObject.transform.position, targetLockRadius, enemyLayers);
