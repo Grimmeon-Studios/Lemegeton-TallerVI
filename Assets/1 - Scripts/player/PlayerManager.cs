@@ -344,7 +344,7 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
-
+    
     public void ActivateStatue()
     {
         Debug.Log("Activate Statue attempt");
@@ -361,5 +361,68 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    public float GetHealth()
+    {
+        return health;
+    }
+    public float GetMaxDefense()
+    {
+        return maxDefense;
+    }
+    public float GetDefense()
+    {
+        return defense;
+    }
+    public float GetAttack()
+    {
+        return attack;
+    }
+    public float GetShotSpeed()
+    {
+        return shotSpeed;
+    }
+    public float GetShotRange()
+    {
+        return shotRange;
+    }
+    public int GetShotDamage()
+    {
+        return shotDamage;
+    }
+    public float GetCriticalDamage()
+    {
+        return criticalDamage;
+    }
+    public float GetCriticalRateUp()
+    {
+        return criticalRateUp;
+    }
+    public float GetTimeInvincible()
+    {
+        return timeInvincible;
+    }
 
+    public void SetStats(float sp,float maxHth, float hth, float maxDf, float df, float atk, float shotSp, float shotRng, int shotDmg, float crtDmg, float crtRtUp, float tmInvin)
+    {
+        speed = sp;
+        maxHealth = maxHth;
+        health = hth;
+        maxDefense = maxDf;
+        defense = df;
+        attack = atk;
+        shotSpeed = shotSp;
+        shotRange = shotRng;
+        shotDamage = shotDmg;
+        criticalDamage = crtDmg;
+        criticalRateUp = crtRtUp;
+        timeInvincible = tmInvin;
+    }
 }
