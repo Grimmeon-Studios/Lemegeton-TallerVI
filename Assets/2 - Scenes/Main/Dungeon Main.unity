@@ -1115,6 +1115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: criticalRateUp
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 8480319302363760648, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: buttonText
       value: 
