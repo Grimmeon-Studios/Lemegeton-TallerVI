@@ -19,7 +19,6 @@ public class Crosshair : MonoBehaviour
     private float combat_CDTimer;
 
     [SerializeField] private PlayerManager _playerManager;
-    [SerializeField] private float criticalMultiplier = 0.25f;
     private float meleeCriticalDamage;
     private float meleeCritialRateUp;
     private float meleeDamage;
