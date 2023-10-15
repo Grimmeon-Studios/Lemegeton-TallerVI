@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140403886400543366}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 51b8c8fb36e6b08459f3e55f2a63e8cb, type: 3}
-  m_Color: {r: 0.234148, g: 0, b: 0.25490198, a: 0.5019608}
+  m_Sprite: {fileID: 21300000, guid: 0a59bb8ff874ade4f8cd4b615b1710d0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -110,6 +110,8 @@ MonoBehaviour:
   _playerManager: {fileID: 4784871271395500878}
   radio: 3
   transition: 3
+  button: {fileID: 0}
+  buttonText: {fileID: 0}
 --- !u!1 &585336813210003392
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,7 +270,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ac60896241604274da2cdbe864010912, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -474,9 +476,6 @@ MonoBehaviour:
   animator: {fileID: 7941519036413593205}
   selecctionMark: {fileID: 2102433667661616385}
   selectionOffset: {x: 0, y: 1}
-  onPickUp_Item:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1179116119827195433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +494,7 @@ MonoBehaviour:
   Joystick: {fileID: 0}
   _PlayerManager: {fileID: 4784871271395500878}
   _Canvas: {fileID: 0}
-  atkController: {fileID: 0}
+  atkController: {fileID: 2548719091320216206}
 --- !u!114 &8480319302363760648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,6 +507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11b896a33855ce43a50ddff315ee0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashButton: {fileID: 0}
+  buttonText: {fileID: 0}
   playerComponent: {fileID: 1395190083199140898}
   realPlayer: {fileID: 4784871271395500878}
   dash_durarion: 0.8
@@ -720,7 +721,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.8625, y: 4.4625}
+    oldSize: {x: 2.8625, y: 4.4682927}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
