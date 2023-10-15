@@ -102,13 +102,13 @@ public class Item : MonoBehaviour
                     break;
 
                 case 9: // Critical Damage Probability
-                    item_criticalRateUp = 2;
+                    item_criticalRateUp = 0.02f;
                     descriptionText = "Increases the chances to deal a critical hit (" + item_criticalRateUp + ")";
                     sprite.sprite = spriteTexturesList[9];
                     break;
 
                 case 10: // Critical Damage
-                    item_criticalDamage = 3;
+                    item_criticalDamage = 0.25f;
                     descriptionText = "Increases the damage of a critical hit (" + item_criticalDamage + ")";
                     sprite.sprite = spriteTexturesList[10];
                     break;

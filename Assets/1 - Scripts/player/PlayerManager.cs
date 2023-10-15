@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public float shotRange = 10;
     public int shotDamage = 5;
     public float criticalRateUp = 0.6f;
-    public float criticalDamage = 1;
+    public float criticalDamage = 0.25f;
     public bool isInvincible = false;
     public float invincibleTimer;
     public float timeInvincible = 2.0f;
@@ -143,7 +143,7 @@ public class PlayerManager : MonoBehaviour
             animator.SetFloat("Vertical",0);
         }
         
-        Debug.Log(_Rigidbody.velocity.normalized);
+        //Debug.Log(_Rigidbody.velocity.normalized);
         animator.SetFloat("Speed",_Rigidbody.velocity.sqrMagnitude);
     }
     
@@ -313,7 +313,9 @@ public class PlayerManager : MonoBehaviour
             shotDamage += _Item.item_shotDamage;
             shotSpeed += _Item.item_shotSpeed;
             shotRange += _Item.item_shotRange;
-            criticalRateUp += _Item.item_criticalRateUp;
+            
+            criticalRateUp = Mathf.Clamp(criticalRateUp + _Item.item_criticalRateUp, 0f,1f);
+            
             criticalDamage += _Item.item_criticalDamage;
             timeInvincible += _Item.item_timeInvincible;
 
