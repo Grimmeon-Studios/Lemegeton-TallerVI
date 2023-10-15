@@ -19,7 +19,7 @@ public class Crosshair : MonoBehaviour
     private float combat_CDTimer;
 
     [SerializeField] private PlayerManager _playerManager;
-
+    [SerializeField] private float criticalMultiplier = 0.25f;
     private float meleeCriticalDamage;
     private float meleeCritialRateUp;
     private float meleeDamage;
@@ -121,8 +121,7 @@ public class Crosshair : MonoBehaviour
         // Comprueba si se produce un ataque crítico.
         if (randomValue < meleeCritialRateUp)//If critical damage
         {
-            // Si se produce un ataque crítico, el daño total es el daño base más el daño crítico.
-            meleeDamage = _playerManager.attack + meleeCriticalDamage;
+            meleeDamage = CalculateCriticalDamage(_playerManager.attack,_playerManager.criticalDamage);
             Debug.Log("¡Ataque crítico! Daño total: " + meleeDamage);
         }
         else //If there's no critical damage
@@ -154,7 +153,11 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(CombatCD(combat_CD));
     }
-
+    private float CalculateCriticalDamage(float baseAttack, float criticalDmg)
+    {
+        float criticalDamage = baseAttack*2 + (baseAttack * criticalDmg);
+        return criticalDamage;
+    }
     public Vector2 GetDirectionToClosestEnemy()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_playerManager.gameObject.transform.position, targetLockRadius, enemyLayers);

@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     public float shotRange = 10;
     public int shotDamage = 5;
     public float criticalRateUp = 0.6f;
-    public float criticalDamage = 1;
+    public float criticalDamage = 0.25f;
     public bool isInvincible = false;
     public float invincibleTimer;
     public float timeInvincible = 2.0f;
