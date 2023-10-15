@@ -20,6 +20,8 @@ public class Crosshair : MonoBehaviour
 
     [SerializeField] private PlayerManager _playerManager;
 
+    private float meleeCriticalDamage;
+    private float meleeCritialRateUp;
     private float meleeDamage;
     private Vector2 currentAimDirection;
 
@@ -50,6 +52,8 @@ public class Crosshair : MonoBehaviour
         }
 
         meleeDamage = _playerManager.attack;
+        meleeCriticalDamage = _playerManager.criticalDamage;
+        meleeCritialRateUp = _playerManager.criticalRateUp;
         Vector2 closestEnemyDir = GetDirectionToClosestEnemy();
 
         // Ensure the playerTransform is set (you can also assign it manually in the Inspector)
@@ -110,7 +114,22 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(AnimationPlaceholder(0.2f));
 
-
+        
+        
+        float randomValue = Random.Range(0f, 1f);
+    
+        // Comprueba si se produce un ataque crítico.
+        if (randomValue < meleeCritialRateUp)//If critical damage
+        {
+            // Si se produce un ataque crítico, el daño total es el daño base más el daño crítico.
+            meleeDamage = _playerManager.attack + meleeCriticalDamage;
+            Debug.Log("¡Ataque crítico! Daño total: " + meleeDamage);
+        }
+        else //If there's no critical damage
+        {
+            meleeDamage = _playerManager.attack;
+            Debug.Log("Ataque normal. Daño total: " + meleeDamage);
+        }
         Collider2D[] radius = Physics2D.OverlapCircleAll(gameObject.transform.position, meleeRadius);
 
         foreach (Collider2D collision in radius)

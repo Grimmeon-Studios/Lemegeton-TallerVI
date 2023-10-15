@@ -7,10 +7,11 @@ public class Combat : MonoBehaviour
     [Header("Melee Attack")]
     [SerializeField] private GameObject meleeController;
     [SerializeField] private SpriteRenderer meleeSprite;
-    [SerializeField] private float meleeRadius;
-    [SerializeField] private int meleeDamage;
-    [SerializeField] private float combat_CD;
+    [SerializeField] private float meleeRadius; 
+    private float meleeDamage;
 
+    [SerializeField] private float combat_CD;
+    PlayerManager player;
     bool isOnCd = false;
 
     //[SerializeField] private FloatingJoystick Joystick;
@@ -23,7 +24,7 @@ public class Combat : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-
+        player = FindObjectOfType<PlayerManager>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -31,7 +32,7 @@ public class Combat : MonoBehaviour
     {
         //ChangeTargetPos(meleeController);
         transform.position = playerTransform.position;
-
+        
     }
 
     public void Melee()
@@ -40,8 +41,9 @@ public class Combat : MonoBehaviour
             return;
 
         StartCoroutine(AnimationPlaceholder(0.2f));
-    
+        
 
+        
         Collider2D[] radius = Physics2D.OverlapCircleAll(meleeController.transform.position, meleeRadius);
 
         foreach (Collider2D collision in radius)

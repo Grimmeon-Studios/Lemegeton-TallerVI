@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/player/Combat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/player/Combat.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/player/PlayerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/player/PlayerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Dungeon Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Dungeon Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MeleeAimController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeleeAimController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +90,7 @@
       <workItem from="1696646705560" duration="2536000" />
       <workItem from="1697044961473" duration="2489000" />
       <workItem from="1697332153595" duration="6678000" />
+      <workItem from="1697339485389" duration="2617000" />
     </task>
     <servers />
   </component>
