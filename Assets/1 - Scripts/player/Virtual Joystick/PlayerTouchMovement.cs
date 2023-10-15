@@ -7,18 +7,24 @@ public class PlayerTouchMovement : MonoBehaviour
 {
     public bool joystickActive = false;
     public Vector2 scaledMovement;
-    
+
 
     [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
     [SerializeField] private FloatingJoystick Joystick;
     [SerializeField] private PlayerManager _PlayerManager;
     [SerializeField] private Canvas _Canvas;
+    [SerializeField] private Crosshair atkController;
 
-
+    private Vector2 dampedSpeed;
     private Finger MovementFinger;
     private Vector2 MovementAmount;
+    private Vector2 lastNonZeroMovementAmount;
     PlayerInput_map _Input;
 
+    private void Awake()
+    {
+        atkController = FindAnyObjectByType<Crosshair>();
+    }
     private void OnEnable()
     {
         EnhancedTouchSupport.Enable();
@@ -55,6 +61,12 @@ public class PlayerTouchMovement : MonoBehaviour
 
             Joystick.Knob.anchoredPosition = knobPosition;
             MovementAmount = knobPosition / maxMovement;
+
+            if (MovementAmount != Vector2.zero)
+            {
+                lastNonZeroMovementAmount = MovementAmount;
+            }
+            atkController.UpdateLastAimDirection(MovementAmount);
         }
     }
 
@@ -104,14 +116,18 @@ public class PlayerTouchMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        scaledMovement = Time.deltaTime * new Vector2(MovementAmount.x, MovementAmount.y);
         if (joystickActive == true)
         {
-            //_PlayerManager._DampedSpeed = Vector2.SmoothDamp(MovementAmount, Vector2.zero, ref MovementAmount, 0.05f);
-            //_PlayerManager._Rigidbody.velocity = _PlayerManager._DampedSpeed * scaledMovement * 1000;
-            _PlayerManager._Rigidbody.velocity = MovementAmount * _PlayerManager.speed;
+            dampedSpeed = Vector2.SmoothDamp(dampedSpeed, MovementAmount, ref dampedSpeed, 0.05f);
+            _PlayerManager._Rigidbody.velocity = dampedSpeed * _PlayerManager.speed;
+        }
+        else
+        {
+            // Use the lastNonZeroMovementAmount when the joystick is not active
+            _PlayerManager._Rigidbody.velocity = lastNonZeroMovementAmount * _PlayerManager.speed;
         }
     }
+
 
     //private void OnGUI()
     //{

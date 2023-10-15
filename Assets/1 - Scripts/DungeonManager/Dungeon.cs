@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Dungeon : MonoBehaviour
@@ -8,6 +9,7 @@ public class Dungeon : MonoBehaviour
     private ChronometerManager chronometer;
     private BoxCollider2D gameAreaCollider;
     private GameObject playerObj;
+    [SerializeField] private LayerMask collisionLayerMask;
 
     private int difficultylvl;
     private bool circleCleared;
@@ -21,31 +23,30 @@ public class Dungeon : MonoBehaviour
     public Vector3 LostSoul_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
     public Vector3 andras_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
 
+
+    [Header("Other Config.")]
     public int additionalEnemyCount = 0;
     public int currentCircle;
 
 
+    [Header("Dungeon  Lists")]
     public List<GameObject> circlesToInstantiate = new List<GameObject>();
 
     public List<GameObject> circle1_var = new List<GameObject>();
     public List<GameObject> circle2_var = new List<GameObject>();
-    public List<GameObject> circle3_var = new List<GameObject>();
-    public List<GameObject> circle4_var = new List<GameObject>();
-    public List<GameObject> circle5_var = new List<GameObject>();
-
 
 
     private void Awake()
     {
         playerObj = FindObjectOfType<PlayerManager>().gameObject;
-
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
+
+        gameAreaCollider = GetComponent<BoxCollider2D>();
 
         GenerateDungeon();
 
         circleCleared = false;
 
-        gameAreaCollider = GetComponent<BoxCollider2D>();
         additionalEnemyCount = 0;
         currentCircle = 1;
 
@@ -77,7 +78,6 @@ public class Dungeon : MonoBehaviour
             if (unclearedRooms == 0)
             {
                 circleCleared = true;
-                chronometer.currentCircleLvl = currentCircle;
                 OnCircleCleared();
             }
         }
@@ -87,17 +87,19 @@ public class Dungeon : MonoBehaviour
     {
         if (circleCleared)
         {
+            Debug.Log("circle " + circlesToInstantiate[currentCircle-1].transform.Find("Dungeon").gameObject.name.ToString() + " cleared");
+            circlesToInstantiate[currentCircle-1].transform.Find("Dungeon").gameObject.SetActive(false);
+
             currentCircle++;
 
-
-            if (currentCircle >= 1)
+            if (currentCircle > 1)
             {
-                circlesToInstantiate[currentCircle - 2].gameObject.SetActive(false);
+                circlesToInstantiate[currentCircle - 1].transform.Find("Dungeon").gameObject.SetActive(true);
             }
-            circlesToInstantiate[currentCircle-1].gameObject.SetActive(true);
 
             playerObj.transform.position = Vector3.zero;
             circleCleared = false;
+            chronometer.currentCircleLvl = currentCircle;
         }
     }
 
@@ -135,17 +137,13 @@ public class Dungeon : MonoBehaviour
 
         circlesToInstantiate.Add(circle1_var[ranCircle1]);
         circlesToInstantiate.Add(circle2_var[ranCircle2]);
-        circlesToInstantiate.Add(circle3_var[ranCircle3]);
-        circlesToInstantiate.Add(circle4_var[ranCircle4]);
-        circlesToInstantiate.Add(circle5_var[ranCircle5]);
         
-
         for (int i = 0; i < circlesToInstantiate.Count; i++)
         {
             if (circlesToInstantiate[i] != null)
             {
                 Instantiate(circlesToInstantiate[i]);
-                circlesToInstantiate[i].gameObject.SetActive(false);
+                circlesToInstantiate[i].SetActive(true);
             }
             else if (circlesToInstantiate.Count < 5)
             {
@@ -153,7 +151,56 @@ public class Dungeon : MonoBehaviour
             }
         }
 
-        circlesToInstantiate[0].gameObject.SetActive(true);
+        circlesToInstantiate.Clear();
+
+        HandleDungeons();
     }
+
+    void HandleDungeons()
+    {
+        // Set up a BoxCollider2D to represent the area you want to check for collisions.
+        // You can adjust the size and position based on your needs.
+        Bounds bounds = gameAreaCollider.bounds;
+
+        // Check for collisions within the bounds of the BoxCollider2D.
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(bounds.center, bounds.size, 0f, collisionLayerMask);
+
+        // Now, 'colliders' contains all colliders that overlap with your BoxCollider2D.
+        // You can loop through them and perform any necessary actions.
+        Debug.Log("handling Dungeons");
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.CompareTag("Circle1"))
+            {
+                // Handle the collision with the object that has the specified tag.
+                circlesToInstantiate.Add(collider.gameObject);
+                Debug.Log("circle 1 added");
+            }
+
+            if (collider.CompareTag("Circle2"))
+            {
+                // Handle the collision with the object that has the specified tag.
+                circlesToInstantiate.Add(collider.gameObject);
+                Debug.Log("circle 2 added");
+
+            }
+
+        }
+
+        // Check if the list has elements before accessing them.
+        if (circlesToInstantiate.Count > 0)
+        {
+            Debug.Log("First circle is called " + circlesToInstantiate[0].name.ToString());
+            circlesToInstantiate[0].transform.Find("Dungeon").gameObject.SetActive(true);
+
+            for (int i = 1; i < circlesToInstantiate.Count; ++i)
+            {
+                circlesToInstantiate[i].transform.Find("Dungeon").gameObject.SetActive(false);
+            }
+        }
+    }
+
+
 
 }

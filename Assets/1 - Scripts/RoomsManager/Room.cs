@@ -21,7 +21,7 @@ public class Room : MonoBehaviour
     // pls especify how many enemies prefabs there are
     [SerializeField] private int numberOfEnemiesPrefabs;
     [SerializeField] private GameObject enemyPrefab1, enemyPrefab2, enemyPrefab3;
-    private bool inCombat = false;
+    //private bool inCombat = false;
     private bool enemiesBuffed = false;
 
     void Awake()
@@ -77,7 +77,7 @@ public class Room : MonoBehaviour
                 if(enemiesHashSet.Count == 0)
                 {
                     NoRemainingEnemies.Invoke();
-                    inCombat = false;
+                    //inCombat = false;
                     enemiesBuffed = false;
                     Destroy(gameObject);
                 }
