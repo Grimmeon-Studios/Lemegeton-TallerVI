@@ -20,11 +20,10 @@ public class PlayerManager : MonoBehaviour
     public float shotRange = 10;
     public int shotDamage = 5;
     public float criticalRateUp = 0.6f;
-    public float criticalDamage = 1;
+    public float criticalDamage = 0.25f;
     public bool isInvincible = false;
     public float invincibleTimer;
     public float timeInvincible = 2.0f;
-    public int sulfur;
 
     //private string levelname;
 
@@ -47,7 +46,6 @@ public class PlayerManager : MonoBehaviour
     private Item lastNearByItem;
     [SerializeField] private GameObject selecctionMark;
     [SerializeField] private Vector2 selectionOffset;
-    //private SulfurPickup _Sulfur;
 
     [Header("UI")]
     private itemsNotification _Notification;
@@ -145,7 +143,7 @@ public class PlayerManager : MonoBehaviour
             animator.SetFloat("Vertical",0);
         }
         
-        Debug.Log(_Rigidbody.velocity.normalized);
+        //Debug.Log(_Rigidbody.velocity.normalized);
         animator.SetFloat("Speed",_Rigidbody.velocity.sqrMagnitude);
     }
     
@@ -315,7 +313,9 @@ public class PlayerManager : MonoBehaviour
             shotDamage += _Item.item_shotDamage;
             shotSpeed += _Item.item_shotSpeed;
             shotRange += _Item.item_shotRange;
-            criticalRateUp += _Item.item_criticalRateUp;
+            
+            criticalRateUp = Mathf.Clamp(criticalRateUp + _Item.item_criticalRateUp, 0f,1f);
+            
             criticalDamage += _Item.item_criticalDamage;
             timeInvincible += _Item.item_timeInvincible;
 
@@ -346,24 +346,7 @@ public class PlayerManager : MonoBehaviour
         }
         
     }
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision != null && collision.CompareTag("Sulfur"))
-        {
-            PlayerManager player = GetComponent<PlayerManager>();
-            if (player != null)
-            {
-                player.AddSulfur(1);
-                Destroy(collision.gameObject);
-            }
-
-        }
-    }
-    public void AddSulfur(int amount)
-    {
-        sulfur += amount;
-    }
-
+    
     public void ActivateStatue()
     {
         Debug.Log("Activate Statue attempt");
@@ -380,5 +363,68 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public float GetSpeed()
+    {
+        return speed;
+    }
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+    public float GetHealth()
+    {
+        return health;
+    }
+    public float GetMaxDefense()
+    {
+        return maxDefense;
+    }
+    public float GetDefense()
+    {
+        return defense;
+    }
+    public float GetAttack()
+    {
+        return attack;
+    }
+    public float GetShotSpeed()
+    {
+        return shotSpeed;
+    }
+    public float GetShotRange()
+    {
+        return shotRange;
+    }
+    public int GetShotDamage()
+    {
+        return shotDamage;
+    }
+    public float GetCriticalDamage()
+    {
+        return criticalDamage;
+    }
+    public float GetCriticalRateUp()
+    {
+        return criticalRateUp;
+    }
+    public float GetTimeInvincible()
+    {
+        return timeInvincible;
+    }
 
+    public void SetStats(float sp,float maxHth, float hth, float maxDf, float df, float atk, float shotSp, float shotRng, int shotDmg, float crtDmg, float crtRtUp, float tmInvin)
+    {
+        speed = sp;
+        maxHealth = maxHth;
+        health = hth;
+        maxDefense = maxDf;
+        defense = df;
+        attack = atk;
+        shotSpeed = shotSp;
+        shotRange = shotRng;
+        shotDamage = shotDmg;
+        criticalDamage = crtDmg;
+        criticalRateUp = crtRtUp;
+        timeInvincible = tmInvin;
+    }
 }
