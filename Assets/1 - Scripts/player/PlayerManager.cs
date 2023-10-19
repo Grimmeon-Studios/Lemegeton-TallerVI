@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] Camera _Camera;
     [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
+    [SerializeField] private AudioSource SFXHit;
     //PlayerInput_map _Input;
 
     [Header("Movement config.")]
@@ -191,6 +192,8 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            SFXHit.Play();
+
             health -= amount;
             Debug.Log("Health" + health);
         }

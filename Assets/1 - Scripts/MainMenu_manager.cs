@@ -31,6 +31,7 @@ public class MainMenu_manager : MonoBehaviour
     [SerializeField] private GameObject gameTitle;
     [SerializeField] private Image backgroundColor;
     [SerializeField] private Image screenColor;
+    [SerializeField] private AudioSource SFXClick;
 
     private Color endColor = new Color(185, 185, 185, 0);
     private Color redColor = new Color(0.1921569f, 0, 0.003921569f, 0);
@@ -61,18 +62,23 @@ public class MainMenu_manager : MonoBehaviour
 
     public void OpenConfigAnim()
     {
+        SFXClick.Play();
+
         mainMenuPanel.SetActive(false);
         configPanel.SetActive(true);
     }
 
     public void ExitConfigAnim()
     {
+        SFXClick.Play();
+
         mainMenuPanel.SetActive(true);
         configPanel.SetActive(false);
     }
 
     public void PlayAnim()
     {
+        SFXClick.Play();
         mainMenuPanel.transform.DOScale(new Vector3(7, 7, 7), 3).OnComplete(() =>
         {
             backgroundColor.DOColor(blackColor, 3).OnComplete(() =>
