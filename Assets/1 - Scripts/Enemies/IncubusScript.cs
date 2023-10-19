@@ -65,7 +65,7 @@ public class IncubusScript : MonoBehaviour
     
     void Start()
     {
-        player = GameObject.Find("Player"); 
+        player = GameObject.Find("_Player"); 
         playerManager = FindObjectOfType<PlayerManager>();
         // door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
