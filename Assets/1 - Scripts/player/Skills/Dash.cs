@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private Button dashButton;
+    [SerializeField] private Image dashButtonBG;
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
@@ -29,7 +30,6 @@ public class Dash : MonoBehaviour
         _Input = new PlayerInput_map();
         capCollider = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
-        
         dash_CDTimer = 0;
     }
 
@@ -49,6 +49,8 @@ public class Dash : MonoBehaviour
     {
         if (isOnCd == true)
             return;
+        dashButtonBG.fillAmount = 0f;
+
         playerSprite.color = new Color(1, 1, 1, 0.2f);
         playerComponent.SetActive(true);
         playerComponent.transform.parent = null;
@@ -70,6 +72,7 @@ public class Dash : MonoBehaviour
         if(isOnCd == true)
         {
             dash_CDTimer = dash_CDTimer + Time.deltaTime;
+            dashButtonBG.fillAmount = (dash_CDTimer / dash_CD);
         }
     }
 
@@ -115,6 +118,7 @@ public class Dash : MonoBehaviour
         // After waiting, execute the method
         isOnCd = false;
         dashButton.interactable = true;
+        dashButtonBG.fillAmount = 1;
         dash_CDTimer = 0;
     }
 }

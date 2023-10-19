@@ -33,6 +33,7 @@ public class Crosshair : MonoBehaviour
 
     [Header("Button Config.")]
     [SerializeField] private Button button;
+    [SerializeField] private Image buttonFill;
 
 
 
@@ -46,6 +47,7 @@ public class Crosshair : MonoBehaviour
         if (isOnCd == true)
         {
             combat_CDTimer = combat_CDTimer + Time.deltaTime;
+            buttonFill.fillAmount = combat_CDTimer / combat_CD;
         }
 
         meleeDamage = _playerManager.attack;
@@ -112,7 +114,7 @@ public class Crosshair : MonoBehaviour
         StartCoroutine(AnimationPlaceholder(0.2f));
 
         
-        
+        buttonFill.fillAmount = 0;
         float randomValue = Random.Range(0f, 1f);
     
         // Comprueba si se produce un ataque crítico.
@@ -207,6 +209,7 @@ public class Crosshair : MonoBehaviour
         // After waiting, execute the method
         isOnCd = false;
         button.interactable = true;
+        buttonFill.fillAmount = 1;
         combat_CDTimer = 0;
     }
 

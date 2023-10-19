@@ -111,6 +111,7 @@ MonoBehaviour:
   radio: 3
   transition: 3
   button: {fileID: 0}
+  buttonFill: {fileID: 0}
 --- !u!1 &585336813210003392
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,8 +463,8 @@ MonoBehaviour:
   shotSpeed: 4
   shotRange: 10
   shotDamage: 5
-  criticalRateUp: 0.6
-  criticalDamage: 1
+  criticalRateUp: 0.01
+  criticalDamage: 0.25
   isInvincible: 0
   invincibleTimer: 0
   timeInvincible: 3
@@ -507,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashButton: {fileID: 0}
+  dashButtonBG: {fileID: 0}
   playerComponent: {fileID: 1395190083199140898}
   realPlayer: {fileID: 4784871271395500878}
   dash_durarion: 0.8

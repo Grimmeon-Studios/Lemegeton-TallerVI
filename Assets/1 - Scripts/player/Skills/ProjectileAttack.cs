@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -17,7 +18,7 @@ public class ProjectileAttack : MonoBehaviour
     [Header("Projectile Atributes")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float proyectile_CD;
+    public float proyectile_CD;
 
     bool isOnCd = false;
 

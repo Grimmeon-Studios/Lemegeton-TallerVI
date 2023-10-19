@@ -64,7 +64,7 @@ public class Dungeon : MonoBehaviour
         if (collision.gameObject.CompareTag("Room"))
         {
             unclearedRooms++;
-            Debug.Log(" has been detected, now uncleared Rooms = " + unclearedRooms.ToString());
+            //Debug.Log(" has been detected, now uncleared Rooms = " + unclearedRooms.ToString());
         }
     }
 
