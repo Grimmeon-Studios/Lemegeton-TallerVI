@@ -12,6 +12,7 @@ public class Dash : MonoBehaviour
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
+    [SerializeField] private AudioSource SFXDash;
     private float original_speed;
     [SerializeField] private float dash_Speed;
     [SerializeField] private float dash_CD;
@@ -49,6 +50,8 @@ public class Dash : MonoBehaviour
     {
         if (isOnCd == true)
             return;
+
+        SFXDash.Play();
         dashButtonBG.fillAmount = 0f;
 
         playerSprite.color = new Color(1, 1, 1, 0.2f);
