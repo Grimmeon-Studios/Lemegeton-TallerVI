@@ -19920,6 +19920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Phantom
       objectReference: {fileID: 0}
+    - target: {fileID: 2541562207697975333, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3402383533509551858, guid: 0784b744f4ef81e43b78ca3f8f289458, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.2
