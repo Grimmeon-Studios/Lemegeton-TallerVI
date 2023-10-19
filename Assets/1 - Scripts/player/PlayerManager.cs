@@ -29,7 +29,8 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] Camera _Camera;
     [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
-    PlayerInput_map _Input;
+    [SerializeField] private AudioSource SFXHit;
+    //PlayerInput_map _Input;
 
     [Header("Movement config.")]
     public Vector2 _Movement;
@@ -51,9 +52,9 @@ public class PlayerManager : MonoBehaviour
     private itemsNotification _Notification;
 
     private HealthBar _healthBar;
-    private void Awake()
+    private void Start()
     {
-        _Input = new PlayerInput_map();
+        //_Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
         _Notification = FindObjectOfType<itemsNotification>();
         //levelname = SceneManager.GetActiveScene().name;
@@ -62,27 +63,27 @@ public class PlayerManager : MonoBehaviour
         _healthBar = FindObjectOfType<HealthBar>();
         _healthBar.SetMaxHealth(maxHealth);
     }
-    private void OnEnable()
-    {
-        _Input.Enable();
+    //private void OnEnable()
+    //{
+    //    _Input.Enable();
 
-        //_Input.Player.Fire Significa atacar pero por bugs del New Input System no puedo cambiarle el nombre
-        //_Input.Player.Fire.performed += PerformAttack();
+    //    //_Input.Player.Fire Significa atacar pero por bugs del New Input System no puedo cambiarle el nombre
+    //    //_Input.Player.Fire.performed += PerformAttack();
 
-        _Input.Player.Move.performed += OnMovement;
-        _Input.Player.Move.canceled += OnMovement;
-    }
+    //    _Input.Player.Move.performed += OnMovement;
+    //    _Input.Player.Move.canceled += OnMovement;
+    //}
 
-    private void OnDisable()
-    {
-        //_Input.Player.Fire.performed -= PerformAttack();
+    //private void OnDisable()
+    //{
+    //    //_Input.Player.Fire.performed -= PerformAttack();
 
-        //_Input.Player.Fire Significa atacar pero por bugs del New Input System no puedo cambiarle el nombre
-        _Input.Player.Move.performed -= OnMovement;
-        _Input.Player.Move.canceled -= OnMovement;
+    //    //_Input.Player.Fire Significa atacar pero por bugs del New Input System no puedo cambiarle el nombre
+    //    _Input.Player.Move.performed -= OnMovement;
+    //    _Input.Player.Move.canceled -= OnMovement;
 
-        _Input.Disable();
-    }
+    //    _Input.Disable();
+    //}
 
     //private Action<InputAction.CallbackContext> PerformAttack()
     //{
@@ -191,6 +192,8 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            SFXHit.Play();
+
             health -= amount;
             Debug.Log("Health" + health);
         }
@@ -210,33 +213,33 @@ public class PlayerManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void OnGUI()
-    {
-        GUIStyle labelStyle = new GUIStyle()
-        {
-            fontSize = 60,
-            normal = new GUIStyleState()
-            {
-                textColor = Color.green
-            }
-        };
+    //private void OnGUI()
+    //{
+    //    GUIStyle labelStyle = new GUIStyle()
+    //    {
+    //        fontSize = 60,
+    //        normal = new GUIStyleState()
+    //        {
+    //            textColor = Color.green
+    //        }
+    //    };
 
-        GUIStyle invincibleLabel = new GUIStyle()
-        {
-            fontSize = 60,
-            normal = new GUIStyleState()
-            {
-                textColor = Color.yellow
-            }
-        };
+    //    GUIStyle invincibleLabel = new GUIStyle()
+    //    {
+    //        fontSize = 60,
+    //        normal = new GUIStyleState()
+    //        {
+    //            textColor = Color.yellow
+    //        }
+    //    };
 
-        GUI.Label(new Rect(10, 350, 500, 20), $"Health: ({health})", labelStyle);
+    //    GUI.Label(new Rect(10, 350, 500, 20), $"Health: ({health})", labelStyle);
 
-        if (isInvincible)
-        {
-            GUI.Label(new Rect(10, 280, 500, 20), $"Invincible: ({invincibleTimer})", invincibleLabel);
-        }
-    }
+    //    if (isInvincible)
+    //    {
+    //        GUI.Label(new Rect(10, 280, 500, 20), $"Invincible: ({invincibleTimer})", invincibleLabel);
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

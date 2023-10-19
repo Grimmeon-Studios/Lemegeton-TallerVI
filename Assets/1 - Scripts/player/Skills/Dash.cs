@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private Button dashButton;
-    [SerializeField] TextMeshProUGUI buttonText;
+    [SerializeField] private Image dashButtonBG;
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
+    [SerializeField] private AudioSource SFXDash;
     private float original_speed;
     [SerializeField] private float dash_Speed;
     [SerializeField] private float dash_CD;
@@ -22,11 +23,14 @@ public class Dash : MonoBehaviour
 
     PlayerInput_map _Input;
     private CapsuleCollider2D capCollider;
+    private SpriteRenderer playerSprite;
+
+
     public void Awake()
     {
         _Input = new PlayerInput_map();
         capCollider = GetComponent<CapsuleCollider2D>();
-        
+        playerSprite = GetComponent<SpriteRenderer>();
         dash_CDTimer = 0;
     }
 
@@ -47,6 +51,11 @@ public class Dash : MonoBehaviour
         if (isOnCd == true)
             return;
 
+        SFXDash.Play();
+        dashButtonBG.fillAmount = 0f;
+
+        playerSprite.color = new Color(1, 1, 1, 0.2f);
+        playerComponent.SetActive(true);
         playerComponent.transform.parent = null;
 
         original_speed = realPlayer.speed;
@@ -66,7 +75,7 @@ public class Dash : MonoBehaviour
         if(isOnCd == true)
         {
             dash_CDTimer = dash_CDTimer + Time.deltaTime;
-            buttonText.text = dash_CDTimer.ToString("F1");
+            dashButtonBG.fillAmount = (dash_CDTimer / dash_CD);
         }
     }
 
@@ -75,6 +84,8 @@ public class Dash : MonoBehaviour
         playerComponent.transform.parent = gameObject.transform;
         playerComponent.transform.position = gameObject.transform.position;
         realPlayer.speed = original_speed;
+        playerSprite.color = Color.white;
+        playerComponent.SetActive(false);
     }
 
     private void OnDash(InputAction.CallbackContext context)
@@ -110,7 +121,7 @@ public class Dash : MonoBehaviour
         // After waiting, execute the method
         isOnCd = false;
         dashButton.interactable = true;
+        dashButtonBG.fillAmount = 1;
         dash_CDTimer = 0;
-        buttonText.text = "Dash";
     }
 }

@@ -8,7 +8,7 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
 {
 
     [SerializeField] private ProjectileAttack playerProjectileMethod;
-    [SerializeField] private TextMeshProUGUI cd_text;
+    //[SerializeField] private TextMeshProUGUI cd_text;
     public GameObject background; // Reference to the background GameObject
     public GameObject knob; // Reference to the knob GameObject
     public Vector2 JoystickInput { get; private set; } // The Vector2 representing the knob's position
@@ -36,7 +36,6 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
         if(onCD)
         {
             timer = timer + Time.fixedDeltaTime;
-            cd_text.text = timer.ToString("F1");
         }
     }
 

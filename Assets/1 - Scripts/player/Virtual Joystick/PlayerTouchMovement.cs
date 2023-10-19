@@ -84,7 +84,7 @@ public class PlayerTouchMovement : MonoBehaviour
 
     private void HandleFingerDown(Finger TouchedFinger)
     {
-        if (MovementFinger == null && TouchedFinger.screenPosition.x <= Screen.width / 2f)
+        if (joystickActive == false && MovementFinger == null && TouchedFinger.screenPosition.x <= Screen.width / 2f)
         {
             joystickActive = true;
             MovementFinger = TouchedFinger;
@@ -124,7 +124,7 @@ public class PlayerTouchMovement : MonoBehaviour
         else
         {
             // Use the lastNonZeroMovementAmount when the joystick is not active
-            _PlayerManager._Rigidbody.velocity = lastNonZeroMovementAmount * _PlayerManager.speed;
+            _PlayerManager._Rigidbody.velocity = Vector2.zero;
         }
     }
 
