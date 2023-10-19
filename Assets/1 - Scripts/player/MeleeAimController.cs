@@ -16,6 +16,10 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private float meleeRadius;
     [SerializeField] private float targetLockRadius;
     [SerializeField] private float combat_CD;
+    [SerializeField] private AudioSource SFXAttack;
+    [SerializeField] private AudioSource SFXCrit;
+    [SerializeField] private AudioSource SFXBelhorHit;
+    [SerializeField] private AudioSource SFXAndrasHit;
     private float combat_CDTimer;
 
     [SerializeField] private PlayerManager _playerManager;
@@ -118,11 +122,15 @@ public class Crosshair : MonoBehaviour
         // Comprueba si se produce un ataque crítico.
         if (randomValue < meleeCritialRateUp)//If critical damage
         {
+            SFXCrit.Play();
+
             meleeDamage = CalculateCriticalDamage(_playerManager.attack,_playerManager.criticalDamage);
             Debug.Log("¡Ataque crítico! Daño total: " + meleeDamage);
         }
         else //If there's no critical damage
         {
+            SFXAttack.Play();
+
             meleeDamage = _playerManager.attack;
             Debug.Log("Ataque normal. Daño total: " + meleeDamage);
         }
@@ -132,16 +140,19 @@ public class Crosshair : MonoBehaviour
         {
             if (collision.CompareTag("Enemy"))
             {
+                SFXBelhorHit.Play();
                 collision.transform.GetComponent<IncubusScript>().takeDamage(meleeDamage);
             }
 
             if (collision.CompareTag("EnemySoul"))
             {
+                SFXBelhorHit.Play();
                 collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
             }
 
             if (collision.CompareTag("EnemyAndras"))
             {
+                SFXAndrasHit.Play();
                 collision.gameObject.GetComponent<AndrasScript>().takeDamage(meleeDamage);
             }
         }
