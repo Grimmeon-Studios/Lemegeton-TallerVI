@@ -183,6 +183,7 @@ MonoBehaviour:
   attackArea: {fileID: 732917208161112084}
   Distance: 50
   currState: 0
+  sulfurPrefab: {fileID: 7156719531565285854, guid: 57892f646241abd42be439dcdd46264e, type: 3}
   health: 1
   spritesFire:
   - {fileID: 21300000, guid: 144ddbccfb3141941a56b378b086e3a3, type: 3}
