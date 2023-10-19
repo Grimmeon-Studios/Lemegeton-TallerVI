@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private Button dashButton;
-    [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
@@ -22,10 +21,14 @@ public class Dash : MonoBehaviour
 
     PlayerInput_map _Input;
     private CapsuleCollider2D capCollider;
+    private SpriteRenderer playerSprite;
+
+
     public void Awake()
     {
         _Input = new PlayerInput_map();
         capCollider = GetComponent<CapsuleCollider2D>();
+        playerSprite = GetComponent<SpriteRenderer>();
         
         dash_CDTimer = 0;
     }
@@ -46,7 +49,8 @@ public class Dash : MonoBehaviour
     {
         if (isOnCd == true)
             return;
-
+        playerSprite.color = new Color(1, 1, 1, 0.2f);
+        playerComponent.SetActive(true);
         playerComponent.transform.parent = null;
 
         original_speed = realPlayer.speed;
@@ -66,7 +70,6 @@ public class Dash : MonoBehaviour
         if(isOnCd == true)
         {
             dash_CDTimer = dash_CDTimer + Time.deltaTime;
-            buttonText.text = dash_CDTimer.ToString("F1");
         }
     }
 
@@ -75,6 +78,8 @@ public class Dash : MonoBehaviour
         playerComponent.transform.parent = gameObject.transform;
         playerComponent.transform.position = gameObject.transform.position;
         realPlayer.speed = original_speed;
+        playerSprite.color = Color.white;
+        playerComponent.SetActive(false);
     }
 
     private void OnDash(InputAction.CallbackContext context)
@@ -111,6 +116,5 @@ public class Dash : MonoBehaviour
         isOnCd = false;
         dashButton.interactable = true;
         dash_CDTimer = 0;
-        buttonText.text = "Dash";
     }
 }

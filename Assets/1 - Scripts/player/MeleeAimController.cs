@@ -33,7 +33,6 @@ public class Crosshair : MonoBehaviour
 
     [Header("Button Config.")]
     [SerializeField] private Button button;
-    [SerializeField] private TextMeshProUGUI buttonText;
 
 
 
@@ -47,7 +46,6 @@ public class Crosshair : MonoBehaviour
         if (isOnCd == true)
         {
             combat_CDTimer = combat_CDTimer + Time.deltaTime;
-            buttonText.text = combat_CDTimer.ToString("F1");
         }
 
         meleeDamage = _playerManager.attack;
@@ -210,7 +208,6 @@ public class Crosshair : MonoBehaviour
         isOnCd = false;
         button.interactable = true;
         combat_CDTimer = 0;
-        buttonText.text = "Hit!";
     }
 
     public void UpdateLastAimDirection(Vector2 newDirection)
