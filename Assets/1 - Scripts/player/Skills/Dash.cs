@@ -8,13 +8,13 @@ using UnityEngine.UI;
 public class Dash : MonoBehaviour
 {
     [SerializeField] private Button dashButton;
+    [SerializeField] private Image dashButtonBG;
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
     [SerializeField] private float dash_durarion;
     private float original_speed;
     [SerializeField] private float dash_Speed;
     [SerializeField] private float dash_CD;
-    [SerializeField] private AudioSource SFXDash;
     private float dash_CDTimer;
 
 
@@ -30,7 +30,6 @@ public class Dash : MonoBehaviour
         _Input = new PlayerInput_map();
         capCollider = GetComponent<CapsuleCollider2D>();
         playerSprite = GetComponent<SpriteRenderer>();
-        
         dash_CDTimer = 0;
     }
 
@@ -50,8 +49,7 @@ public class Dash : MonoBehaviour
     {
         if (isOnCd == true)
             return;
-
-        SFXDash.Play();
+        dashButtonBG.fillAmount = 0f;
 
         playerSprite.color = new Color(1, 1, 1, 0.2f);
         playerComponent.SetActive(true);
@@ -74,6 +72,7 @@ public class Dash : MonoBehaviour
         if(isOnCd == true)
         {
             dash_CDTimer = dash_CDTimer + Time.deltaTime;
+            dashButtonBG.fillAmount = (dash_CDTimer / dash_CD);
         }
     }
 
@@ -119,6 +118,7 @@ public class Dash : MonoBehaviour
         // After waiting, execute the method
         isOnCd = false;
         dashButton.interactable = true;
+        dashButtonBG.fillAmount = 1;
         dash_CDTimer = 0;
     }
 }
