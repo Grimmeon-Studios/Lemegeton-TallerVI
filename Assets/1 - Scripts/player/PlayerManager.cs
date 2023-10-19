@@ -213,33 +213,33 @@ public class PlayerManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void OnGUI()
-    {
-        GUIStyle labelStyle = new GUIStyle()
-        {
-            fontSize = 60,
-            normal = new GUIStyleState()
-            {
-                textColor = Color.green
-            }
-        };
+    //private void OnGUI()
+    //{
+    //    GUIStyle labelStyle = new GUIStyle()
+    //    {
+    //        fontSize = 60,
+    //        normal = new GUIStyleState()
+    //        {
+    //            textColor = Color.green
+    //        }
+    //    };
 
-        GUIStyle invincibleLabel = new GUIStyle()
-        {
-            fontSize = 60,
-            normal = new GUIStyleState()
-            {
-                textColor = Color.yellow
-            }
-        };
+    //    GUIStyle invincibleLabel = new GUIStyle()
+    //    {
+    //        fontSize = 60,
+    //        normal = new GUIStyleState()
+    //        {
+    //            textColor = Color.yellow
+    //        }
+    //    };
 
-        GUI.Label(new Rect(10, 350, 500, 20), $"Health: ({health})", labelStyle);
+    //    GUI.Label(new Rect(10, 350, 500, 20), $"Health: ({health})", labelStyle);
 
-        if (isInvincible)
-        {
-            GUI.Label(new Rect(10, 280, 500, 20), $"Invincible: ({invincibleTimer})", invincibleLabel);
-        }
-    }
+    //    if (isInvincible)
+    //    {
+    //        GUI.Label(new Rect(10, 280, 500, 20), $"Invincible: ({invincibleTimer})", invincibleLabel);
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
