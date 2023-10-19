@@ -150,10 +150,10 @@ public class IncubusScript : MonoBehaviour
             //animation
             yield return new WaitForSeconds(attackCooldown);
             animator.SetBool("IsAttackingAn", false);
-            attackArea.sprite = spritesFire[0];
-            attackArea.gameObject.SetActive(false);
+            
         }
-        
+        attackArea.sprite = spritesFire[0];
+        attackArea.gameObject.SetActive(false);
         // Comprueba nuevamente si el jugador todavía está en el rango
         isAttacking = false;
         if (Vector2.Distance(position, player.transform.position) <= attackRange && !isAttacking)
