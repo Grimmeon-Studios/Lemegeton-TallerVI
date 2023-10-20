@@ -50,8 +50,10 @@ public class PlayerManager : MonoBehaviour
 
     [Header("UI")]
     private itemsNotification _Notification;
-
+    
+    [Header("Bars")]
     private HealthBar _healthBar;
+    private DefenseBar _defenseBar;
     private void Start()
     {
         //_Input = new PlayerInput_map();
@@ -62,6 +64,8 @@ public class PlayerManager : MonoBehaviour
         defense = maxDefense;
         _healthBar = FindObjectOfType<HealthBar>();
         _healthBar.SetMaxHealth(maxHealth);
+        _defenseBar = FindObjectOfType<DefenseBar>();
+        _defenseBar.SetMaxDefense(maxDefense);
     }
     //private void OnEnable()
     //{
@@ -116,6 +120,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         _healthBar.SetHealth(health);
+        _defenseBar.SetDefense(defense);
         AnimMovement();
        
     }
@@ -311,7 +316,8 @@ public class PlayerManager : MonoBehaviour
                 }
             }
             maxDefense += _Item.item_maxDefense;
-
+            _defenseBar.SetMaxDefense(maxDefense);
+            
             attack += _Item.item_attack;
             shotDamage += _Item.item_shotDamage;
             shotSpeed += _Item.item_shotSpeed;
