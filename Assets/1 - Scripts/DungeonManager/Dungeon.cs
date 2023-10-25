@@ -71,8 +71,8 @@ public class Dungeon : MonoBehaviour
         if(collision.gameObject.CompareTag("Circle") && onSetUp == true)
         {
             Debug.Log("Circle Detected");
-            InstatiatedCircles.Add(collision.gameObject);
-            //collision.gameObject.SetActive(false);
+            if(!InstatiatedCircles.Contains(collision.gameObject))
+                InstatiatedCircles.Add(collision.gameObject);
 
             if (InstatiatedCircles.Count == circlesToInstantiate.Count)
             {
@@ -93,7 +93,7 @@ public class Dungeon : MonoBehaviour
             unclearedRooms--;
             Debug.Log("Update uncleared Rooms = " + unclearedRooms.ToString());
 
-            if (unclearedRooms == 0 && chronometer.difficultyLvl > 1)
+            if (unclearedRooms == 0 && onSetUp == false)
             {
                 Debug.Log("Circle " + currentCircle + " Cleared");
                 //circleCleared = true;
@@ -114,12 +114,14 @@ public class Dungeon : MonoBehaviour
 
             if (currentCircle > 1)
             {
-                Debug.Log("circle " + InstatiatedCircles[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
-                InstatiatedCircles[currentCircle - 1].SetActive(true);
-
                 if (currentCircle > InstatiatedCircles.Count)
                 {
                     SceneManager.LoadScene(0);
+                }
+                else
+                {
+                    Debug.Log("circle " + InstatiatedCircles[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
+                    InstatiatedCircles[currentCircle - 1].SetActive(true);
                 }
             }
 
