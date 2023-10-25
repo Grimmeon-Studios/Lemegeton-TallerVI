@@ -103,8 +103,8 @@ RectTransform:
   m_LocalScale: {x: 0.8247423, y: 0.8247423, z: 0.8247423}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 306963474531365877}
   - {fileID: 5725975242774393745}
+  - {fileID: 306963474531365877}
   - {fileID: 5561772431526491102}
   - {fileID: 2110318513772190005}
   m_Father: {fileID: 403526972380629098}
@@ -480,7 +480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &306963474531365877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3031,7 +3031,7 @@ MonoBehaviour:
   background: {fileID: 6948306554298114919}
   knob: {fileID: 1948876918240971976}
   onCD: 0
-  timer: 0
+  timerCD: 0
 --- !u!1 &7071397958332526960
 GameObject:
   m_ObjectHideFlags: 0

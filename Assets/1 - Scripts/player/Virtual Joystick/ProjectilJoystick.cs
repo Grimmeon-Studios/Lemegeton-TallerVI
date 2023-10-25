@@ -1,8 +1,11 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using Image = UnityEngine.UI.Image;
 
 public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
@@ -20,22 +23,34 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
     private bool isDragging = false;
 
     public bool onCD;
-    public float timer;
-
+    private float CDtime;
+    private float timerCD;
+    public GameObject joystickBlocker;
     private void Start()
     {
         backgroundRect = background.GetComponent<RectTransform>();
         knobRect = knob.GetComponent<RectTransform>();
         knobStartPosition = knobRect.anchoredPosition;
         onCD = false;
-        timer = 0;
+        CDtime = playerProjectileMethod.proyectile_CD;
+        timerCD = 0f;
+        joystickBlocker.SetActive(false);
+        
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(onCD)
         {
-            timer = timer + Time.fixedDeltaTime;
+            timerCD += Time.deltaTime;
+            background.GetComponent<Image>().fillAmount = (timerCD / CDtime);
+            joystickBlocker.SetActive(true);
+            if (timerCD >= CDtime)
+            {
+                onCD = false;
+                timerCD = 0f;
+                joystickBlocker.SetActive(false);
+            }
         }
     }
 
@@ -46,15 +61,17 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
             isDragging = true;
             JoystickInput = eventData.position;
             OnDrag(eventData);
+            background.GetComponent<Image>().fillAmount = 0f;
         }
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        isDragging = true;
+        isDragging = false;
         knobRect.anchoredPosition = knobStartPosition;
-        Aguapanela();
         JoystickInput = Vector2.zero;
+        Aguapanela();
     }
 
 

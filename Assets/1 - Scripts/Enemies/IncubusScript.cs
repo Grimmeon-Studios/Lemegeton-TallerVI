@@ -175,7 +175,7 @@ public class IncubusScript : MonoBehaviour
             {
                incubus.DOColor(Color.white, 0.1f);
             });
-            DOTween.Kill(transform);
+            DOTween.KillAll(gameObject);
         }
         else
         {
