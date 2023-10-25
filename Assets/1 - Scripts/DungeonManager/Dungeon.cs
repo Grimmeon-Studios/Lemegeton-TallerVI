@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Linq;
+
 
 public class Dungeon : MonoBehaviour
 {
@@ -31,8 +34,6 @@ public class Dungeon : MonoBehaviour
 
     [Header("Dungeon  Lists")]
     public List<GameObject> circlesToInstantiate = new List<GameObject>();
-
-    public List<GameObject> circle_var = new List<GameObject>();
     
 
 
@@ -56,7 +57,7 @@ public class Dungeon : MonoBehaviour
     {
         difficultylvl = chronometer.difficultyLvl;
 
-        Debug.Log("Current Circle: " + currentCircle.ToString());
+        //Debug.Log(circlesToInstantiate[0].name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,6 +78,7 @@ public class Dungeon : MonoBehaviour
 
             if (unclearedRooms == 0)
             {
+                Debug.Log("Circle Cleared");
                 circleCleared = true;
                 OnCircleCleared();
             }
@@ -87,14 +89,21 @@ public class Dungeon : MonoBehaviour
     {
         if (circleCleared)
         {
-            Debug.Log("circle " + circlesToInstantiate[currentCircle-1].transform.Find("Dungeon").gameObject.name.ToString() + " cleared");
+            Debug.Log("circle " + circlesToInstantiate[currentCircle-1].gameObject.name.ToString() + " cleared");
             circlesToInstantiate[currentCircle-1].transform.Find("Dungeon").gameObject.SetActive(false);
 
             currentCircle++;
 
             if (currentCircle > 1)
             {
+                Debug.Log("circle " + circlesToInstantiate[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
+                Debug.Log(circlesToInstantiate[currentCircle - 1].transform.Find("Dungeon").gameObject);
                 circlesToInstantiate[currentCircle - 1].transform.Find("Dungeon").gameObject.SetActive(true);
+
+                if (currentCircle > circlesToInstantiate.Count)
+                {
+                    SceneManager.LoadScene(0);
+                }
             }
 
             playerObj.transform.position = Vector3.zero;
@@ -129,11 +138,21 @@ public class Dungeon : MonoBehaviour
 
     private void GenerateDungeon()
     {
-        int ranCircle = UnityEngine.Random.Range(0, 4);
+        //System.Random rng = new System.Random();
 
-        circlesToInstantiate.Add(circle_var[ranCircle]);
+        //int n = circlesToInstantiate.Count;
+        //while (n > 1)
+        //{
+        //    n--;
+        //    int k = rng.Next(n + 1);
+        //    GameObject value = circlesToInstantiate[k];
+        //    circlesToInstantiate[k] = circlesToInstantiate[n];
+        //    circlesToInstantiate[n] = value;
+        //}
 
-        
+
+        circlesToInstantiate = circlesToInstantiate.OrderBy(x => Guid.NewGuid()).ToList();
+
         for (int i = 0; i < circlesToInstantiate.Count; i++)
         {
             if (circlesToInstantiate[i] != null)
@@ -141,54 +160,18 @@ public class Dungeon : MonoBehaviour
                 Instantiate(circlesToInstantiate[i]);
                 circlesToInstantiate[i].SetActive(true);
             }
-            else if (circlesToInstantiate.Count < 5)
+            else
             {
-                Debug.Log("Var list is incomplete ");
+                Debug.Log("Var list is Null ");
             }
         }
 
-        circlesToInstantiate.Clear();
+        //circlesToInstantiate.Clear();
 
-        HandleDungeons();
-    }
-
-    void HandleDungeons()
-    {
-        // Set up a BoxCollider2D to represent the area you want to check for collisions.
-        // You can adjust the size and position based on your needs.
-        Bounds bounds = gameAreaCollider.bounds;
-
-        // Check for collisions within the bounds of the BoxCollider2D.
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(bounds.center, bounds.size, 0f, collisionLayerMask);
-
-        // Now, 'colliders' contains all colliders that overlap with your BoxCollider2D.
-        // You can loop through them and perform any necessary actions.
-        Debug.Log("handling Dungeons");
-
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.CompareTag("Circle"))
-            {
-                // Handle the collision with the object that has the specified tag.
-                circlesToInstantiate.Add(collider.gameObject);
-                Debug.Log("circle added");
-            }
-
-        }
-
-        // Check if the list has elements before accessing them.
-        if (circlesToInstantiate.Count > 0)
+        if (circlesToInstantiate.Count != 0)
         {
             Debug.Log("First circle is called " + circlesToInstantiate[0].name.ToString());
             circlesToInstantiate[0].transform.Find("Dungeon").gameObject.SetActive(true);
-
-            for (int i = 1; i < circlesToInstantiate.Count; ++i)
-            {
-                circlesToInstantiate[i].transform.Find("Dungeon").gameObject.SetActive(false);
-            }
         }
     }
-
-
-
 }

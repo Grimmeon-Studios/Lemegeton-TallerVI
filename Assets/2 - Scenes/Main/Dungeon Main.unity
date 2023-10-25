@@ -1019,6 +1019,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dungeon Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circle_var.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circle_var.Array.data[0]
+      value: 
+      objectReference: {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circle_var.Array.data[1]
+      value: 
+      objectReference: {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circle_var.Array.data[2]
+      value: 
+      objectReference: {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circlesToInstantiate.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circlesToInstantiate.Array.data[0]
+      value: 
+      objectReference: {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circlesToInstantiate.Array.data[1]
+      value: 
+      objectReference: {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circlesToInstantiate.Array.data[2]
+      value: 
+      objectReference: {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
     - target: {fileID: 5937136624069538277, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

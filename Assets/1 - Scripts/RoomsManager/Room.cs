@@ -141,7 +141,7 @@ public class Room : MonoBehaviour
         if(enemiesBuffed == false)
         {
             enemiesBuffed = true;
-            SpawnEnemies(4 + _dungeonManager.additionalEnemyCount);
+            SpawnEnemies(1 + _dungeonManager.additionalEnemyCount);
         }
 
         //if(inCombat == false)
