@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/IncubusScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/IncubusScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/player/Virtual Joystick/ProjectilJoystick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/player/Virtual Joystick/ProjectilJoystick.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Dungeon Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Dungeon Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Button Actions Canva.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Button Actions Canva.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MinimapRenderTexture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MinimapRenderTexture.renderTexture" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +93,7 @@
       <workItem from="1697758667568" duration="828000" />
       <workItem from="1698183808625" duration="3479000" />
       <workItem from="1698197221695" duration="1040000" />
+      <workItem from="1698210071412" duration="1298000" />
     </task>
     <servers />
   </component>
