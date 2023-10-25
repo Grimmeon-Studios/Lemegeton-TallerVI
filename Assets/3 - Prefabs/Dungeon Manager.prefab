@@ -50,9 +50,9 @@ MonoBehaviour:
   collisionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  incubus_StatsMultiplier: {x: 0, y: 0, z: 0}
-  LostSoul_StatsMultiplier: {x: 0, y: 0, z: 0}
-  andras_StatsMultiplier: {x: 0, y: 0, z: 0}
+  incubus_StatsMultiplier: {x: 2, y: 1.2, z: 0.03}
+  LostSoul_StatsMultiplier: {x: 1, y: 0.5, z: 2}
+  andras_StatsMultiplier: {x: 3, y: 2, z: 2}
   additionalEnemyCount: 0
   currentCircle: 0
   circlesToInstantiate: []
@@ -66,6 +66,11 @@ MonoBehaviour:
   - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
   - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
   - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
+  circle3_var:
+  - {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
+  - {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
+  - {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
+  - {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
 --- !u!61 &2426550591269680225
 BoxCollider2D:
   m_ObjectHideFlags: 0

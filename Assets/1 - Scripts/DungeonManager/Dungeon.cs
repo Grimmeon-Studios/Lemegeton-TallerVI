@@ -32,9 +32,8 @@ public class Dungeon : MonoBehaviour
     [Header("Dungeon  Lists")]
     public List<GameObject> circlesToInstantiate = new List<GameObject>();
 
-    public List<GameObject> circle1_var = new List<GameObject>();
-    public List<GameObject> circle2_var = new List<GameObject>();
-    public List<GameObject> circle3_var = new List<GameObject>();
+    public List<GameObject> circle_var = new List<GameObject>();
+    
 
 
     private void Awake()
@@ -130,15 +129,10 @@ public class Dungeon : MonoBehaviour
 
     private void GenerateDungeon()
     {
-        int ranCircle1 = UnityEngine.Random.Range(0, 4);
-        int ranCircle2 = UnityEngine.Random.Range(0, 4);
-        int ranCircle3 = UnityEngine.Random.Range(0, 4);
-        int ranCircle4 = UnityEngine.Random.Range(0, 4);
-        int ranCircle5 = UnityEngine.Random.Range(0, 4);
+        int ranCircle = UnityEngine.Random.Range(0, 4);
 
-        circlesToInstantiate.Add(circle1_var[ranCircle1]);
-        circlesToInstantiate.Add(circle2_var[ranCircle2]);
-        circlesToInstantiate.Add(circle2_var[ranCircle3]);
+        circlesToInstantiate.Add(circle_var[ranCircle]);
+
         
         for (int i = 0; i < circlesToInstantiate.Count; i++)
         {
@@ -173,26 +167,11 @@ public class Dungeon : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Circle1"))
+            if (collider.CompareTag("Circle"))
             {
                 // Handle the collision with the object that has the specified tag.
                 circlesToInstantiate.Add(collider.gameObject);
-                Debug.Log("circle 1 added");
-            }
-
-            if (collider.CompareTag("Circle2"))
-            {
-                // Handle the collision with the object that has the specified tag.
-                circlesToInstantiate.Add(collider.gameObject);
-                Debug.Log("circle 2 added");
-
-            }
-
-            if (collider.CompareTag("Circle3"))
-            {
-                // Handle the collision with the object that has the specified tag.
-                circlesToInstantiate.Add(collider.gameObject);
-                Debug.Log("circle 3 added");
+                Debug.Log("circle added");
             }
 
         }

@@ -491,11 +491,11 @@ PrefabInstance:
       objectReference: {fileID: 2110487000}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721784
+      value: 1.3721813
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721784
+      value: 1.3721813
       objectReference: {fileID: 0}
     - target: {fileID: 6087678909894391764, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1018,78 +1018,6 @@ PrefabInstance:
     - target: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: m_Name
       value: Dungeon Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle3_var.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: andras_StatsMultiplier.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: andras_StatsMultiplier.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: andras_StatsMultiplier.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle1_var.Array.data[1]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle1_var.Array.data[3]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle2_var.Array.data[1]
-      value: 
-      objectReference: {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle2_var.Array.data[3]
-      value: 
-      objectReference: {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle3_var.Array.data[0]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle3_var.Array.data[1]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle3_var.Array.data[2]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circle3_var.Array.data[3]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: incubus_StatsMultiplier.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: incubus_StatsMultiplier.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: incubus_StatsMultiplier.z
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: LostSoul_StatsMultiplier.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: LostSoul_StatsMultiplier.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: LostSoul_StatsMultiplier.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5937136624069538277, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: m_LocalPosition.x
