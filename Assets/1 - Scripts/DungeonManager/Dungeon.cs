@@ -11,12 +11,12 @@ public class Dungeon : MonoBehaviour
 {
     private ChronometerManager chronometer;
     private BoxCollider2D gameAreaCollider;
-    private GameObject playerObj;
+    [SerializeField] private GameObject playerObj;
     [SerializeField] private LayerMask collisionLayerMask;
 
     private int difficultylvl;
-    private bool circleCleared;
-    private bool PlayerAlive;
+    private bool listComplete;
+    private bool onSetUp;
     private bool isDivisibleFor3;
     private int unclearedRooms = 0;
 
@@ -34,30 +34,30 @@ public class Dungeon : MonoBehaviour
 
     [Header("Dungeon  Lists")]
     public List<GameObject> circlesToInstantiate = new List<GameObject>();
+    public List<GameObject> InstatiatedCircles = new List<GameObject>();
     
 
 
     private void Awake()
     {
-        playerObj = FindObjectOfType<PlayerManager>().gameObject;
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
 
-        GenerateDungeon();
-
-        circleCleared = false;
-
         additionalEnemyCount = 0;
         currentCircle = 1;
+        chronometer.currentCircleLvl = currentCircle;
+        
+        onSetUp = true;
 
+        GenerateDungeon();
+
+        StartCoroutine(SetUpTimer(1f));
     }
 
     private void Update()
     {
         difficultylvl = chronometer.difficultyLvl;
-
-        //Debug.Log(circlesToInstantiate[0].name);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,7 +65,24 @@ public class Dungeon : MonoBehaviour
         if (collision.gameObject.CompareTag("Room"))
         {
             unclearedRooms++;
-            //Debug.Log(" has been detected, now uncleared Rooms = " + unclearedRooms.ToString());
+            Debug.Log(" has been detected, now uncleared Rooms = " + unclearedRooms.ToString());
+        }
+
+        if(collision.gameObject.CompareTag("Circle") && onSetUp == true)
+        {
+            Debug.Log("Circle Detected");
+            InstatiatedCircles.Add(collision.gameObject);
+            //collision.gameObject.SetActive(false);
+
+            if (InstatiatedCircles.Count == circlesToInstantiate.Count)
+            {
+                listComplete = true;
+                if (listComplete)
+                {
+                    Debug.Log("List Complete");
+                    ShuffleCircles();
+                }
+            }
         }
     }
 
@@ -76,38 +93,37 @@ public class Dungeon : MonoBehaviour
             unclearedRooms--;
             Debug.Log("Update uncleared Rooms = " + unclearedRooms.ToString());
 
-            if (unclearedRooms == 0)
+            if (unclearedRooms == 0 && chronometer.difficultyLvl > 1)
             {
-                Debug.Log("Circle Cleared");
-                circleCleared = true;
-                OnCircleCleared();
+                Debug.Log("Circle " + currentCircle + " Cleared");
+                //circleCleared = true;
+                OnCircleCleared(true);
             }
         }
     }
 
-    private void OnCircleCleared()
+    private void OnCircleCleared(bool cleared)
     {
-        if (circleCleared)
+        if (cleared)
         {
-            Debug.Log("circle " + circlesToInstantiate[currentCircle-1].gameObject.name.ToString() + " cleared");
-            circlesToInstantiate[currentCircle-1].transform.Find("Dungeon").gameObject.SetActive(false);
+            GameObject currentMap = InstatiatedCircles[currentCircle - 1];
+            Debug.Log("circle " + currentMap.name.ToString() + " cleared");
+            currentMap.SetActive(false);
 
-            currentCircle++;
+            currentCircle = currentCircle + 1;
 
             if (currentCircle > 1)
             {
-                Debug.Log("circle " + circlesToInstantiate[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
-                Debug.Log(circlesToInstantiate[currentCircle - 1].transform.Find("Dungeon").gameObject);
-                circlesToInstantiate[currentCircle - 1].transform.Find("Dungeon").gameObject.SetActive(true);
+                Debug.Log("circle " + InstatiatedCircles[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
+                InstatiatedCircles[currentCircle - 1].SetActive(true);
 
-                if (currentCircle > circlesToInstantiate.Count)
+                if (currentCircle > InstatiatedCircles.Count)
                 {
                     SceneManager.LoadScene(0);
                 }
             }
 
             playerObj.transform.position = Vector3.zero;
-            circleCleared = false;
             chronometer.currentCircleLvl = currentCircle;
         }
     }
@@ -124,7 +140,6 @@ public class Dungeon : MonoBehaviour
             LostSoul_StatsMultiplier += LostSoul_StatsMultiplier;
             andras_StatsMultiplier += andras_StatsMultiplier;
         }
-
     }
 
     private int UpdateReaminigRooms(int sign)
@@ -138,40 +153,35 @@ public class Dungeon : MonoBehaviour
 
     private void GenerateDungeon()
     {
-        //System.Random rng = new System.Random();
-
-        //int n = circlesToInstantiate.Count;
-        //while (n > 1)
-        //{
-        //    n--;
-        //    int k = rng.Next(n + 1);
-        //    GameObject value = circlesToInstantiate[k];
-        //    circlesToInstantiate[k] = circlesToInstantiate[n];
-        //    circlesToInstantiate[n] = value;
-        //}
-
-
-        circlesToInstantiate = circlesToInstantiate.OrderBy(x => Guid.NewGuid()).ToList();
 
         for (int i = 0; i < circlesToInstantiate.Count; i++)
         {
             if (circlesToInstantiate[i] != null)
             {
                 Instantiate(circlesToInstantiate[i]);
-                circlesToInstantiate[i].SetActive(true);
+                circlesToInstantiate[i].gameObject.SetActive(true);
             }
             else
             {
                 Debug.Log("Var list is Null ");
             }
         }
+    }
 
-        //circlesToInstantiate.Clear();
-
-        if (circlesToInstantiate.Count != 0)
+    private void ShuffleCircles()
+    {
+        InstatiatedCircles = InstatiatedCircles.OrderBy(x => Guid.NewGuid()).ToList();
+        for(int i = 0; i < circlesToInstantiate.Count; i++)
         {
-            Debug.Log("First circle is called " + circlesToInstantiate[0].name.ToString());
-            circlesToInstantiate[0].transform.Find("Dungeon").gameObject.SetActive(true);
+            InstatiatedCircles[i].gameObject.SetActive(false);
         }
+        InstatiatedCircles[0].gameObject.SetActive(true);
+    }
+
+    private IEnumerator SetUpTimer(float waitTime)
+    {
+        
+        yield return new WaitForSeconds(waitTime);
+        onSetUp = false;
     }
 }

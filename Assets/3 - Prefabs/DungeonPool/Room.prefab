@@ -253,7 +253,7 @@ MonoBehaviour:
   NoRemainingEnemies:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      - m_Target: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
         m_TargetAssemblyTypeName: Dungeon, Assembly-CSharp
         m_MethodName: EnemyManagement
         m_Mode: 1
@@ -358,7 +358,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 613930e86fb5ad749a3a2e77f20abfc4, type: 3}
-  m_Color: {r: 0.5660378, g: 0.11063649, b: 0.06674973, a: 0.14901961}
+  m_Color: {r: 0.4433962, g: 0.16321015, b: 0.07320219, a: 0.14901961}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
