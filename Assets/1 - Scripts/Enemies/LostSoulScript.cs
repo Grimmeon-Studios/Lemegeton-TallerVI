@@ -186,10 +186,9 @@ public class LostSoulScript : MonoBehaviour
             
             lostSoul.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
             {
-                 lostSoul.DOColor(Color.green, 0.1f).OnComplete(() => {
-                     DOTween.KillAll(gameObject);
-                 }); 
+                 lostSoul.DOColor(Color.green, 0.1f);  // CAMBIAR CUANDO ESTÉ EL NUEVO SPRITE
             });
+            DOTween.Kill(transform);
         }
         else
         {

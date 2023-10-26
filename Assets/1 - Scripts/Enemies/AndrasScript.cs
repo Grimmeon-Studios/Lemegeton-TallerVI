@@ -178,11 +178,10 @@ public class AndrasScript : MonoBehaviour
         {
             andras.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
             { 
-                andras.DOColor(Color.white, 0.1f).OnComplete(() => {
-                    DOTween.KillAll(gameObject);
-                });
+                andras.DOColor(Color.white, 0.1f);
             });
-
+            DOTween.Kill(transform);
+            
         }
         else
         {
