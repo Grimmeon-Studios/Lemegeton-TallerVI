@@ -134,7 +134,7 @@ public class Dungeon : MonoBehaviour
     {
         if (difficultylvl % 3 == 0)
         {
-            additionalEnemyCount++;
+            additionalEnemyCount = additionalEnemyCount + 1;
         }
         else
         {
