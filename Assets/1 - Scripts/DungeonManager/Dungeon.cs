@@ -26,6 +26,9 @@ public class Dungeon : MonoBehaviour
     public Vector3 LostSoul_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
     public Vector3 andras_StatsMultiplier = new Vector3(0, 0, 0); // hp, attack, speed
 
+    private Vector3 incubus_StatsMultiplierPriv;
+    private Vector3 LostSoul_StatsMultiplierPriv;
+    private Vector3 andras_StatsMultiplierPriv;
 
     [Header("Other Config.")]
     public int additionalEnemyCount = 0;
@@ -49,6 +52,10 @@ public class Dungeon : MonoBehaviour
         chronometer.currentCircleLvl = currentCircle;
         
         onSetUp = true;
+
+        incubus_StatsMultiplierPriv = incubus_StatsMultiplier;
+        LostSoul_StatsMultiplierPriv = LostSoul_StatsMultiplier;
+        andras_StatsMultiplierPriv = andras_StatsMultiplier;
 
         GenerateDungeon();
 
@@ -134,13 +141,15 @@ public class Dungeon : MonoBehaviour
     {
         if (difficultylvl % 3 == 0)
         {
-            additionalEnemyCount = additionalEnemyCount + 1;
+            Debug.Log("Adding more enemies");
+            additionalEnemyCount++;
         }
         else
         {
-            incubus_StatsMultiplier += incubus_StatsMultiplier;
-            LostSoul_StatsMultiplier += LostSoul_StatsMultiplier;
-            andras_StatsMultiplier += andras_StatsMultiplier;
+            Debug.Log("Rising Stats");
+            incubus_StatsMultiplier += incubus_StatsMultiplierPriv;
+            LostSoul_StatsMultiplier += LostSoul_StatsMultiplierPriv;
+            andras_StatsMultiplier += andras_StatsMultiplierPriv;
         }
     }
 

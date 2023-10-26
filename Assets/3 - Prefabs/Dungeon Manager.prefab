@@ -59,7 +59,6 @@ MonoBehaviour:
   circlesToInstantiate:
   - {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
   - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
-  - {fileID: 4562183376426149959, guid: 10cecd993c3d5f34395c2561488d93e2, type: 3}
   InstatiatedCircles: []
 --- !u!61 &2426550591269680225
 BoxCollider2D:

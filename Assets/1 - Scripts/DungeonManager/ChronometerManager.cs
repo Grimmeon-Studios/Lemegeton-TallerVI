@@ -7,9 +7,9 @@ public class ChronometerManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText; // Reference to the Text component where the timer will be displayed
     [SerializeField] private TextMeshProUGUI difficultyLvl_Txt;
     [SerializeField] private TextMeshProUGUI currentCircle_Txt;
-    [SerializeField] private GameObject difficultyColor; 
+    [SerializeField] private GameObject difficultyColor;
+    [SerializeField] private Dungeon dungeonManager;
     private RectTransform difficultyColor_Transform;
-    private Dungeon dungeonManager;
     private float startTime;
     private float pausedTime;
     private bool isPaused = false;
@@ -25,6 +25,7 @@ public class ChronometerManager : MonoBehaviour
 
     void Start()
     {
+        //dungeonManager = GetComponent<Dungeon>();
         StartChronometer();
         difficultyColor_Transform = difficultyColor.GetComponent<RectTransform>();
         difficultyLvl = 0;
@@ -50,6 +51,7 @@ public class ChronometerManager : MonoBehaviour
             }
 
             currentCircle_Txt.text = currentCircleLvl.ToString();
+            difficultyLvl_Txt.text = difficultyLvl.ToString();
         
         }
     }
@@ -64,7 +66,6 @@ public class ChronometerManager : MonoBehaviour
         // Update the TextMeshProUGUI component
         timerText.text = timeText;
         //Debug.Log(difficultyLvl);
-        difficultyLvl_Txt.text =  difficultyLvl.ToString();
     }
 
 
@@ -103,6 +104,7 @@ public class ChronometerManager : MonoBehaviour
     void AumentarContador()
     {
         difficultyLvl++;
+        dungeonManager.EnemyManagement();
         //Debug.Log("gei");
     }
 }
