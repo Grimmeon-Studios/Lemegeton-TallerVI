@@ -26,6 +26,9 @@ public class CameraTransition : MonoBehaviour
     private void CamTransition()
     {
         DOTween.To(() => _cam.m_Lens.OrthographicSize, x => _cam.m_Lens.OrthographicSize = x, 8f, 2f)
-            .SetEase(Ease.InOutQuint);
+            .SetEase(Ease.InOutQuint).OnComplete(() =>
+            {
+                DOTween.KillAll(gameObject);
+            });
     }
 }

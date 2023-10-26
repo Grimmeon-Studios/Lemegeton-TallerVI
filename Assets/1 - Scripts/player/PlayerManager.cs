@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Vector2 selectionOffset;
 
     [Header("UI")]
-    private itemsNotification _Notification;
+    [SerializeField] private itemsNotification _Notification;
     
     [Header("Bars")]
     private HealthBar _healthBar;
@@ -58,7 +58,7 @@ public class PlayerManager : MonoBehaviour
     {
         //_Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
-        _Notification = FindObjectOfType<itemsNotification>();
+        //_Notification = FindObjectOfType<itemsNotification>();
         //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
         defense = maxDefense;
@@ -66,6 +66,8 @@ public class PlayerManager : MonoBehaviour
         _healthBar.SetMaxHealth(maxHealth);
         _defenseBar = FindObjectOfType<DefenseBar>();
         _defenseBar.SetMaxDefense(maxDefense);
+
+        Debug.Log("Notification Object: " + _Notification.gameObject.name.ToString());
     }
     //private void OnEnable()
     //{

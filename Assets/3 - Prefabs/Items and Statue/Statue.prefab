@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5626334238599218920}
   - component: {fileID: 6897887386820654516}
-  - component: {fileID: 5215763384669124235}
   - component: {fileID: 8161977238479342212}
+  - component: {fileID: 3605106836722378649}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Statue
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: c8d3427dbd31f6840a0e8161af997478, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,8 +86,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5215763384669124235
-CircleCollider2D:
+--- !u!114 &8161977238479342212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696980374731795487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00defe571aa5b4941b22841fd27dbd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabTier1: {fileID: 9194860824114186677, guid: 7f4eeb21ea837e446bbe61f804acfe6a, type: 3}
+  itemPrefabTier2: {fileID: 0}
+  radius: 3
+  degrees: -210
+  itemsQuantityToSpawn: 3
+  itemSpacingDistance: 60
+--- !u!61 &3605106836722378649
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,24 +136,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.040052414, y: -0.6944779}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.266667, y: 4.266667}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 1
---- !u!114 &8161977238479342212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696980374731795487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00defe571aa5b4941b22841fd27dbd20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPrefabTier1: {fileID: 9194860824114186677, guid: 7f4eeb21ea837e446bbe61f804acfe6a, type: 3}
-  itemPrefabTier2: {fileID: 0}
-  radius: 3
-  degrees: -210
-  itemsQuantityToSpawn: 3
-  itemSpacingDistance: 60
+  m_Size: {x: 1.8804741, y: 1.3879902}
+  m_EdgeRadius: 0

@@ -79,18 +79,15 @@ public class MainMenu_manager : MonoBehaviour
     public void PlayAnim()
     {
         SFXClick.Play();
-        mainMenuPanel.transform.DOScale(new Vector3(7, 7, 7), 3).OnComplete(() =>
+        mainMenuPanel.transform.DOScale(new Vector3(7, 7, 7), 3);
+        backgroundColor.DOColor(blackColor, 2).OnComplete(() =>
         {
-            backgroundColor.DOColor(blackColor, 3).OnComplete(() =>
-            {
-                joystickCanva.gameObject.SetActive(true);
-                buttonsCanva.gameObject.SetActive(true);
-                player.gameObject.SetActive(true);
+            joystickCanva.gameObject.SetActive(true);
+            buttonsCanva.gameObject.SetActive(true);
+            player.gameObject.SetActive(true);
 
-                gameObject.SetActive(false);
-                DOTween.KillAll(gameObject);
-            });
-
+            gameObject.SetActive(false);
+            DOTween.KillAll(gameObject);
         });
     }
 
