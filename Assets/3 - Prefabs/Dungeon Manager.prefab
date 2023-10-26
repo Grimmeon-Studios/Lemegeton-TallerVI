@@ -47,25 +47,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d73cdebc38c3146a20013ed2664b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObj: {fileID: 0}
   collisionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  incubus_StatsMultiplier: {x: 0, y: 0, z: 0}
-  LostSoul_StatsMultiplier: {x: 0, y: 0, z: 0}
-  andras_StatsMultiplier: {x: 0, y: 0, z: 0}
-  additionalEnemyCount: 0
+  incubus_StatsMultiplier: {x: 2, y: 1.2, z: 0.03}
+  LostSoul_StatsMultiplier: {x: 1, y: 0.5, z: 2}
+  andras_StatsMultiplier: {x: 3, y: 2, z: 2}
+  additionalEnemyCount: 3
   currentCircle: 0
-  circlesToInstantiate: []
-  circle1_var:
-  - {fileID: 4562183376426149959, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  - {fileID: 4562183376426149959, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  - {fileID: 4562183376426149959, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  - {fileID: 4562183376426149959, guid: db71d662c5153f240aee7c0ad945bc23, type: 3}
-  circle2_var:
+  circlesToInstantiate:
+  - {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
   - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
-  - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
-  - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
-  - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
+  InstatiatedCircles: []
 --- !u!61 &2426550591269680225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78,7 +72,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -119,7 +113,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439107651180042362}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -136,7 +130,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &3666743072314667572
 GameObject:
@@ -187,6 +181,6 @@ MonoBehaviour:
   currentCircle_Txt: {fileID: 0}
   difficultyColor: {fileID: 0}
   timeScale: 0
-  timeStepsForLevel: 45
+  timeStepsForLevel: 40
   difficultyLvl: 0
   currentCircleLvl: 0

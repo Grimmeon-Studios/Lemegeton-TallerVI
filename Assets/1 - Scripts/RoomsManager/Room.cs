@@ -23,6 +23,7 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab1, enemyPrefab2, enemyPrefab3;
     //private bool inCombat = false;
     private bool enemiesBuffed = false;
+    private bool playerInCombat = false;
 
     void Awake()
     {
@@ -42,8 +43,9 @@ public class Room : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         var @object = other.gameObject;
-        if (@object.CompareTag("Player"))
+        if (@object.CompareTag("Player") && playerInCombat == false)
         {
+            playerInCombat = true;
             Debug.Log("Player Entered");
             edgeCollider.enabled = true;
             StartCoroutine(WaitAndTrapPlayer(2, enemyPrefab1, enemyPrefab2, enemyPrefab3));            
@@ -64,7 +66,7 @@ public class Room : MonoBehaviour
     public void OnTriggerExit2D(Collider2D other)
     {
         var @object = other.gameObject;
-        if (@object.CompareTag("Player"))
+        if (@object.CompareTag("Player") )
         {
             Debug.Log("Player Exited the Room");
         }
@@ -76,6 +78,7 @@ public class Room : MonoBehaviour
                 Destroy(@object);
                 if(enemiesHashSet.Count == 0)
                 {
+                    playerInCombat = false;
                     NoRemainingEnemies.Invoke();
                     //inCombat = false;
                     enemiesBuffed = false;
@@ -137,7 +140,7 @@ public class Room : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
 
-        //_dungeonManager.EnemyManagement();
+        
         if(enemiesBuffed == false)
         {
             enemiesBuffed = true;
