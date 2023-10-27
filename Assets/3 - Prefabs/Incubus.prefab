@@ -185,7 +185,7 @@ MonoBehaviour:
   currState: 0
   health: 1
   spritesFire:
-  - {fileID: 21300000, guid: 144ddbccfb3141941a56b378b086e3a3, type: 3}
+  - {fileID: 21300000, guid: b48bfcbb1e93e9841b0a18b92691ce09, type: 3}
   - {fileID: 21300000, guid: 2697dcf99509b5f4cbb5d5ef10acbf4f, type: 3}
   incubus: {fileID: 7303481817669692880}
 --- !u!95 &7422732735214986358
