@@ -50,6 +50,8 @@ public class PlayerManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private itemsNotification _Notification;
+    [SerializeField] private GameObject attackBtn;
+    [SerializeField] private GameObject interactionBtn;
     
     [Header("Bars")]
     private HealthBar _healthBar;
@@ -254,17 +256,21 @@ public class PlayerManager : MonoBehaviour
         {
             itemNearBy = true;
             _Item = collision.GetComponent<Item>();
+            interactionBtn.SetActive(true);
+            attackBtn.SetActive(false);
         }
         else if (collision != null && collision.CompareTag("Statue"))
         {
             statueNearBy = true;
             _Statue = collision.gameObject;
-            Debug.Log(_Statue + ": In range");
+            interactionBtn.SetActive(true);
+            attackBtn.SetActive(false);
         }
         else if (collision == null)
         {
             _Item = null;
             statueNearBy = false;
+            attackBtn.SetActive(true);
         }
     }
 
@@ -274,11 +280,16 @@ public class PlayerManager : MonoBehaviour
         {
             itemNearBy = false;
             _Item = null;
+            interactionBtn.SetActive(false);
+            attackBtn.SetActive(true);
         }
         else if (collision != null && collision.CompareTag("Statue"))
         {
             statueNearBy = false;
             _Statue = null;
+
+            interactionBtn.SetActive(false);
+            attackBtn.SetActive(true);
             Debug.Log(_Statue + ": Too Far");
         }
         else if(collision == null)
