@@ -11,6 +11,7 @@ public class ItemStatueSpawner : MonoBehaviour
     [SerializeField] private int degrees;
     [SerializeField] private int itemsQuantityToSpawn = 3;
     [SerializeField] private int itemSpacingDistance = 45;
+    [SerializeField] private GameObject selecctionOutline;
 
     private bool isStatueUsed;
     List<GameObject> itemList = new List<GameObject>();
@@ -18,8 +19,26 @@ public class ItemStatueSpawner : MonoBehaviour
     void Start()
     {
         isStatueUsed = false;
+        IsSeleccted(false);
         itemList.Add(itemPrefabTier1);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && !isStatueUsed)
+        {
+            IsSeleccted(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            IsSeleccted(false);
+        }
+    }
+
 
     public void DropItems()
     {
@@ -62,5 +81,17 @@ public class ItemStatueSpawner : MonoBehaviour
         float y = gameObject.transform.position.y + radius * Mathf.Sin(angleRadians);
 
         return new Vector2(x, y);
+    }
+
+    private void IsSeleccted(bool prompt)
+    {
+        if (prompt)
+        {
+            selecctionOutline.SetActive(true);
+        }
+        else
+        {
+            selecctionOutline.SetActive(false); 
+        }
     }
 }
