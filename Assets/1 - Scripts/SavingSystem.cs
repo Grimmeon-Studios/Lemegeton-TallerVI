@@ -13,6 +13,7 @@ public class SavingSystem : MonoBehaviour
 
     public void SaveGame()
     {
+        Debug.Log("Saving Stats");
         //Get all of the variables that want to be save  (We have to create a function to gets the saved variables)
         float playerSpeed = player.GetSpeed();
         float playerMaxHealth = player.GetMaxHealth();
@@ -45,7 +46,8 @@ public class SavingSystem : MonoBehaviour
 
     public void LoadGame()
     {
-        //Select the stats
+        Debug.Log("Loading Stats");
+        //Select the stats :D
         float playerSpeed = PlayerPrefs.GetFloat("speed");
         float playerMaxHealth = PlayerPrefs.GetFloat("maxHealth");
         float playerHealth = PlayerPrefs.GetFloat("health");
