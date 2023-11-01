@@ -156,6 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b76ca5cd49f42488888fad2c6b6d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &126407598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5121757696046732996, guid: e669f05b664e7cc47a405576ddc81492, type: 3}
+  m_PrefabInstance: {fileID: 6203258993092369353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &177917019 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3676878353381825129, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
@@ -880,22 +885,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Actions Canva
       objectReference: {fileID: 0}
-    - target: {fileID: 560265661393177987, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 873992758050241938, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -98.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 873992758050241938, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 14.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1271911875679506482, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1271911875679506482, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -904,26 +893,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 222299091578452019}
-    - target: {fileID: 1271911875679506482, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PickUp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1271911875679506482, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ActivateStatue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1271911875679506482, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1607938846361367418, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: playerProjectileMethod
       value: 
       objectReference: {fileID: 222299091578452008}
-    - target: {fileID: 2280896391091958710, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -216
-      objectReference: {fileID: 0}
     - target: {fileID: 2520393182169223196, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -931,10 +904,6 @@ PrefabInstance:
     - target: {fileID: 2520393182169223196, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947580878911318986, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -154.00003
       objectReference: {fileID: 0}
     - target: {fileID: 4208156855668837696, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -948,22 +917,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 57990560}
-    - target: {fileID: 4378413743600545491, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5935973592344023522, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7071397958332526960, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7527259648658401220, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 131
-      objectReference: {fileID: 0}
+    - target: {fileID: 5804025750485120921, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 126407598}
     - target: {fileID: 9099622121381112963, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
