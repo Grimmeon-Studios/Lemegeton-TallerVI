@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI criticalDamageText;
     [SerializeField] TextMeshProUGUI timeInvincibleText;
     private PlayerManager player;
-
+    [SerializeField] GameObject joystick;
     private void Start()
     {
         player = FindObjectOfType<PlayerManager>();
@@ -36,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         UpdateStatsText();
         Time.timeScale = 0f;
+        joystick.SetActive(false);
     }
 
     public void LoadStats()
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
+        joystick.SetActive(true);
         Time.timeScale = 1f;
     }
 
