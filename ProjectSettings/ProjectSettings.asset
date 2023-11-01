@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Grimmeon Studio
-  productName: Lemegeton
+  productName: 'Tenebris: Inferno'
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.19215688, g: 0, b: 0.003921569, a: 1}
@@ -137,8 +137,9 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.1
-  preloadedAssets: []
+  bundleVersion: 0.6.5
+  preloadedAssets:
+  - {fileID: 11400000, guid: dc88ac2783427db409db397eef40a2f0, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
