@@ -51,10 +51,10 @@ MonoBehaviour:
   collisionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  incubus_StatsMultiplier: {x: 2, y: 1.2, z: 0.03}
+  incubus_StatsMultiplier: {x: 1.2, y: 1, z: 0.01}
   LostSoul_StatsMultiplier: {x: 1, y: 0.5, z: 2}
-  andras_StatsMultiplier: {x: 3, y: 2, z: 2}
-  additionalEnemyCount: 3
+  andras_StatsMultiplier: {x: 2, y: 1.5, z: 1}
+  additionalEnemyCount: 0
   currentCircle: 0
   circlesToInstantiate:
   - {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
@@ -180,7 +180,8 @@ MonoBehaviour:
   difficultyLvl_Txt: {fileID: 0}
   currentCircle_Txt: {fileID: 0}
   difficultyColor: {fileID: 0}
+  dungeonManager: {fileID: 2135838740488322639}
   timeScale: 0
-  timeStepsForLevel: 40
+  timeStepsForLevel: 30
   difficultyLvl: 0
   currentCircleLvl: 0
