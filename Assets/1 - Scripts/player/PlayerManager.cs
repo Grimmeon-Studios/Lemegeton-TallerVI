@@ -56,6 +56,15 @@ public class PlayerManager : MonoBehaviour
     [Header("Bars")]
     private HealthBar _healthBar;
     private DefenseBar _defenseBar;
+    
+    [Header("Defense")]
+    private float lastDamageTime;
+    private bool isRechargingDefense;
+    private float rechargeStartTime;
+    private float rechargeDuration = 5.0f;
+    private float previousDefenseValue;
+    private bool stopRechargeDefense;
+    
     private void Start()
     {
         //_Input = new PlayerInput_map();
@@ -110,7 +119,40 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        
+        // Verifica si han pasado 8 segundos desde el último daño y la recarga no está en curso
+        if (Time.time - lastDamageTime >= 10.0f && !isRechargingDefense)
+        {
+            previousDefenseValue = defense;
+            isRechargingDefense = true;
+            rechargeStartTime = Time.time;
+        }
+
+        // Restablece gradualmente la defensa durante la recarga
+        if (isRechargingDefense)
+        {
+            float elapsedTime = Time.time - rechargeStartTime;
+
+            if (elapsedTime < rechargeDuration)
+            {
+                // Incrementa gradualmente la defensa a su valor máximo durante la recarga
+                defense = Mathf.Lerp(previousDefenseValue, maxDefense, elapsedTime / rechargeDuration);
+                _defenseBar.SetDefense(defense);
+                if (stopRechargeDefense)
+                {
+                    defense = Convert.ToUInt32(defense);
+                    previousDefenseValue = defense;
+                    isRechargingDefense = false;
+                    stopRechargeDefense = false;
+                }
+            }
+            else
+            {
+                // Finaliza la recarga cuando se alcanza la duración deseada
+                isRechargingDefense = false;
+                defense = maxDefense;
+                _defenseBar.SetDefense(defense);
+            }
+        }
         if(_Item != null)
         {
             lastNearByItem = _Item;
@@ -194,7 +236,13 @@ public class PlayerManager : MonoBehaviour
 
         isInvincible = true;
         invincibleTimer = timeInvincible;
-        
+        lastDamageTime = Time.time;
+        if (isRechargingDefense)
+        {
+            stopRechargeDefense = true;
+            defense = previousDefenseValue;
+            _defenseBar.SetDefense(defense);
+        }
         if (defense > 0)
         {
             defense -- ;
@@ -202,7 +250,6 @@ public class PlayerManager : MonoBehaviour
         else
         {
             SFXHit.Play();
-
             health -= amount;
             Debug.Log("Health" + health);
         }
@@ -215,7 +262,7 @@ public class PlayerManager : MonoBehaviour
             clipDamage.Play(); // feedback of the damage
         }*/
     }
-
+    
     public void Death()
     {
         //Destroy(gameObject);
