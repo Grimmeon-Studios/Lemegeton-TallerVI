@@ -15,7 +15,9 @@ public class IncubusScript : MonoBehaviour
     public Transform incubusTransform;
     public Vector3 defaultStats; // hp, attack, speed
     private PlayerManager playerManager;
-        
+    private ScoreBoard scoreBoard;
+    private ChronometerManager chrono;
+
     #region MOVE RELATED
 
     [SerializeField] float moveSpeed;
@@ -65,6 +67,8 @@ public class IncubusScript : MonoBehaviour
     
     void Start()
     {
+        scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
+        chrono = UnityEngine.Object.FindObjectOfType<ChronometerManager>();
         player = GameObject.Find("_Player"); 
         playerManager = FindObjectOfType<PlayerManager>();
         // door = GameObject.Find("Door");
@@ -222,6 +226,7 @@ public class IncubusScript : MonoBehaviour
             }
         }
         // LM.enemyCount -= 1;
+        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
         Destroy(gameObject);
     }
 }

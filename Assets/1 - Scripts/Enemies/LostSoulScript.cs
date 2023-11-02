@@ -15,6 +15,8 @@ public class LostSoulScript : MonoBehaviour
     Rigidbody2D rb;
     //Animator animator;
     //AudioSource audioSource;
+    private ScoreBoard scoreBoard;
+    private ChronometerManager chrono;
 
     public Vector3 defaultStats; // hp, attack, speed
 
@@ -58,6 +60,9 @@ public class LostSoulScript : MonoBehaviour
     public SpriteRenderer lostSoul;
     void Start()
     {
+        scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
+        chrono = UnityEngine.Object.FindObjectOfType<ChronometerManager>();
+
         player = GameObject.Find("_Player");
         //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
@@ -223,6 +228,7 @@ public class LostSoulScript : MonoBehaviour
         //    }
         //}
         //LM.enemyCount -= 1;
+        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
         Destroy(gameObject);
     }
 }

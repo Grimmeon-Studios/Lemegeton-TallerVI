@@ -13,11 +13,14 @@ public class ItemStatueSpawner : MonoBehaviour
     [SerializeField] private int itemSpacingDistance = 45;
     [SerializeField] private GameObject selecctionOutline;
 
+    [SerializeField] private ScoreBoard scoreBoard;
+
     private bool isStatueUsed;
     List<GameObject> itemList = new List<GameObject>();
 
     void Start()
     {
+        scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
         isStatueUsed = false;
         IsSeleccted(false);
         itemList.Add(itemPrefabTier1);
@@ -62,6 +65,7 @@ public class ItemStatueSpawner : MonoBehaviour
                 }
             }
             isStatueUsed=true;
+            scoreBoard.GetPoints(100);
         }
     }
 
@@ -89,7 +93,7 @@ public class ItemStatueSpawner : MonoBehaviour
         {
             selecctionOutline.SetActive(true);
         }
-        else
+        else if(!prompt)
         {
             selecctionOutline.SetActive(false); 
         }

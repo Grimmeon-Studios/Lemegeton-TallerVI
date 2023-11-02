@@ -13,6 +13,9 @@ public class Room : MonoBehaviour
     private Dungeon _dungeonManager;
     private HashSet<GameObject> enemiesHashSet = new HashSet<GameObject>();
 
+    private ScoreBoard scoreBoard;
+    private ChronometerManager chrono;
+
     // The first Collider is the one who detects the player and trapts it in the Room
     [SerializeField] private BoxCollider2D mainBoxCollider;
     [SerializeField] private GameObject combatOverlay;
@@ -35,6 +38,9 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
+        scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
+        chrono = UnityEngine.Object.FindObjectOfType<ChronometerManager>();
+
         dungeonManager = GameObject.Find("Dungeon Manager");
         _dungeonManager = dungeonManager.GetComponent<Dungeon>();
         combatOverlay.SetActive(false);
@@ -82,13 +88,14 @@ public class Room : MonoBehaviour
                     NoRemainingEnemies.Invoke();
                     //inCombat = false;
                     enemiesBuffed = false;
+                    scoreBoard.GetPoints(100 * chrono.difficultyLvl);
                     Destroy(gameObject);
                 }
             }
         }
         else if (!@object.CompareTag("Room"))
         {
-            Debug.Log("Entity: " + @object.name + " Not Recognized");
+            //Debug.Log("Entity: " + @object.name + " Not Recognized");
         }
 
     }

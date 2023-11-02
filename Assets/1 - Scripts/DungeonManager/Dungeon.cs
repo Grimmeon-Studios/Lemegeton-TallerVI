@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
-
+using TMPro;
 
 public class Dungeon : MonoBehaviour
 {
@@ -38,11 +38,17 @@ public class Dungeon : MonoBehaviour
     [Header("Dungeon  Lists")]
     public List<GameObject> circlesToInstantiate = new List<GameObject>();
     public List<GameObject> InstatiatedCircles = new List<GameObject>();
-    
+    private BoxCollider2D boxColl;
+    public TextMeshProUGUI totalRoomsTxt;
+    public TextMeshProUGUI remainingRoomsTxt;
+    private int totalRooms;
+    private int remainingRooms;
+
 
 
     private void Awake()
     {
+        boxColl = GetComponent<BoxCollider2D>();
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
@@ -60,11 +66,13 @@ public class Dungeon : MonoBehaviour
         GenerateDungeon();
 
         StartCoroutine(SetUpTimer(1f));
+        StartCoroutine(WaitAndCount());
     }
 
     private void Update()
     {
         difficultylvl = chronometer.difficultyLvl;
+        remainingRoomsTxt.text = remainingRooms.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,7 +80,7 @@ public class Dungeon : MonoBehaviour
         if (collision.gameObject.CompareTag("Room"))
         {
             unclearedRooms++;
-            Debug.Log(" has been detected, now uncleared Rooms = " + unclearedRooms.ToString());
+            //Debug.Log(" has been detected, now uncleared Rooms = " + unclearedRooms.ToString());
         }
 
         if(collision.gameObject.CompareTag("Circle") && onSetUp == true)
@@ -86,7 +94,7 @@ public class Dungeon : MonoBehaviour
                 listComplete = true;
                 if (listComplete)
                 {
-                    Debug.Log("List Complete");
+                    //Debug.Log("List Complete");
                     ShuffleCircles();
                 }
             }
@@ -98,8 +106,8 @@ public class Dungeon : MonoBehaviour
         if (collision.gameObject.CompareTag("Room"))
         {
             unclearedRooms--;
-            Debug.Log("Update uncleared Rooms = " + unclearedRooms.ToString());
-
+            remainingRooms--;
+            //Debug.Log("Update uncleared Rooms = " + unclearedRooms.ToString());
             if (unclearedRooms == 0 && onSetUp == false)
             {
                 Debug.Log("Circle " + currentCircle + " Cleared");
@@ -189,10 +197,39 @@ public class Dungeon : MonoBehaviour
         InstatiatedCircles[0].gameObject.SetActive(true);
     }
 
+    private int CountRooms()
+    {
+        int count = 0;
+
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, boxColl.size, 0f);
+
+        foreach(var rooms in colliders)
+        {
+            if (rooms.CompareTag("Room"))
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
     private IEnumerator SetUpTimer(float waitTime)
     {
         
         yield return new WaitForSeconds(waitTime);
         onSetUp = false;
     }
+
+    IEnumerator WaitAndCount()
+    {
+
+        yield return new WaitForSeconds(2f);
+
+        totalRooms = CountRooms();
+        remainingRooms = totalRooms;
+        totalRoomsTxt.text = totalRooms.ToString();
+    }
+
+    
 }
