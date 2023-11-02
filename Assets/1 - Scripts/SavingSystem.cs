@@ -6,9 +6,12 @@ using UnityEngine;
 public class SavingSystem : MonoBehaviour
 {
     private PlayerManager player;
+    private ScoreBoard scoreboard;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerManager>();
+        scoreboard = FindObjectOfType<ScoreBoard>();
     }
 
     public void SaveGame()
@@ -65,4 +68,6 @@ public class SavingSystem : MonoBehaviour
         player.SetStats(playerSpeed,playerMaxHealth,playerHealth,playerMaxDefense,playerDefense,playerAttack,playerShotSpeed,playerShotRange, playerShotDamage,playerCriticalDamage,playerCriticalRateUp,playerTimeInvincible);
         
     }
+
+    
 }

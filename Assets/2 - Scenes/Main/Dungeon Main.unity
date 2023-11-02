@@ -998,6 +998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button Actions Canva
       objectReference: {fileID: 0}
+    - target: {fileID: 873992758050241938, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -113
+      objectReference: {fileID: 0}
     - target: {fileID: 1271911875679506482, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
