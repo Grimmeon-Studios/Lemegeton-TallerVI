@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Dash : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem smokePartSystem;
     [SerializeField] private Button dashButton;
     [SerializeField] private Image dashButtonBG;
     [SerializeField] private GameObject playerComponent;
@@ -53,6 +54,7 @@ public class Dash : MonoBehaviour
 
         SFXDash.Play();
         dashButtonBG.fillAmount = 0f;
+        smokePartSystem.Play();
 
         playerSprite.color = new Color(1, 1, 1, 0.2f);
         playerComponent.SetActive(true);
