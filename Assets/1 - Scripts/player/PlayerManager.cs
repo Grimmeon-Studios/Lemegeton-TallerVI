@@ -199,17 +199,7 @@ public class PlayerManager : MonoBehaviour
         animator.SetFloat("Speed",_Rigidbody.velocity.sqrMagnitude);
     }
     
-    /*public void pickingUp(int pickUps)
-   {
-       switch (pickUps)
-       {
-           case 1:
-               
-               break;
-           
-       }
-       
-   }*/
+   
 
     
 

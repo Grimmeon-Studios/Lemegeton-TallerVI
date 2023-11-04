@@ -34,7 +34,7 @@ public class SavingSystem : MonoBehaviour
         //Set all of them into Prefs
         PlayerPrefs.SetFloat("speed", playerSpeed);
         PlayerPrefs.SetFloat("maxHealth", playerMaxHealth);
-        PlayerPrefs.SetFloat("heath", playerHealth);
+        PlayerPrefs.SetFloat("health", playerHealth);
         PlayerPrefs.SetFloat("maxDefense", playerMaxDefense);
         PlayerPrefs.SetFloat("defense", playerDefense);
         PlayerPrefs.SetFloat("attack", playerAttack);
