@@ -321,6 +321,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &73852538 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8043175823541092758, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &90620778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2527,6 +2532,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2300311249650143550, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: blockName
+      value: Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070487593724641336, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070487593724641336, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070487593724641336, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3346292320468641749, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
       propertyPath: m_Name
       value: FungusParent
@@ -2537,7 +2558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5136843585251034793, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.9
+      value: -12.4
       objectReference: {fileID: 0}
     - target: {fileID: 5595843743175943614, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2579,6 +2600,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5704149251240880240, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: selectedBlocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704149251240880240, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: selectedCommands.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5704149251240880240, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: selectedBlocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 520491811}
+    - target: {fileID: 5704149251240880240, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: selectedCommands.Array.data[0]
+      value: 
+      objectReference: {fileID: 520491818}
     - target: {fileID: 6958169768698604804, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 94.9
@@ -2587,22 +2624,250 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 10.4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: blockName
+      value: Intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: nodeRect.width
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[0]
+      value: 
+      objectReference: {fileID: 520491817}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[1]
+      value: 
+      objectReference: {fileID: 520491816}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[2]
+      value: 
+      objectReference: {fileID: 520491814}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[3]
+      value: 
+      objectReference: {fileID: 520491812}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[4]
+      value: 
+      objectReference: {fileID: 520491818}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[5]
+      value: 
+      objectReference: {fileID: 520491812}
+    - target: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      propertyPath: commandList.Array.data[6]
+      value: 
+      objectReference: {fileID: 520491812}
+    m_RemovedComponents:
+    - {fileID: 9114073881900445861, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 8468010837157414453, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 953099495710166443, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 3070487593724641336, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 6684279706159702394, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 7716072545366121558, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 8148131985106296375, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 7449675552263136103, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 3901726558853788855, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 8988353882459721104, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    - {fileID: 5512661465405466382, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 8329770753876964029, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3430731040256517533, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520491817}
+    - targetCorrespondingSourceObject: {fileID: 3430731040256517533, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520491816}
+    - targetCorrespondingSourceObject: {fileID: 3430731040256517533, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520491814}
+    - targetCorrespondingSourceObject: {fileID: 3430731040256517533, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 520491818}
   m_SourcePrefab: {fileID: 100100000, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
 --- !u!114 &520491807 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5704149251240880240, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
   m_PrefabInstance: {fileID: 520491806}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &520491808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3919389672113576367, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &520491809 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5085215317121602531, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &520491810 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4409919733367956893, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &520491811 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8915214044764358458, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &520491812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2896421964892905397, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cb9773f2ca04e2bbf7a68ccfc23267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &520491813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3430731040256517533, guid: 31e722235ae36d24985d228e4229d74b, type: 3}
+  m_PrefabInstance: {fileID: 520491806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &520491814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 11
+  indentLevel: 0
+  storyText: I am the darkness of all humanity, and the High Demon Princes will perish
+    to my power. Humans will claim their place as the new devils. {punch=12,0.4}
+    {flash=0.4}
+  description: 
+  character: {fileID: 520491808}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &520491816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 10
+  indentLevel: 0
+  storyText: Finally, the gates of hell lie before me.
+  description: 
+  character: {fileID: 520491808}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &520491817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 9
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 0}
+  character: {fileID: 520491808}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 8a437570f0b887f4db1587a746e32247, type: 3}
+  offset: 0
+  fromPosition: {fileID: 520491809}
+  toPosition: {fileID: 520491810}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &520491818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520491813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 12
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 0}
+  character: {fileID: 520491808}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 73852538}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &533573062
 GameObject:
   m_ObjectHideFlags: 0
