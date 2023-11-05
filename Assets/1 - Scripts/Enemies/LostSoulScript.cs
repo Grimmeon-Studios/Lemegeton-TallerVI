@@ -12,6 +12,7 @@ public enum lizardState
 
 public class LostSoulScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem deathVFX;
     Rigidbody2D rb;
     //Animator animator;
     //AudioSource audioSource;
@@ -60,6 +61,7 @@ public class LostSoulScript : MonoBehaviour
     public SpriteRenderer lostSoul;
     void Start()
     {
+        deathVFX.gameObject.SetActive(false);
         scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
         chrono = UnityEngine.Object.FindObjectOfType<ChronometerManager>();
 
@@ -101,7 +103,7 @@ public class LostSoulScript : MonoBehaviour
                 Run();
                 break;
             case (lizardState.Dead):
-                Die();
+                StartCoroutine(WaitAndDie(1.2f));
                 break;
         }
 
@@ -204,31 +206,14 @@ public class LostSoulScript : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator WaitAndDie(float seconds)
     {
         Debug.Log("Se murio definitivamente");
-        //int opcDrop;
-        //for (int i = 1; i <= Random.Range(1, 3); i++)
-        //{
-        //    opcDrop = Random.Range(1, 3);
 
-        //    if (opcDrop == 1)
-        //    {
-        //        Vector2 objectPos = transform.position;
-        //        objectPos.x += Random.Range(-1f, 1f);
-        //        objectPos.y += Random.Range(-1f, 1f);
-        //        //GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
-        //    }
-        //    else if (opcDrop == 2)
-        //    {
-        //        Vector2 objectPos = transform.position;
-        //        objectPos.x += Random.Range(-1f, 1f);
-        //        objectPos.y += Random.Range(-1f, 1f);
-        //        //GameObject dropObject = Instantiate(drop2Prefab, objectPos, Quaternion.identity);
-        //    }
-        //}
-        //LM.enemyCount -= 1;
-        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+        GetComponent<SpriteRenderer>().enabled = false;
+        deathVFX.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
 }

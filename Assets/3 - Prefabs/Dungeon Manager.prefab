@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5937136624069538277}
   - component: {fileID: 2135838740488322639}
+  - component: {fileID: 5288887264809802051}
   - component: {fileID: 2426550591269680225}
   - component: {fileID: 3477000256040932621}
   m_Layer: 3
@@ -60,6 +61,20 @@ MonoBehaviour:
   - {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
   - {fileID: 7866830633171382133, guid: d731cd71291e86546a0d297f17aeef7a, type: 3}
   InstatiatedCircles: []
+  totalRoomsTxt: {fileID: 0}
+  remainingRoomsTxt: {fileID: 0}
+--- !u!114 &5288887264809802051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439107651180042362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340ff402e23316644bfec42cf618f0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2426550591269680225
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -182,6 +197,6 @@ MonoBehaviour:
   difficultyColor: {fileID: 0}
   dungeonManager: {fileID: 2135838740488322639}
   timeScale: 0
-  timeStepsForLevel: 30
+  timeStepsForLevel: 45
   difficultyLvl: 0
   currentCircleLvl: 0

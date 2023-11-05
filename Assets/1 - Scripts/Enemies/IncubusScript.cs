@@ -11,6 +11,8 @@ public enum incubState
 
 public class IncubusScript : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem deathVFX;
+
     Rigidbody2D rb;
     public Transform incubusTransform;
     public Vector3 defaultStats; // hp, attack, speed
@@ -67,6 +69,7 @@ public class IncubusScript : MonoBehaviour
     
     void Start()
     {
+        deathVFX.gameObject.SetActive(false);
         scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
         chrono = UnityEngine.Object.FindObjectOfType<ChronometerManager>();
         player = GameObject.Find("_Player"); 
@@ -100,7 +103,7 @@ public class IncubusScript : MonoBehaviour
                 Chase();
                 break;
             case (incubState.Dead):
-                Die();
+                StartCoroutine(WaitAndDie(1.2f));
                 break;
             case (incubState.Attacking):
                 StartCoroutine(Attack());
@@ -203,30 +206,14 @@ public class IncubusScript : MonoBehaviour
         }
     }
 
-    void Die()
+    IEnumerator WaitAndDie(float seconds)
     {
-        int opcDrop;
-        for (int i = 1; i <= Random.Range(1, 3); i++)
-        {
-            opcDrop = Random.Range(1, 3);
+        Debug.Log("Se murio definitivamente");
 
-            if (opcDrop == 1)
-            {
-                Vector2 objectPos = transform.position;
-                objectPos.x += Random.Range(-1f, 1f);
-                objectPos.y += Random.Range(-1f, 1f);
-                // GameObject dropObject = Instantiate(drop1Prefab, objectPos, Quaternion.identity);
-            }
-            else if (opcDrop == 2)
-            {
-                Vector2 objectPos = transform.position;
-                objectPos.x += Random.Range(-1f, 1f);
-                objectPos.y += Random.Range(-1f, 1f);
-                // GameObject dropObject = Instantiate(drop2Prefab, objectPos, Quaternion.identity);
-            }
-        }
-        // LM.enemyCount -= 1;
-        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+        GetComponent<SpriteRenderer>().enabled = false;
+        deathVFX.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
 }

@@ -320,37 +320,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
   m_PrefabInstance: {fileID: 222299091578452007}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1458477771 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-  m_PrefabInstance: {fileID: 8760546004893979599}
+--- !u!198 &1539952391 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8636963774024828738, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+  m_PrefabInstance: {fileID: 222299091578452007}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1458477776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458477771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 340ff402e23316644bfec42cf618f0bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1458477781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458477771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1b8e9a0925f63746bcbb837d4c3b846, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalScore: {fileID: 0}
-  scoredPoints: {fileID: 0}
 --- !u!114 &1562644718 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7050853866374929614, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
@@ -653,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721834
+      value: 1.3721842
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -661,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721834
+      value: 1.3721842
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -792,6 +766,10 @@ PrefabInstance:
       propertyPath: buttonFill
       value: 
       objectReference: {fileID: 1399943842}
+    - target: {fileID: 2548719091320216206, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: slashPartSyst
+      value: 
+      objectReference: {fileID: 1539952391}
     - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: m_Name
       value: _Player
@@ -1218,10 +1196,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 300015671}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: currentRoomsTxt
-      value: 
-      objectReference: {fileID: 1562644718}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: remainingRoomsTxt
       value: 
       objectReference: {fileID: 1562644718}
@@ -1281,20 +1255,10 @@ PrefabInstance:
       propertyPath: difficultyLvl_Txt
       value: 
       objectReference: {fileID: 1858981628}
-    - target: {fileID: 6582987315559995505, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: timeStepsForLevel
-      value: 45
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1458477776}
-    - targetCorrespondingSourceObject: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1458477781}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
