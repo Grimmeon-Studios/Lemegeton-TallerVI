@@ -120,7 +120,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         // Verifica si han pasado 8 segundos desde el último daño y la recarga no está en curso
-        if (Time.time - lastDamageTime >= 10.0f && !isRechargingDefense)
+        if (Time.time - lastDamageTime >= 8.0f && !isRechargingDefense)
         {
             previousDefenseValue = defense;
             isRechargingDefense = true;
@@ -199,17 +199,7 @@ public class PlayerManager : MonoBehaviour
         animator.SetFloat("Speed",_Rigidbody.velocity.sqrMagnitude);
     }
     
-    /*public void pickingUp(int pickUps)
-   {
-       switch (pickUps)
-       {
-           case 1:
-               
-               break;
-           
-       }
-       
-   }*/
+   
 
     
 
@@ -262,7 +252,20 @@ public class PlayerManager : MonoBehaviour
             clipDamage.Play(); // feedback of the damage
         }*/
     }
-    
+    public void HazardLava()
+    {
+        defense = 0f;
+        isInvincible = true;
+        invincibleTimer = timeInvincible;
+        lastDamageTime = Time.time;
+        if (isRechargingDefense)
+        {
+            stopRechargeDefense = true;
+            previousDefenseValue = 0f;
+            defense = previousDefenseValue;
+            _defenseBar.SetDefense(defense);
+        }
+    }
     public void Death()
     {
         //Destroy(gameObject);
