@@ -11,18 +11,26 @@ public class Crosshair : MonoBehaviour
 
     public Vector2 lastAimDirection = Vector2.zero;
 
+    [Header("Combat")]
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private SpriteRenderer meleeSprite;
+    [SerializeField] private float combat_CD;
     [SerializeField] private float meleeRadius;
     [SerializeField] private float targetLockRadius;
-    [SerializeField] private float combat_CD;
+    [SerializeField] public float radio = 3.0f;
+    [SerializeField] public float transition = 3.0f;
+
+    [Header("SFX Config.")]
     [SerializeField] private AudioSource SFXAttack;
     [SerializeField] private AudioSource SFXCrit;
     [SerializeField] private AudioSource SFXBelhorHit;
     [SerializeField] private AudioSource SFXAndrasHit;
     private float combat_CDTimer;
 
+    [Header("Other")]
     [SerializeField] private PlayerManager _playerManager;
+    [SerializeField] private ParticleSystem slashPartSyst;
+
     private float meleeCriticalDamage;
     private float meleeCritialRateUp;
     private float meleeDamage;
@@ -32,8 +40,6 @@ public class Crosshair : MonoBehaviour
     private bool hasEnemyNearby = false;
 
     //[SerializeField] private FloatingJoystick Joystick;
-    [SerializeField] public float radio = 3.0f;
-    [SerializeField] public float transition = 3.0f;
 
     [Header("Button Config.")]
     [SerializeField] private Button button;
@@ -83,6 +89,7 @@ public class Crosshair : MonoBehaviour
             float angle = Mathf.Atan2(closestEnemyDir.y, closestEnemyDir.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * smoothFactor);
+            slashPartSyst.gameObject.transform.rotation = transform.rotation;
 
             currentAimDirection = closestEnemyDir;
         }
@@ -91,7 +98,7 @@ public class Crosshair : MonoBehaviour
             // No enemies nearby, use player's velocity for movement
             currentAimDirection = playerVelocity;
 
-            if(currentAimDirection != lastAimDirection)
+            if(currentAimDirection != lastAimDirection && currentAimDirection != Vector2.zero)
             {
                 lastAimDirection = currentAimDirection;
 
@@ -103,6 +110,7 @@ public class Crosshair : MonoBehaviour
                 // Rotate the crosshair object based on the player's aim (no smoothing)
                 float angle = Mathf.Atan2(playerVelocity.y, playerVelocity.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+                slashPartSyst.gameObject.transform.rotation = transform.rotation;
             }
             
         }
@@ -117,7 +125,8 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(AnimationPlaceholder(0.2f));
 
-        
+        slashPartSyst.Play();
+
         buttonFill.fillAmount = 0;
         float randomValue = Random.Range(0f, 1f);
     
