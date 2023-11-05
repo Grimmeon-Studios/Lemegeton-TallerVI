@@ -105,16 +105,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   meleeSprite: {fileID: 912563228577905733}
+  combat_CD: 0.8
   meleeRadius: 1.5
   targetLockRadius: 3.5
-  combat_CD: 0.8
+  radio: 3
+  transition: 3
   SFXAttack: {fileID: 6421329659301754356}
   SFXCrit: {fileID: 1413029698839401478}
   SFXBelhorHit: {fileID: 1391031937737945696}
   SFXAndrasHit: {fileID: 9001682657135437989}
   _playerManager: {fileID: 4784871271395500878}
-  radio: 3
-  transition: 3
+  slashPartSyst: {fileID: 8636963774024828738}
   button: {fileID: 0}
   buttonFill: {fileID: 0}
 --- !u!1 &585336813210003392
@@ -1945,6 +1946,11 @@ PrefabInstance:
 --- !u!4 &7619590445181227617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5657769457704369125, guid: ac43e5a74b92d4843b40e467345f0428, type: 3}
+  m_PrefabInstance: {fileID: 2826666805655316868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8636963774024828738 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5829626805884284614, guid: ac43e5a74b92d4843b40e467345f0428, type: 3}
   m_PrefabInstance: {fileID: 2826666805655316868}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7317935815226962948
