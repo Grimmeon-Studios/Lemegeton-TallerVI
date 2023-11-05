@@ -6,10 +6,11 @@ using Fungus;
 public class testFungus : MonoBehaviour
 {
     public Flowchart fc;
+    public string blockName;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        fc.ExecuteBlock("Belfegor intro");
+        fc.ExecuteBlock(blockName);
 
         gameObject.SetActive(false);
     }

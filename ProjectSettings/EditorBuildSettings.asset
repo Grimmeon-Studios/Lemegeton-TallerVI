@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/2 - Scenes/Main/HUB.unity
     guid: 50e2fd3168a4e54419fdabdb07e4da48
   - enabled: 1
+    path: Assets/2 - Scenes/Main/TutorialMain.unity
+    guid: 9ceabffd2b3b8794d87b93916a84b2d9
+  - enabled: 1
     path: Assets/2 - Scenes/Main/Dungeon Main.unity
     guid: 315435804dcdd50489172faf5c16c6cc
   m_configObjects:
