@@ -104,7 +104,7 @@ public class LostSoulScript : MonoBehaviour
                 Run();
                 break;
             case (lizardState.Dead):
-                StartCoroutine(WaitAndDie(1.2f));
+                StartCoroutine(WaitAndDie(0.7f));
                 dead = true;
                 break;
         }
@@ -212,18 +212,24 @@ public class LostSoulScript : MonoBehaviour
     {
         if (!dead)
         {
+            if (scoreBoard != null && chrono != null)
+            {
+                scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            }
+
             Debug.Log("Se murio definitivamente");
             //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
             GetComponent<SpriteRenderer>().enabled = false;
             acidPrefab = null;
             deathVFX.gameObject.SetActive(true);
-            scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            
             yield return new WaitForSeconds(seconds);
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("garbage verfication");
+            yield return new WaitForSeconds(0);
+
         }
     }
 }

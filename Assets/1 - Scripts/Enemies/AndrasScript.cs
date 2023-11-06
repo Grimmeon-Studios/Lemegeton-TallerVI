@@ -79,12 +79,7 @@ public class AndrasScript : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.fixedDeltaTime;
-        if (timer < 0 && isPlayerInRange(range) == true)
-        {
-            shoot();
-            timer = firerate;
-        }
+        
 
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
@@ -96,6 +91,12 @@ public class AndrasScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        timer -= Time.fixedDeltaTime;
+        if (timer < 0 && isPlayerInRange(range) == true)
+        {
+            shoot();
+            timer = firerate;
+        }
 
         switch (currState)
         {
@@ -106,7 +107,7 @@ public class AndrasScript : MonoBehaviour
                 Run();
                 break;
             case (andrasState.Dead):
-                StartCoroutine(WaitAndDie(1.2f));
+                StartCoroutine(WaitAndDie(0.7f));
                 dead = true;
                 break;
         }
@@ -205,18 +206,23 @@ public class AndrasScript : MonoBehaviour
     {
         if(!dead)
         {
+            if (scoreBoard != null && chrono != null)
+            {
+                scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            }
+
             Debug.Log("Se murio definitivamente");
             //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
             GetComponent<SpriteRenderer>().enabled = false;
             acidPrefab = null;
             deathVFX.gameObject.SetActive(true);
-            scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            
             yield return new WaitForSeconds(seconds);
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("garbage verfication");
+            yield return new WaitForSeconds(0);
         }
         
     }
