@@ -13,6 +13,8 @@ public class IncubusScript : MonoBehaviour
 {
     [SerializeField] private ParticleSystem deathVFX;
 
+    [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXAttack;
+
     Rigidbody2D rb;
     public Transform incubusTransform;
     public Vector3 defaultStats; // hp, attack, speed
@@ -154,6 +156,8 @@ public class IncubusScript : MonoBehaviour
         animator.SetBool("IsAboutAttack", false);
         while (Vector2.Distance(position, player.transform.position) <= attackRange)
         {
+            SFXAttack.Play();
+
             animator.SetBool("IsAttackingAn", true);
             attackArea.sprite = spritesFire[1];
             playerManager.TakeDamage(ContactDamage);
@@ -182,6 +186,7 @@ public class IncubusScript : MonoBehaviour
         
         if (Health > 0)
         {
+            SFXTakeDamage.Play();
             incubus.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
             {
                incubus.DOColor(Color.white, 0.1f).OnComplete(() =>
@@ -193,6 +198,7 @@ public class IncubusScript : MonoBehaviour
         }
         else
         {
+            SFXDie.Play();
             currState = incubState.Dead;
         }
     }

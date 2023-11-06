@@ -13,6 +13,9 @@ public enum lizardState
 public class LostSoulScript : MonoBehaviour
 {
     [SerializeField] private ParticleSystem deathVFX;
+
+    [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXShot;
+
     Rigidbody2D rb;
     //Animator animator;
     //AudioSource audioSource;
@@ -174,6 +177,8 @@ public class LostSoulScript : MonoBehaviour
 
         GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
         SoulBullet sBullet = acidObject.GetComponent<SoulBullet>();
+
+        SFXShot.Play();
         sBullet.shoot(aimDirection, 10, shotDamage);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
@@ -192,7 +197,7 @@ public class LostSoulScript : MonoBehaviour
        
         if (health > 0)
         {
-            
+            SFXTakeDamage.Play();
             lostSoul.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
             {
                  lostSoul.DOColor(Color.white, 0.1f).OnComplete(() =>
@@ -204,6 +209,7 @@ public class LostSoulScript : MonoBehaviour
         }
         else
         {
+            SFXDie.Play();
             currState = lizardState.Dead;
         }
     }
