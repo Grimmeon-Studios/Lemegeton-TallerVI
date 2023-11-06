@@ -1030,6 +1030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: SFXPickUp
       value: 
