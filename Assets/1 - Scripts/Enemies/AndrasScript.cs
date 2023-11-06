@@ -20,6 +20,8 @@ public class AndrasScript : MonoBehaviour
     private ScoreBoard scoreBoard;
     private ChronometerManager chrono;
 
+    private bool dead = false;
+
     public Vector3 defaultStats; // hp, attack, speed
 
     #region MOVE RELATED
@@ -105,6 +107,7 @@ public class AndrasScript : MonoBehaviour
                 break;
             case (andrasState.Dead):
                 StartCoroutine(WaitAndDie(1.2f));
+                dead = true;
                 break;
         }
 
@@ -200,13 +203,21 @@ public class AndrasScript : MonoBehaviour
 
     IEnumerator WaitAndDie(float seconds)
     {
-        Debug.Log("Se murio definitivamente");
-        //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
-        GetComponent<SpriteRenderer>().enabled = false;
-        acidPrefab = null;
-        deathVFX.gameObject.SetActive(true);
-        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
-        yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
+        if(!dead)
+        {
+            Debug.Log("Se murio definitivamente");
+            //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
+            GetComponent<SpriteRenderer>().enabled = false;
+            acidPrefab = null;
+            deathVFX.gameObject.SetActive(true);
+            scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            yield return new WaitForSeconds(seconds);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("garbage verfication");
+        }
+        
     }
 }

@@ -42,7 +42,8 @@ public class ScoreBoard : MonoBehaviour
         isRunning = true;
         scoredPoints.gameObject.SetActive(true);
         scoredPoints.text = "+" + ponits;
-        score = Mathf.FloorToInt(Mathf.Lerp(score, score + ponits, 1f));
+        //score = Mathf.FloorToInt(Mathf.Lerp(score, score + ponits, 1f));
+        score = score + ponits;
         totalScore.text = score.ToString();
     }
 }

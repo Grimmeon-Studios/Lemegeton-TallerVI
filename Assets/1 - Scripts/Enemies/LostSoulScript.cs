@@ -18,6 +18,7 @@ public class LostSoulScript : MonoBehaviour
     //AudioSource audioSource;
     private ScoreBoard scoreBoard;
     private ChronometerManager chrono;
+    private bool dead = false;
 
     public Vector3 defaultStats; // hp, attack, speed
 
@@ -104,6 +105,7 @@ public class LostSoulScript : MonoBehaviour
                 break;
             case (lizardState.Dead):
                 StartCoroutine(WaitAndDie(1.2f));
+                dead = true;
                 break;
         }
 
@@ -208,15 +210,20 @@ public class LostSoulScript : MonoBehaviour
 
     IEnumerator WaitAndDie(float seconds)
     {
-        Debug.Log("Se murio definitivamente");
-        //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
-
-        GetComponent<SpriteRenderer>().enabled = false;
-        acidPrefab = null;
-        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
-        deathVFX.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
+        if (!dead)
+        {
+            Debug.Log("Se murio definitivamente");
+            //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
+            GetComponent<SpriteRenderer>().enabled = false;
+            acidPrefab = null;
+            deathVFX.gameObject.SetActive(true);
+            scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            yield return new WaitForSeconds(seconds);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("garbage verfication");
+        }
     }
 }

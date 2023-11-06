@@ -39,6 +39,8 @@ public class IncubusScript : MonoBehaviour
     [SerializeField] private SpriteRenderer attackArea;
     [SerializeField] float Distance = 8.0f;
     private Vector2 currentAimDirection;
+
+    private bool dead = false;
         #endregion
 
     #region AI RELATED
@@ -104,6 +106,7 @@ public class IncubusScript : MonoBehaviour
                 break;
             case (incubState.Dead):
                 StartCoroutine(WaitAndDie(1.2f));
+                dead = true;
                 break;
             case (incubState.Attacking):
                 StartCoroutine(Attack());
@@ -208,15 +211,20 @@ public class IncubusScript : MonoBehaviour
 
     IEnumerator WaitAndDie(float seconds)
     {
-        Debug.Log("Se murio definitivamente");
-        //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
-
-        GetComponent<SpriteRenderer>().enabled = false;
-        Distance = 0f;
-        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
-        deathVFX.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(seconds);
-        Destroy(gameObject);
+        if (!dead)
+        {
+            Debug.Log("Se murio definitivamente");
+            //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
+            GetComponent<SpriteRenderer>().enabled = false;
+            Distance = 0;
+            deathVFX.gameObject.SetActive(true);
+            scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            yield return new WaitForSeconds(seconds);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("garbage verfication");
+        }
     }
 }
