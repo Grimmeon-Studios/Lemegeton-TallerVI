@@ -209,8 +209,11 @@ public class LostSoulScript : MonoBehaviour
     IEnumerator WaitAndDie(float seconds)
     {
         Debug.Log("Se murio definitivamente");
+        //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
 
         GetComponent<SpriteRenderer>().enabled = false;
+        acidPrefab = null;
+        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
         deathVFX.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(seconds);

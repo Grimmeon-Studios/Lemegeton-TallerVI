@@ -33,13 +33,13 @@ public class AndrasBullet : MonoBehaviour
 
         aimDirection.Normalize();
 
-        rb.AddForce(aimDirection * 225f, ForceMode2D.Force);
+        rb.AddForce(aimDirection * 50f, ForceMode2D.Force);
     }
 
     public void shoot(Vector2 direction, float force, float shotDamage)
     {
         damage = shotDamage;
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
+        rb.AddForce(direction * force/2, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D other)

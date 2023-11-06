@@ -29,7 +29,7 @@ public class AndrasScript : MonoBehaviour
     #endregion
 
     #region ATTACK RELATED
-    public float firerate = 1;
+    public float firerate;
     float timer;
     public GameObject acidPrefab;
     public Transform firePoint;
@@ -201,10 +201,11 @@ public class AndrasScript : MonoBehaviour
     IEnumerator WaitAndDie(float seconds)
     {
         Debug.Log("Se murio definitivamente");
-
+        //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
         GetComponent<SpriteRenderer>().enabled = false;
+        acidPrefab = null;
         deathVFX.gameObject.SetActive(true);
-
+        scoreBoard.GetPoints(10 * chrono.difficultyLvl);
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }

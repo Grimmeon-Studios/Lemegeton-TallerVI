@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5710323805917118698}
-  - component: {fileID: 2794758076826784935}
   - component: {fileID: 6073881490019593147}
+  - component: {fileID: 6663297434366590683}
   - component: {fileID: 3248368759599624196}
   - component: {fileID: 2141921643085787037}
   m_Layer: 0
@@ -30,12 +30,25 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.52325, y: -3.4774, z: 0}
-  m_LocalScale: {x: 0.697043, y: 1.8839, z: 1.8839}
+  m_LocalScale: {x: 1.11, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2794758076826784935
+--- !u!114 &6073881490019593147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9168687032117776216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0795bd29787673d4ba935357b5723e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+--- !u!212 &6663297434366590683
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,31 +88,18 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0, g: 0.84132123, b: 1, a: 1}
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 21300000, guid: fc51e1cb631ee924582e42a753283666, type: 3}
+  m_Color: {r: 0.38812745, g: 0.88559604, b: 0.9245283, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6073881490019593147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9168687032117776216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0795bd29787673d4ba935357b5723e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
 --- !u!50 &3248368759599624196
 Rigidbody2D:
   serializedVersion: 4
@@ -159,6 +159,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.65}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.59698856
