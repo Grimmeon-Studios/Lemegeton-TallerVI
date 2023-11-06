@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] Camera _Camera;
     [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
-    [SerializeField] private AudioSource SFXHit;
+    [SerializeField] private AudioSource SFXHit, SFXArmorHit, SFXPickUp;
     //PlayerInput_map _Input;
 
     [Header("Movement config.")]
@@ -235,6 +235,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (defense > 0)
         {
+            SFXArmorHit.Play();
             defense -- ;
         }
         else
@@ -350,12 +351,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (itemNearBy == true)
         {
+            SFXPickUp.Play();
+
             Debug.Log("Trying to pick Up");
             speed += _Item.item_speed;
             if (health < maxHealth)
             {
                 if ((_Item.item_health + health) <= maxHealth)
-                {
+                {                    
                     health += _Item.item_health;
                 }
                 else

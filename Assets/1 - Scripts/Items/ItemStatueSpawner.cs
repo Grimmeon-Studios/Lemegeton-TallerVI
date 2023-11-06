@@ -15,6 +15,8 @@ public class ItemStatueSpawner : MonoBehaviour
 
     [SerializeField] private ScoreBoard scoreBoard;
 
+    [SerializeField] private AudioSource SFXActivate;
+
     private bool isStatueUsed;
     List<GameObject> itemList = new List<GameObject>();
 
@@ -30,6 +32,7 @@ public class ItemStatueSpawner : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isStatueUsed)
         {
+            SFXActivate.Play();
             IsSeleccted(true);
         }
     }
