@@ -176,15 +176,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathVFX: {fileID: 4173140941506415265}
   defaultStats: {x: 0, y: 0, z: 0}
-  moveSpeed: 0.7
-  firerate: 3
+  moveSpeed: 0
+  firerate: 10
   acidPrefab: {fileID: 8402521562688868224, guid: d40225fe5c7724a4baa48d9a7daf79d3, type: 3}
   firePoint: {fileID: 3830077471240048218}
   shotDamage: 3
-  shootingForce: 4
+  shootingForce: 0.2
   currState: 0
   range: 10
-  health: 10
+  health: 3
   andras: {fileID: 7822652450660225385}
 --- !u!1 &1803611917086603210
 GameObject:

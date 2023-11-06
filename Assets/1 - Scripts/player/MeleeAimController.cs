@@ -8,6 +8,7 @@ public class Crosshair : MonoBehaviour
     public Transform playerTransform; // Reference to the player's transform
     public float crosshairDistance = 2.0f; // Distance from the player where the crosshair appears
     private Rigidbody2D rb;
+    private TutorialManager tutorialManager;
 
     public Vector2 lastAimDirection = Vector2.zero;
 
@@ -50,6 +51,10 @@ public class Crosshair : MonoBehaviour
     private void Start()
     {
         rb = GetComponentInParent<Rigidbody2D>();
+        if (UnityEngine.Object.FindAnyObjectByType<TutorialManager>() != null)
+        {
+            tutorialManager = UnityEngine.Object.FindAnyObjectByType<TutorialManager>();
+        }
     }
 
     private void FixedUpdate()
@@ -153,18 +158,30 @@ public class Crosshair : MonoBehaviour
             {
                 SFXBelhorHit.Play();
                 collision.transform.GetComponent<IncubusScript>().takeDamage(meleeDamage);
+                if(collision.transform.GetComponent<IncubusScript>().Health <= 0 && tutorialManager != null)
+                {
+                    tutorialManager.currentEnemies++;
+                }
             }
 
             if (collision.CompareTag("EnemySoul"))
             {
                 SFXBelhorHit.Play();
                 collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
+                if (collision.transform.GetComponent<LostSoulScript>().health <= 0 && tutorialManager != null)
+                {
+                    tutorialManager.currentEnemies++;
+                }
             }
 
             if (collision.CompareTag("EnemyAndras"))
             {
                 SFXAndrasHit.Play();
                 collision.gameObject.GetComponent<AndrasScript>().takeDamage(meleeDamage);
+                if (collision.transform.GetComponent<AndrasScript>().health <= 0 && tutorialManager != null)
+                {
+                    tutorialManager.currentEnemies++;
+                }
             }
         }
 

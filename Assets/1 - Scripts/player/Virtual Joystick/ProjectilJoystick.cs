@@ -61,7 +61,6 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
             isDragging = true;
             JoystickInput = eventData.position;
             OnDrag(eventData);
-            background.GetComponent<Image>().fillAmount = 0f;
         }
         
     }
@@ -96,6 +95,8 @@ public class ProjectileJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler
     public void Aguapanela()
     {
         playerProjectileMethod.LaunchProjectile();
+        background.GetComponent<Image>().fillAmount = 0f;
+
         onCD = true;
         //00D6FF
         //gameObject.GetComponent<Image>().tintColor.a = 0.1f;

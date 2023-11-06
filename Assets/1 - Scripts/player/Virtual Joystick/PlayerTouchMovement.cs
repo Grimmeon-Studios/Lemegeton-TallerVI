@@ -10,7 +10,7 @@ public class PlayerTouchMovement : MonoBehaviour
 
 
     [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
-    [SerializeField] private FloatingJoystick Joystick;
+    public FloatingJoystick Joystick;
     [SerializeField] private PlayerManager _PlayerManager;
     [SerializeField] private Canvas _Canvas;
     [SerializeField] private Crosshair atkController;

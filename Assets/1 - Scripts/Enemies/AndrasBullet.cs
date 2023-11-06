@@ -44,7 +44,6 @@ public class AndrasBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
         GameObject player = other.gameObject;
         PlayerManager pm = player.GetComponent<PlayerManager>();
         //Robin playerController = player.GetComponent<Robin>();
@@ -55,6 +54,13 @@ public class AndrasBullet : MonoBehaviour
             pm.TakeDamage(damage);
         }
 
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Portal"))
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rg;
 
     [SerializeField] PlayerManager player;
+    private TutorialManager tutorialManager;
     public Projectile (int speed, float size, float range)
     {
         this.speed = speed;
@@ -26,6 +28,11 @@ public class Projectile : MonoBehaviour
         rg = GetComponent<Rigidbody2D>();
         startPos = gameObject.transform.position;
         range = player.shotRange;
+
+        if(UnityEngine.Object.FindAnyObjectByType<TutorialManager>() != null )
+        {
+            tutorialManager = UnityEngine.Object.FindAnyObjectByType<TutorialManager>();
+        }
     }
 
     private void Update()   
@@ -47,16 +54,28 @@ public class Projectile : MonoBehaviour
             if (other.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<IncubusScript>().takeDamage(player.shotDamage);
+                if (other.transform.GetComponent<IncubusScript>().Health <= 0 && tutorialManager != null)
+                {
+                    tutorialManager.currentEnemies++;
+                }
             }
 
             if (other.CompareTag("EnemySoul"))
             {
                 other.gameObject.GetComponent<LostSoulScript>().takeDamage(player.shotDamage);
+                if (other.transform.GetComponent<LostSoulScript>().health <= 0 && tutorialManager != null)
+                {
+                    tutorialManager.currentEnemies++;
+                }
             }
 
             if (other.CompareTag("EnemyAndras"))
             {
                 other.gameObject.GetComponent<AndrasScript>().takeDamage(player.shotDamage);
+                if (other.transform.GetComponent<AndrasScript>().health <= 0 && tutorialManager != null)
+                {
+                    tutorialManager.currentEnemies++;
+                }
             }
 
             Destroy(gameObject);
