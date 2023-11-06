@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public enum incubState
+public enum IncubState
 {
     Chasing,
     Attacking,
@@ -17,7 +17,7 @@ public class IncubusScript : MonoBehaviour
     public Transform incubusTransform;
     public Vector3 defaultStats; // hp, attack, speed
     private PlayerManager playerManager;
-    private ScoreBoard scoreBoard;
+    [SerializeField] private ScoreBoard scoreBoard;
     private ChronometerManager chrono;
 
     #region MOVE RELATED
@@ -105,11 +105,12 @@ public class IncubusScript : MonoBehaviour
                 Chase();
                 break;
             case (incubState.Dead):
-                StartCoroutine(WaitAndDie(1.2f));
+                StartCoroutine(WaitAndDie(0.7f));
                 dead = true;
                 break;
             case (incubState.Attacking):
-                StartCoroutine(Attack());
+                if (!dead)
+                    StartCoroutine(Attack());
                 break;
         }
         Vector2 playerDir = player.transform.position - transform.position;
@@ -196,35 +197,25 @@ public class IncubusScript : MonoBehaviour
         }
     }
 
-    void OnCollisionStay2D(Collision2D other)
-    {
-        GameObject player = other.gameObject;
-
-        PlayerManager playerManager = player.GetComponent<PlayerManager>();
-
-        if (playerManager != null)
-        {
-            playerManager.TakeDamage(ContactDamage);
-            playerManager._Rigidbody.AddForce((playerManager.transform.position - this.transform.position) * pushForce);
-        }
-    }
-
     IEnumerator WaitAndDie(float seconds)
     {
         if (!dead)
         {
+            if(scoreBoard != null && chrono != null)
+            {
+                scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+            }
             Debug.Log("Se murio definitivamente");
             //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);
             GetComponent<SpriteRenderer>().enabled = false;
             Distance = 0;
             deathVFX.gameObject.SetActive(true);
-            scoreBoard.GetPoints(10 * chrono.difficultyLvl);
             yield return new WaitForSeconds(seconds);
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("garbage verfication");
+            yield return new WaitForSeconds(0);
         }
     }
 }

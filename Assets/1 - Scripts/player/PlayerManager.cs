@@ -64,7 +64,7 @@ public class PlayerManager : MonoBehaviour
     private float rechargeDuration = 5.0f;
     private float previousDefenseValue;
     private bool stopRechargeDefense;
-    
+
     private void Start()
     {
         //_Input = new PlayerInput_map();
@@ -498,5 +498,17 @@ public class PlayerManager : MonoBehaviour
         criticalDamage = crtDmg;
         criticalRateUp = crtRtUp;
         timeInvincible = tmInvin;
+    }
+
+    public void SwitchMovement(bool b)
+    {
+        if (b)
+        {
+            speed = 10;
+        }
+        else if (!b)
+        {
+            speed = 0;
+        }
     }
 }

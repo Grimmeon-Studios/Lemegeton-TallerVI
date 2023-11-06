@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 280
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   deathVFX: {fileID: 3963345254525519195}
   incubusTransform: {fileID: 6774832240837891135}
   defaultStats: {x: 5, y: 1, z: 1}
+  scoreBoard: {fileID: 0}
   moveSpeed: 0.03
   contactDamage: 1
   pushForce: 1700

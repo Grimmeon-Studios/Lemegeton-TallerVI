@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: af37193fe4c563c4e8e825fada97bc79
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sulfurPrefab: {fileID: 7156719531565285854, guid: 57892f646241abd42be439dcdd46264e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

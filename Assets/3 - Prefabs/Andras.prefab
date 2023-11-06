@@ -177,7 +177,7 @@ MonoBehaviour:
   deathVFX: {fileID: 4173140941506415265}
   defaultStats: {x: 0, y: 0, z: 0}
   moveSpeed: 0
-  firerate: 10
+  firerate: 2
   acidPrefab: {fileID: 8402521562688868224, guid: d40225fe5c7724a4baa48d9a7daf79d3, type: 3}
   firePoint: {fileID: 3830077471240048218}
   shotDamage: 3

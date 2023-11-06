@@ -623,11 +623,11 @@ PrefabInstance:
       objectReference: {fileID: 2110487000}
     - target: {fileID: 1591076988704606486, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 7.260799
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721808
+      value: 1.372183
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -635,7 +635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721808
+      value: 1.372183
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930273655092048097, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: orthographic size
-      value: 7.260799
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6087678909894391764, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1063,6 +1063,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1843616732128544195, guid: e669f05b664e7cc47a405576ddc81492, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121757696046732996, guid: e669f05b664e7cc47a405576ddc81492, type: 3}
       propertyPath: m_Name
       value: Joystick Canva (Do Not Move)
