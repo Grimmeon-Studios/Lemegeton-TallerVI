@@ -22,10 +22,9 @@ public class Crosshair : MonoBehaviour
     [SerializeField] public float transition = 3.0f;
 
     [Header("SFX Config.")]
-    [SerializeField] private AudioSource SFXAttack;
-    [SerializeField] private AudioSource SFXCrit;
-    [SerializeField] private AudioSource SFXBelhorHit;
-    [SerializeField] private AudioSource SFXAndrasHit;
+    [SerializeField] private AudioSource SFXAttack, SFXCrit;
+    //[SerializeField] private AudioSource SFXBelhorHit;
+    //[SerializeField] private AudioSource SFXAndrasHit;
     private float combat_CDTimer;
 
     [Header("Other")]
@@ -156,7 +155,7 @@ public class Crosshair : MonoBehaviour
         {
             if (collision.CompareTag("Enemy"))
             {
-                SFXBelhorHit.Play();
+                //SFXBelhorHit.Play();
                 collision.transform.GetComponent<IncubusScript>().takeDamage(meleeDamage);
                 if(collision.transform.GetComponent<IncubusScript>().Health <= 0 && tutorialManager != null)
                 {
@@ -166,7 +165,7 @@ public class Crosshair : MonoBehaviour
 
             if (collision.CompareTag("EnemySoul"))
             {
-                SFXBelhorHit.Play();
+                //SFXBelhorHit.Play();
                 collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
                 if (collision.transform.GetComponent<LostSoulScript>().health <= 0 && tutorialManager != null)
                 {
@@ -176,7 +175,7 @@ public class Crosshair : MonoBehaviour
 
             if (collision.CompareTag("EnemyAndras"))
             {
-                SFXAndrasHit.Play();
+                //SFXAndrasHit.Play();
                 collision.gameObject.GetComponent<AndrasScript>().takeDamage(meleeDamage);
                 if (collision.transform.GetComponent<AndrasScript>().health <= 0 && tutorialManager != null)
                 {

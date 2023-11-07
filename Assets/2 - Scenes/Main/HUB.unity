@@ -3519,38 +3519,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 307.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1480987552483005158, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 172.50002
-      objectReference: {fileID: 0}
-    - target: {fileID: 3201579626794265022, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4057204328602737063, guid: 7b070273e50055f469b294666501c160, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3635,17 +3603,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joystick Canva
       objectReference: {fileID: 0}
-    - target: {fileID: 7860831450414064621, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9087045427874744541, guid: 7b070273e50055f469b294666501c160, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2346105989640287308, guid: 7b070273e50055f469b294666501c160, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b070273e50055f469b294666501c160, type: 3}
@@ -21985,11 +21944,11 @@ PrefabInstance:
       objectReference: {fileID: 1986797677}
     - target: {fileID: 1591076988704606486, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 95.44216
+      value: 95.442184
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21997,7 +21956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 95.44216
+      value: 95.442184
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22005,7 +21964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5930273655092048097, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: orthographic size
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5930273655092048097, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_BackGroundColor.a
@@ -22136,26 +22095,14 @@ PrefabInstance:
       propertyPath: Joystick
       value: 
       objectReference: {fileID: 1176745143}
-    - target: {fileID: 1179116119827195433, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: m_Name
       value: _Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: attackBtn
       value: 
       objectReference: {fileID: 2053988934}
-    - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
-      propertyPath: shotSpeed
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: _Notification
       value: 

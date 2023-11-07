@@ -14,6 +14,8 @@ public class AndrasScript : MonoBehaviour
 {
     [SerializeField] private ParticleSystem deathVFX;
 
+    [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXShot;
+
     Rigidbody2D rb;
     //Animator animator;
     //AudioSource audioSource;
@@ -169,6 +171,8 @@ public class AndrasScript : MonoBehaviour
 
         GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
         AndrasBullet aBullet = acidObject.GetComponent<AndrasBullet>();
+
+        SFXShot.Play();
         aBullet.shoot(aimDirection, shootingForce, shotDamage);
         //AcidShotController asController = acidObject.GetComponent<AcidShotController>();
         //asController.shoot(aimDirection, 10);
@@ -186,6 +190,7 @@ public class AndrasScript : MonoBehaviour
         health -= damage;
         if (health > 0)
         {
+            SFXTakeDamage.Play();
             andras.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
             { 
                 andras.DOColor(Color.white, 0.1f).OnComplete(() =>
@@ -197,6 +202,7 @@ public class AndrasScript : MonoBehaviour
         }
         else
         {
+            SFXDie.Play();
             currState = andrasState.Dead;
         }
         
