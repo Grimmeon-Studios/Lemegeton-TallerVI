@@ -54,7 +54,7 @@ public class Room : MonoBehaviour
             playerInCombat = true;
             Debug.Log("Player Entered");
             edgeCollider.enabled = true;
-            StartCoroutine(WaitAndTrapPlayer(2, enemyPrefab1, enemyPrefab2, enemyPrefab3));            
+            StartCoroutine(WaitAndTrapPlayer(2, enemyPrefab1, enemyPrefab2, enemyPrefab3, @object));        
         }
         else if(@object.CompareTag("Enemy") || @object.CompareTag("EnemySoul") || @object.CompareTag("EnemyAndras"))
         {
@@ -141,23 +141,28 @@ public class Room : MonoBehaviour
 
     }
 
-    IEnumerator WaitAndTrapPlayer(float waitTime, GameObject prefab1, GameObject prefab2, GameObject prefab3)
+    IEnumerator WaitAndTrapPlayer(float waitTime, GameObject prefab1, GameObject prefab2, GameObject prefab3, GameObject player)
     {
         combatOverlay.SetActive(true);
+        FloatingJoystick originalJoystick;
+        Vector3 newVelocity;
+
+        originalJoystick = player.GetComponent<PlayerTouchMovement>().Joystick;
+        newVelocity = player.GetComponent<Rigidbody2D>().velocity;
+        player.GetComponent<PlayerTouchMovement>().enabled = false;
+        player.GetComponent<Rigidbody2D>().velocity = newVelocity; 
+
 
         yield return new WaitForSeconds(waitTime);
 
-        
         if(enemiesBuffed == false)
         {
             enemiesBuffed = true;
             SpawnEnemies(4 + _dungeonManager.additionalEnemyCount);
         }
 
-        //if(inCombat == false)
-        //{
-        //    //SpawnEnemies(_dungeonManager.AdditionalEnemyCount, _dungeonManager.EnemyStatsMultiplier);
-        //    inCombat = true;
-        //}
+        player.GetComponent<PlayerTouchMovement>().enabled = true;
+        player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        //player.GetComponent<PlayerTouchMovement>().Joystick = originalJoystick;
     }
 }

@@ -11,7 +11,7 @@ public class PlayerTouchMovement : MonoBehaviour
 
     [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
     public FloatingJoystick Joystick;
-    [SerializeField] private PlayerManager _PlayerManager;
+    public PlayerManager _PlayerManager;
     [SerializeField] private Canvas _Canvas;
     [SerializeField] private Crosshair atkController;
 
@@ -31,6 +31,7 @@ public class PlayerTouchMovement : MonoBehaviour
         ETouch.Touch.onFingerDown += HandleFingerDown;
         ETouch.Touch.onFingerUp += HandleLoseFinger;
         ETouch.Touch.onFingerMove += HandleFingerMove;
+        joystickActive = false;
         
     }
 
@@ -120,11 +121,6 @@ public class PlayerTouchMovement : MonoBehaviour
         {
             dampedSpeed = Vector2.SmoothDamp(dampedSpeed, MovementAmount, ref dampedSpeed, 0.05f);
             _PlayerManager._Rigidbody.velocity = dampedSpeed * _PlayerManager.speed;
-        }
-        else
-        {
-            // Use the lastNonZeroMovementAmount when the joystick is not active
-            _PlayerManager._Rigidbody.velocity = Vector2.zero;
         }
     }
 
