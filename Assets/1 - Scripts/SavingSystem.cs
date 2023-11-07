@@ -31,6 +31,7 @@ public class SavingSystem : MonoBehaviour
         float playerCriticalDamage = player.GetCriticalDamage();
         float playerTimeInvincible = player.GetTimeInvincible();
         
+        
         //Set all of them into Prefs
         PlayerPrefs.SetFloat("speed", playerSpeed);
         PlayerPrefs.SetFloat("maxHealth", playerMaxHealth);

@@ -12,7 +12,7 @@ public class ScoreBoard : MonoBehaviour
     private float timeLimit = 2.5f; // Set the initial time limit in seconds
     private float currentTime = 0.0f;
     private bool isRunning = false;
-
+    
 
     void Start()
     {
@@ -36,6 +36,10 @@ public class ScoreBoard : MonoBehaviour
         }
     }
 
+    public float GetScore()
+    {
+        return score;
+    }
     public void GetPoints(int ponits)
     {
         currentTime = 0;
