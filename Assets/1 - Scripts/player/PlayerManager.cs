@@ -27,12 +27,10 @@ public class PlayerManager : MonoBehaviour
 
     //private string levelname;
 
-    [SerializeField] Camera _Camera;
-    [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
-    [SerializeField] private AudioSource SFXHit, SFXArmorHit, SFXPickUp;
     //PlayerInput_map _Input;
 
     [Header("Movement config.")]
+    [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
     public Vector2 _Movement;
     public Vector2 _DampedSpeed;
     public Rigidbody2D _Rigidbody;
@@ -57,7 +55,11 @@ public class PlayerManager : MonoBehaviour
     private HealthBar _healthBar;
     private DefenseBar _defenseBar;
     
-    [Header("Defense")]
+    [Header("Audio")]
+    [SerializeField] private AudioSource SFXHit;
+    [SerializeField] private AudioSource SFXArmorHit;
+    [SerializeField] private AudioSource SFXPickUp;
+
     private float lastDamageTime;
     private bool isRechargingDefense;
     private float rechargeStartTime;
@@ -152,17 +154,6 @@ public class PlayerManager : MonoBehaviour
                 defense = maxDefense;
                 _defenseBar.SetDefense(defense);
             }
-        }
-        if(_Item != null)
-        {
-            lastNearByItem = _Item;
-            selecctionMark.SetActive(true);
-            selecctionMark.transform.position = _Item.transform.position + (Vector3)selectionOffset;
-        }
-        else if(_Item == null)
-        {
-            selecctionMark.SetActive(false);
-            selecctionMark.transform.position = gameObject.transform.position;
         }
 
         _healthBar.SetHealth(health);
@@ -305,10 +296,18 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision != null && collision.CompareTag("Item"))
         {
-            itemNearBy = true;
             _Item = collision.GetComponent<Item>();
+
+            itemNearBy = true;
+            selecctionMark.SetActive(true);
+            selecctionMark.transform.position = _Item.transform.position + (Vector3)selectionOffset;
+
+
             interactionBtn.SetActive(true);
             attackBtn.SetActive(false);
+
+            _Notification.gameObject.SetActive(true);
+            _Notification.DisplayNearByItem(_Item,false);
         }
         else if (collision != null && collision.CompareTag("Statue"))
         {
@@ -329,10 +328,16 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision != null && collision.CompareTag("Item"))
         {
+            _Item = collision.GetComponent<Item>();
+
+            _Notification.DisplayNearByItem(_Item, true);
+
             itemNearBy = false;
-            _Item = null;
             interactionBtn.SetActive(false);
             attackBtn.SetActive(true);
+
+            selecctionMark.SetActive(false);
+            selecctionMark.transform.position = gameObject.transform.position;
         }
         else if (collision != null && collision.CompareTag("Statue"))
         {
@@ -395,8 +400,6 @@ public class PlayerManager : MonoBehaviour
             timeInvincible += _Item.item_timeInvincible;
 
             itemsHeld.Push(_Item);
-            _Notification.gameObject.SetActive(true);
-            _Notification.ItemPickedUp();
         }
 
         if(itemNearBy == true)

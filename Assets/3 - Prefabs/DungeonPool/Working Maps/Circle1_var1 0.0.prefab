@@ -121495,6 +121495,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5619593414185660160}
     m_Modifications:
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.x
+      value: 31.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.y
+      value: 22.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room (1)
@@ -121751,6 +121759,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5619593414185660160}
     m_Modifications:
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.x
+      value: 25.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room
@@ -121813,6 +121829,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5619593414185660160}
     m_Modifications:
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.x
+      value: 23.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.y
+      value: 66.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room (2)
@@ -121879,6 +121903,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5619593414185660160}
     m_Modifications:
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.x
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516395343306891628, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
+      propertyPath: InnerColliderSize.y
+      value: 18.73
+      objectReference: {fileID: 0}
     - target: {fileID: 5124603856534856066, guid: 882b0a9c82d36f747a032b069b4af6e2, type: 3}
       propertyPath: m_Name
       value: Room (3)

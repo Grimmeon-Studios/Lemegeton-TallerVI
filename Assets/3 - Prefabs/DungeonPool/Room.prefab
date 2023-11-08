@@ -265,6 +265,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  InnerColliderSize: {x: 10, y: 10}
   mainBoxCollider: {fileID: 5588553496933496645}
   combatOverlay: {fileID: 2805450188229320165}
   numberOfEnemiesPrefabs: 3

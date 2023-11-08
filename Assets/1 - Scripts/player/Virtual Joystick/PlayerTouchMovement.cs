@@ -6,7 +6,7 @@ using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 public class PlayerTouchMovement : MonoBehaviour
 {
     public bool joystickActive = false;
-    public Vector2 scaledMovement;
+    //public Vector2 scaledMovement;
 
 
     [SerializeField] private Vector2 JoystickSize = new Vector2(300, 300);
@@ -140,7 +140,6 @@ public class PlayerTouchMovement : MonoBehaviour
     //        GUI.Label(new Rect(10, 35, 500, 20), $"Finger Start Position: {MovementFinger.currentTouch.startScreenPosition}", labelStyle);
     //        GUI.Label(new Rect(10, 65, 500, 20), $"X Axis Movement Amount: {MovementAmount.x}", labelStyle);
     //        GUI.Label(new Rect(10, 95, 500, 20), $"Y Axis Movement Amount: {MovementAmount.y}", labelStyle);
-    //        GUI.Label(new Rect(10, 125, 500, 20), $"Scaled Movement Amount: {scaledMovement}", labelStyle);
     //        GUI.Label(new Rect(10, 155, 500, 20), $"JoystickActive: {joystickActive}", labelStyle);
     //    }
     //    else

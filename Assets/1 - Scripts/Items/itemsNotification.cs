@@ -10,7 +10,7 @@ public class itemsNotification : MonoBehaviour
     public Image itemSprite;
     [SerializeField] private float notificationTime;
 
-    private Item lastPickedItem;
+    //private Item lastPickedItem;
     private PlayerManager playerManager;
 
     private void Start()
@@ -19,14 +19,15 @@ public class itemsNotification : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    public void ItemPickedUp()
+    public void DisplayNearByItem(Item curItem, bool op)
     {
-        lastPickedItem = playerManager.itemsHeld.Peek();
+        itemSprite.sprite = curItem.GetComponent<SpriteRenderer>().sprite;
+        itemDescription.text = curItem.descriptionText;
 
-        itemSprite.sprite = lastPickedItem.GetComponent<SpriteRenderer>().sprite;
-        itemDescription.text = lastPickedItem.descriptionText;
-
-        StartCoroutine(disableNotification(notificationTime));
+        if(op)
+        {
+            StartCoroutine(disableNotification(notificationTime));
+        }
     }
     
     IEnumerator disableNotification(float time)
