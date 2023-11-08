@@ -26,16 +26,13 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeInvincibleText;
     private PlayerManager player;
     [SerializeField] GameObject joystick;
-    private void Start()
-    {
-        player = FindObjectOfType<PlayerManager>();
-    }
 
     public void Pause()
     {
-        pauseMenu.SetActive(true);
-        UpdateStatsText();
+        player = FindObjectOfType<PlayerManager>();
         Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+        LoadStats();
         joystick.SetActive(false);
     }
 
@@ -51,26 +48,26 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void Home(int sceneID)
+    public void Home()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(sceneID);
+        SceneManager.LoadScene("HUB");
     }
 
     private void UpdateStatsText()
     {
-        speedText.text = "Speed: " + player.speed;
-        maxHealthText.text = "Max Health: " + player.maxHealth;
-        healthText.text = "Health: " + player.health;
-        maxDefenseText.text = "Max Defense: " + player.maxDefense;
-        defenseText.text = "Defense: " + player.defense;
-        attackText.text = "Attack: " + player.attack;
-        shotSpeedText.text = "Shot Speed: " + player.shotSpeed;
-        shotRangeText.text = "Shot Range: " + player.shotRange;
-        shotDamageText.text = "Shot Damage: " + player.shotDamage;
-        criticalRateUpText.text = "Critical Rate Up: " + (player.criticalRateUp * 100);
-        criticalDamageText.text = "Critical Damage: " + player.criticalDamage;
-        timeInvincibleText.text = "Time Invincible: " + player.timeInvincible;
+        speedText.text = "Speed: " + player.GetSpeed();
+        maxHealthText.text = "Max Health: " + player.GetMaxHealth();
+        healthText.text = "Health: " + player.GetHealth();
+        maxDefenseText.text = "Max Defense: " + player.GetMaxDefense();
+        defenseText.text = "Defense: " + player.GetDefense();
+        attackText.text = "Attack: " + player.GetAttack();
+        shotSpeedText.text = "Shot Speed: " + player.GetShotSpeed();
+        shotRangeText.text = "Shot Range: " + player.GetShotRange();
+        shotDamageText.text = "Shot Damage: " + player.GetShotDamage();
+        criticalRateUpText.text = "Critical Rate Up: " + (player.GetCriticalRateUp()*100);
+        criticalDamageText.text = "Critical Damage: " + player.GetCriticalDamage();
+        timeInvincibleText.text = "Time Invincible: " + player.GetTimeInvincible();
     }
     
 }
