@@ -2780,7 +2780,7 @@ MonoBehaviour:
   waitUntilFinished: 0
 --- !u!114 &520491819
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -2836,7 +2836,7 @@ MonoBehaviour:
       m_Calls: []
 --- !u!114 &520491820
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -3162,7 +3162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280896391091958710, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 24.500092
+      value: 24.500122
       objectReference: {fileID: 0}
     - target: {fileID: 2520393182169223196, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3200,6 +3200,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5089198196504021253, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5804025750485120921, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: joystick
+      value: 
+      objectReference: {fileID: 2111668699}
     - target: {fileID: 6374784190215459593, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -22095,6 +22103,10 @@ PrefabInstance:
       propertyPath: Joystick
       value: 
       objectReference: {fileID: 1176745143}
+    - target: {fileID: 1179116119827195433, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: joystickActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: m_Name
       value: _Player
