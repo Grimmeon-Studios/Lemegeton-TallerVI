@@ -19,7 +19,6 @@ public class pointstest : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         highscoreHandler.AddHighscoreIfPossible (new HighscoreElement (playerName, scoreBoard.GetScore()));
-
-        SceneManager.LoadScene("MainMenu");
+        
     }
 }

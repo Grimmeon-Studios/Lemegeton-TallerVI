@@ -6,15 +6,12 @@ using TMPro;
 using UnityEngine.UI;
 
 public class HighscoreUI : MonoBehaviour {
-    [SerializeField] GameObject panel;
+
     [SerializeField] GameObject highscoreUIElementPrefab;
     [SerializeField] Transform elementWrapper;
 
     List<GameObject> uiElements = new List<GameObject>();
 
-    private void Start()
-    {
-    }
 
     private void OnEnable () {
         HighscoreHandler.onHighscoreListChanged += UpdateUI;
@@ -25,13 +22,7 @@ public class HighscoreUI : MonoBehaviour {
     }
 
 
-    public void ShowPanel () {
-        panel.SetActive (true);
-    }
 
-    public void ClosePanel () {
-        panel.SetActive (false);
-    }
 
     public void RestartLeaderBoard()
     {

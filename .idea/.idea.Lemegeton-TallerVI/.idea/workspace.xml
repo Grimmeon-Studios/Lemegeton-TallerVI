@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/LeaderStatue.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/LeaderStatue.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/UI/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/UI/PauseMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/HighscoreUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/HighscoreUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/points test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/points test.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Dungeon Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Dungeon Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/HUB.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/HUB.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/MainMenu.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/MainMenu.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/Button Actions Canva.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/Button Actions Canva.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +25,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/HealthBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/FileHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/HighScoreElement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/LeaderStatue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/points test.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -108,7 +117,8 @@
       <workItem from="1698806491316" duration="572000" />
       <workItem from="1699070044679" duration="7188000" />
       <workItem from="1699302213174" duration="7425000" />
-      <workItem from="1699399990379" duration="1834000" />
+      <workItem from="1699399990379" duration="2683000" />
+      <workItem from="1699475007368" duration="9132000" />
     </task>
     <servers />
   </component>
