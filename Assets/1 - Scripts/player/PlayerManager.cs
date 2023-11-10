@@ -313,8 +313,12 @@ public class PlayerManager : MonoBehaviour
         {
             statueNearBy = true;
             _Statue = collision.gameObject;
-            interactionBtn.SetActive(true);
-            attackBtn.SetActive(false);
+            if (!_Statue.GetComponent<ItemStatueSpawner>().isStatueUsed)
+            {
+                interactionBtn.SetActive(true);
+                attackBtn.SetActive(false);
+            }
+            
         }
         else if (collision == null)
         {

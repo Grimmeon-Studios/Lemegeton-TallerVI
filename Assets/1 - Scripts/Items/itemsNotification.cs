@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class itemsNotification : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemDescription;
     public Image itemSprite;
     [SerializeField] private float notificationTime;
@@ -23,6 +24,7 @@ public class itemsNotification : MonoBehaviour
     {
         itemSprite.sprite = curItem.GetComponent<SpriteRenderer>().sprite;
         itemDescription.text = curItem.descriptionText;
+        itemName.text = curItem.nameText;
 
         if(op)
         {

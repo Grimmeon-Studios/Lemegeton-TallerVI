@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -81,6 +82,12 @@ public class Crosshair : MonoBehaviour
 
         if (closestEnemyDir != Vector2.zero)
         {
+            meleeSprite.DOColor(Color.red, 1f).OnComplete(() => {
+
+                DOTween.Kill(gameObject);
+
+            });
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             // Apply smoothing only when enemies are nearby
             float smoothFactor = 3.0f; // You can adjust this value as needed
 
@@ -100,6 +107,11 @@ public class Crosshair : MonoBehaviour
         else
         {
             // No enemies nearby, use player's velocity for movement
+            meleeSprite.DOColor(Color.white, 1f).OnComplete(() => {
+
+                DOTween.Kill(gameObject);
+                
+            });
             currentAimDirection = playerVelocity;
 
             if(currentAimDirection != lastAimDirection && currentAimDirection != Vector2.zero)
@@ -201,6 +213,7 @@ public class Crosshair : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
+
             GameObject enemy = collider.gameObject;
             Vector2 directionToEnemy = enemy.transform.position - transform.position;
             float distanceToEnemy = directionToEnemy.magnitude;
