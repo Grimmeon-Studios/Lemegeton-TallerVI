@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -67,6 +68,8 @@ public class PlayerManager : MonoBehaviour
     private float previousDefenseValue;
     private bool stopRechargeDefense;
 
+    private SpriteRenderer _spriteRenderer;
+
     private void Start()
     {
         //_Input = new PlayerInput_map();
@@ -79,6 +82,7 @@ public class PlayerManager : MonoBehaviour
         _healthBar.SetMaxHealth(maxHealth);
         _defenseBar = FindObjectOfType<DefenseBar>();
         _defenseBar.SetMaxDefense(maxDefense);
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Debug.Log("Notification Object: " + _Notification.gameObject.name.ToString());
     }
@@ -243,6 +247,14 @@ public class PlayerManager : MonoBehaviour
         {
             clipDamage.Play(); // feedback of the damage
         }*/
+        float loopsTime = timeInvincible / 6;
+        _spriteRenderer.DOColor(new Color(1,1,1,0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
+        {
+            _spriteRenderer.DOColor(Color.white, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
+            {
+                DOTween.Kill(gameObject);
+            });
+        });
     }
     public void HazardLava()
     {
