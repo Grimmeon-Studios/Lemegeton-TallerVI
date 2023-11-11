@@ -85,6 +85,9 @@ public class PlayerManager : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Debug.Log("Notification Object: " + _Notification.gameObject.name.ToString());
+
+        isRechargingDefense = false;
+        isInvincible = false;
     }
     //private void OnEnable()
     //{
@@ -211,9 +214,8 @@ public class PlayerManager : MonoBehaviour
             _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
             _Rigidbody.velocity = _DampedSpeed * speed;
         }
-
-       
     }
+
     public void TakeDamage(float amount)
     {
         if (isInvincible)
@@ -222,6 +224,7 @@ public class PlayerManager : MonoBehaviour
         isInvincible = true;
         invincibleTimer = timeInvincible;
         lastDamageTime = Time.time;
+
         if (isRechargingDefense)
         {
             stopRechargeDefense = true;
@@ -231,30 +234,42 @@ public class PlayerManager : MonoBehaviour
         if (defense > 0)
         {
             SFXArmorHit.Play();
-            defense -- ;
+            defense-- ;
+
+            float loopsTime = timeInvincible / 6;
+            _spriteRenderer.DOColor(new Color(1, 1, 1, 0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
+            {
+                _spriteRenderer.DOColor(Color.white, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
+                {
+                    DOTween.Kill(gameObject);
+                });
+            });
         }
         else
         {
             SFXHit.Play();
             health -= amount;
             Debug.Log("Health" + health);
+
+            float loopsTime = timeInvincible / 6;
+            _spriteRenderer.DOColor(new Color(1, 1, 1, 0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
+            {
+                _spriteRenderer.DOColor(Color.white, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
+                {
+                    DOTween.Kill(gameObject);
+                });
+            });
         }
+
         if (health <= 0)
         {
             Death();
         }
         /*else
         {
-            clipDamage.Play(); // feedback of the damage
+            DamageVFX.Play(); // feedback of the damage
         }*/
-        float loopsTime = timeInvincible / 6;
-        _spriteRenderer.DOColor(new Color(1,1,1,0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
-        {
-            _spriteRenderer.DOColor(Color.white, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
-            {
-                DOTween.Kill(gameObject);
-            });
-        });
+        
     }
     public void HazardLava()
     {
