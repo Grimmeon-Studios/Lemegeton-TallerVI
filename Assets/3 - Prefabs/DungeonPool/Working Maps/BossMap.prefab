@@ -119837,6 +119837,10 @@ PrefabInstance:
       value: Asmodeus
       objectReference: {fileID: 0}
     - target: {fileID: 8233972026906658475, guid: 9185afe4d282ab242ac197efb5c48589, type: 3}
+      propertyPath: maxShots
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233972026906658475, guid: 9185afe4d282ab242ac197efb5c48589, type: 3}
       propertyPath: currState
       value: 1
       objectReference: {fileID: 0}

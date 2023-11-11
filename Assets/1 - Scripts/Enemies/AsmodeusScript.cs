@@ -22,6 +22,9 @@ public class AsmodeusScript : MonoBehaviour
     private ChronometerManager chrono;
     private bool dead = false;
 
+    private bool isCoroutineRunning = false;
+    private bool isStrikingCrRunning = false;
+
     [SerializeField] private bool isTouchingWalls = false;
 
     public Vector3 defaultStats; // hp, attack, speed
@@ -50,6 +53,7 @@ public class AsmodeusScript : MonoBehaviour
     [SerializeField] private float perlinScale = 1f; // Scale of the noise
     private Vector2 startPos;
     private int nextState = 0;
+    [SerializeField] private int maxShots;
     // public float range = 20;
     bool chooseDir = false;
     Vector3 randomDir;
@@ -117,13 +121,29 @@ public class AsmodeusScript : MonoBehaviour
                 {
                     BulletHell();
                     timer = firerate;
+
+                    //Striking();
+
+                    if (!isStrikingCrRunning)
+                    {
+                        StartCoroutine(StrikingCr(7f));
+                    }
                 }
                 break;
             case (asmoState.Striking):
                 Striking();
+
+                if (!isStrikingCrRunning)
+                {
+                    StartCoroutine(StrikingCr(7f));
+                }
+                
                 break;
             case (asmoState.Still):
-                StartCoroutine(WaitStill(10f));
+                if (!isCoroutineRunning)
+                {
+                    StartCoroutine(WaitStill(3f)); 
+                } 
                 break;
             case (asmoState.Dead):
                 StartCoroutine(WaitAndDie(0.7f));
@@ -131,7 +151,7 @@ public class AsmodeusScript : MonoBehaviour
                 break;
         }
 
-        if(shootsDone > 3)
+        if(shootsDone > maxShots)
         {
             currState = asmoState.Still;
             shootsDone = 0;
@@ -188,10 +208,10 @@ public class AsmodeusScript : MonoBehaviour
     {
         // animator.SetBool("Moving", true);
         // StopCoroutine(chooseDirection());
-        if (rb.velocity == Vector2.zero)
-        {
-            StopCoroutine(WaitStill(1));
-        }
+        //if (rb.velocity == Vector2.zero)
+        //{
+        //    StopCoroutine(WaitStill(1));
+        //}
         
         Vector2 position = rb.position;
         Vector2 moveDir = rb.position - player.GetComponent<Rigidbody2D>().position;
@@ -207,6 +227,7 @@ public class AsmodeusScript : MonoBehaviour
     void BulletHell()
     {
         rb.velocity = Vector2.zero;
+        transform.position = spawnPoint.transform.position;
     }
 
 
@@ -278,33 +299,55 @@ public class AsmodeusScript : MonoBehaviour
     {
         if (!dead)
         {
+            isCoroutineRunning = true;
             rb.velocity = Vector2.zero;
 
             yield return new WaitForSeconds(seconds);
 
-            nextState = Random.Range(1, 3);
-
-            switch (nextState)
-            {
-                case 1:
-                    currState = asmoState.ShootingFast;
-                    break;
-                case 2:
-                    currState = asmoState.BulletHell;
-                    break;
-                case 3:
-                    currState = asmoState.Striking;
-                    break;
-                default:
-                    break;
-            }           
+            nextState = Random.Range(1, 4);
+            ChangeState(nextState);
+            isCoroutineRunning = false;
         }
         else
         {
             yield return new WaitForSeconds(0);
-
         }
     }
+
+    IEnumerator StrikingCr(float seconds)
+    {
+        if (!dead)
+        {
+            isStrikingCrRunning = true;
+            yield return new WaitForSeconds(seconds);
+
+            currState = asmoState.Still;
+            isStrikingCrRunning = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0);
+        }
+    }
+
+    void ChangeState(int nextState)
+    {
+        switch (nextState)
+        {
+            case 1:
+                currState = asmoState.ShootingFast;
+                break;
+            case 2:
+                currState = asmoState.BulletHell;
+                break;
+            case 3:
+                currState = asmoState.Striking;
+                break;
+            default:
+                break;
+        }
+    }
+
 
     IEnumerator WaitAndDie(float seconds)
     {
