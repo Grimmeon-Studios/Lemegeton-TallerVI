@@ -457,6 +457,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 616695291760697098, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_Name
+      value: Sword2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530611931809134071, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_Name
+      value: Sword1
+      objectReference: {fileID: 0}
     - target: {fileID: 4562183376426149959, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
       propertyPath: m_Name
       value: BossMap
