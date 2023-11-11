@@ -133,12 +133,14 @@ public class Dungeon : MonoBehaviour
             {
                 if (currentCircle > InstatiatedCircles.Count)
                 {
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene("Boss Dungeon");
                 }
                 else
                 {
                     Debug.Log("circle " + InstatiatedCircles[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
                     InstatiatedCircles[currentCircle - 1].SetActive(true);
+
+                    StartCoroutine(WaitAndCount());
                 }
             }
 
