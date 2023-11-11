@@ -39,11 +39,14 @@ public class AsmodeusScript : MonoBehaviour
 
     #region ATTACK RELATED
     public float firerate;
+    public float bulletHellRate;
     float timer;
+    float hellTimer;
     public GameObject acidPrefab;
     public Transform firePoint;
     public float shotDamage;
     [SerializeField] private float shootingForce;
+    [SerializeField] private float hellForce;
     [SerializeField] private int shootsDone = 0;
     [SerializeField] private GameObject sword1, sword2;
     #endregion
@@ -59,6 +62,7 @@ public class AsmodeusScript : MonoBehaviour
     [SerializeField] private float timeStriking;
     [SerializeField] private float timeStill;
     [SerializeField] private float timeBulletHell;
+    [SerializeField] private float rotationOffset = 87f; // Rotation offset
     // public float range = 20;
     bool chooseDir = false;
     Vector3 randomDir;
@@ -93,6 +97,7 @@ public class AsmodeusScript : MonoBehaviour
         //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         timer = firerate;
+        hellTimer = bulletHellRate;
 
         startPos = transform.position;
 
@@ -107,6 +112,7 @@ public class AsmodeusScript : MonoBehaviour
     void FixedUpdate()
     {
         timer -= Time.fixedDeltaTime;
+        hellTimer -= Time.fixedDeltaTime;
 
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
@@ -125,15 +131,15 @@ public class AsmodeusScript : MonoBehaviour
                 ShootingFast();
                 break;
             case (asmoState.BulletHell):
-                if (timer < 0)
+                if (hellTimer < 0)
                 {
                     BulletHell();
-                    timer = firerate;
+                    hellTimer = bulletHellRate;                   
+                }
 
-                    if (!isBulletHellCrRunning)
-                    {
-                        StartCoroutine(BulletHellCr(timeBulletHell));
-                    }
+                if (!isBulletHellCrRunning)
+                {
+                    StartCoroutine(BulletHellCr(timeBulletHell));
                 }
                 break;
             case (asmoState.Striking):
@@ -234,8 +240,42 @@ public class AsmodeusScript : MonoBehaviour
     void BulletHell()
     {
         rb.velocity = Vector2.zero;
+
+        int numProjectiles = 16; // Number of projectiles
+        float angleStep = 360f / numProjectiles; // Angle between each projectile
+
+        for (int i = 0; i < numProjectiles; i++)
+        {
+            // Calculate direction to shoot the projectile
+            float angleInDegrees = rotationOffset + angleStep * i;
+            Vector2 direction = RotateVector2(Vector2.right, angleInDegrees);
+
+            // Instantiate the projectile and get the SoulBullet component
+            GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
+            SoulBullet sBullet = acidObject.GetComponent<SoulBullet>();
+
+            // Shoot the projectile in the calculated direction
+            sBullet.shoot(direction, hellForce, shotDamage);
+        }
+
+        SFXShot.Play();
         transform.position = spawnPoint.transform.position;
+
+        // Update the rotation offset for the next time the projectiles are generated
+        rotationOffset += angleStep + Random.Range(1, 360); // Change this value to control how much the base direction changes each time
     }
+
+    Vector2 RotateVector2(Vector2 v, float degrees)
+    {
+        float radians = degrees * Mathf.Deg2Rad;
+        float sin = Mathf.Sin(radians);
+        float cos = Mathf.Cos(radians);
+        float tx = v.x;
+        float ty = v.y;
+        return new Vector2(cos * tx - sin * ty, sin * tx + cos * ty);
+    }
+
+
 
 
     void Striking()
