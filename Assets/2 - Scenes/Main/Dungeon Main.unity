@@ -978,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721834
+      value: 1.3722004
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721834
+      value: 1.3722004
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1593,6 +1593,14 @@ PrefabInstance:
       propertyPath: circlesToInstantiate.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circlesToInstantiate.Array.data[0]
+      value: 
+      objectReference: {fileID: 4562183376426149959, guid: cdc03b586deeb7648a16c25fd77f967d, type: 3}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: circlesToInstantiate.Array.data[1]
+      value: 
+      objectReference: {fileID: 4562183376426149959, guid: cdc03b586deeb7648a16c25fd77f967d, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[2]
       value: 
