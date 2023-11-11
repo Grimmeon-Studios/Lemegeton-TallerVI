@@ -134,6 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &34575545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5306826250588592532, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+  m_PrefabInstance: {fileID: 5337936903630466699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &57990560 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2548719091320216206, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
@@ -967,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721827
+      value: 1.3721834
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -975,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721827
+      value: 1.3721834
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1029,6 +1040,14 @@ PrefabInstance:
       propertyPath: _image
       value: 
       objectReference: {fileID: 177917019}
+    - target: {fileID: 7424581410383231553, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: remainingCircles
+      value: 
+      objectReference: {fileID: 5337936903630466701}
+    - target: {fileID: 7424581410383231553, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: circleClearedText
+      value: 
+      objectReference: {fileID: 34575545}
     - target: {fileID: 8078128508487355681, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Name
       value: CineMachine - Camera
@@ -1388,10 +1407,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 57990560}
+    - target: {fileID: 5162932656933620322, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306826250588592532, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306826250588592532, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_overrideHtmlColors
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5804025750485120921, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 126407598}
+    - target: {fileID: 6492563111193346533, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9099622121381112963, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1410,6 +1445,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5337936903630466701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6855618022518012076, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+  m_PrefabInstance: {fileID: 5337936903630466699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5337936903630466702 stripped

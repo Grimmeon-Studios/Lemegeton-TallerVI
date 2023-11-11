@@ -11,6 +11,7 @@ public class Dungeon : MonoBehaviour
 {
     private ChronometerManager chronometer;
     private BoxCollider2D gameAreaCollider;
+    private CameraTransition camTransition;
     [SerializeField] private GameObject playerObj;
     [SerializeField] private LayerMask collisionLayerMask;
 
@@ -50,6 +51,7 @@ public class Dungeon : MonoBehaviour
     {
         boxColl = GetComponent<BoxCollider2D>();
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
+        camTransition = FindObjectOfType<CameraTransition>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
 
@@ -112,7 +114,7 @@ public class Dungeon : MonoBehaviour
             {
                 Debug.Log("Circle " + currentCircle + " Cleared");
                 //circleCleared = true;
-                OnCircleCleared(true);
+                StartCoroutine(CircleTransition(true));
             }
         }
     }
@@ -231,5 +233,10 @@ public class Dungeon : MonoBehaviour
         totalRoomsTxt.text = totalRooms.ToString();
     }
 
-    
+    public IEnumerator CircleTransition(bool cleared)
+    {
+        camTransition.CircleClearedTransition(currentCircle);
+        yield return new WaitForSeconds(7f);
+        OnCircleCleared(cleared);
+    }
 }
