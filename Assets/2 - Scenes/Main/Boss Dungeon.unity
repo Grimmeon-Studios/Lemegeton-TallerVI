@@ -449,6 +449,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1333271752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4562183376426149959, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_Name
+      value: BossMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619593414185660160, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
 --- !u!114 &1399943842 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2209496782080101516, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
@@ -1577,6 +1634,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dungeon Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: playerObj
       value: 
@@ -1596,15 +1657,15 @@ PrefabInstance:
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[0]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: cdc03b586deeb7648a16c25fd77f967d, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[1]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: 150475ed73e89194593737c9cdfd58e8, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[2]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: c80919fa6b61d97449a51041db28e58f, type: 3}
     - target: {fileID: 5937136624069538277, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1681,3 +1742,4 @@ SceneRoots:
   - {fileID: 1845910112}
   - {fileID: 2070926889}
   - {fileID: 443379696}
+  - {fileID: 1333271752}
