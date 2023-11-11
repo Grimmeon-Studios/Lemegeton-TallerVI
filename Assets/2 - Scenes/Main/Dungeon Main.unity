@@ -134,6 +134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &34575545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5306826250588592532, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+  m_PrefabInstance: {fileID: 5337936903630466699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &57990560 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2548719091320216206, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
@@ -967,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721989
+      value: 1.3721834
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -975,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721989
+      value: 1.3721834
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1029,6 +1040,14 @@ PrefabInstance:
       propertyPath: _image
       value: 
       objectReference: {fileID: 177917019}
+    - target: {fileID: 7424581410383231553, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: remainingCircles
+      value: 
+      objectReference: {fileID: 5337936903630466701}
+    - target: {fileID: 7424581410383231553, guid: 363bbea753823254695a5b24aeb08935, type: 3}
+      propertyPath: circleClearedText
+      value: 
+      objectReference: {fileID: 34575545}
     - target: {fileID: 8078128508487355681, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_Name
       value: CineMachine - Camera
@@ -1412,6 +1431,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5337936903630466701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6855618022518012076, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
+  m_PrefabInstance: {fileID: 5337936903630466699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5337936903630466702 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 244507832530834853, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
@@ -1563,14 +1593,6 @@ PrefabInstance:
       propertyPath: circlesToInstantiate.Array.size
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circlesToInstantiate.Array.data[0]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: 150475ed73e89194593737c9cdfd58e8, type: 3}
-    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
-      propertyPath: circlesToInstantiate.Array.data[1]
-      value: 
-      objectReference: {fileID: 4562183376426149959, guid: 150475ed73e89194593737c9cdfd58e8, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[2]
       value: 
