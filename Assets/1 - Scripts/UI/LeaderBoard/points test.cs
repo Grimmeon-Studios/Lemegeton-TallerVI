@@ -40,6 +40,7 @@ public class pointstest : MonoBehaviour
     private void ChangeScene()
     {
         highscoreHandler.AddHighscoreIfPossible (new HighscoreElement (playerName, scoreBoard.GetScore()));
+        Time.timeScale = 1f;
         SceneManager.LoadScene("HUB");
     }
 }
