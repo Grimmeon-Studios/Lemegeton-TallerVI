@@ -81,8 +81,6 @@ public class AndrasScript : MonoBehaviour
 
     void Update()
     {
-        
-
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
 
