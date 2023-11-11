@@ -75,9 +75,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1093644673
+  m_SortingLayer: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: c8d3427dbd31f6840a0e8161af997478, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   selecctionOutline: {fileID: 8586998113553372118}
   scoreBoard: {fileID: 0}
   SFXActivate: {fileID: 4291840741863450871}
+  isStatueUsed: 0
 --- !u!61 &3605106836722378649
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -388,8 +389,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1093644673
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dfe4868fe472c8841a21839fa42c0e8c, type: 3}
   m_Color: {r: 1, g: 0.83864164, b: 0, a: 1}
