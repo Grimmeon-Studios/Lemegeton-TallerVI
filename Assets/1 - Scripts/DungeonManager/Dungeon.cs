@@ -87,7 +87,7 @@ public class Dungeon : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Circle") && onSetUp == true)
         {
-            Debug.Log("Circle Detected");
+            //Debug.Log("Circle Detected");
             if(!InstatiatedCircles.Contains(collision.gameObject))
                 InstatiatedCircles.Add(collision.gameObject);
 

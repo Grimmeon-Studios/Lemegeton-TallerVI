@@ -265,7 +265,7 @@ public class Crosshair : MonoBehaviour
     public void UpdateLastAimDirection(Vector2 newDirection)
     {
         lastAimDirection = newDirection;
-        Debug.Log("Updating lasAimPos");
+        //Debug.Log("Updating lasAimPos");
     }
 
 }

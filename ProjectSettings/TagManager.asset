@@ -16,6 +16,7 @@ TagManager:
   - Sulfur
   - Circle
   - Circle1
+  - BossWall
   layers:
   - Default
   - TransparentFX
