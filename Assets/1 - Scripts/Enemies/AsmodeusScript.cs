@@ -7,7 +7,9 @@ public enum asmoState
 {
     Dead,
     ShootingFast,
-    Still
+    Still,
+    BulletHell,
+    Striking
     //Wander
 };
 
@@ -44,6 +46,10 @@ public class AsmodeusScript : MonoBehaviour
     #region AI RELATED
     GameObject player;
     public asmoState currState = asmoState.ShootingFast;
+    [SerializeField] private float strikingSpeed = 1f; // Speed of movement
+    [SerializeField] private float perlinScale = 1f; // Scale of the noise
+    private Vector2 startPos;
+    private int nextState = 0;
     // public float range = 20;
     bool chooseDir = false;
     Vector3 randomDir;
@@ -78,6 +84,9 @@ public class AsmodeusScript : MonoBehaviour
         //door = GameObject.Find("Door");
         rb = GetComponent<Rigidbody2D>();
         timer = firerate;
+
+        startPos = transform.position;
+    
         //LM = door.GetComponent<LevelManagement>();
         //animator = GetComponent<Animator>();
         //audioSource = GetComponent<AudioSource>();
@@ -85,13 +94,7 @@ public class AsmodeusScript : MonoBehaviour
 
     void FixedUpdate()
     {
-
         timer -= Time.fixedDeltaTime;
-        if (timer < 0 && currState == asmoState.ShootingFast)
-        {
-            Shoot();
-            timer = firerate;
-        }
 
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
@@ -102,7 +105,22 @@ public class AsmodeusScript : MonoBehaviour
             //    Wander();
             //    break;
             case (asmoState.ShootingFast):
+                if (timer < 0)
+                {
+                    Shoot();
+                    timer = firerate;
+                }
                 ShootingFast();
+                break;
+            case (asmoState.BulletHell):
+                if (timer < 0)
+                {
+                    BulletHell();
+                    timer = firerate;
+                }
+                break;
+            case (asmoState.Striking):
+                Striking();
                 break;
             case (asmoState.Still):
                 StartCoroutine(WaitStill(10f));
@@ -117,6 +135,11 @@ public class AsmodeusScript : MonoBehaviour
         {
             currState = asmoState.Still;
             shootsDone = 0;
+        }
+
+        if(currState != asmoState.Still)
+        {
+            StopCoroutine(WaitStill(1));
         }
         //if (isPlayerInRange(range) && currState != asmoState.Dead)
         //{
@@ -181,6 +204,20 @@ public class AsmodeusScript : MonoBehaviour
 
     }
 
+    void BulletHell()
+    {
+        rb.velocity = Vector2.zero;
+    }
+
+
+    void Striking()
+    {
+        float perlinX = (Mathf.PerlinNoise(Time.time * strikingSpeed, 0) - 0.5f) * perlinScale * 2;
+        float perlinY = (Mathf.PerlinNoise(0, Time.time * strikingSpeed) - 0.5f) * perlinScale * 2;
+
+        transform.position = startPos + new Vector2(perlinX, perlinY);
+    }
+
     void Shoot()
     {
         Vector2 aimDirection = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
@@ -202,7 +239,7 @@ public class AsmodeusScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check for a match with the specified name on any GameObject that collides with your GameObject
-        if (collision.gameObject.tag == "BossWall")
+        if (collision.gameObject.tag == "BossWall" && currState != asmoState.Striking)
         {
             isTouchingWalls = true;
             gameObject.transform.position = spawnPoint.transform.position;
@@ -244,7 +281,23 @@ public class AsmodeusScript : MonoBehaviour
             rb.velocity = Vector2.zero;
 
             yield return new WaitForSeconds(seconds);
-            currState = asmoState.ShootingFast;
+
+            nextState = Random.Range(1, 3);
+
+            switch (nextState)
+            {
+                case 1:
+                    currState = asmoState.ShootingFast;
+                    break;
+                case 2:
+                    currState = asmoState.BulletHell;
+                    break;
+                case 3:
+                    currState = asmoState.Striking;
+                    break;
+                default:
+                    break;
+            }           
         }
         else
         {
