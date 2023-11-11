@@ -3,36 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 //using static Cinemachine.CinemachineFreeLook;
 
-public class AsmoBullet1 : MonoBehaviour
+public class AsmoSwords : MonoBehaviour
 {
     Rigidbody2D rb;
-    float damage;
+    [SerializeField] private float damage;
+    [SerializeField] private float speed = 10f; // Speed of rotation
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        //LostSoulScript lsScript = this.GetComponentInParent<LostSoulScript>();
-        //damage = lsScript.shotDamage;
     }
 
     void Update()
     {
-        if (transform.position.magnitude > 1000.0f)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public void shoot(Vector2 direction, float force, float shotDamage)
-    {
-        damage = shotDamage;
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
+        // Rotate the GameObject every frame
+        transform.Rotate(0, 0, speed * Time.fixedDeltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
-        
+    {      
         GameObject player = other.gameObject;
         PlayerManager pm = player.GetComponent<PlayerManager>();
         //Robin playerController = player.GetComponent<Robin>();
@@ -43,6 +32,5 @@ public class AsmoBullet1 : MonoBehaviour
             pm.TakeDamage(damage);
         }
 
-        Destroy(gameObject);
     }
 }

@@ -177,6 +177,10 @@ public class Crosshair : MonoBehaviour
 
             if (collision.CompareTag("EnemySoul"))
             {
+                if(collision.name == "Asmodeus")
+                {
+                    collision.gameObject.GetComponent<AsmodeusScript>().takeDamage(meleeDamage);
+                }
                 //SFXBelhorHit.Play();
                 collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
                 if (collision.transform.GetComponent<LostSoulScript>().health <= 0 && tutorialManager != null)

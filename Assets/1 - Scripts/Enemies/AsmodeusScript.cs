@@ -24,6 +24,7 @@ public class AsmodeusScript : MonoBehaviour
 
     private bool isCoroutineRunning = false;
     private bool isStrikingCrRunning = false;
+    private bool isBulletHellCrRunning = false;
 
     [SerializeField] private bool isTouchingWalls = false;
 
@@ -44,6 +45,7 @@ public class AsmodeusScript : MonoBehaviour
     public float shotDamage;
     [SerializeField] private float shootingForce;
     [SerializeField] private int shootsDone = 0;
+    [SerializeField] private GameObject sword1, sword2;
     #endregion
 
     #region AI RELATED
@@ -54,6 +56,9 @@ public class AsmodeusScript : MonoBehaviour
     private Vector2 startPos;
     private int nextState = 0;
     [SerializeField] private int maxShots;
+    [SerializeField] private float timeStriking;
+    [SerializeField] private float timeStill;
+    [SerializeField] private float timeBulletHell;
     // public float range = 20;
     bool chooseDir = false;
     Vector3 randomDir;
@@ -90,7 +95,10 @@ public class AsmodeusScript : MonoBehaviour
         timer = firerate;
 
         startPos = transform.position;
-    
+
+        sword1.SetActive(false);
+        sword2.SetActive(false);
+
         //LM = door.GetComponent<LevelManagement>();
         //animator = GetComponent<Animator>();
         //audioSource = GetComponent<AudioSource>();
@@ -122,11 +130,9 @@ public class AsmodeusScript : MonoBehaviour
                     BulletHell();
                     timer = firerate;
 
-                    //Striking();
-
-                    if (!isStrikingCrRunning)
+                    if (!isBulletHellCrRunning)
                     {
-                        StartCoroutine(StrikingCr(7f));
+                        StartCoroutine(BulletHellCr(timeBulletHell));
                     }
                 }
                 break;
@@ -135,14 +141,14 @@ public class AsmodeusScript : MonoBehaviour
 
                 if (!isStrikingCrRunning)
                 {
-                    StartCoroutine(StrikingCr(7f));
+                    StartCoroutine(StrikingCr(timeStriking));
                 }
                 
                 break;
             case (asmoState.Still):
                 if (!isCoroutineRunning)
                 {
-                    StartCoroutine(WaitStill(3f)); 
+                    StartCoroutine(WaitStill(timeStill)); 
                 } 
                 break;
             case (asmoState.Dead):
@@ -161,6 +167,7 @@ public class AsmodeusScript : MonoBehaviour
         {
             StopCoroutine(WaitStill(1));
         }
+
         //if (isPlayerInRange(range) && currState != asmoState.Dead)
         //{
         //    currState = asmoState.Run;
@@ -233,6 +240,9 @@ public class AsmodeusScript : MonoBehaviour
 
     void Striking()
     {
+        sword1.SetActive(true);
+        sword2.SetActive(true);
+
         float perlinX = (Mathf.PerlinNoise(Time.time * strikingSpeed, 0) - 0.5f) * perlinScale * 2;
         float perlinY = (Mathf.PerlinNoise(0, Time.time * strikingSpeed) - 0.5f) * perlinScale * 2;
 
@@ -323,6 +333,24 @@ public class AsmodeusScript : MonoBehaviour
 
             currState = asmoState.Still;
             isStrikingCrRunning = false;
+            sword1.SetActive(false);
+            sword2.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0);
+        }
+    }
+
+    IEnumerator BulletHellCr(float seconds)
+    {
+        if (!dead)
+        {
+            isBulletHellCrRunning = true;
+            yield return new WaitForSeconds(seconds);
+
+            currState = asmoState.Still;
+            isBulletHellCrRunning = false;
         }
         else
         {
