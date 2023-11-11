@@ -39,6 +39,7 @@ public class IncubusScript : MonoBehaviour
     private float attackDuration = 1f;
     [SerializeField] private float attackRange = 4f;
     [SerializeField] private SpriteRenderer attackArea;
+    [SerializeField] private Transform attackAreaTf;
     [SerializeField] float Distance = 8.0f;
     private Vector2 currentAimDirection;
 
@@ -151,8 +152,10 @@ public class IncubusScript : MonoBehaviour
         isAttacking = true;
         attackArea.gameObject.SetActive(true);
         attackArea.sprite = spritesFire[0];
+        attackAreaTf.localScale = new Vector3(1, 0.4283f, 1);
         // Espera el tiempo de espera
         yield return new WaitForSeconds(attackDuration);
+        attackAreaTf.localScale = new Vector3(1, 1, 1);
         animator.SetBool("IsAboutAttack", false);
         while (Vector2.Distance(position, player.transform.position) <= attackRange)
         {
