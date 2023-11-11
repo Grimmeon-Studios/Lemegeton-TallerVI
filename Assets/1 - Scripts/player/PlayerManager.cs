@@ -61,6 +61,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioSource SFXArmorHit;
     [SerializeField] private AudioSource SFXPickUp;
 
+    [Header("PartSystem")]
+    [SerializeField] private ParticleSystem takeDamageVFX;
+
     private float lastDamageTime;
     private bool isRechargingDefense;
     private float rechargeStartTime;
@@ -248,6 +251,8 @@ public class PlayerManager : MonoBehaviour
         else
         {
             SFXHit.Play();
+            takeDamageVFX.Play();
+
             health -= amount;
             Debug.Log("Health" + health);
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -21,6 +22,9 @@ public class PlayerTouchMovement : MonoBehaviour
     private Vector2 lastNonZeroMovementAmount;
     PlayerInput_map _Input;
 
+    [Header("PartSystem")]
+    [SerializeField] private ParticleSystem steps;
+    private bool isMoving;
     private void Awake()
     {
         atkController = FindAnyObjectByType<Crosshair>();
@@ -117,10 +121,39 @@ public class PlayerTouchMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isMoving && joystickActive)
+        {
+            PlayStepsVFX(true);
+        }
+        else if (isMoving && !joystickActive)
+        {
+            PlayStepsVFX(false);
+        }
+
         if (joystickActive == true)
         {
             dampedSpeed = Vector2.SmoothDamp(dampedSpeed, MovementAmount, ref dampedSpeed, 0.05f);
             _PlayerManager._Rigidbody.velocity = dampedSpeed * _PlayerManager.speed;
+        }
+    }
+
+    private void PlayStepsVFX(bool question)
+    {
+        var mainStepsModule = steps.main;
+        float newLifeTime = 0.5f / (_PlayerManager.speed / 10);
+
+        if (question)
+        {
+            mainStepsModule.startLifetime = newLifeTime;
+            steps.Play();
+
+            isMoving = true;
+        }
+        else
+        {
+            steps.Stop();
+
+            isMoving = false;
         }
     }
 

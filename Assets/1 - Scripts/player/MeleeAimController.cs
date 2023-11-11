@@ -30,7 +30,8 @@ public class Crosshair : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private PlayerManager _playerManager;
-    [SerializeField] private ParticleSystem slashPartSyst;
+    [SerializeField] private ParticleSystem slashVFX;
+    [SerializeField] private ParticleSystem critSlashVFX;
 
     private float meleeCriticalDamage;
     private float meleeCritialRateUp;
@@ -100,7 +101,8 @@ public class Crosshair : MonoBehaviour
             float angle = Mathf.Atan2(closestEnemyDir.y, closestEnemyDir.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * smoothFactor);
-            slashPartSyst.gameObject.transform.rotation = transform.rotation;
+            slashVFX.gameObject.transform.rotation = transform.rotation;
+            critSlashVFX.gameObject.transform.rotation = transform.rotation;
 
             currentAimDirection = closestEnemyDir;
         }
@@ -126,9 +128,11 @@ public class Crosshair : MonoBehaviour
                 // Rotate the crosshair object based on the player's aim (no smoothing)
                 float angle = Mathf.Atan2(playerVelocity.y, playerVelocity.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
-                slashPartSyst.gameObject.transform.rotation = transform.rotation;
+                slashVFX.gameObject.transform.rotation = transform.rotation;
+                critSlashVFX.gameObject.transform.rotation = transform.rotation;
+
             }
-            
+
         }
 
     }
@@ -141,7 +145,6 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(AnimationPlaceholder(0.2f));
 
-        slashPartSyst.Play();
 
         buttonFill.fillAmount = 0;
         float randomValue = Random.Range(0f, 1f);
@@ -150,6 +153,7 @@ public class Crosshair : MonoBehaviour
         if (randomValue < meleeCritialRateUp)//If critical damage
         {
             SFXCrit.Play();
+            critSlashVFX.Play();
 
             meleeDamage = CalculateCriticalDamage(_playerManager.attack,_playerManager.criticalDamage);
             Debug.Log("¡Ataque crítico! Daño total: " + meleeDamage);
@@ -157,6 +161,7 @@ public class Crosshair : MonoBehaviour
         else //If there's no critical damage
         {
             SFXAttack.Play();
+            slashVFX.Play();
 
             meleeDamage = _playerManager.attack;
             Debug.Log("Ataque normal. Daño total: " + meleeDamage);

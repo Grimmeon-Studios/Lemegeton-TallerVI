@@ -48,7 +48,7 @@ public class Item : MonoBehaviour
             switch (switchIndex)
             {
                 case 0: // Movement Speed
-                    item_speed = 0.2f;
+                    item_speed = 2.5f;
                     nameText = "Purgatory Ascended Wings";
                     descriptionText = "Increases the player speed ("+item_speed+")";
                     sprite.sprite = spriteTexturesList[0];
