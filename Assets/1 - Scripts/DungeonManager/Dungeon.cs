@@ -11,9 +11,12 @@ public class Dungeon : MonoBehaviour
 {
     private ChronometerManager chronometer;
     private BoxCollider2D gameAreaCollider;
+    private CameraTransition camTransition;
     [SerializeField] private GameObject playerObj;
     [SerializeField] private LayerMask collisionLayerMask;
 
+    [SerializeField] private SavingSystem saving;
+    
     private int difficultylvl;
     private bool listComplete;
     private bool onSetUp;
@@ -50,6 +53,7 @@ public class Dungeon : MonoBehaviour
     {
         boxColl = GetComponent<BoxCollider2D>();
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
+        camTransition = FindObjectOfType<CameraTransition>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
 
@@ -85,7 +89,7 @@ public class Dungeon : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Circle") && onSetUp == true)
         {
-            Debug.Log("Circle Detected");
+            //Debug.Log("Circle Detected");
             if(!InstatiatedCircles.Contains(collision.gameObject))
                 InstatiatedCircles.Add(collision.gameObject);
 
@@ -112,7 +116,7 @@ public class Dungeon : MonoBehaviour
             {
                 Debug.Log("Circle " + currentCircle + " Cleared");
                 //circleCleared = true;
-                OnCircleCleared(true);
+                StartCoroutine(CircleTransition(true));
             }
         }
     }
@@ -131,12 +135,15 @@ public class Dungeon : MonoBehaviour
             {
                 if (currentCircle > InstatiatedCircles.Count)
                 {
-                    SceneManager.LoadScene(0);
+                    saving.SaveGame();
+                    SceneManager.LoadScene("Boss Dungeon");
                 }
                 else
                 {
                     Debug.Log("circle " + InstatiatedCircles[currentCircle - 1].gameObject.name.ToString() + " Will be activated");
                     InstatiatedCircles[currentCircle - 1].SetActive(true);
+
+                    StartCoroutine(WaitAndCount());
                 }
             }
 
@@ -231,5 +238,10 @@ public class Dungeon : MonoBehaviour
         totalRoomsTxt.text = totalRooms.ToString();
     }
 
-    
+    public IEnumerator CircleTransition(bool cleared)
+    {
+        camTransition.CircleClearedTransition(currentCircle);
+        yield return new WaitForSeconds(7f);
+        OnCircleCleared(cleared);
+    }
 }

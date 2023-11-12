@@ -17,7 +17,7 @@ public class ItemStatueSpawner : MonoBehaviour
 
     [SerializeField] private AudioSource SFXActivate;
 
-    private bool isStatueUsed;
+    public bool isStatueUsed;
     List<GameObject> itemList = new List<GameObject>();
 
     void Start()

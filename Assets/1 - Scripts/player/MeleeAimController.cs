@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -29,7 +30,8 @@ public class Crosshair : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private PlayerManager _playerManager;
-    [SerializeField] private ParticleSystem slashPartSyst;
+    [SerializeField] private ParticleSystem slashVFX;
+    [SerializeField] private ParticleSystem critSlashVFX;
 
     private float meleeCriticalDamage;
     private float meleeCritialRateUp;
@@ -81,6 +83,12 @@ public class Crosshair : MonoBehaviour
 
         if (closestEnemyDir != Vector2.zero)
         {
+            meleeSprite.DOColor(Color.red, 1f).OnComplete(() => {
+
+                DOTween.Kill(gameObject);
+
+            });
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             // Apply smoothing only when enemies are nearby
             float smoothFactor = 3.0f; // You can adjust this value as needed
 
@@ -93,13 +101,19 @@ public class Crosshair : MonoBehaviour
             float angle = Mathf.Atan2(closestEnemyDir.y, closestEnemyDir.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * smoothFactor);
-            slashPartSyst.gameObject.transform.rotation = transform.rotation;
+            slashVFX.gameObject.transform.rotation = transform.rotation;
+            critSlashVFX.gameObject.transform.rotation = transform.rotation;
 
             currentAimDirection = closestEnemyDir;
         }
         else
         {
             // No enemies nearby, use player's velocity for movement
+            meleeSprite.DOColor(Color.white, 1f).OnComplete(() => {
+
+                DOTween.Kill(gameObject);
+                
+            });
             currentAimDirection = playerVelocity;
 
             if(currentAimDirection != lastAimDirection && currentAimDirection != Vector2.zero)
@@ -114,9 +128,11 @@ public class Crosshair : MonoBehaviour
                 // Rotate the crosshair object based on the player's aim (no smoothing)
                 float angle = Mathf.Atan2(playerVelocity.y, playerVelocity.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
-                slashPartSyst.gameObject.transform.rotation = transform.rotation;
+                slashVFX.gameObject.transform.rotation = transform.rotation;
+                critSlashVFX.gameObject.transform.rotation = transform.rotation;
+
             }
-            
+
         }
 
     }
@@ -129,7 +145,6 @@ public class Crosshair : MonoBehaviour
 
         StartCoroutine(AnimationPlaceholder(0.2f));
 
-        slashPartSyst.Play();
 
         buttonFill.fillAmount = 0;
         float randomValue = Random.Range(0f, 1f);
@@ -138,6 +153,7 @@ public class Crosshair : MonoBehaviour
         if (randomValue < meleeCritialRateUp)//If critical damage
         {
             SFXCrit.Play();
+            critSlashVFX.Play();
 
             meleeDamage = CalculateCriticalDamage(_playerManager.attack,_playerManager.criticalDamage);
             Debug.Log("¡Ataque crítico! Daño total: " + meleeDamage);
@@ -145,6 +161,7 @@ public class Crosshair : MonoBehaviour
         else //If there's no critical damage
         {
             SFXAttack.Play();
+            slashVFX.Play();
 
             meleeDamage = _playerManager.attack;
             Debug.Log("Ataque normal. Daño total: " + meleeDamage);
@@ -165,6 +182,10 @@ public class Crosshair : MonoBehaviour
 
             if (collision.CompareTag("EnemySoul"))
             {
+                if(collision.name == "Asmodeus")
+                {
+                    collision.gameObject.GetComponent<AsmodeusScript>().takeDamage(meleeDamage);
+                }
                 //SFXBelhorHit.Play();
                 collision.gameObject.GetComponent<LostSoulScript>().takeDamage(meleeDamage);
                 if (collision.transform.GetComponent<LostSoulScript>().health <= 0 && tutorialManager != null)
@@ -201,6 +222,7 @@ public class Crosshair : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
+
             GameObject enemy = collider.gameObject;
             Vector2 directionToEnemy = enemy.transform.position - transform.position;
             float distanceToEnemy = directionToEnemy.magnitude;
@@ -252,7 +274,7 @@ public class Crosshair : MonoBehaviour
     public void UpdateLastAimDirection(Vector2 newDirection)
     {
         lastAimDirection = newDirection;
-        Debug.Log("Updating lasAimPos");
+        //Debug.Log("Updating lasAimPos");
     }
 
 }

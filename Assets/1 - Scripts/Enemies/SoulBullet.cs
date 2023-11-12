@@ -7,7 +7,7 @@ public class SoulBullet : MonoBehaviour
 {
     Rigidbody2D rb;
     float damage;
-
+    [SerializeField] ParticleSystem CollisionVFX;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +32,11 @@ public class SoulBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.gameObject.CompareTag("Portal"))
+        {
+            return;
+        }
+
         GameObject player = other.gameObject;
         PlayerManager pm = player.GetComponent<PlayerManager>();
         //Robin playerController = player.GetComponent<Robin>();
@@ -43,6 +47,15 @@ public class SoulBullet : MonoBehaviour
             pm.TakeDamage(damage);
         }
 
+        StartCoroutine(VFXthenDestroyObj());
+    }
+
+    private IEnumerator VFXthenDestroyObj()
+    {
+        CollisionVFX.Play();
+        rb.velocity = Vector2.zero;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(CollisionVFX.main.duration);
         Destroy(gameObject);
     }
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,12 +61,19 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioSource SFXArmorHit;
     [SerializeField] private AudioSource SFXPickUp;
 
+    [Header("PartSystem")]
+    [SerializeField] private ParticleSystem takeDamageVFX;
+    [SerializeField] private ParticleSystem shieldTakeDamageVFX;
+
     private float lastDamageTime;
     private bool isRechargingDefense;
     private float rechargeStartTime;
     private float rechargeDuration = 5.0f;
     private float previousDefenseValue;
     private bool stopRechargeDefense;
+    public float cdDefenseRegeneration = 10;
+
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
@@ -79,8 +87,12 @@ public class PlayerManager : MonoBehaviour
         _healthBar.SetMaxHealth(maxHealth);
         _defenseBar = FindObjectOfType<DefenseBar>();
         _defenseBar.SetMaxDefense(maxDefense);
+        _spriteRenderer = GetComponent<SpriteRenderer>();
 
         Debug.Log("Notification Object: " + _Notification.gameObject.name.ToString());
+
+        isRechargingDefense = false;
+        isInvincible = false;
     }
     //private void OnEnable()
     //{
@@ -121,8 +133,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        // Verifica si han pasado 8 segundos desde el último daño y la recarga no está en curso
-        if (Time.time - lastDamageTime >= 8.0f && !isRechargingDefense)
+        // Verifica si han pasado cdDefenseRegeneration segundos desde el último daño y la recarga no está en curso
+        if (Time.time - lastDamageTime >= cdDefenseRegeneration && !isRechargingDefense)
         {
             previousDefenseValue = defense;
             isRechargingDefense = true;
@@ -207,9 +219,8 @@ public class PlayerManager : MonoBehaviour
             _DampedSpeed = Vector2.SmoothDamp(_DampedSpeed, _Movement, ref _DampedSpeed, 0.05f);
             _Rigidbody.velocity = _DampedSpeed * speed;
         }
-
-       
     }
+
     public void TakeDamage(float amount)
     {
         if (isInvincible)
@@ -218,6 +229,7 @@ public class PlayerManager : MonoBehaviour
         isInvincible = true;
         invincibleTimer = timeInvincible;
         lastDamageTime = Time.time;
+
         if (isRechargingDefense)
         {
             stopRechargeDefense = true;
@@ -227,22 +239,44 @@ public class PlayerManager : MonoBehaviour
         if (defense > 0)
         {
             SFXArmorHit.Play();
-            defense -- ;
+            shieldTakeDamageVFX.Play();
+
+            defense-- ;
+
+            float loopsTime = timeInvincible / 6;
+            _spriteRenderer.DOColor(new Color(1, 1, 1, 0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
+            {
+                _spriteRenderer.DOColor(Color.white, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
+                {
+                    DOTween.Kill(gameObject);
+                });
+            });
         }
         else
         {
-            SFXHit.Play();
             health -= amount;
-            Debug.Log("Health" + health);
+            Debug.Log("Health " + health);
+            SFXHit.Play();
+            takeDamageVFX.Play();
+            float loopsTime = timeInvincible / 6;
+            _spriteRenderer.DOColor(new Color(1, 1, 1, 0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
+            {
+                _spriteRenderer.DOColor(Color.white, 0.3f).SetEase(Ease.InOutCubic).OnComplete(() =>
+                {
+                    DOTween.Kill(gameObject);
+                });
+            });
         }
+
         if (health <= 0)
         {
             Death();
         }
         /*else
         {
-            clipDamage.Play(); // feedback of the damage
+            DamageVFX.Play(); // feedback of the damage
         }*/
+        
     }
     public void HazardLava()
     {
@@ -313,8 +347,12 @@ public class PlayerManager : MonoBehaviour
         {
             statueNearBy = true;
             _Statue = collision.gameObject;
-            interactionBtn.SetActive(true);
-            attackBtn.SetActive(false);
+            if (!_Statue.GetComponent<ItemStatueSpawner>().isStatueUsed)
+            {
+                interactionBtn.SetActive(true);
+                attackBtn.SetActive(false);
+            }
+            
         }
         else if (collision == null)
         {
@@ -374,21 +412,11 @@ public class PlayerManager : MonoBehaviour
            
             maxHealth += _Item.item_maxHealth;
             _healthBar.SetMaxHealth(maxHealth);
-
-            if (defense < maxDefense)
-            {
-                if ((_Item.item_defense + defense) <= maxDefense)
-                {
-                    defense += _Item.item_defense;
-                }
-                else
-                {
-                    defense = maxDefense;
-                }
-            }
+            
             maxDefense += _Item.item_maxDefense;
             _defenseBar.SetMaxDefense(maxDefense);
-            
+
+            cdDefenseRegeneration += _Item.item_defense;
             attack += _Item.item_attack;
             shotDamage += _Item.item_shotDamage;
             shotSpeed += _Item.item_shotSpeed;

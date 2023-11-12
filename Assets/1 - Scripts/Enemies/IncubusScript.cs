@@ -11,10 +11,13 @@ public enum IncubState
 
 public class IncubusScript : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem deathVFX;
 
     [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXAttack;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem deathVFX;
+    [SerializeField] private ParticleSystem attackChargeVFX;
+    [SerializeField] private ParticleSystem attackStrikeVFX;
     Rigidbody2D rb;
     public Transform incubusTransform;
     public Vector3 defaultStats; // hp, attack, speed
@@ -35,13 +38,13 @@ public class IncubusScript : MonoBehaviour
 
     [SerializeField] int pushForce;
     private bool isAttacking = false;
-    private float attackCooldown = 1.5f; // Tiempo de espera en segundos
-    private float attackDuration = 1f;
+    public float attackCooldown = 1.5f; // Tiempo de espera en segundos
+    private float attackDuration = 1.5f;
     [SerializeField] private float attackRange = 4f;
     [SerializeField] private SpriteRenderer attackArea;
-    [SerializeField] private Transform attackAreaTf;
     [SerializeField] float Distance = 8.0f;
     private Vector2 currentAimDirection;
+    public float attackCooldownTimer = 0f;
 
     private bool dead = false;
         #endregion
@@ -83,7 +86,7 @@ public class IncubusScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         // LM = door.GetComponent<LevelManagement>();
-        attackArea.gameObject.SetActive(false);
+        attackArea.gameObject.SetActive(true);
     }
 
     void Update()
@@ -93,10 +96,18 @@ public class IncubusScript : MonoBehaviour
         Vector2 Look = v2 - position;
         Look.Normalize();
         // Debug.Log($"X: {Look.x} Y: {Look.y}");
-        if (Vector2.Distance(position, player.transform.position) <= attackRange && !isAttacking)
+
+
+        if(attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.fixedDeltaTime;
+        }
+
+        if (Vector2.Distance(position, player.transform.position) <= attackRange && !isAttacking && attackCooldownTimer <= 0)
         {
             currState = incubState.Attacking;
         }
+
     }
 
     void FixedUpdate()
@@ -105,15 +116,17 @@ public class IncubusScript : MonoBehaviour
         switch (currState)
         {
             case (incubState.Chasing):
-                Chase();
+                    Chase();
                 break;
             case (incubState.Dead):
                 StartCoroutine(WaitAndDie(0.7f));
                 dead = true;
                 break;
             case (incubState.Attacking):
-                if (!dead)
+                if (!dead && attackCooldownTimer <= 0)
+                {
                     StartCoroutine(Attack());
+                }
                 break;
         }
         Vector2 playerDir = player.transform.position - transform.position;
@@ -138,50 +151,60 @@ public class IncubusScript : MonoBehaviour
 
     void Chase()
     {
-        attackArea.sprite = spritesFire[0];
-        attackArea.gameObject.SetActive(false);
+        isAttacking = false;
+
         rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, MoveSpeed));
-        if (Vector2.Distance(position, player.transform.position) <= attackRange && !isAttacking)
-        {
-            currState = incubState.Attacking;
-        }
+        
     }
+
     private IEnumerator Attack()
     {
         animator.SetBool("IsAboutAttack", true);
         isAttacking = true;
-        attackArea.gameObject.SetActive(true);
-        attackArea.sprite = spritesFire[0];
-        attackAreaTf.localScale = new Vector3(1, 0.4283f, 1);
+        attackChargeVFX.Play();
+        
         // Espera el tiempo de espera
         yield return new WaitForSeconds(attackDuration);
-        attackAreaTf.localScale = new Vector3(1, 1, 1);
         animator.SetBool("IsAboutAttack", false);
-        while (Vector2.Distance(position, player.transform.position) <= attackRange)
+
+
+        if(Vector2.Distance(position, player.transform.position) <= attackRange)
         {
+            attackCooldownTimer = attackCooldown;
             SFXAttack.Play();
+            attackStrikeVFX.Play();
+
 
             animator.SetBool("IsAttackingAn", true);
-            attackArea.sprite = spritesFire[1];
+            //attackArea.sprite = spritesFire[1];
             playerManager.TakeDamage(ContactDamage);
             playerManager._Rigidbody.AddForce((playerManager.transform.position - this.transform.position) * pushForce);
             //animation
+
             yield return new WaitForSeconds(attackCooldown);
             animator.SetBool("IsAttackingAn", false);
-            
-        }
-        attackArea.sprite = spritesFire[0];
-        attackArea.gameObject.SetActive(false);
-        // Comprueba nuevamente si el jugador todavía está en el rango
-        isAttacking = false;
-        if (Vector2.Distance(position, player.transform.position) <= attackRange && !isAttacking)
-        {
-            StartCoroutine(Attack());
+            attackChargeVFX.Stop();
+
+            currState = incubState.Chasing;
+
         }
         else
         {
             currState = incubState.Chasing;
         }
+
+
+
+        // Comprueba nuevamente si el jugador todavía está en el rango
+        //isAttacking = false;
+        //if (Vector2.Distance(position, player.transform.position) <= attackRange && !isAttacking)
+        //{
+        //    StartCoroutine(Attack());
+        //}
+        //else
+        //{
+        //    currState = incubState.Chasing;
+        //}
     }
     public void takeDamage(float damage)
     {
@@ -202,6 +225,8 @@ public class IncubusScript : MonoBehaviour
         else
         {
             SFXDie.Play();
+            attackStrikeVFX.Stop();
+            attackChargeVFX.Stop();
             currState = incubState.Dead;
         }
     }
@@ -212,7 +237,7 @@ public class IncubusScript : MonoBehaviour
         {
             if(scoreBoard != null && chrono != null)
             {
-                scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+                scoreBoard.GetPoints(100 * chrono.difficultyLvl);
             }
             Debug.Log("Se murio definitivamente");
             //GetComponent<BoxCollider2D>().size = new Vector2(0, 0);

@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
     //public ItemsTextures textures;
     public SpriteRenderer sprite;
 
+    public string nameText;
     public string descriptionText;
 
     private void Start()
@@ -47,75 +48,87 @@ public class Item : MonoBehaviour
             switch (switchIndex)
             {
                 case 0: // Movement Speed
-                    item_speed = 0.2f;
-                    descriptionText = "Increases the player speed ("+item_speed+")";
+                    item_speed = 2.5f;
+                    nameText = "Purgatory Ascended Wings";
+                    descriptionText = "Increases the player speed by 2.5% of the base stat";
                     sprite.sprite = spriteTexturesList[0];
                     break;
 
                 case 1: // Maximun Health
-                    item_maxHealth = 0.5f;
-                    descriptionText = "Increases the player maximum health (" + item_maxHealth + ")";
+                    item_maxHealth = 1f;
+                    nameText = "Exeptional Resurgence Brew";
+                    descriptionText = "Increases the player maximum health 0.5% of the base stat";
                     sprite.sprite = spriteTexturesList[1];
                     break;
 
                 case 2: // Health Regeneration
-                    item_health = 1;
+                    item_health = 5;
+                    nameText = "Rejuvenation Potion";
                     descriptionText = "Heals the player by ("+item_health+")";
                     sprite.sprite = spriteTexturesList[2];
                     break;
 
                 case 3: // Maximun Defence
                     item_maxDefense = 0.5f;
-                    descriptionText = "Raises the player maximum defence by ("+item_maxDefense +")";
+                    nameText = "Sin Absolver Shield";
+                    descriptionText = "Raises the player maximum defence by 10% of the base stat";
                     sprite.sprite = spriteTexturesList[3];
                     break;
 
                 case 4: // Defence Regeneration
-                    item_defense = 5;
-                    descriptionText = "Increases the player defence regeneration speed by (" + item_defense + ")";
+                    item_defense = 0.5f;
+                    nameText = "Lurking Epoch Watch";
+                    descriptionText = "Increases the player defence regeneration speed by 5% of the base stat";
                     sprite.sprite = spriteTexturesList[4];
                     break;
 
                 case 5: // Player Melee Damage
                     item_attack = 2;
-                    descriptionText = "Increases the player melee damage (" + item_attack + ")";
+                    nameText = "Obsidian Dagger";
+                    descriptionText = "Increases the player melee damage by 66.6% of the base stat";
                     sprite.sprite = spriteTexturesList[5];
                     break;
 
                 case 6: // Player Shot Damage
                     item_shotDamage = 3;
-                    descriptionText = "Increases the player Shot damage (" + item_shotDamage + ")";
+                    nameText = "Nilo's Piercer ArrowHead";
+                    descriptionText = "Increases the player Shot damage by 60% of the base stat";
                     sprite.sprite = spriteTexturesList[6];
                     break;
 
                 case 7: // Player Shot Speed
-                    item_shotSpeed = 0.6f;
-                    descriptionText = "Increases the Shot speed (" + item_shotSpeed + ")";
+                    item_shotSpeed = 1;
+                    nameText = "Blue Flame Essence Ore";
+                    descriptionText = "Increases the Shot speed by 25% of the base stat";
                     sprite.sprite = spriteTexturesList[7];
                     break;
 
                 case 8: // Player Shot Range
-                    item_shotRange = 1.5f;
-                    descriptionText = "Increases the Shot range (" + item_shotRange + ")";
+                    item_shotRange = 2.5f;
+                    nameText = "Sinforged Power Catalyst";
+                    descriptionText = "Increases the Shot range by 25% of the base stat";
 
                     sprite.sprite = spriteTexturesList[8];
                     break;
 
                 case 9: // Critical Damage Probability
-                    item_criticalRateUp = 0.02f;
-                    descriptionText = "Increases the chances to deal a critical hit (" + item_criticalRateUp + ")";
+                    item_criticalRateUp = 0.03f;
+                    nameText = "Petrified Sulfur Catalyst";
+                    descriptionText = "Increases the chances to deal a critical hit by 200% of the base stat";
                     sprite.sprite = spriteTexturesList[9];
                     break;
 
                 case 10: // Critical Damage
                     item_criticalDamage = 0.25f;
-                    descriptionText = "Increases the damage of a critical hit (" + item_criticalDamage + ")";
+                    nameText = "Crystalized Sulfur Blade";
+                    descriptionText = "Increases the damage of a critical hit by 100% of the base stat";
                     sprite.sprite = spriteTexturesList[10];
                     break;
 
                 case 11: // Invencibility Time after being hit
                     item_timeInvincible = 0.2f;
-                    descriptionText = "Increases the invulnerablility time after getting hit (" + item_timeInvincible + ")";
+                    nameText = "Virgilo's Infusion Orb";
+                    descriptionText = "Increases the invulnerablility time after getting hit by 20% of the base stat";
                     sprite.sprite = spriteTexturesList[11];
                     break;
             }
