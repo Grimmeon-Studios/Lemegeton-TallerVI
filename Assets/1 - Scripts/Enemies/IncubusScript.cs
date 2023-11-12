@@ -11,10 +11,13 @@ public enum IncubState
 
 public class IncubusScript : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem deathVFX;
 
     [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXAttack;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem deathVFX;
+    [SerializeField] private ParticleSystem attackChargeVFX;
+    [SerializeField] private ParticleSystem attackStrikeVFX;
     Rigidbody2D rb;
     public Transform incubusTransform;
     public Vector3 defaultStats; // hp, attack, speed
@@ -36,7 +39,7 @@ public class IncubusScript : MonoBehaviour
     [SerializeField] int pushForce;
     private bool isAttacking = false;
     public float attackCooldown = 1.5f; // Tiempo de espera en segundos
-    private float attackDuration = 1f;
+    private float attackDuration = 1.5f;
     [SerializeField] private float attackRange = 4f;
     [SerializeField] private SpriteRenderer attackArea;
     [SerializeField] float Distance = 8.0f;
@@ -83,7 +86,7 @@ public class IncubusScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         // LM = door.GetComponent<LevelManagement>();
-        attackArea.gameObject.SetActive(false);
+        attackArea.gameObject.SetActive(true);
     }
 
     void Update()
@@ -93,6 +96,7 @@ public class IncubusScript : MonoBehaviour
         Vector2 Look = v2 - position;
         Look.Normalize();
         // Debug.Log($"X: {Look.x} Y: {Look.y}");
+
 
         if(attackCooldownTimer > 0)
         {
@@ -148,8 +152,7 @@ public class IncubusScript : MonoBehaviour
     void Chase()
     {
         isAttacking = false;
-        attackArea.sprite = spritesFire[0];
-        attackArea.gameObject.SetActive(false);
+
         rb.MovePosition(Vector2.MoveTowards(rb.position, player.transform.position, MoveSpeed));
         
     }
@@ -158,10 +161,8 @@ public class IncubusScript : MonoBehaviour
     {
         animator.SetBool("IsAboutAttack", true);
         isAttacking = true;
-        attackArea.gameObject.SetActive(true);
-
-        //change for particle system
-        attackArea.sprite = spritesFire[0];
+        attackChargeVFX.Play();
+        
         // Espera el tiempo de espera
         yield return new WaitForSeconds(attackDuration);
         animator.SetBool("IsAboutAttack", false);
@@ -171,17 +172,19 @@ public class IncubusScript : MonoBehaviour
         {
             attackCooldownTimer = attackCooldown;
             SFXAttack.Play();
+            attackStrikeVFX.Play();
+
 
             animator.SetBool("IsAttackingAn", true);
-            attackArea.sprite = spritesFire[1];
+            //attackArea.sprite = spritesFire[1];
             playerManager.TakeDamage(ContactDamage);
             playerManager._Rigidbody.AddForce((playerManager.transform.position - this.transform.position) * pushForce);
             //animation
 
             yield return new WaitForSeconds(attackCooldown);
             animator.SetBool("IsAttackingAn", false);
-            attackArea.sprite = spritesFire[0];
-            attackArea.gameObject.SetActive(false);
+            attackChargeVFX.Stop();
+
             currState = incubState.Chasing;
 
         }
@@ -222,6 +225,8 @@ public class IncubusScript : MonoBehaviour
         else
         {
             SFXDie.Play();
+            attackStrikeVFX.Stop();
+            attackChargeVFX.Stop();
             currState = incubState.Dead;
         }
     }
