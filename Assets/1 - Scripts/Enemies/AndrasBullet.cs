@@ -9,6 +9,9 @@ public class AndrasBullet : MonoBehaviour
     float damage;
     GameObject player;
     Vector2 initPos;
+    private bool tracking = true;
+
+    [SerializeField] ParticleSystem collisionVFX;
 
     void Awake()
     {
@@ -18,6 +21,7 @@ public class AndrasBullet : MonoBehaviour
 
         initPos = this.gameObject.transform.position;
 
+        tracking = true;
         //LostSoulScript lsScript = this.GetComponentInParent<LostSoulScript>();
         //damage = lsScript.shotDamage;
     }
@@ -33,7 +37,11 @@ public class AndrasBullet : MonoBehaviour
 
         aimDirection.Normalize();
 
-        rb.AddForce(aimDirection * 50f, ForceMode2D.Force);
+        if(tracking)
+        {
+            rb.AddForce(aimDirection * 50f, ForceMode2D.Force);
+
+        }
     }
 
     public void shoot(Vector2 direction, float force, float shotDamage)
@@ -54,13 +62,16 @@ public class AndrasBullet : MonoBehaviour
             pm.TakeDamage(damage);
         }
 
-        if (other.gameObject.CompareTag("Portal"))
-        {
+        StartCoroutine(VFXthenDestroyObj());
+    }
 
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+    private IEnumerator VFXthenDestroyObj()
+    {
+        tracking = false;
+        collisionVFX.Play();
+        rb.velocity = Vector2.zero;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(collisionVFX.main.duration);
+        Destroy(gameObject);
     }
 }
