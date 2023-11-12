@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 
-public class pointstest : MonoBehaviour
+public class EndCanva : MonoBehaviour
 {
     [SerializeField] HighscoreHandler highscoreHandler;
     private string playerName;
@@ -14,19 +14,24 @@ public class pointstest : MonoBehaviour
     [SerializeField] private GameObject joystick;
     private ScoreBoard scoreBoard;
     [SerializeField] TextMeshProUGUI pointsText;
+
+    private AsmodeusScript boss;
     // Start is called before the first frame update
     private void Start()
     {
         scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
+        boss = FindObjectOfType<AsmodeusScript>();
     }
-    
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private void Update()
     {
-        Time.timeScale = 0f;
-        playerNameInput.SetActive(true);
-        pointsText.text = "" + scoreBoard.GetScore();
-        joystick.SetActive(false);
-       
+        if (boss.EndCanva)
+        {
+            Time.timeScale = 0f;
+            playerNameInput.SetActive(true);
+            pointsText.text = "" + scoreBoard.GetScore();
+            joystick.SetActive(false);
+        }
     }
 
     public void ReadStringInput(string name)

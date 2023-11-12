@@ -24,7 +24,6 @@ public class HazardSlowMist : MonoBehaviour
 
     private void Update()
     {
-       
         if (isSlowed)
         {
             slowDuration -= Time.deltaTime;

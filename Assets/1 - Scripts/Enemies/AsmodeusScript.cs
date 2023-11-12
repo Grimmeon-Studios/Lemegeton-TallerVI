@@ -71,6 +71,7 @@ public class AsmodeusScript : MonoBehaviour
     #region idk RELATED
     public float health;
     private BossHealthBar _healthBar;
+public bool EndCanva = false;
     [SerializeField] private ParticleSystem deathVFX;
     //GameObject door;
     //LevelManagement LM;
@@ -435,6 +436,8 @@ public class AsmodeusScript : MonoBehaviour
             acidPrefab = null;
             deathVFX.gameObject.SetActive(true);
             
+            yield return new WaitForSeconds(seconds);
+            EndCanva = true;
             yield return new WaitForSeconds(seconds);
             Destroy(gameObject);
         }
