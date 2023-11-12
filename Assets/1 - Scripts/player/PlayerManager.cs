@@ -254,12 +254,10 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            health -= amount;
+            Debug.Log("Health " + health);
             SFXHit.Play();
             takeDamageVFX.Play();
-
-            health -= amount;
-            Debug.Log("Health" + health);
-
             float loopsTime = timeInvincible / 6;
             _spriteRenderer.DOColor(new Color(1, 1, 1, 0.3f), loopsTime).SetEase(Ease.InOutCubic).SetLoops(6).OnComplete(() =>
             {

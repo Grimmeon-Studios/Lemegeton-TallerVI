@@ -70,6 +70,7 @@ public class AsmodeusScript : MonoBehaviour
 
     #region idk RELATED
     public float health;
+    private BossHealthBar _healthBar;
     [SerializeField] private ParticleSystem deathVFX;
     //GameObject door;
     //LevelManagement LM;
@@ -104,6 +105,8 @@ public class AsmodeusScript : MonoBehaviour
         sword1.SetActive(false);
         sword2.SetActive(false);
 
+        _healthBar = FindObjectOfType<BossHealthBar>();
+        _healthBar.SetMaxHealth(health);
         //LM = door.GetComponent<LevelManagement>();
         //animator = GetComponent<Animator>();
         //audioSource = GetComponent<AudioSource>();
@@ -173,7 +176,7 @@ public class AsmodeusScript : MonoBehaviour
         {
             StopCoroutine(WaitStill(1));
         }
-
+        _healthBar.SetHealth(health);
         //if (isPlayerInRange(range) && currState != asmoState.Dead)
         //{
         //    currState = asmoState.Run;

@@ -15,6 +15,8 @@ public class Dungeon : MonoBehaviour
     [SerializeField] private GameObject playerObj;
     [SerializeField] private LayerMask collisionLayerMask;
 
+    [SerializeField] private SavingSystem saving;
+    
     private int difficultylvl;
     private bool listComplete;
     private bool onSetUp;
@@ -133,6 +135,7 @@ public class Dungeon : MonoBehaviour
             {
                 if (currentCircle > InstatiatedCircles.Count)
                 {
+                    saving.SaveGame();
                     SceneManager.LoadScene("Boss Dungeon");
                 }
                 else
