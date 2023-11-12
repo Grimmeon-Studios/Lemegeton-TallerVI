@@ -126,10 +126,10 @@ public class Dash : MonoBehaviour
     private IEnumerator DashCD(float waitTime)
     {       
         dashButton.interactable = false;
-        usingDash = false;
+        
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
-
+        usingDash = false;
         // After waiting, execute the method
         isOnCd = false;
         dashButton.interactable = true;
