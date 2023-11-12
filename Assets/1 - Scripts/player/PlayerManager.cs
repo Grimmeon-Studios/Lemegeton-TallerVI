@@ -93,6 +93,8 @@ public class PlayerManager : MonoBehaviour
 
         isRechargingDefense = false;
         isInvincible = false;
+
+        InvokeRepeating("TransparencyCheck", 1f, 5f);
     }
     //private void OnEnable()
     //{
@@ -544,5 +546,10 @@ public class PlayerManager : MonoBehaviour
         {
             speed = 0;
         }
+    }
+
+    public void TransparencyCheck()
+    {
+        _spriteRenderer.color = Color.white;
     }
 }
