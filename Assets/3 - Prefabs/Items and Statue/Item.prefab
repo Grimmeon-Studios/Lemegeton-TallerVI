@@ -119,13 +119,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f331d5e51913be4488207372816e9770, type: 3}
   - {fileID: 21300000, guid: 0223ace50f5a54842ba7884c08d13f0f, type: 3}
   - {fileID: 21300000, guid: 3a9ee36777eeba048bcc75fa263ec321, type: 3}
-  - {fileID: 21300000, guid: 518f639ede5cc4f438a37f4de85a60b8, type: 3}
   - {fileID: 21300000, guid: cd5f8d59d57c111459b25f40c45b97ad, type: 3}
   - {fileID: 21300000, guid: 3760362ebc5d4ec46993b9d5f9dd3e80, type: 3}
+  - {fileID: 21300000, guid: 518f639ede5cc4f438a37f4de85a60b8, type: 3}
   - {fileID: 21300000, guid: 1ed7dff6fe74c924b9e62ba12934c24e, type: 3}
   - {fileID: 21300000, guid: 1d03a5ca1e7e2c24aa3d55a3d61f5f21, type: 3}
   - {fileID: 21300000, guid: d756b6f20d6f50544905745a29ac2ec6, type: 3}
   sprite: {fileID: 8364309342010422993}
+  nameText: 
   descriptionText: 
 --- !u!58 &4445162800008756030
 CircleCollider2D:

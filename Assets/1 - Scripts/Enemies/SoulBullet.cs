@@ -32,7 +32,11 @@ public class SoulBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.gameObject.CompareTag("Portal"))
+        {
+            return;
+        }
+
         GameObject player = other.gameObject;
         PlayerManager pm = player.GetComponent<PlayerManager>();
         //Robin playerController = player.GetComponent<Robin>();
