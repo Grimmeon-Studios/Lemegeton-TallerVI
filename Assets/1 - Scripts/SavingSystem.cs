@@ -30,6 +30,8 @@ public class SavingSystem : MonoBehaviour
         float playerCriticalRateUp = player.GetCriticalRateUp();
         float playerCriticalDamage = player.GetCriticalDamage();
         float playerTimeInvincible = player.GetTimeInvincible();
+
+        float playerScore = scoreboard.GetScore();
         
         
         //Set all of them into Prefs
@@ -45,7 +47,8 @@ public class SavingSystem : MonoBehaviour
         PlayerPrefs.SetFloat("criticalRateUp", playerCriticalRateUp);
         PlayerPrefs.SetFloat("criticalDamage", playerCriticalDamage);
         PlayerPrefs.SetFloat("timeInvincible", playerTimeInvincible);
-        
+
+        PlayerPrefs.SetFloat("score", playerScore);
     }
 
     public void LoadGame()
@@ -64,10 +67,11 @@ public class SavingSystem : MonoBehaviour
         float playerCriticalRateUp = PlayerPrefs.GetFloat("criticalRateUp");
         float playerCriticalDamage = PlayerPrefs.GetFloat("criticalDamage");
         float playerTimeInvincible = PlayerPrefs.GetFloat("timeInvincible");
-        
+
+        float playerScore = PlayerPrefs.GetFloat("score");
         //Set Stats     (We have to create a function to set the saved variables)
         player.SetStats(playerSpeed,playerMaxHealth,playerHealth,playerMaxDefense,playerDefense,playerAttack,playerShotSpeed,playerShotRange, playerShotDamage,playerCriticalDamage,playerCriticalRateUp,playerTimeInvincible);
-        
+        scoreboard.SetScore(playerScore);
     }
 
     

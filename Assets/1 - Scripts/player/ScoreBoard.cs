@@ -17,8 +17,9 @@ public class ScoreBoard : MonoBehaviour
     void Start()
     {
         //DontDestroyOnLoad(gameObject);
-        score = 0;
         scoredPoints.gameObject.SetActive(false);
+
+        InvokeRepeating("UpdateScore", 0, 30);
     }
 
     void Update()
@@ -40,6 +41,12 @@ public class ScoreBoard : MonoBehaviour
     {
         return score;
     }
+
+    public void SetScore(float saveScore)
+    {
+        score = saveScore;
+    }
+
     public void GetPoints(int ponits)
     {
         currentTime = 0;
@@ -47,6 +54,11 @@ public class ScoreBoard : MonoBehaviour
         scoredPoints.gameObject.SetActive(true);
         scoredPoints.text = "+" + ponits;
         score = Mathf.FloorToInt(Mathf.Lerp(score, score + ponits, 1f));
+        totalScore.text = score.ToString();
+    }
+
+    private void UpdateScore()
+    {
         totalScore.text = score.ToString();
     }
 }

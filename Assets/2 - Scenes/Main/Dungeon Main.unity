@@ -438,6 +438,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1104007642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+  m_PrefabInstance: {fileID: 8760546004893979599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1104007648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104007642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d078f105ce2bf314f927b4dad19f0825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1226498761 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5007372347130093562, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
@@ -978,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721823
+      value: 1.3721861
       objectReference: {fileID: 0}
     - target: {fileID: 3960058546996866969, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -986,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3721823
+      value: 1.3721861
       objectReference: {fileID: 0}
     - target: {fileID: 4915288006850444685, guid: 363bbea753823254695a5b24aeb08935, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1461,17 +1478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5337936903630466703 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8757237277949919192, guid: 00a3f97a1e998de44ac363f50c16c0c5, type: 3}
-  m_PrefabInstance: {fileID: 5337936903630466699}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d078f105ce2bf314f927b4dad19f0825, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6203258993092369353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1599,7 +1605,7 @@ PrefabInstance:
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: saving
       value: 
-      objectReference: {fileID: 5337936903630466703}
+      objectReference: {fileID: 1104007648}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: playerObj
       value: 
@@ -1614,7 +1620,7 @@ PrefabInstance:
       objectReference: {fileID: 1562644718}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[0]
@@ -1623,11 +1629,11 @@ PrefabInstance:
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[1]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: 150475ed73e89194593737c9cdfd58e8, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: cdc03b586deeb7648a16c25fd77f967d, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[2]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: 61865129b5ba1e44c9a1960350ef8954, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: 4b98a7f558699d244a572ba33c4ae2f2, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[3]
       value: 
@@ -1695,7 +1701,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1439107651180042362, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1104007648}
   m_SourcePrefab: {fileID: 100100000, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

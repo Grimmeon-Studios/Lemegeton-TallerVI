@@ -220,7 +220,7 @@ public class LostSoulScript : MonoBehaviour
         {
             if (scoreBoard != null && chrono != null)
             {
-                scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+                scoreBoard.GetPoints(100 * chrono.difficultyLvl);
             }
 
             Debug.Log("Se murio definitivamente");

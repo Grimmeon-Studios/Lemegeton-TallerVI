@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject ShotBtn;
     [SerializeField] private GameObject DashBtn;
     [SerializeField] private GameObject player;
+    [SerializeField] private Button skipBtn;
+
 
     [Header("Enemies Prefabs")]
     [SerializeField] private GameObject belhor; 
@@ -56,6 +59,8 @@ public class TutorialManager : MonoBehaviour
         playerManager = player.GetComponent<PlayerManager>();
         previousSpeed = playerManager.speed;
         playerManager.speed = 0;
+
+        StartCoroutine(DisableSkipBtn());
     }
 
     private void Update()
@@ -203,5 +208,17 @@ public class TutorialManager : MonoBehaviour
     public void Asmodeus_Outro()
     {
         SceneManager.LoadScene("Dungeon Main");
+    }
+
+    public void SkipTutorial()
+    {
+        SceneManager.LoadScene("Dungeon Main");
+    }
+
+    private IEnumerator DisableSkipBtn()
+    {
+
+        yield return new WaitForSeconds(16);
+        skipBtn.gameObject.SetActive(false);
     }
 }

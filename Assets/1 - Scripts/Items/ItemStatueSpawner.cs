@@ -68,7 +68,7 @@ public class ItemStatueSpawner : MonoBehaviour
                 }
             }
             isStatueUsed=true;
-            scoreBoard.GetPoints(100);
+            scoreBoard.GetPoints(500);
         }
     }
 

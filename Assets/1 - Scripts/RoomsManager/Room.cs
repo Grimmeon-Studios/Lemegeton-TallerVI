@@ -100,7 +100,7 @@ public class Room : MonoBehaviour
                     NoRemainingEnemies.Invoke();
                     //inCombat = false;
                     enemiesBuffed = false;
-                    scoreBoard.GetPoints(100 * chrono.difficultyLvl);
+                    scoreBoard.GetPoints(1000 * chrono.difficultyLvl);
                     Destroy(gameObject);
                 }
             }
