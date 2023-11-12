@@ -2,29 +2,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class HazardFreezingZone : MonoBehaviour
 {
     private PlayerManager player;
     private float originalSpeed;
     [SerializeField] private GameObject FreezingZone; 
     private float durationFreeze = 1.3f;
+    private Button dashBttn;
     
     void Start()
     {
         player = FindObjectOfType<PlayerManager>();
+        dashBttn = player.gameObject.GetComponent<Dash>().dashButton;
     }
     
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
-            originalSpeed = player.speed;
+            dashBttn.interactable = false;
+            if (player.GetComponent<Dash>().GetUsingDash())
+            {
+                originalSpeed = player.GetComponent<Dash>().GetOriginalSpeed();
+            }
+            else
+            {
+                originalSpeed = player.speed;
+            }
         }
     }
 

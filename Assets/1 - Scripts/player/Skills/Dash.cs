@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Dash : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem smokePartSystem;
-    [SerializeField] private Button dashButton;
+    [SerializeField] private ParticleSystem smokePartSystem; 
+    public Button dashButton;
     [SerializeField] private Image dashButtonBG;
     [SerializeField] private GameObject playerComponent;
     [SerializeField] private PlayerManager realPlayer;
@@ -18,7 +18,7 @@ public class Dash : MonoBehaviour
     [SerializeField] private float dash_Speed;
     [SerializeField] private float dash_CD;
     private float dash_CDTimer;
-
+    private bool usingDash = false;
 
     bool isOnCd = false;
 
@@ -26,6 +26,15 @@ public class Dash : MonoBehaviour
     private CapsuleCollider2D capCollider;
     private SpriteRenderer playerSprite;
 
+    public bool GetUsingDash()
+    {
+        return usingDash;
+    }
+
+    public float GetOriginalSpeed()
+    {
+        return original_speed;
+    }
 
     public void Awake()
     {
@@ -51,7 +60,7 @@ public class Dash : MonoBehaviour
     {
         if (isOnCd == true)
             return;
-
+        usingDash = true;
         SFXDash.Play();
         dashButtonBG.fillAmount = 0f;
         smokePartSystem.Play();
@@ -117,9 +126,10 @@ public class Dash : MonoBehaviour
     private IEnumerator DashCD(float waitTime)
     {       
         dashButton.interactable = false;
+        
         // Wait for the specified time
         yield return new WaitForSeconds(waitTime);
-
+        usingDash = false;
         // After waiting, execute the method
         isOnCd = false;
         dashButton.interactable = true;
