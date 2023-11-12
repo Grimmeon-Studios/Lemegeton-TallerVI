@@ -13,13 +13,24 @@ public class CameraTransition : MonoBehaviour
     [SerializeField] private TextMeshProUGUI circleClearedText;
     [SerializeField] private TextMeshProUGUI remainingCircles;
 
+    private Dungeon dm;
+    private TutorialManager tm;
     private void Awake()
     {
+        dm = FindObjectOfType<Dungeon>();
+
         _cam = GetComponent<CinemachineVirtualCamera>();
 
         _cam.m_Lens.OrthographicSize = 0f;
 
         StartCoroutine(waitSec(1.7f));
+
+        if (dm == null)
+        {
+            if (tm == null)
+                return;
+        }
+            
 
         _image.gameObject.SetActive(true);
         circleClearedText.gameObject.SetActive(false);

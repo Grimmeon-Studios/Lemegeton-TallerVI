@@ -28,11 +28,13 @@ public class ProjectileAttack : MonoBehaviour
     PlayerInput_map _Input;
     SpriteRenderer _crossHair;
     Vector2 _Position;
+    PlayerManager playerManager;
 
     private void Awake()
     {
         _Input = new PlayerInput_map();
         _crossHair = targetObj.GetComponent<SpriteRenderer>();
+        playerManager = player.GetComponent<PlayerManager>();
     }
 
     private void Update()
@@ -102,6 +104,8 @@ public class ProjectileAttack : MonoBehaviour
 
         // Instantiate the projectile with the calculated rotation
         GameObject newProjectile = Instantiate(projectilePrefab, firePoint.position, rotation);
+        newProjectile.GetComponent<Projectile>().range = playerManager.shotRange;
+        newProjectile.GetComponent<Projectile>().speed = playerManager.shotSpeed;
 
         // Optionally, you can add force or other behaviors to the projectile here
         Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();

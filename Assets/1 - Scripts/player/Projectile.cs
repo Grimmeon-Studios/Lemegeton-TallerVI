@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private int speed;
-    private float size;
-    private float range;
+    public float speed;
+    public float size;
+    public float range;
 
     private float distance;
     private Vector2 startPos;
