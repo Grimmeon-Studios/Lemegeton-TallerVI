@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rg;
 
     [SerializeField] PlayerManager player;
+    [SerializeField] ParticleSystem CollisionVFX;
     private TutorialManager tutorialManager;
     public Projectile (int speed, float size, float range)
     {
@@ -78,7 +79,16 @@ public class Projectile : MonoBehaviour
                 }
             }
 
-            Destroy(gameObject);
+            StartCoroutine(VFXthenDestroyObj());
         }
+    }
+
+    private IEnumerator VFXthenDestroyObj()
+    {
+        CollisionVFX.Play();
+        rg.velocity = Vector2.zero;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(CollisionVFX.main.duration);
+        Destroy(gameObject);
     }
 }
