@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7777284420456782770}
   - component: {fileID: 6996094370193401797}
   - component: {fileID: 6826621739864376355}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: additional flashes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4856,7 +4856,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 5657769457704369125}
   - component: {fileID: 5829626805884284614}
   - component: {fileID: 1459359841638038453}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Slash PartSystem '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4938,7 +4938,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

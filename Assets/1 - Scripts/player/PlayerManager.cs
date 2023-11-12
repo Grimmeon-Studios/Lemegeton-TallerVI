@@ -63,6 +63,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("PartSystem")]
     [SerializeField] private ParticleSystem takeDamageVFX;
+    [SerializeField] private ParticleSystem shieldTakeDamageVFX;
 
     private float lastDamageTime;
     private bool isRechargingDefense;
@@ -237,6 +238,8 @@ public class PlayerManager : MonoBehaviour
         if (defense > 0)
         {
             SFXArmorHit.Play();
+            shieldTakeDamageVFX.Play();
+
             defense-- ;
 
             float loopsTime = timeInvincible / 6;
