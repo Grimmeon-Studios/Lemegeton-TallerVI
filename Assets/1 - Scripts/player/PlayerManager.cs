@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
     private float rechargeDuration = 5.0f;
     private float previousDefenseValue;
     private bool stopRechargeDefense;
+    public float cdDefenseRegeneration = 10;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -132,8 +133,8 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        // Verifica si han pasado 8 segundos desde el último daño y la recarga no está en curso
-        if (Time.time - lastDamageTime >= 8.0f && !isRechargingDefense)
+        // Verifica si han pasado cdDefenseRegeneration segundos desde el último daño y la recarga no está en curso
+        if (Time.time - lastDamageTime >= cdDefenseRegeneration && !isRechargingDefense)
         {
             previousDefenseValue = defense;
             isRechargingDefense = true;
@@ -413,21 +414,11 @@ public class PlayerManager : MonoBehaviour
            
             maxHealth += _Item.item_maxHealth;
             _healthBar.SetMaxHealth(maxHealth);
-
-            if (defense < maxDefense)
-            {
-                if ((_Item.item_defense + defense) <= maxDefense)
-                {
-                    defense += _Item.item_defense;
-                }
-                else
-                {
-                    defense = maxDefense;
-                }
-            }
+            
             maxDefense += _Item.item_maxDefense;
             _defenseBar.SetMaxDefense(maxDefense);
-            
+
+            cdDefenseRegeneration += _Item.item_defense;
             attack += _Item.item_attack;
             shotDamage += _Item.item_shotDamage;
             shotSpeed += _Item.item_shotSpeed;

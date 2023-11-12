@@ -50,19 +50,19 @@ public class Item : MonoBehaviour
                 case 0: // Movement Speed
                     item_speed = 2.5f;
                     nameText = "Purgatory Ascended Wings";
-                    descriptionText = "Increases the player speed ("+item_speed+")";
+                    descriptionText = "Increases the player speed by 2.5%";
                     sprite.sprite = spriteTexturesList[0];
                     break;
 
                 case 1: // Maximun Health
-                    item_maxHealth = 0.5f;
+                    item_maxHealth = 1f;
                     nameText = "Exeptional Resurgence Brew";
-                    descriptionText = "Increases the player maximum health (" + item_maxHealth + ")";
+                    descriptionText = "Increases the player maximum health 0.5%";
                     sprite.sprite = spriteTexturesList[1];
                     break;
 
                 case 2: // Health Regeneration
-                    item_health = 1;
+                    item_health = 5;
                     nameText = "Rejuvenation Potion";
                     descriptionText = "Heals the player by ("+item_health+")";
                     sprite.sprite = spriteTexturesList[2];
@@ -71,14 +71,14 @@ public class Item : MonoBehaviour
                 case 3: // Maximun Defence
                     item_maxDefense = 0.5f;
                     nameText = "Sin Absolver Shield";
-                    descriptionText = "Raises the player maximum defence by ("+item_maxDefense +")";
+                    descriptionText = "Raises the player maximum defence by 10%";
                     sprite.sprite = spriteTexturesList[3];
                     break;
 
                 case 4: // Defence Regeneration
-                    item_defense = 5;
+                    item_defense = 0.5f;
                     nameText = "Lurking Epoch Watch";
-                    descriptionText = "Increases the player defence regeneration speed by (" + item_defense + ")";
+                    descriptionText = "Increases the player defence regeneration speed by 5%";
                     sprite.sprite = spriteTexturesList[4];
                     break;
 
