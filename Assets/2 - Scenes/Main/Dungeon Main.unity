@@ -1620,7 +1620,7 @@ PrefabInstance:
       objectReference: {fileID: 1562644718}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[0]
@@ -1629,11 +1629,11 @@ PrefabInstance:
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[1]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: cdc03b586deeb7648a16c25fd77f967d, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: 4b98a7f558699d244a572ba33c4ae2f2, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[2]
       value: 
-      objectReference: {fileID: 4562183376426149959, guid: 4b98a7f558699d244a572ba33c4ae2f2, type: 3}
+      objectReference: {fileID: 4562183376426149959, guid: 150475ed73e89194593737c9cdfd58e8, type: 3}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.data[3]
       value: 

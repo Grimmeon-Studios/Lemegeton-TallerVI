@@ -17,10 +17,10 @@ public class HazardFreezingZone : MonoBehaviour
         dashBttn = player.gameObject.GetComponent<Dash>().dashButton;
     }
     
-
-    private void OnTriggerEnter2D(Collider2D col)
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
-        if (col.gameObject.tag == "Player")
+        
+        if (other.gameObject.tag == "Player")
         {
             dashBttn.interactable = false;
             if (player.GetComponent<Dash>().GetUsingDash())
@@ -31,14 +31,6 @@ public class HazardFreezingZone : MonoBehaviour
             {
                 originalSpeed = player.speed;
             }
-        }
-    }
-
-    private IEnumerator OnTriggerStay2D(Collider2D other)
-    {
-        
-        if (other.gameObject.tag == "Player")
-        {
             yield return new WaitForSeconds(0.2f);
             player.speed = 0;
             yield return new WaitForSeconds(durationFreeze);
