@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7094a6a49b68d5a4eaad84d2b9fd3efe
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Baskerville Old Face
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b0e0fce7668f4b643ba2801dba7bea68, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -21,6 +21,7 @@ public class MainMenu_manager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject configPanel;
+    [SerializeField] private GameObject creditsPanel;
 
     [Header("Game Components")]
     [SerializeField] private GameObject player;
@@ -74,6 +75,20 @@ public class MainMenu_manager : MonoBehaviour
 
         mainMenuPanel.SetActive(true);
         configPanel.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        SFXClick.Play();
+        creditsPanel.SetActive(true);
+        configPanel.SetActive(false);
+    }
+
+    public void CloseCredits()
+    {
+        SFXClick.Play();
+        creditsPanel.SetActive(false);
+        configPanel.SetActive(true);
     }
 
     public void PlayAnim()
