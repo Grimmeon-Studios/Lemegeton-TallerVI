@@ -1917,10 +1917,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvaEndGame
       objectReference: {fileID: 0}
-    - target: {fileID: 1157565732145206934, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3979348215726779548, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2005,17 +2001,10 @@ PrefabInstance:
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1593407173}
-    - target: {fileID: 5885103469456660161, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
-      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ReadStringInput
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1157565732145206934, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1528894584}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
 --- !u!4 &1504488098 stripped
 Transform:
@@ -2027,11 +2016,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1157565732145206934, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
   m_PrefabInstance: {fileID: 1475772733}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1528894584
+--- !u!114 &1528894584 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4788866175535752815, guid: 24b0a84d17269864480c5a01ef07521c, type: 3}
+  m_PrefabInstance: {fileID: 1475772733}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528894583}
   m_Enabled: 1
@@ -2039,8 +2027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d966e6d2b6f9aa94e82404e260a889cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCount: 7
-  filename: highscores.json
 --- !u!198 &1539952391 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8636963774024828738, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}

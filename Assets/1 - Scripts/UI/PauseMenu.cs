@@ -65,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         shotSpeedText.text = "Shot Speed: " + player.GetShotSpeed();
         shotRangeText.text = "Shot Range: " + player.GetShotRange();
         shotDamageText.text = "Shot Damage: " + player.GetShotDamage();
-        criticalRateUpText.text = "Critical Rate Up: " + (player.GetCriticalRateUp()*100);
+        criticalRateUpText.text = "Critical Rate Up: " + (player.GetCriticalRateUp()*100) + "%";
         criticalDamageText.text = "Critical Damage: " + player.GetCriticalDamage();
         timeInvincibleText.text = "Time Invincible: " + player.GetTimeInvincible();
     }
