@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c63015ef-f5c9-4060-b36c-5fc5dd68b901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Lemegeton-TallerVI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/AsmodeusScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/AsmodeusScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/HazardSlowMist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/HazardSlowMist.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/points test.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/points test.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Boss Dungeon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2 - Scenes/Main/Boss Dungeon.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/HazardFreezingZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/1 - Scripts/Enemies/HazardFreezingZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/3 - Prefabs/DungeonPool/Working Maps/IceMap2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/3 - Prefabs/DungeonPool/Working Maps/IceMap2.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +21,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/HighScoreElement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/1 - Scripts/UI/LeaderBoard/LeaderStatue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -118,6 +115,7 @@
       <workItem from="1699475007368" duration="10542000" />
       <workItem from="1699663717899" duration="9774000" />
       <workItem from="1699755590385" duration="5523000" />
+      <workItem from="1699845244922" duration="1119000" />
     </task>
     <servers />
   </component>

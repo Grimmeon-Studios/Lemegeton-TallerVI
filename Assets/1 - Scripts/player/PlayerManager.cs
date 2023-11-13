@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Fungus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -51,10 +53,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private itemsNotification _Notification;
     [SerializeField] private GameObject attackBtn;
     [SerializeField] private GameObject interactionBtn;
+    [SerializeField] private Image blackScreen;
     
     [Header("Bars")]
     private HealthBar _healthBar;
     private DefenseBar _defenseBar;
+
     
     [Header("Audio")]
     [SerializeField] private AudioSource SFXHit;
@@ -64,6 +68,7 @@ public class PlayerManager : MonoBehaviour
     [Header("PartSystem")]
     [SerializeField] private ParticleSystem takeDamageVFX;
     [SerializeField] private ParticleSystem shieldTakeDamageVFX;
+    [SerializeField] private ParticleSystem PlayerDeathVFX;
 
     private float lastDamageTime;
     private bool isRechargingDefense;
@@ -296,8 +301,17 @@ public class PlayerManager : MonoBehaviour
     }
     public void Death()
     {
-        //Destroy(gameObject);
-        SceneManager.LoadScene(0);
+        PlayerDeathVFX.Play();
+        blackScreen.gameObject.SetActive(true);
+        _spriteRenderer.DOColor(Color.clear, 6f).SetEase(Ease.InCubic).OnComplete(() => 
+        {
+            blackScreen.DOColor(Color.black, 3f).OnComplete(() =>
+            {
+                PlayerDeathVFX.Stop();
+                StartCoroutine(WaitAndChangeScene());
+            });
+        });
+        
     }
 
     //private void OnGUI()
@@ -471,6 +485,15 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    private IEnumerator WaitAndChangeScene()
+    {
+        DOTween.Kill(gameObject);
+        yield return new WaitForSeconds(3f);
+
+        //Eanble the Score Canvas
+        SceneManager.LoadScene("HUB");
+    }
+    
     public float GetSpeed()
     {
         return speed;
