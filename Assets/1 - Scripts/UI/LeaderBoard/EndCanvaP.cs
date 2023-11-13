@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +5,7 @@ using TMPro;
 using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 
-public class EndCanva : MonoBehaviour
+public class EndCanvaP : MonoBehaviour
 {
     [SerializeField] HighscoreHandler highscoreHandler;
     private string playerName;
@@ -15,20 +14,20 @@ public class EndCanva : MonoBehaviour
     private ScoreBoard scoreBoard;
     [SerializeField] TextMeshProUGUI pointsText;
 
-    private AsmodeusScript boss;
-
-    private bool runningBoss;
+    private PlayerManager player;
+    
+    private bool runningP;
     // Start is called before the first frame update
     private void Start()
     {
-        runningBoss = true;
-        scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
-        boss = FindObjectOfType<AsmodeusScript>();
+        runningP = true;
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+        player = FindObjectOfType<PlayerManager>();
     }
 
     private void Update()
     {
-        if (boss.endCanva && runningBoss)
+        if (player.endCanva && runningP)
         {
             Time.timeScale = 0f;
             Canva.SetActive(true);
@@ -47,7 +46,7 @@ public class EndCanva : MonoBehaviour
     
     private void ChangeScene()
     {
-        runningBoss = false;
+        runningP = false;
         highscoreHandler.AddHighscoreIfPossible (new HighscoreElement (playerName, scoreBoard.GetScore()));
         Time.timeScale = 1f;
         SceneManager.LoadScene("HUB");

@@ -78,6 +78,8 @@ public class PlayerManager : MonoBehaviour
     private bool stopRechargeDefense;
     public float cdDefenseRegeneration = 10;
 
+    public bool endCanva = false;
+
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
@@ -490,8 +492,8 @@ public class PlayerManager : MonoBehaviour
         DOTween.Kill(gameObject);
         yield return new WaitForSeconds(3f);
 
-        //Eanble the Score Canvas
-        SceneManager.LoadScene("HUB");
+        endCanva = true;
+        // SceneManager.LoadScene("HUB");
     }
     
     public float GetSpeed()
