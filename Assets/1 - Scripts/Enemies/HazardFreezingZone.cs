@@ -59,6 +59,7 @@ public class HazardFreezingZone : MonoBehaviour
             player.speed = 0;
             yield return new WaitForSeconds(durationFreeze);
             isFrozen = false;
+            dashBttn.interactable = true;
             StartCoroutine(DeactivateVFX());
             
             player.speed = originalSpeed;
