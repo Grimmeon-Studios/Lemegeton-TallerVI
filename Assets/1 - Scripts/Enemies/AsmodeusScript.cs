@@ -83,7 +83,12 @@ public class AsmodeusScript : MonoBehaviour
     #endregion
 
     #region  AUDIO
-    [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXShot;
+    [SerializeField] private AudioSource SFXTakeDamage, SFXDie, SFXShot, SFXLaughter, SFXScream, SFXRun;
+
+    // Adjust these variables to set the pitch range
+    public float minPitch = 0.6f;
+    public float maxPitch = 1.6f;
+    //int randPitch; 
     //public AudioClip acidClip;
     #endregion
 
@@ -111,12 +116,16 @@ public class AsmodeusScript : MonoBehaviour
         //LM = door.GetComponent<LevelManagement>();
         //animator = GetComponent<Animator>();
         //audioSource = GetComponent<AudioSource>();
+
+        SFXShot.pitch = 1;
     }
 
     void FixedUpdate()
     {
         timer -= Time.fixedDeltaTime;
         hellTimer -= Time.fixedDeltaTime;
+
+        //randPitch = Random.Range(-2, 2);
 
         Vector2 Look = player.GetComponent<Rigidbody2D>().position - (Vector2)firePoint.position;
         Look.Normalize();
@@ -229,7 +238,9 @@ public class AsmodeusScript : MonoBehaviour
         //{
         //    StopCoroutine(WaitStill(1));
         //}
-        
+        SFXRun.Play();
+
+
         Vector2 position = rb.position;
         Vector2 moveDir = rb.position - player.GetComponent<Rigidbody2D>().position;
         moveDir.Normalize();
@@ -262,7 +273,30 @@ public class AsmodeusScript : MonoBehaviour
             sBullet.shoot(direction, hellForce, shotDamage);
         }
 
+        //float randPitch = Random.Range(-1f, 1f);
+        //SFXShot.pitch = randPitch;
+
+        //switch (SFXShot.pitch)
+        //{
+        //    case -1f:
+        //        SFXShot.pitch = 0.2f;
+        //        SFXShot.Play();
+        //        break;
+        //    case 0.2f:
+        //        SFXShot.pitch = 1f;
+        //        SFXShot.Play();
+        //        break;
+        //    case 1f:
+        //        SFXShot.pitch = -1f;
+        //        SFXShot.Play();
+        //        break;
+        //    default:
+        //        break;
+        //}
         SFXShot.Play();
+
+        //PlayWithRandomPitch(SFXShot);
+
         transform.position = spawnPoint.transform.position;
 
         // Update the rotation offset for the next time the projectiles are generated
@@ -302,7 +336,12 @@ public class AsmodeusScript : MonoBehaviour
         GameObject acidObject = Instantiate(acidPrefab, firePoint.position, Quaternion.identity);
         SoulBullet sBullet = acidObject.GetComponent<SoulBullet>();
 
-        SFXShot.Play();
+        //float randPitch = Random.Range(-1f, 1f);
+        //SFXShot.pitch = randPitch;
+        //SFXShot.Play();
+
+        PlayWithRandomPitch(SFXShot);
+
         sBullet.shoot(aimDirection, shootingForce, shotDamage);
 
         shootsDone++;
@@ -332,7 +371,12 @@ public class AsmodeusScript : MonoBehaviour
 
         if (health > 0)
         {
-            SFXTakeDamage.Play();
+            //float randPitch = Random.Range(-1f,1f);
+            //SFXTakeDamage.pitch = randPitch;
+            //SFXTakeDamage.Play();
+
+            PlayWithRandomPitch(SFXTakeDamage);
+
             asmoSprite.DOColor(new Color(0.4622642f,0.4622642f,0.4622642f), 0.2f).OnComplete(() =>
             {
                  asmoSprite.DOColor(Color.white, 0.1f).OnComplete(() =>
@@ -373,12 +417,16 @@ public class AsmodeusScript : MonoBehaviour
         if (!dead)
         {
             isStrikingCrRunning = true;
+            
+            SFXScream.loop = true;
+            SFXScream.Play();
             yield return new WaitForSeconds(seconds);
 
             currState = asmoState.Still;
             isStrikingCrRunning = false;
             sword1.SetActive(false);
             sword2.SetActive(false);
+            SFXScream.loop = false;
         }
         else
         {
@@ -391,6 +439,7 @@ public class AsmodeusScript : MonoBehaviour
         if (!dead)
         {
             isBulletHellCrRunning = true;
+            SFXLaughter.Play();
             yield return new WaitForSeconds(seconds);
 
             currState = asmoState.Still;
@@ -417,7 +466,7 @@ public class AsmodeusScript : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }        
     }
 
 
@@ -446,5 +495,17 @@ public class AsmodeusScript : MonoBehaviour
             yield return new WaitForSeconds(0);
 
         }
+    }
+
+    void PlayWithRandomPitch(AudioSource audioSource)
+    {
+        // Set a random pitch within the specified range
+        float randomPitch = Random.Range(minPitch, maxPitch);
+
+        // Set the AudioSource pitch
+        audioSource.pitch = randomPitch;
+
+        // Play the audio
+        audioSource.Play();
     }
 }
