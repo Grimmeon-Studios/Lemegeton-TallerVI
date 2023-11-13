@@ -33,7 +33,8 @@ public class PlayerManager : MonoBehaviour
     //PlayerInput_map _Input;
 
     [Header("Movement config.")]
-    [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
+    public PlayerTouchMovement _playerTouchMovementScript;
+    public GameObject joystickCanva;
     public Vector2 _Movement;
     public Vector2 _DampedSpeed;
     public Rigidbody2D _Rigidbody;
@@ -86,6 +87,7 @@ public class PlayerManager : MonoBehaviour
     {
         //_Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
+        joystickCanva = GameObject.Find("Joystick Canva (Do Not Move)");
         //_Notification = FindObjectOfType<itemsNotification>();
         //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
@@ -101,7 +103,7 @@ public class PlayerManager : MonoBehaviour
         isRechargingDefense = false;
         isInvincible = false;
 
-        InvokeRepeating("TransparencyCheck", 1f, 5f);
+        InvokeRepeating("TransparencyCheck", 1f, 3f);
     }
     //private void OnEnable()
     //{
@@ -301,20 +303,7 @@ public class PlayerManager : MonoBehaviour
             _defenseBar.SetDefense(defense);
         }
     }
-    public void Death()
-    {
-        PlayerDeathVFX.Play();
-        blackScreen.gameObject.SetActive(true);
-        _spriteRenderer.DOColor(Color.clear, 6f).SetEase(Ease.InCubic).OnComplete(() => 
-        {
-            blackScreen.DOColor(Color.black, 3f).OnComplete(() =>
-            {
-                PlayerDeathVFX.Stop();
-                StartCoroutine(WaitAndChangeScene());
-            });
-        });
-        
-    }
+    
 
     //private void OnGUI()
     //{
@@ -487,12 +476,32 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        joystickCanva.SetActive(false);
+        _Rigidbody.velocity = Vector3.zero;
+        _playerTouchMovementScript.enabled = false;
+        PlayerDeathVFX.Play();
+        blackScreen.gameObject.SetActive(true);
+        _spriteRenderer.DOColor(Color.clear, 6f).SetEase(Ease.InCubic).OnComplete(() =>
+        {
+            blackScreen.DOColor(Color.black, 3f).OnComplete(() =>
+            {
+                PlayerDeathVFX.Stop();
+                StartCoroutine(WaitAndChangeScene());
+            });
+        });
+
+    }
+
     private IEnumerator WaitAndChangeScene()
     {
         DOTween.Kill(gameObject);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         endCanva = true;
+        gameObject.SetActive(false);
+        blackScreen.DOColor(Color.clear, 1.3f).OnComplete(() => { DOTween.Kill(gameObject); });
         // SceneManager.LoadScene("HUB");
     }
     

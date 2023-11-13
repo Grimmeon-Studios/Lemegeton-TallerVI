@@ -16,6 +16,7 @@ public class EndCanva : MonoBehaviour
     [SerializeField] TextMeshProUGUI pointsText;
 
     private AsmodeusScript boss;
+    private PlayerManager player;
 
     private bool runningBoss;
     // Start is called before the first frame update
@@ -24,11 +25,12 @@ public class EndCanva : MonoBehaviour
         runningBoss = true;
         scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
         boss = FindObjectOfType<AsmodeusScript>();
+        player = FindObjectOfType<PlayerManager>();
     }
 
     private void Update()
     {
-        if (boss.endCanva && runningBoss)
+        if ((boss.endCanva || player.endCanva) && runningBoss )
         {
             Time.timeScale = 0f;
             Canva.SetActive(true);

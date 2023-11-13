@@ -646,6 +646,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f41bd739ffefc2479629a62271ede16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackScreen: {fileID: 1585918370}
+  player: {fileID: 0}
+  joystickCanva: {fileID: 2111668699}
 --- !u!1 &229592012
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5705135549957624868}
   - component: {fileID: 3462167412175604122}
   - component: {fileID: 4063369923016463023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HazardSlowingMist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,10 +160,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 879
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -198,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 1493506126383930868, guid: dc42996d36ba5d74daf074fabfeadf60, type: 3}
       propertyPath: m_Name
       value: PurpleHaze Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493506126383930868, guid: dc42996d36ba5d74daf074fabfeadf60, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4424413965225900738, guid: dc42996d36ba5d74daf074fabfeadf60, type: 3}
       propertyPath: m_LocalPosition.x
