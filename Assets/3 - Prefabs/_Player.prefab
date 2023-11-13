@@ -937,11 +937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  maxHealth: 20
+  maxHealth: 15
   health: 0
   maxDefense: 5
   defense: 0
-  attack: 3
+  attack: 1.5
   shotSpeed: 4
   shotRange: 10
   shotDamage: 5
@@ -949,7 +949,7 @@ MonoBehaviour:
   criticalDamage: 0.25
   isInvincible: 0
   invincibleTimer: 0
-  timeInvincible: 3
+  timeInvincible: 1.5
   _playerTouchMovementScript: {fileID: 1179116119827195433}
   joystickCanva: {fileID: 0}
   _Movement: {x: 0, y: 0}
