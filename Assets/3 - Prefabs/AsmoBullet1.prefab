@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6139711829276675096}
   - component: {fileID: -4862400267953903509}
   - component: {fileID: 9079907082748105964}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: AsmoBullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 255
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -129,7 +129,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 2184
+    m_Bits: 3771
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
