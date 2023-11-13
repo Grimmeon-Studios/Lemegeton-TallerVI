@@ -115,8 +115,8 @@ public class Room : MonoBehaviour
     private Vector2 RandomEnemySpawnPos()
     {
 
-        float newBoundary_x = UnityEngine.Random.Range(mainBoxCollider.bounds.min.x, mainBoxCollider.bounds.max.x -1);
-        float newBoundary_y = UnityEngine.Random.Range(mainBoxCollider.bounds.min.y, mainBoxCollider.bounds.max.y -1);
+        float newBoundary_x = UnityEngine.Random.Range(mainBoxCollider.bounds.min.x + 5, mainBoxCollider.bounds.max.x -5);
+        float newBoundary_y = UnityEngine.Random.Range(mainBoxCollider.bounds.min.y + 5, mainBoxCollider.bounds.max.y -5);
 
         Vector2 enemyPos = new Vector2(newBoundary_x, newBoundary_y);
         return enemyPos;

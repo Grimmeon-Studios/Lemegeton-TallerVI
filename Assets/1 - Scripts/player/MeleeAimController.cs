@@ -211,7 +211,7 @@ public class Crosshair : MonoBehaviour
     }
     private float CalculateCriticalDamage(float baseAttack, float criticalDmg)
     {
-        float criticalDamage = baseAttack*2 + (baseAttack * criticalDmg);
+        float criticalDamage = baseAttack*1.5f + (baseAttack * criticalDmg);
         return criticalDamage;
     }
     public Vector2 GetDirectionToClosestEnemy()
