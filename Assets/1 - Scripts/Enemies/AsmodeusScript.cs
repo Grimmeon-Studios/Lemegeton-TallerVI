@@ -27,6 +27,9 @@ public class AsmodeusScript : MonoBehaviour
     private bool isBulletHellCrRunning = false;
 
     [SerializeField] private bool isTouchingWalls = false;
+    [SerializeField] private ParticleSystem VFX_TpFrom;
+    [SerializeField] private ParticleSystem VFX_TpTo;
+    [SerializeField] private ParticleSystem VFX_Tired;
 
     public Vector3 defaultStats; // hp, attack, speed
 
@@ -356,7 +359,7 @@ public class AsmodeusScript : MonoBehaviour
         if (collision.gameObject.tag == "BossWall" && currState != asmoState.Striking)
         {
             isTouchingWalls = true;
-            gameObject.transform.position = spawnPoint.transform.position;
+            StartCoroutine(VFXForWallCollison());
         }
     }
         //private bool isPlayerInRange(float range)
@@ -397,6 +400,7 @@ public class AsmodeusScript : MonoBehaviour
     {
         if (!dead)
         {
+            VFX_Tired.Play();
             isCoroutineRunning = true;
             rb.velocity = Vector2.zero;
 
@@ -404,6 +408,7 @@ public class AsmodeusScript : MonoBehaviour
 
             nextState = Random.Range(1, 4);
             ChangeState(nextState);
+            VFX_Tired.Stop();
             isCoroutineRunning = false;
         }
         else
@@ -495,6 +500,17 @@ public class AsmodeusScript : MonoBehaviour
             yield return new WaitForSeconds(0);
 
         }
+    }
+
+    private IEnumerator VFXForWallCollison()
+    {
+        VFX_TpFrom.Play();
+        VFX_TpTo.Play();
+        yield return new WaitForSeconds(VFX_TpTo.main.duration);
+
+        VFX_TpFrom.Stop();
+        VFX_TpTo.Stop();
+        gameObject.transform.position = spawnPoint.transform.position;
     }
 
     void PlayWithRandomPitch(AudioSource audioSource)
