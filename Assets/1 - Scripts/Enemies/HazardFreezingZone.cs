@@ -63,6 +63,7 @@ public class HazardFreezingZone : MonoBehaviour
             yield return new WaitForSeconds(durationFreeze);
             isFrozen = false;
             dashBttn.interactable = true;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             StartCoroutine(DeactivateVFX());
             
             player.speed = originalSpeed;
