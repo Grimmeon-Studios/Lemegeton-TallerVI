@@ -27,7 +27,8 @@ public class MainMenu_manager : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject joystickCanva;
     [SerializeField] private GameObject buttonsCanva;
-
+    [SerializeField] private GameObject joystickFlotating;
+    
     [Header("Others")]
     [SerializeField] private GameObject gameTitle;
     [SerializeField] private Image backgroundColor;
@@ -98,6 +99,7 @@ public class MainMenu_manager : MonoBehaviour
         backgroundColor.DOColor(blackColor, 2).OnComplete(() =>
         {
             joystickCanva.gameObject.SetActive(true);
+            joystickFlotating.gameObject.SetActive(true);
             buttonsCanva.gameObject.SetActive(true);
             player.gameObject.SetActive(true);
 

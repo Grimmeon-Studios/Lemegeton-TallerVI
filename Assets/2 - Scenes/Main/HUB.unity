@@ -6777,6 +6777,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joystick Canva
       objectReference: {fileID: 0}
+    - target: {fileID: 7860831450414064621, guid: 7b070273e50055f469b294666501c160, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087045427874744541, guid: 7b070273e50055f469b294666501c160, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6787,7 +6795,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6910461930618419810, guid: 7b070273e50055f469b294666501c160, type: 3}
   m_PrefabInstance: {fileID: 1176745142}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1811520534}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a43b842bf7f2b74ba203909ff8e9cbe, type: 3}
@@ -20239,6 +20247,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785373068}
   m_CullTransparentMesh: 1
+--- !u!1 &1811520534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9087045427874744541, guid: 7b070273e50055f469b294666501c160, type: 3}
+  m_PrefabInstance: {fileID: 1176745142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1827120147
 GameObject:
   m_ObjectHideFlags: 0
@@ -26389,6 +26402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2898448668254325734, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4784871271395500878, guid: d575336793e31034aa8643bec7f9a4c8, type: 3}
       propertyPath: attackBtn
       value: 
@@ -26657,6 +26674,7 @@ MonoBehaviour:
   player: {fileID: 1346830015}
   joystickCanva: {fileID: 2111668699}
   buttonsCanva: {fileID: 1742935536}
+  joystickFlotating: {fileID: 1811520534}
   gameTitle: {fileID: 157371880}
   backgroundColor: {fileID: 1879820109}
   screenColor: {fileID: 1785373070}
