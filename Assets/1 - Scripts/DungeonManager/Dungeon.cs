@@ -117,7 +117,6 @@ public class Dungeon : MonoBehaviour
         if (collision.gameObject.CompareTag("Room"))
         {
             unclearedRooms--;
-            player.health = player.health + 2;
             remainingRooms--;
             //Debug.Log("Update uncleared Rooms = " + unclearedRooms.ToString());
             if (unclearedRooms == 0 && onSetUp == false)

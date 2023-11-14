@@ -32,7 +32,7 @@ public class SoulBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Portal"))
+        if (other.gameObject.CompareTag("EnemySoul"))
         {
             return;
         }
