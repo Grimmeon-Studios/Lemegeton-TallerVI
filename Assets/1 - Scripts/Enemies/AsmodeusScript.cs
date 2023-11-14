@@ -481,7 +481,7 @@ public class AsmodeusScript : MonoBehaviour
         {
             if (scoreBoard != null && chrono != null)
             {
-                scoreBoard.GetPoints(10 * chrono.difficultyLvl);
+                scoreBoard.GetPoints(100000);
             }
 
             Debug.Log("Se murio definitivamente");
