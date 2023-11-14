@@ -12,6 +12,7 @@ public class Dungeon : MonoBehaviour
     private ChronometerManager chronometer;
     private BoxCollider2D gameAreaCollider;
     private CameraTransition camTransition;
+    private PlayerManager player;
     [SerializeField] private GameObject playerObj;
     [SerializeField] private LayerMask collisionLayerMask;
 
@@ -54,6 +55,7 @@ public class Dungeon : MonoBehaviour
         boxColl = GetComponent<BoxCollider2D>();
         chronometer = gameObject.GetComponentInChildren<ChronometerManager>();
         camTransition = FindObjectOfType<CameraTransition>();
+        player = FindObjectOfType<PlayerManager>();
 
         gameAreaCollider = GetComponent<BoxCollider2D>();
 
@@ -74,7 +76,7 @@ public class Dungeon : MonoBehaviour
 
         SetVolume(0f);
 
-        StartCoroutine(ChangeVolumeOverTime(0.2f, 6f));
+        StartCoroutine(ChangeVolumeOverTime(0.5f, 3f));
     }
 
 
@@ -115,6 +117,7 @@ public class Dungeon : MonoBehaviour
         if (collision.gameObject.CompareTag("Room"))
         {
             unclearedRooms--;
+            player.health = player.health + 2;
             remainingRooms--;
             //Debug.Log("Update uncleared Rooms = " + unclearedRooms.ToString());
             if (unclearedRooms == 0 && onSetUp == false)

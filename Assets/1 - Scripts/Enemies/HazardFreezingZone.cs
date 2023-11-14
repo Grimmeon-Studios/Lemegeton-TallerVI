@@ -17,6 +17,8 @@ public class HazardFreezingZone : MonoBehaviour
     GameObject VFXObj;
     private Vector3 yOffset = new Vector3(0, 1.8f);
     private bool isFrozen;
+
+    [SerializeField] private AudioSource SFXFreeze;
     void Start()
     {
         player = FindObjectOfType<PlayerManager>();
@@ -46,6 +48,7 @@ public class HazardFreezingZone : MonoBehaviour
         {
             isFrozen = true;
             VFXFrozen.Play();
+            SFXFreeze.Play();
             dashBttn.interactable = false;
             if (player.GetComponent<Dash>().GetUsingDash())
             {

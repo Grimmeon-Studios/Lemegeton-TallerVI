@@ -7,6 +7,8 @@ public class HazardSpike : MonoBehaviour
 {
     private PlayerManager player;
     private Dungeon dungeon;
+
+    [SerializeField] private AudioSource SFXSpikes;
     void Start()
     {
         player = FindObjectOfType<PlayerManager>();
@@ -17,6 +19,8 @@ public class HazardSpike : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+            SFXSpikes.Play();
+
             switch (dungeon.currentCircle)
             {
                 case 1:

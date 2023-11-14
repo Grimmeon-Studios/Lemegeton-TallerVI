@@ -62,11 +62,6 @@ public class BossEventManager : MonoBehaviour
             {
                 framingTransposer.m_TrackedObjectOffset = new Vector3(0f, 0f, 0f);
 
-                framingTransposer.m_DeadZoneWidth = 0.5f;
-                framingTransposer.m_DeadZoneHeight = 0.5f;
-
-                framingTransposer.m_SoftZoneWidth = 0.7f;
-                framingTransposer.m_SoftZoneHeight = 1;
                 DOTween.Kill(gameObject);
             });
         }

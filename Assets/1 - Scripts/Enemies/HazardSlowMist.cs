@@ -21,6 +21,8 @@ public class HazardSlowMist : MonoBehaviour
     private float slowDurationSet;
     private Button dashBttn;
 
+    [SerializeField] private AudioSource SFXSlow;
+
 
     void Start()
     {
@@ -89,6 +91,7 @@ public class HazardSlowMist : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             VFXSlowed.Play();
+            SFXSlow.Play();
         }
     }
 
