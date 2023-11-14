@@ -1484,15 +1484,31 @@ PrefabInstance:
       objectReference: {fileID: 1562644718}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: andras_StatsMultiplier.x
-      value: 1.5
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: andras_StatsMultiplier.y
-      value: 1.2
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: incubus_StatsMultiplier.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: incubus_StatsMultiplier.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: incubus_StatsMultiplier.z
+      value: 0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
+      propertyPath: LostSoul_StatsMultiplier.x
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: LostSoul_StatsMultiplier.z
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2135838740488322639, guid: 0d33e11be10f02d4dafe17f83deb0cbf, type: 3}
       propertyPath: circlesToInstantiate.Array.size
