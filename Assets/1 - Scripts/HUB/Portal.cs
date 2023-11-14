@@ -15,7 +15,7 @@ public class Portal : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerManager>();
+        //player = FindObjectOfType<PlayerManager>();
         //joystickCanva = GameObject.Find("Joystick Canva");
     }
     private void OnTriggerEnter2D(Collider2D other)
