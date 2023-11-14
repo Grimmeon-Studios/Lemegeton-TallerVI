@@ -63,6 +63,11 @@ public class Projectile : MonoBehaviour
 
             if (other.CompareTag("EnemySoul"))
             {
+                if (other.name == "Asmodeus")
+                {
+                    other.gameObject.GetComponent<AsmodeusScript>().takeDamage(player.shotDamage);
+                }
+
                 other.gameObject.GetComponent<LostSoulScript>().takeDamage(player.shotDamage);
                 if (other.transform.GetComponent<LostSoulScript>().health <= 0 && tutorialManager != null)
                 {

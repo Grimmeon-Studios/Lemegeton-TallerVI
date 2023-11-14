@@ -55,9 +55,9 @@ public class Item : MonoBehaviour
                     break;
 
                 case 1: // Maximun Health
-                    item_maxHealth = 1f;
+                    item_maxHealth = 2f;
                     nameText = "Exeptional Resurgence Brew";
-                    descriptionText = "Increases the player maximum health 0.5% of the base stat";
+                    descriptionText = "Increases the player maximum health by "+item_maxHealth+"";
                     sprite.sprite = spriteTexturesList[1];
                     break;
 
@@ -112,9 +112,9 @@ public class Item : MonoBehaviour
                     break;
 
                 case 9: // Critical Damage Probability
-                    item_criticalRateUp = 0.03f;
+                    item_criticalRateUp = 0.025f;
                     nameText = "Petrified Sulfur Catalyst";
-                    descriptionText = "Increases the chances to deal a critical hit by 200% of the base stat";
+                    descriptionText = "Increases the chances to deal a critical hit by 2.5%";
                     sprite.sprite = spriteTexturesList[9];
                     break;
 
@@ -126,9 +126,9 @@ public class Item : MonoBehaviour
                     break;
 
                 case 11: // Invencibility Time after being hit
-                    item_timeInvincible = 0.2f;
+                    item_timeInvincible = 0.25f;
                     nameText = "Virgilo's Infusion Orb";
-                    descriptionText = "Increases the invulnerablility time after getting hit by 20% of the base stat";
+                    descriptionText = "Increases the invulnerablility time after getting hit by 25%";
                     sprite.sprite = spriteTexturesList[11];
                     break;
             }

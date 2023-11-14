@@ -15,6 +15,7 @@ public class ItemStatueSpawner : MonoBehaviour
 
     [SerializeField] private ScoreBoard scoreBoard;
 
+    [SerializeField] private ParticleSystem VFXActivate;
     [SerializeField] private AudioSource SFXActivate;
 
     public bool isStatueUsed;
@@ -48,6 +49,7 @@ public class ItemStatueSpawner : MonoBehaviour
 
     public void DropItems()
     {
+        VFXActivate.Play();
         if (!isStatueUsed)
         {
             Debug.Log("Droping Items");

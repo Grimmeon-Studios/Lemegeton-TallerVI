@@ -71,7 +71,12 @@ public class Dungeon : MonoBehaviour
 
         StartCoroutine(SetUpTimer(1f));
         StartCoroutine(WaitAndCount());
+
+        SetVolume(0f);
+
+        StartCoroutine(ChangeVolumeOverTime(0.2f, 6f));
     }
+
 
     private void Update()
     {
@@ -202,6 +207,7 @@ public class Dungeon : MonoBehaviour
             InstatiatedCircles[i].gameObject.SetActive(false);
         }
         InstatiatedCircles[0].gameObject.SetActive(true);
+        //AudioListener.volume = 0.99f;
     }
 
     private int CountRooms()
@@ -241,7 +247,41 @@ public class Dungeon : MonoBehaviour
     public IEnumerator CircleTransition(bool cleared)
     {
         camTransition.CircleClearedTransition(currentCircle);
+        //AudioListener.volume = 1f;
         yield return new WaitForSeconds(7f);
+        //AudioListener.volume = 0.99f;
         OnCircleCleared(cleared);
+    }
+
+    // Coroutine to smoothly change the volume over time
+    IEnumerator ChangeVolumeOverTime(float targetVolume, float duration)
+    {
+        float startVolume = AudioListener.volume;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            // Interpolate the volume over time
+            AudioListener.volume = Mathf.Lerp(startVolume, targetVolume, elapsedTime / duration);
+
+            // Increment the elapsed time
+            elapsedTime += Time.deltaTime;
+
+            // Wait for the next frame
+            yield return null;
+        }
+
+        // Ensure the volume is set to the target volume after the loop
+        AudioListener.volume = targetVolume;
+    }
+
+    // Function to set the volume
+    void SetVolume(float volume)
+    {
+        // Make sure the volume is within the valid range (0 to 1)
+        volume = Mathf.Clamp01(volume);
+
+        // Set the AudioListener volume
+        AudioListener.volume = volume;
     }
 }

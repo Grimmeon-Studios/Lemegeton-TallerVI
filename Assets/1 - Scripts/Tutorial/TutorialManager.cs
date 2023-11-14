@@ -39,8 +39,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject andrasSp2;
     [SerializeField] private GameObject andrasSp3;
     [SerializeField] private GameObject andrasSp4;
-    [SerializeField] private GameObject andrasSp5;
-    [SerializeField] private GameObject andrasSp6;
+    // [SerializeField] private GameObject andrasSp5;
+    // [SerializeField] private GameObject andrasSp6;
 
     [Header("Dash Spawn Points")]
     [SerializeField] private GameObject sheddimSp1;
@@ -75,12 +75,12 @@ public class TutorialManager : MonoBehaviour
             roomBlocker2.SetActive(false);
         }
         
-        if(currentEnemies >= 10)
+        if(currentEnemies >= 8)
         {
             roomBlocker3.SetActive(false);
         }
         
-        if (currentEnemies >= 15)
+        if (currentEnemies >= 13)
         {
             roomBlocker4.SetActive(false);
         }
@@ -157,15 +157,15 @@ public class TutorialManager : MonoBehaviour
         Instantiate(andras, andrasSp2.transform.position, Quaternion.identity);
         Instantiate(andras, andrasSp3.transform.position, Quaternion.identity);
         Instantiate(andras, andrasSp4.transform.position, Quaternion.identity);
-        Instantiate(andras, andrasSp5.transform.position, Quaternion.identity);
-        Instantiate(andras, andrasSp6.transform.position, Quaternion.identity);
+        //Instantiate(andras, andrasSp5.transform.position, Quaternion.identity);
+        //Instantiate(andras, andrasSp6.transform.position, Quaternion.identity);
 
         andrasSp1.SetActive(false);
         andrasSp2.SetActive(false);
         andrasSp3.SetActive(false);
         andrasSp4.SetActive(false);
-        andrasSp5.SetActive(false);
-        andrasSp6.SetActive(false);
+        //andrasSp5.SetActive(false);
+        //andrasSp6.SetActive(false);
 
     }
 

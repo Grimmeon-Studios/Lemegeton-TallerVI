@@ -51,7 +51,7 @@ public class CameraTransition : MonoBehaviour
             {
                 _image.gameObject.SetActive(false);
 
-                DOTween.KillAll(gameObject);
+                DOTween.Kill(gameObject);
             });
     }
 

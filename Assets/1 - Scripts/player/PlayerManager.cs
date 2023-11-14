@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Fungus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -31,7 +33,8 @@ public class PlayerManager : MonoBehaviour
     //PlayerInput_map _Input;
 
     [Header("Movement config.")]
-    [SerializeField] private PlayerTouchMovement _playerTouchMovementScript;
+    public PlayerTouchMovement _playerTouchMovementScript;
+    public GameObject joystickCanva;
     public Vector2 _Movement;
     public Vector2 _DampedSpeed;
     public Rigidbody2D _Rigidbody;
@@ -51,10 +54,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private itemsNotification _Notification;
     [SerializeField] private GameObject attackBtn;
     [SerializeField] private GameObject interactionBtn;
+    [SerializeField] private Image blackScreen;
     
     [Header("Bars")]
     private HealthBar _healthBar;
     private DefenseBar _defenseBar;
+
     
     [Header("Audio")]
     [SerializeField] private AudioSource SFXHit;
@@ -64,6 +69,7 @@ public class PlayerManager : MonoBehaviour
     [Header("PartSystem")]
     [SerializeField] private ParticleSystem takeDamageVFX;
     [SerializeField] private ParticleSystem shieldTakeDamageVFX;
+    [SerializeField] private ParticleSystem PlayerDeathVFX;
 
     private float lastDamageTime;
     private bool isRechargingDefense;
@@ -73,12 +79,15 @@ public class PlayerManager : MonoBehaviour
     private bool stopRechargeDefense;
     public float cdDefenseRegeneration = 10;
 
+    public bool endCanva = false;
+
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         //_Input = new PlayerInput_map();
         _Rigidbody = GetComponent<Rigidbody2D>();
+        joystickCanva = GameObject.Find("Joystick Canva (Do Not Move)");
         //_Notification = FindObjectOfType<itemsNotification>();
         //levelname = SceneManager.GetActiveScene().name;
         health = maxHealth;
@@ -94,7 +103,7 @@ public class PlayerManager : MonoBehaviour
         isRechargingDefense = false;
         isInvincible = false;
 
-        InvokeRepeating("TransparencyCheck", 1f, 5f);
+        InvokeRepeating("TransparencyCheck", 1f, 3f);
     }
     //private void OnEnable()
     //{
@@ -294,11 +303,7 @@ public class PlayerManager : MonoBehaviour
             _defenseBar.SetDefense(defense);
         }
     }
-    public void Death()
-    {
-        //Destroy(gameObject);
-        SceneManager.LoadScene(0);
-    }
+    
 
     //private void OnGUI()
     //{
@@ -471,6 +476,35 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void Death()
+    {
+        joystickCanva.SetActive(false);
+        _Rigidbody.velocity = Vector3.zero;
+        _playerTouchMovementScript.enabled = false;
+        PlayerDeathVFX.Play();
+        blackScreen.gameObject.SetActive(true);
+        _spriteRenderer.DOColor(Color.clear, 6f).SetEase(Ease.InCubic).OnComplete(() =>
+        {
+            blackScreen.DOColor(Color.black, 3f).OnComplete(() =>
+            {
+                PlayerDeathVFX.Stop();
+                StartCoroutine(WaitAndChangeScene());
+            });
+        });
+
+    }
+
+    private IEnumerator WaitAndChangeScene()
+    {
+        DOTween.Kill(gameObject);
+        yield return new WaitForSeconds(2f);
+
+        endCanva = true;
+        gameObject.SetActive(false);
+        blackScreen.DOColor(Color.clear, 1.3f).OnComplete(() => { DOTween.Kill(gameObject); });
+        // SceneManager.LoadScene("HUB");
+    }
+    
     public float GetSpeed()
     {
         return speed;

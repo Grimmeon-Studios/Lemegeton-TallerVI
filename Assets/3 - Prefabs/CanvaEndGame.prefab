@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 8108168501192073834}
   - component: {fileID: 51202515812563628}
   - component: {fileID: 8564149279351080742}
+  - component: {fileID: 4788866175535752815}
   m_Layer: 5
   m_Name: CanvaEndGame
   m_TagString: Untagged
@@ -423,6 +424,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4788866175535752815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157565732145206934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d966e6d2b6f9aa94e82404e260a889cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCount: 7
+  filename: highscores.json
 --- !u!1 &1277675350049665696
 GameObject:
   m_ObjectHideFlags: 0

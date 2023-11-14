@@ -10,28 +10,30 @@ public class EndCanva : MonoBehaviour
 {
     [SerializeField] HighscoreHandler highscoreHandler;
     private string playerName;
-    [SerializeField] private GameObject playerNameInput;
+    [SerializeField] private GameObject Canva;
     [SerializeField] private GameObject joystick;
     private ScoreBoard scoreBoard;
     [SerializeField] TextMeshProUGUI pointsText;
 
     private AsmodeusScript boss;
+    private PlayerManager player;
 
-    private bool running;
+    private bool runningBoss;
     // Start is called before the first frame update
     private void Start()
     {
-        running = true;
+        runningBoss = true;
         scoreBoard = UnityEngine.Object.FindObjectOfType<ScoreBoard>();
         boss = FindObjectOfType<AsmodeusScript>();
+        player = FindObjectOfType<PlayerManager>();
     }
 
     private void Update()
     {
-        if (boss.EndCanva && running)
+        if ((boss.endCanva || player.endCanva) && runningBoss )
         {
             Time.timeScale = 0f;
-            playerNameInput.SetActive(true);
+            Canva.SetActive(true);
             pointsText.text = "" + scoreBoard.GetScore();
             joystick.SetActive(false);
         }
@@ -47,7 +49,7 @@ public class EndCanva : MonoBehaviour
     
     private void ChangeScene()
     {
-        running = false;
+        runningBoss = false;
         highscoreHandler.AddHighscoreIfPossible (new HighscoreElement (playerName, scoreBoard.GetScore()));
         Time.timeScale = 1f;
         SceneManager.LoadScene("HUB");
