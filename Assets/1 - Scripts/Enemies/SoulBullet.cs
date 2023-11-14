@@ -18,7 +18,7 @@ public class SoulBullet : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.magnitude > 1000.0f)
+        if (transform.position.magnitude > 80.0f)
         {
             Destroy(gameObject);
         }
@@ -45,9 +45,11 @@ public class SoulBullet : MonoBehaviour
         {
             //pm.changeHealth(-0.5f);
             pm.TakeDamage(damage);
+
         }
 
         StartCoroutine(VFXthenDestroyObj());
+
     }
 
     private IEnumerator VFXthenDestroyObj()
